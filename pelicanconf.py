@@ -24,5 +24,8 @@ SOCIAL = (('twitter', 'https://twitter.com/puzan'),
 
 DEFAULT_PAGINATION = 10
 
+THEME = './theme'
+BOOTSTRAP_THEME = 'readable-old'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
