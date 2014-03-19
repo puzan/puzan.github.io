@@ -27,5 +27,27 @@ DEFAULT_PAGINATION = 10
 THEME = './theme'
 BOOTSTRAP_THEME = 'readable-old'
 
+# Urls
+ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{slug}/index.html'
+
+CATEGORY_URL = '{slug}/'
+CATEGORY_SAVE_AS = '{slug}/index.html'
+
+TAG_URL = 'tags/{slug}/'
+TAG_SAVE_AS = 'tags/{slug}/index.html'
+TAGS_URL = 'tags/'
+TAGS_SAVE_AS = 'tags/index.html'
+
+AUTHOR_URL = 'authors/{slug}/'
+AUTHOR_SAVE_AS = 'authors/{slug}/index.html'
+AUTHORS_URL = 'authors/'
+AUTHORS_SAVE_AS = 'authors/index.html'
+
+ARCHIVES_URL = 'posts/'
+ARCHIVES_SAVE_AS = 'posts/index.html'
+YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
+MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
