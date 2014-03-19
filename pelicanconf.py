@@ -28,26 +28,34 @@ THEME = './theme'
 BOOTSTRAP_THEME = 'readable-old'
 
 # Urls
-ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{slug}/'
-ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{slug}/index.html'
+ARTICLE_URL = '{category}/{date:%Y}-{date:%m}-{date:%d}-{slug}.html'
+ARTICLE_SAVE_AS = ARTICLE_URL
 
-CATEGORY_URL = '{slug}/'
-CATEGORY_SAVE_AS = '{slug}/index.html'
+CATEGORY_URL = '{slug}/index.html'
+CATEGORY_SAVE_AS = CATEGORY_URL
+CATEGORIES_URL = 'categories.html'
+CATEGORIES_SAVE_AS = CATEGORIES_URL
 
-TAG_URL = 'tags/{slug}/'
-TAG_SAVE_AS = 'tags/{slug}/index.html'
-TAGS_URL = 'tags/'
-TAGS_SAVE_AS = 'tags/index.html'
+TAG_URL = 'tag/{slug}.html'
+TAG_SAVE_AS = TAG_URL
+TAGS_URL = 'tag/index.html'
+TAGS_SAVE_AS = TAGS_URL
 
-AUTHOR_URL = 'authors/{slug}/'
-AUTHOR_SAVE_AS = 'authors/{slug}/index.html'
-AUTHORS_URL = 'authors/'
-AUTHORS_SAVE_AS = 'authors/index.html'
+AUTHOR_URL = 'author/{slug}/index.html'
+AUTHOR_SAVE_AS = AUTHOR_URL
+AUTHORS_URL = 'author/index.html'
+AUTHORS_SAVE_AS = AUTHORS_URL
 
-ARCHIVES_URL = 'posts/'
-ARCHIVES_SAVE_AS = 'posts/index.html'
-YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
-MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
+ARCHIVES_URL = 'archives.html'
+ARCHIVES_SAVE_AS = ARCHIVES_URL
+YEAR_ARCHIVE_SAVE_AS = '{date:%Y}.html'
+MONTH_ARCHIVE_SAVE_AS = '{date:%Y}-{date:%m}.html'
+
+TAG_CLOUD_STEPS = 3
+TAG_CLOUD_MAX_ITEMS = 100
+
+DISPLAY_TAGS_INLINE = True
+DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
