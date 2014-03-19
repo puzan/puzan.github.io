@@ -58,5 +58,9 @@ TAG_CLOUD_MAX_ITEMS = 100
 DISPLAY_TAGS_INLINE = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
+MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight)',
+                 'extra',
+                 'fenced_code']
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
