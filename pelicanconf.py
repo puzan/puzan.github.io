@@ -62,5 +62,7 @@ MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False
                  'extra',
                  'fenced_code']
 
+PYGMENTS_STYLE = 'zenburn'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
