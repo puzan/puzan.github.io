@@ -58,7 +58,7 @@ TAG_CLOUD_MAX_ITEMS = 100
 DISPLAY_TAGS_INLINE = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
-MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight)',
+MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False)',
                  'extra',
                  'fenced_code']
 
