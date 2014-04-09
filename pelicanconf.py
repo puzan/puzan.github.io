@@ -64,5 +64,10 @@ MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False
 
 PYGMENTS_STYLE = 'zenburn'
 
+GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
+GITHUB_SKIP_FORK = False
+GITHUB_USER = 'puzan'
+GITHUB_SHOW_USER_LINK = True
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
