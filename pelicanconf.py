@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Ilya Zonov'
 SITENAME = u"Puzan's Pages"
-SITEURL = 'http://localhost:8000'
+SITEURL = ''
 
 TIMEZONE = 'Europe/Moscow'
 
@@ -44,7 +44,7 @@ TAGS_SAVE_AS = TAGS_URL
 
 AUTHOR_URL = 'author/{slug}/index.html'
 AUTHOR_SAVE_AS = AUTHOR_URL
-AUTHORS_URL = 'author/index.html'
+AUTHORS_URL = False
 AUTHORS_SAVE_AS = AUTHORS_URL
 
 ARCHIVES_URL = 'archives.html'
@@ -67,7 +67,8 @@ PYGMENTS_STYLE = 'zenburn'
 GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
 GITHUB_SKIP_FORK = False
 GITHUB_USER = 'puzan'
-GITHUB_SHOW_USER_LINK = True
+
+STATIC_PATHS = ['images', 'extra']
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
