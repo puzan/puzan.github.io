@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/bash.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-05-21T00:00:00+04:00</updated><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.github.io/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
+своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
+заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
+решения которых не  получается с первого раза найти в  &lt;em&gt;google&lt;/em&gt; (искать наверное
+разучился). Буду выносить все это дело в виде постов сюда. Постараюсь чтобы сюда
+попадали  исключительно околотехнические  темы.  Остальное  в &lt;a href="https://plus.google.com/100903917371621392768/posts"&gt;Google+&lt;/a&gt;  или
+&lt;a href="https://twitter.com/puzan"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Итак начну  с того, что любимая  девушка подарила мне на  день рождение &lt;em&gt;MacBook
+Air&lt;/em&gt;. Поэтому с этого момента на данном блоге будут появляться посты посвященные
+и данному замечательному устройству, а также  &lt;em&gt;OS X&lt;/em&gt; (название блога видимо надо
+немного поменять). Все они будут помечены с помощью тега &lt;a href="http://puzan-linux.blogspot.ru/search/label/mac"&gt;&lt;em&gt;mac&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;На  Mac'е как  раз и  столкнулся с  одной неприятной  мелкой проблемой,  которая
+несколько меня раздражает, но  на данный момент я не знаю,  как ее решить. Сразу
+же при  получении этого девайся  я начал устанавливать привычное  мне консольное
+окружение. Для этого я использовал &lt;a href="http://www.macports.org/"&gt;macports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Настроил  git completion  и prompt,  используя скрипты  из git-core  порта. Были
+установлены следующие версии портов:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bash 4.2.42_0&lt;/li&gt;
+&lt;li&gt;bash-completion 2.0_1&lt;/li&gt;
+&lt;li&gt;git-core 1.8.2.3_0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
+такой ошибкой:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+*** set a breakpoint in malloc_error_break to debug
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При этом  я не  совсем уверен,  что эта ошибка  связана с  &lt;em&gt;bash-completion&lt;/em&gt; или
+&lt;em&gt;git&lt;/em&gt;.  Буду  искать решение, но отказываться  от completion и prompt  совсем не
+хочется.   Думаю   попробовать  &lt;em&gt;bash&lt;/em&gt;  из  &lt;a href="http://mxcl.github.io/homebrew/"&gt;homebrew&lt;/a&gt;,   ну  или  ручками
+собрать. Какие еще варианты? Куда копать на mac'е?&lt;/p&gt;
+&lt;p&gt;PS. Вот и ушло у меня пару часов на написание казалось бы небольшого текста.&lt;/p&gt;
+&lt;p&gt;P.S.   [2013-05-25]  &lt;em&gt;bash&lt;/em&gt; все  равно  продолжает  падать даже  с  выключенными
+completions и git-prompt. Происходит это стабильно раз в день.&lt;/p&gt;</summary><category term="mac"></category><category term="bash"></category></entry></feed>

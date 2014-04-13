@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/merge.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-06-01T00:00:00+04:00</updated><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.github.io/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
+ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
+&lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
+я видел следующие варианты:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Самый простой  способ: сделать  еще один  &lt;code&gt;merge&lt;/code&gt;. В  итоге получаем  еще один
+  дополнительный &lt;em&gt;commit&lt;/em&gt; и разветвленную историю.&lt;/li&gt;
+&lt;li&gt;Сделать полный &lt;code&gt;merge&lt;/code&gt; заново. Повторять уже сделанное не хочется.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Я  решил  найти  вариант,  позволяющий в  результате  первого  простого  способа
+получить один коммит.  Оказалось эта операция  не совсем очевидна.  Как всегда в
+последнее время, нашел  решение на &lt;a href="http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together"&gt;stackoverflow&lt;/a&gt;. Опишу  весь процесс с
+начала до  конца с  историей тестового репозитория  (&lt;code&gt;git log  --oneline --graph
+--decorate&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
+  исправлением всех конфликтов:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout feature
+$ git merge origin/master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 2a55e67 (origin/feature) b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (origin/feature) c&amp;#39;
+| *   b8c37f7 (HEAD, feature) c&amp;#39;
+| |\
+|/ /
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git merge origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+|\
+| * 3820f07 (origin/feature) c&amp;#39;
+* |   b8c37f7 c&amp;#39;
+|\ \
+| |/
+|/|
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
+  с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git reset --soft origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+* 2a55e67 b&amp;#39;
+| * 7020561 (origin/master) b
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+$ git commit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 3820f07 (origin/feature) c&amp;#39;
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием
+веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
+объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
+&lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry></feed>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/git.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.github.io/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
+меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
+какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
+&lt;em&gt;Emacs&lt;/em&gt;. И  наткнулся тагда я на  &lt;em&gt;Version Control&lt;/em&gt; расширение. Именно  оттуда я
+узнал о  более древней  системе: &lt;em&gt;RCS&lt;/em&gt;.   Как ни странно,  именно в  эту систему
+&lt;em&gt;Emacs&lt;/em&gt; предлагает добавить файлы по умолчанию (&lt;code&gt;C-x v v&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Так вот,  с тех  давних пор  у меня все  хранилось в  &lt;em&gt;RCS&lt;/em&gt;.  Вообще  говоря это
+достаточно удобно, если единственная задача:  хранить историю изменений на одной
+машине. Все управление через  &lt;em&gt;Emacs&lt;/em&gt;. Я даже не особо знаю  ключи команд &lt;code&gt;ci&lt;/code&gt; и
+&lt;code&gt;co&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Теперь  же  у  меня  фактически  4  компьютера, на  которых  я  хотел  бы  иметь
+одинаковые, хотя бы,  пользовательские настройки. Например, для  &lt;em&gt;bash&lt;/em&gt; или того
+же  &lt;em&gt;git&lt;/em&gt;. Для  этого  я задумал  поместить все  необходимые  файлы из  домашней
+директории в  &lt;em&gt;git&lt;/em&gt; репозиторий.   Но положить  в &lt;em&gt;git&lt;/em&gt;  всю или  часть домашней
+директории похоже нехорошая идея. Однозначно будут глюки с &lt;em&gt;git prompt&lt;/em&gt;. Если не
+добавить  все файлы  в &lt;code&gt;.gitignore&lt;/code&gt;,  то &lt;em&gt;git  prompt&lt;/em&gt; просто  подвесит консоль:
+сканирование  всей   домашней  директории  не   быстрое  дело.   Думаю   это  не
+единственная проблема.&lt;/p&gt;
+&lt;p&gt;Я  решил   воспользоваться  следующей   схемой.   Нужные  файлы   скопировать  в
+специальную  папочку.   В ней  организовать  &lt;em&gt;git&lt;/em&gt;  репозиторий.  А  в  домашней
+директории создать  ссылки на файлы  из этой папки. Для  автоматизации последней
+задачи   я   написал   небольшой   скриптик.    Когда   доработаю,   выложу   на
+&lt;a href="https://github.com/puzan"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Еще одна проблема: специфичные настройки определенных машин.  Например, &lt;code&gt;PATH&lt;/code&gt; в
+&lt;em&gt;Linux&lt;/em&gt; и &lt;em&gt;OS X&lt;/em&gt; местами  различаются (избыточности не хочется).  В &lt;code&gt;.gitconfig&lt;/code&gt;
+у меня даже различие есть. Для решения этого вопроса я создал для каждой машины,
+которой  необходимы какие-то  особенности,  специальную  ветку. Общие  настройки
+хранятся на  &lt;em&gt;master&lt;/em&gt; ветке.   Неудобство этой  схемы связанно  с тем,  что надо
+постоянно  сливать  изменения с  &lt;em&gt;master&lt;/em&gt;'а  в  специфичные ветки.   Может  есть
+какое-то более простое и элегантное решение?&lt;/p&gt;
+&lt;p&gt;Ну а системные настройки (&lt;code&gt;/etc/&lt;/code&gt;) я так и продолжаю хранить в &lt;em&gt;RCS&lt;/em&gt;. Если будет
+задача настройки  нескольких одинаковых машин,  то можно будет подумать  на тему
+синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
+достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
+истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.github.io/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
+ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
+&lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
+я видел следующие варианты:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Самый простой  способ: сделать  еще один  &lt;code&gt;merge&lt;/code&gt;. В  итоге получаем  еще один
+  дополнительный &lt;em&gt;commit&lt;/em&gt; и разветвленную историю.&lt;/li&gt;
+&lt;li&gt;Сделать полный &lt;code&gt;merge&lt;/code&gt; заново. Повторять уже сделанное не хочется.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Я  решил  найти  вариант,  позволяющий в  результате  первого  простого  способа
+получить один коммит.  Оказалось эта операция  не совсем очевидна.  Как всегда в
+последнее время, нашел  решение на &lt;a href="http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together"&gt;stackoverflow&lt;/a&gt;. Опишу  весь процесс с
+начала до  конца с  историей тестового репозитория  (&lt;code&gt;git log  --oneline --graph
+--decorate&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
+  исправлением всех конфликтов:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout feature
+$ git merge origin/master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 2a55e67 (origin/feature) b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (origin/feature) c&amp;#39;
+| *   b8c37f7 (HEAD, feature) c&amp;#39;
+| |\
+|/ /
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git merge origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+|\
+| * 3820f07 (origin/feature) c&amp;#39;
+* |   b8c37f7 c&amp;#39;
+|\ \
+| |/
+|/|
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
+  с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git reset --soft origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+* 2a55e67 b&amp;#39;
+| * 7020561 (origin/master) b
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+$ git commit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 3820f07 (origin/feature) c&amp;#39;
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием
+веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
+объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
+&lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.github.io/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
+&lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
+&lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
+&lt;p&gt;Есть у  меня репозиторий, в  котором я храню все  свои заметки. Половина  из них
+была написана в &lt;a href="http://mwolson.org/projects/EmacsMuse.html"&gt;muse-mode&lt;/a&gt;, остальное в &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;.  Соответственно
+имена  файлов  с  текстом  содержат заголовки,  содержащие  кириллицу.  Мне  так
+удобнее. Ранее с таким подходом ни разу проблем не встречал.&lt;/p&gt;
+&lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
+в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
+помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#
+# Untracked files:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to include in what will be committed)
+#
+#   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#   .....
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
+&lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.precomposeunicode true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого видим следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
+символы в именах новых и измененных файлов все равно отображаются в восьмеричном
+виде. Как вариант можно использовать &lt;code&gt;git  add -i&lt;/code&gt;. Там все символы отображаются
+в привычном виде.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
+проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.quotepath false
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.github.io/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+на   домашнем    сервере.    Для   управления   git    репозиториями   использую
+&lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
+всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
+только у пользователя &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.  &lt;em&gt;Redmine&lt;/em&gt; же запускает пользователь &lt;em&gt;&lt;code&gt;redmine&lt;/code&gt;&lt;/em&gt;.
+В общем главная загвоздка — найти &lt;em&gt;umask&lt;/em&gt; опцию в настройках &lt;em&gt;Gitolite&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Решение со &lt;a href="http://stackoverflow.com/questions/13000247/redmine-gitolite-issue-with-repository-permissions-and-more"&gt;Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Добавляем   в   Redmine   путь    к   необходимому   репозиторию.    Например:
+  &lt;code&gt;/home/git/repositories/repo.git&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
+  &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  usermod -a -G git redmine
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;В  файле &lt;code&gt;.gitolite.rc&lt;/code&gt;  (находится  в домашней  директории &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;)  поменять
+  значение  &lt;code&gt;UMASK&lt;/code&gt; с  &lt;code&gt;0077&lt;/code&gt; на  &lt;code&gt;0027&lt;/code&gt;.  Теперь  новые файлы  &lt;em&gt;Gitolite&lt;/em&gt; будет
+  создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;  chmod -R g+rX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="http://puzan.github.io/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><updated>2013-02-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-03:linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;Руководство к действию&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q | grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; | awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; | sort | uniq&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for &lt;/span&gt;author in &lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${author} = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную заменяем на необходимые значения.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Склонировать &lt;em&gt;svn&lt;/em&gt; репозиторий&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Пара слов про опции:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt; — необходима,  если используются стандартные svn  папки (trunk, tags,
+  branches).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--no-metadata&lt;/code&gt; — удаление записей &lt;code&gt;git-svn-id&lt;/code&gt; из логов.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--username&lt;/code&gt; — тут все понятно.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--author-file&lt;/code&gt; — список авторов в svn репозитории (см. пункт выше).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Импорт ignore файлов&lt;/p&gt;
+&lt;p&gt;На каждой ветке необходимо сделать следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git checkout BRANCH
+git svn create-ignore
+git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Полезные ссылки&lt;/h3&gt;
+&lt;p&gt;Весь этот небольшой материал основан на следующих статьях:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://leonid.shevtsov.me/ru/perenos-svn-repozitariya-v-git" title="Перенос SVN-репозитария в git"&gt;Перенос SVN-репозитария в git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/post/144626/" title="Переезд проекта с SVN на Git"&gt;Переезд проекта с SVN на Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/company/wapstart/blog/159477/" title="how to: Как и зачем работать с svn через git"&gt;how to: Как и зачем работать с svn через git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="svn"></category><category term="git"></category></entry></feed>

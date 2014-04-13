@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/redmine.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-02-05T00:00:00+04:00</updated><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.github.io/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+на   домашнем    сервере.    Для   управления   git    репозиториями   использую
+&lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
+всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
+только у пользователя &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.  &lt;em&gt;Redmine&lt;/em&gt; же запускает пользователь &lt;em&gt;&lt;code&gt;redmine&lt;/code&gt;&lt;/em&gt;.
+В общем главная загвоздка — найти &lt;em&gt;umask&lt;/em&gt; опцию в настройках &lt;em&gt;Gitolite&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Решение со &lt;a href="http://stackoverflow.com/questions/13000247/redmine-gitolite-issue-with-repository-permissions-and-more"&gt;Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Добавляем   в   Redmine   путь    к   необходимому   репозиторию.    Например:
+  &lt;code&gt;/home/git/repositories/repo.git&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
+  &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  usermod -a -G git redmine
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;В  файле &lt;code&gt;.gitolite.rc&lt;/code&gt;  (находится  в домашней  директории &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;)  поменять
+  значение  &lt;code&gt;UMASK&lt;/code&gt; с  &lt;code&gt;0077&lt;/code&gt; на  &lt;code&gt;0027&lt;/code&gt;.  Теперь  новые файлы  &lt;em&gt;Gitolite&lt;/em&gt; будет
+  создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;  chmod -R g+rX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry></feed>

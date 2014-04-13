@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/nfs.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-09-03T00:00:00+04:00</updated><entry><title>Как создать bridge на nfs root</title><link href="http://puzan.github.io/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-09-03:linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
+Данное условие необходимо  для возможности быстро изменить что-то  в системе без
+необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
+как раз в том, что при создании  &lt;em&gt;bridge&lt;/em&gt; сеть придется в любом случае оборвать.
+&lt;em&gt;Nfs&lt;/em&gt; такого  пережить не может  и отваливается.  Соответственно  система дальше
+грузиться не  может так  как нету  корневой файловой системы  и сеть  также сама
+вернуться не может.&lt;/p&gt;
+&lt;p&gt;Я уже думал  искать какое-то альтернативное решение: как  неожиданно мой коллега
+натолкнулся на небольшую &lt;a href="http://lnotestoself.blogspot.ru/2013/04/enabling-bridge-interface-when-youre-on.html"&gt;заметку&lt;/a&gt;, в  которой описано как обойти указанную
+проблему.&lt;/p&gt;
+&lt;p&gt;Сущность данного решения  сводиться к тому, что надо все  файлы, необходимые для
+настройки &lt;em&gt;bridge&lt;/em&gt;, скопировать в раздел с &lt;em&gt;tmpfs&lt;/em&gt;, который будет доступен после
+обрыва  сети.  Я,  например,  использовал &lt;code&gt;/tmp&lt;/code&gt;.   А  потом запустить  создание
+&lt;em&gt;bridge&lt;/em&gt;  из нового  окружения.   Данный  метод работает  на  ура, нареканий  не
+заметил.&lt;/p&gt;
+&lt;p&gt;Вот собственно решение с моими малюсенькими изменениями:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
+mount -o remount,exec /tmp
+&lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
+&lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
+
+mkdir -p &lt;span class="s2"&gt;&amp;quot;$R/proc&amp;quot;&lt;/span&gt;
+cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt;
+cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;mount -t proc none /proc&lt;/span&gt;
+&lt;span class="s"&gt;brctl addbr br0&lt;/span&gt;
+&lt;span class="s"&gt;brctl addif br0 eth0&lt;/span&gt;
+&lt;span class="s"&gt;ifconfig br0 &amp;quot;$IPADDR&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;ifconfig eth0 0.0.0.0&lt;/span&gt;
+&lt;span class="s"&gt;umount /proc&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+chroot &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt; sh script
+rm -r &lt;span class="s2"&gt;&amp;quot;$R/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/lib&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;В нутрь &lt;code&gt;script&lt;/code&gt; в принципе можно вставить все, что вам будет необходимо.&lt;/p&gt;
+&lt;p&gt;Хорош ли  метод?  Мне  по крайней  мере понравился.   Есть еще  предложения, как
+возможно решить данный вопрос?&lt;/p&gt;</summary><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry></feed>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/google.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-01-24T00:00:00+04:00</updated><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.github.io/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
+вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
+— проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
+сообщений из &lt;em&gt;Emacs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ранее  для   написания  заметок   я  использовал   &lt;em&gt;&lt;a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse"&gt;muse-mode&lt;/a&gt;&lt;/em&gt;.   Каждая
+&lt;em&gt;muse&lt;/em&gt;-заметка экспортировалась в  &lt;em&gt;html&lt;/em&gt;.  А далее я ручками  копировал в форму
+&lt;a href="http://blogger.com" title="Blogger"&gt;Блоггера&lt;/a&gt;  нужный  контент.   Долго  я пользовался  именно  этой  схемой.
+&lt;em&gt;Muse&lt;/em&gt; в какой-то  момент перестал удовлетворять моим требованиям.   Были у него
+некоторые проблемы со вложенными списками и вставками кода. А всякие списки я ой
+как  люблю.  Это  наверное последствия  долгого использования  &lt;em&gt;org-mode&lt;/em&gt;. Ну  а
+потом я вообще перестал что-либо публиковать в сети.&lt;/p&gt;
+&lt;p&gt;Также когда-то я пробовал наладить &lt;em&gt;google&lt;/em&gt;  интерфейс, который шел в поставке с
+&lt;em&gt;emacsspeak&lt;/em&gt;. Но  безуспешно. Интересно в  каком состоянии он сейчас?   Давно не
+слышал.&lt;/p&gt;
+&lt;p&gt;Теперь я собираюсь изобрести новый  велосипед. В его основе &lt;em&gt;&lt;a href="http://daringfireball.net/projects/markdown/" title="Markdown"&gt;Markdown&lt;/a&gt;&lt;/em&gt; и
+&lt;em&gt;&lt;a href="http://code.google.com/p/googlecl" title="googlecl"&gt;Googlecl&lt;/a&gt;&lt;/em&gt;.  Собственно смысл  в том, чтобы написать  мини скрипт на
+&lt;em&gt;bash&lt;/em&gt;, который переведет &lt;em&gt;md&lt;/em&gt;-файл  в &lt;em&gt;html&lt;/em&gt; (&lt;a href="http://www.freewisdom.org/projects/python-markdown" title="python-markdown"&gt;python-markdown&lt;/a&gt;).  При
+этом  он  должен  вырезать  избыточные поля.   Например,  заголовок,  который  в
+блоггере в  отдельное поле  вводится.  Далее отправить  это добро  в &lt;em&gt;googlecl&lt;/em&gt;,
+который  успешно опубликует  новую заметку  с правильным  заголовком и  тегами в
+нужном месте.  То есть из &lt;em&gt;Emacs&lt;/em&gt;  надо будет дернуть этот скриптик и собственно
+все.&lt;/p&gt;
+&lt;p&gt;Как вариант можно  написать полностью тоже самое на &lt;em&gt;elisp&lt;/em&gt;,  но хочется простой
+возможности публиковать  файлы из консоли. Также  я пока не совсем  понимаю, как
+настроить раскраску  кода при  конвертировании &lt;em&gt;md&lt;/em&gt;  в &lt;em&gt;html&lt;/em&gt;,  но думаю  с этим
+больших проблем не должно быть.&lt;/p&gt;
+&lt;p&gt;Как вам такая схема? Не слишком  ли я заворачиваю? Сейчас буду реализовывать это
+добро.&lt;/p&gt;</summary><category term="emacs"></category><category term="google"></category></entry></feed>

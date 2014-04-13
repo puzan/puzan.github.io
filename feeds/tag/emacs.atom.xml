@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/emacs.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-08-25T00:00:00+04:00</updated><entry><title>Emacs + Java</title><link href="http://puzan.github.io/linux/2013-08-25-emacs-java.html" rel="alternate"></link><updated>2013-08-25T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
+всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
+сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
+быстренько познать его особенности, а  также настроить свой любимый редактор для
+удобной работы с этим популярным языком программирования.&lt;/p&gt;
+&lt;p&gt;Для  каждого языка  программирования в  &lt;em&gt;Emacs&lt;/em&gt; я  стараюсь настроить  следующие
+возможности:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Подсветка синтаксиса (есть из коробки)&lt;/li&gt;
+&lt;li&gt;Авто дополнения (желательно через auto-complete)&lt;/li&gt;
+&lt;li&gt;Навигация по коду&lt;/li&gt;
+&lt;li&gt;Работа с проектами (опционально, люблю работать в консоли вне Emacs)&lt;/li&gt;
+&lt;li&gt;REPL (также опционально, но очень помогает во время обучения)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Из коробки в &lt;code&gt;java-mode&lt;/code&gt; фактически  работает только подсветка синтаксиса. Cedet
+идущий с  Emacs'ом также позваляет  настроить автодополнения и  навигацию внутри
+классов.  Но  вот, например,  системные вещи  наотрез отказывается  предлагать в
+качестве дополнений.&lt;/p&gt;
+&lt;p&gt;В общем  я решил  посмотреть, какие сейчас  есть удобств для  работы с  &lt;em&gt;Java&lt;/em&gt; в
+&lt;em&gt;Emacs&lt;/em&gt;. При этом я наткнулся на следующие вещи:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://jdee.sourceforge.net/"&gt;JDEE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/buzztaiki/malabar-mode"&gt;malabar-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/senny/emacs-eclim/"&gt;Eclime for Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/emacs-java/auto-java-complete"&gt;Auto Java Complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CEDET Developer Version (&lt;a href="http://cedet.sourceforge.net/bzr-repo.shtml"&gt;Bazaar repo&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Немного впечатлений о каждом расширении. Все  пробовал на &lt;em&gt;MacBook Air&lt;/em&gt;, &lt;em&gt;OS X&lt;/em&gt;,
+&lt;em&gt;Emacs 24.3.1&lt;/em&gt; из &lt;a href="http://macports.org/"&gt;MacPorts&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;JDEE&lt;/h2&gt;
+&lt;p&gt;Старое и  похоже переставшее развиваться  расширение. Сразу не  понравилось, что
+тянет с  собой свою цветовую  схему.  Мелочи, но  они всегда бросаются  в глаза.
+Также  &lt;em&gt;JDEE&lt;/em&gt; каким-то  образом  умудряется  нарушить работу  &lt;code&gt;whitespace-mode&lt;/code&gt;,
+который перестает подсвечивать вообще что-либо.  Данную проблему решить не смог.
+Есть у меня подозрение, что это  связано с перекрашиванием буфера, но глубока не
+капал  за ненадобностью.   Нечто похожее  сейчас  есть в  &lt;code&gt;markdown-mode&lt;/code&gt;. Ну  и
+каких-то особых возможностей здесь не  нашел.  Все плюшки сделаны через &lt;em&gt;Cedet&lt;/em&gt;,
+соответственно их можно получить и без &lt;em&gt;JDEE&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Malabar-mode&lt;/h2&gt;
+&lt;p&gt;Завязан   на   &lt;em&gt;Maven&lt;/em&gt;,   про   который  ранее   слышал   совсем   чуть-чуть   и
+отдаленно. Быстренько глянул,  как работать с этим  менеджером проектов.  Создал
+тестовый проект, но производительность  &lt;code&gt;malabar-mode&lt;/code&gt; вообще не порадовала.  Он
+как  я понял  использует &lt;em&gt;Groovy&lt;/em&gt;  console  для формирования  дополнений. И  это
+похоже   порой  не   быстрый  процесс.    В   общем  от   этого  варианта   тоже
+отказался.   Кроме  того   проект  также   загибается.  Хотя   в  знакомстве   с
+&lt;code&gt;malabar-mode&lt;/code&gt; есть свой плюс: я узнал что такое &lt;em&gt;Maven&lt;/em&gt; и как с ним работать.&lt;/p&gt;
+&lt;h2&gt;Eclime&lt;/h2&gt;
+&lt;p&gt;Вот это вообще монстр.  Идея затащить в &lt;em&gt;Emacs&lt;/em&gt; (изначально в &lt;em&gt;Vim&lt;/em&gt;) функционал &lt;em&gt;Eclipse&lt;/em&gt; через некий
+интерфейс тоже  на деле  оказывается не шибко  производительна. В  данном случае
+&lt;em&gt;eclime&lt;/em&gt;  запускает &lt;em&gt;Eclipse&lt;/em&gt;  на  заднем плане  и общается  с  ним, чтобы  получить
+автодополнения  и еще  некоторый функционал  (рефакторинг, навигация  по коду  и
+т.п.). Скорость отзывчивости данной системы еще меньше, чем у &lt;em&gt;Malabar&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Auto Java Complete&lt;/h2&gt;
+&lt;p&gt;Смысл данного расширения прост:  сгенерировать теги необходимых &lt;em&gt;Java&lt;/em&gt; библиотек
+и предоставить интерфейс для  &lt;code&gt;auto-complete&lt;/code&gt;. Я попробовал использовать готовые
+теги  и это  работает достаточно  быстро  и удобно.  Но тут  мы получаем  только
+информацию  системных библиотек  и того  что сами  укажем ручками  при генерации
+тегов.  В  принципе в связке со  стандартным &lt;em&gt;Cedet&lt;/em&gt; идущим с  &lt;em&gt;Emacs&lt;/em&gt;'ом должно
+всего этого хватить.&lt;/p&gt;
+&lt;h2&gt;Cedet Dev&lt;/h2&gt;
+&lt;p&gt;Самый  удобный,  как мне  кажется,  вариант  это использовать  последнюю  версию
+&lt;em&gt;Cedet&lt;/em&gt;  из  &lt;em&gt;Bazaar&lt;/em&gt; репозитория.   Тут  сейчас  &lt;em&gt;Java&lt;/em&gt; хорошо  поддерживается.
+&lt;em&gt;Maven&lt;/em&gt;  проекты кстати  тоже  отлично воспринимаются.   По  работе и  настройке
+&lt;em&gt;Cedet&lt;/em&gt; лучше обращаться к &lt;a href="http://alexott.net/ru/writings/emacs-devenv/EmacsCedet.html"&gt;статье Alex Ott'а&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;На  данный   момент  я  остановился   на  последнем  варианте:  &lt;em&gt;Cedet&lt;/em&gt;   Dev  +
+&lt;code&gt;auto-complete&lt;/code&gt;. Есть  у кого  еще предложения  как улучшить  жизнь в  Emacs при
+работе с &lt;em&gt;Java&lt;/em&gt;?  Или все таки &lt;em&gt;Cedet&lt;/em&gt;  это наше все и смотреть в другие стороны
+лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.github.io/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
+вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
+— проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
+сообщений из &lt;em&gt;Emacs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ранее  для   написания  заметок   я  использовал   &lt;em&gt;&lt;a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse"&gt;muse-mode&lt;/a&gt;&lt;/em&gt;.   Каждая
+&lt;em&gt;muse&lt;/em&gt;-заметка экспортировалась в  &lt;em&gt;html&lt;/em&gt;.  А далее я ручками  копировал в форму
+&lt;a href="http://blogger.com" title="Blogger"&gt;Блоггера&lt;/a&gt;  нужный  контент.   Долго  я пользовался  именно  этой  схемой.
+&lt;em&gt;Muse&lt;/em&gt; в какой-то  момент перестал удовлетворять моим требованиям.   Были у него
+некоторые проблемы со вложенными списками и вставками кода. А всякие списки я ой
+как  люблю.  Это  наверное последствия  долгого использования  &lt;em&gt;org-mode&lt;/em&gt;. Ну  а
+потом я вообще перестал что-либо публиковать в сети.&lt;/p&gt;
+&lt;p&gt;Также когда-то я пробовал наладить &lt;em&gt;google&lt;/em&gt;  интерфейс, который шел в поставке с
+&lt;em&gt;emacsspeak&lt;/em&gt;. Но  безуспешно. Интересно в  каком состоянии он сейчас?   Давно не
+слышал.&lt;/p&gt;
+&lt;p&gt;Теперь я собираюсь изобрести новый  велосипед. В его основе &lt;em&gt;&lt;a href="http://daringfireball.net/projects/markdown/" title="Markdown"&gt;Markdown&lt;/a&gt;&lt;/em&gt; и
+&lt;em&gt;&lt;a href="http://code.google.com/p/googlecl" title="googlecl"&gt;Googlecl&lt;/a&gt;&lt;/em&gt;.  Собственно смысл  в том, чтобы написать  мини скрипт на
+&lt;em&gt;bash&lt;/em&gt;, который переведет &lt;em&gt;md&lt;/em&gt;-файл  в &lt;em&gt;html&lt;/em&gt; (&lt;a href="http://www.freewisdom.org/projects/python-markdown" title="python-markdown"&gt;python-markdown&lt;/a&gt;).  При
+этом  он  должен  вырезать  избыточные поля.   Например,  заголовок,  который  в
+блоггере в  отдельное поле  вводится.  Далее отправить  это добро  в &lt;em&gt;googlecl&lt;/em&gt;,
+который  успешно опубликует  новую заметку  с правильным  заголовком и  тегами в
+нужном месте.  То есть из &lt;em&gt;Emacs&lt;/em&gt;  надо будет дернуть этот скриптик и собственно
+все.&lt;/p&gt;
+&lt;p&gt;Как вариант можно  написать полностью тоже самое на &lt;em&gt;elisp&lt;/em&gt;,  но хочется простой
+возможности публиковать  файлы из консоли. Также  я пока не совсем  понимаю, как
+настроить раскраску  кода при  конвертировании &lt;em&gt;md&lt;/em&gt;  в &lt;em&gt;html&lt;/em&gt;,  но думаю  с этим
+больших проблем не должно быть.&lt;/p&gt;
+&lt;p&gt;Как вам такая схема? Не слишком  ли я заворачиваю? Сейчас буду реализовывать это
+добро.&lt;/p&gt;</summary><category term="emacs"></category><category term="google"></category></entry></feed>

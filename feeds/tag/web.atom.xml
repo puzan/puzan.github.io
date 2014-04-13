@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/web.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-05-23T00:00:00+04:00</updated><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="http://puzan.github.io/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-23:linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
+для ведения заметок.  Пользуюсь им с &lt;em&gt;iPhone&lt;/em&gt; и через  веб интерфейс с остальных
+систем  (дом  - &lt;em&gt;Linux&lt;/em&gt;,  работа  -  &lt;em&gt;Windows&lt;/em&gt;).  А  теперь еще  и  оригинальным
+приложением для &lt;em&gt;Mac&lt;/em&gt;'а пользоваться начал.&lt;/p&gt;
+&lt;p&gt;Все  это к  чему?   Есть у  этого замечательного  сервиса  казалось бы  отличное
+дополнение для &lt;em&gt;Firefox&lt;/em&gt;: &lt;em&gt;Evernote Web Clipper&lt;/em&gt;. Но!  После одного из последних
+обновлений он напрочь  отказывается запоминать пароль и  с жуткой периодичностью
+просит авторизоваться.&lt;/p&gt;
+&lt;p&gt;В &lt;em&gt;Firefox&lt;/em&gt;  на &lt;em&gt;Mac&lt;/em&gt;'е  подобные проблемы не  наблюдаются. Логиниться  часто не
+просит.  Думаю  это  связано  с  тем  что  последнее  обновление  клиппера  было
+установлено на чистый профиль.&lt;/p&gt;
+&lt;p&gt;Буду завтра  на работе  (до домашнего  компа пока  добраться не  могу) пробовать
+установить &lt;em&gt;Evernote Web clipper&lt;/em&gt; поверх нового профиля &lt;em&gt;Firefox&lt;/em&gt;'а.&lt;/p&gt;
+&lt;p&gt;P.S. [2013-05-24] На  работе поставил поверх чистого профиля  клиппер. Он пароль
+вроде  как перестал  агрессивно  спрашивать. Когда  до стационарного  компьютера
+доберусь, попробую найти файлы, которые надо почистить, чтобы профиль не менять.&lt;/p&gt;</summary><category term="web"></category><category term="evernote"></category></entry></feed>

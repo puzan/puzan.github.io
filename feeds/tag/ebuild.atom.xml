@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/ebuild.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-06-03T00:00:00+04:00</updated><entry><title>Личный Firefox Sync</title><link href="http://puzan.github.io/linux/2013-06-03-lichnyi-firefox-sync.html" rel="alternate"></link><updated>2013-06-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-03:linux/2013-06-03-lichnyi-firefox-sync.html</id><summary type="html">&lt;p&gt;Для синхронизации браузерной  информации я использую &lt;em&gt;Firefox  Sync&lt;/em&gt;.  Но совсем
+недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер
+не доступен, хотя  на сайте &lt;a href="https://services.mozilla.com/status/"&gt;mozilla&lt;/a&gt; не было  сообщений о каких-то
+ошибках и неполадках в работе сервиса. Сейчас кстати есть:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The  Firefox  Sync  service  is  undergoing  some  load  issues,  if  you  are
+experiencing problems  please wait and  try again soon.  We are working  on it
+presently.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Помучившись так  недельку, я решил поднять  личный Firefox Sync сервер  на своем
+псевдо сервере. Быстренько нашел &lt;a href="http://gpo.zugaina.org/Search?search=mozilla-sync-server"&gt;ebuild'ы&lt;/a&gt;  для &lt;em&gt;gentoo&lt;/em&gt;.  И, вуа-ля, у
+меня рабочий  сервер для синхронизации. Еще  я написал &lt;em&gt;init&lt;/em&gt; скрипты  и выложил
+свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;overlay  на github&lt;/a&gt;.  Если  кому-то нужно —  пользуйтесь на
+здоровье.&lt;/p&gt;
+&lt;p&gt;Плюсы которые обнаружил во время использования личного Firefox Sync сервера:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Нет проблем с  доступом, точнее их я  могу решить сам.  Более того,  так как я
+  единственный пользователь своего сервера, то  нет проблем с загруженностью.  А
+  вот доступной  поддержки для  Firefox Sync  не нашел.   Признаюсь не  сильно и
+  искал.&lt;/li&gt;
+&lt;li&gt;Фактически  нет  ограничения  на  размер  хранимых  данных.  Стандартный  5-ти
+  мегабайтный предел я умудрился превысить.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="firefox"></category><category term="gentoo"></category><category term="portage"></category><category term="ebuild"></category></entry></feed>

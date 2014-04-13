@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/all.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-09-03T00:00:00+04:00</updated><entry><title>Как создать bridge на nfs root</title><link href="http://puzan.github.io/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-09-03:linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
+Данное условие необходимо  для возможности быстро изменить что-то  в системе без
+необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
+как раз в том, что при создании  &lt;em&gt;bridge&lt;/em&gt; сеть придется в любом случае оборвать.
+&lt;em&gt;Nfs&lt;/em&gt; такого  пережить не может  и отваливается.  Соответственно  система дальше
+грузиться не  может так  как нету  корневой файловой системы  и сеть  также сама
+вернуться не может.&lt;/p&gt;
+&lt;p&gt;Я уже думал  искать какое-то альтернативное решение: как  неожиданно мой коллега
+натолкнулся на небольшую &lt;a href="http://lnotestoself.blogspot.ru/2013/04/enabling-bridge-interface-when-youre-on.html"&gt;заметку&lt;/a&gt;, в  которой описано как обойти указанную
+проблему.&lt;/p&gt;
+&lt;p&gt;Сущность данного решения  сводиться к тому, что надо все  файлы, необходимые для
+настройки &lt;em&gt;bridge&lt;/em&gt;, скопировать в раздел с &lt;em&gt;tmpfs&lt;/em&gt;, который будет доступен после
+обрыва  сети.  Я,  например,  использовал &lt;code&gt;/tmp&lt;/code&gt;.   А  потом запустить  создание
+&lt;em&gt;bridge&lt;/em&gt;  из нового  окружения.   Данный  метод работает  на  ура, нареканий  не
+заметил.&lt;/p&gt;
+&lt;p&gt;Вот собственно решение с моими малюсенькими изменениями:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
+mount -o remount,exec /tmp
+&lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
+&lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
+
+mkdir -p &lt;span class="s2"&gt;&amp;quot;$R/proc&amp;quot;&lt;/span&gt;
+cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt;
+cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;mount -t proc none /proc&lt;/span&gt;
+&lt;span class="s"&gt;brctl addbr br0&lt;/span&gt;
+&lt;span class="s"&gt;brctl addif br0 eth0&lt;/span&gt;
+&lt;span class="s"&gt;ifconfig br0 &amp;quot;$IPADDR&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;ifconfig eth0 0.0.0.0&lt;/span&gt;
+&lt;span class="s"&gt;umount /proc&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+chroot &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt; sh script
+rm -r &lt;span class="s2"&gt;&amp;quot;$R/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/lib&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;В нутрь &lt;code&gt;script&lt;/code&gt; в принципе можно вставить все, что вам будет необходимо.&lt;/p&gt;
+&lt;p&gt;Хорош ли  метод?  Мне  по крайней  мере понравился.   Есть еще  предложения, как
+возможно решить данный вопрос?&lt;/p&gt;</summary><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry><entry><title>Emacs + Java</title><link href="http://puzan.github.io/linux/2013-08-25-emacs-java.html" rel="alternate"></link><updated>2013-08-25T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
+всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
+сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
+быстренько познать его особенности, а  также настроить свой любимый редактор для
+удобной работы с этим популярным языком программирования.&lt;/p&gt;
+&lt;p&gt;Для  каждого языка  программирования в  &lt;em&gt;Emacs&lt;/em&gt; я  стараюсь настроить  следующие
+возможности:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Подсветка синтаксиса (есть из коробки)&lt;/li&gt;
+&lt;li&gt;Авто дополнения (желательно через auto-complete)&lt;/li&gt;
+&lt;li&gt;Навигация по коду&lt;/li&gt;
+&lt;li&gt;Работа с проектами (опционально, люблю работать в консоли вне Emacs)&lt;/li&gt;
+&lt;li&gt;REPL (также опционально, но очень помогает во время обучения)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Из коробки в &lt;code&gt;java-mode&lt;/code&gt; фактически  работает только подсветка синтаксиса. Cedet
+идущий с  Emacs'ом также позваляет  настроить автодополнения и  навигацию внутри
+классов.  Но  вот, например,  системные вещи  наотрез отказывается  предлагать в
+качестве дополнений.&lt;/p&gt;
+&lt;p&gt;В общем  я решил  посмотреть, какие сейчас  есть удобств для  работы с  &lt;em&gt;Java&lt;/em&gt; в
+&lt;em&gt;Emacs&lt;/em&gt;. При этом я наткнулся на следующие вещи:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://jdee.sourceforge.net/"&gt;JDEE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/buzztaiki/malabar-mode"&gt;malabar-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/senny/emacs-eclim/"&gt;Eclime for Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/emacs-java/auto-java-complete"&gt;Auto Java Complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CEDET Developer Version (&lt;a href="http://cedet.sourceforge.net/bzr-repo.shtml"&gt;Bazaar repo&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Немного впечатлений о каждом расширении. Все  пробовал на &lt;em&gt;MacBook Air&lt;/em&gt;, &lt;em&gt;OS X&lt;/em&gt;,
+&lt;em&gt;Emacs 24.3.1&lt;/em&gt; из &lt;a href="http://macports.org/"&gt;MacPorts&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;JDEE&lt;/h2&gt;
+&lt;p&gt;Старое и  похоже переставшее развиваться  расширение. Сразу не  понравилось, что
+тянет с  собой свою цветовую  схему.  Мелочи, но  они всегда бросаются  в глаза.
+Также  &lt;em&gt;JDEE&lt;/em&gt; каким-то  образом  умудряется  нарушить работу  &lt;code&gt;whitespace-mode&lt;/code&gt;,
+который перестает подсвечивать вообще что-либо.  Данную проблему решить не смог.
+Есть у меня подозрение, что это  связано с перекрашиванием буфера, но глубока не
+капал  за ненадобностью.   Нечто похожее  сейчас  есть в  &lt;code&gt;markdown-mode&lt;/code&gt;. Ну  и
+каких-то особых возможностей здесь не  нашел.  Все плюшки сделаны через &lt;em&gt;Cedet&lt;/em&gt;,
+соответственно их можно получить и без &lt;em&gt;JDEE&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Malabar-mode&lt;/h2&gt;
+&lt;p&gt;Завязан   на   &lt;em&gt;Maven&lt;/em&gt;,   про   который  ранее   слышал   совсем   чуть-чуть   и
+отдаленно. Быстренько глянул,  как работать с этим  менеджером проектов.  Создал
+тестовый проект, но производительность  &lt;code&gt;malabar-mode&lt;/code&gt; вообще не порадовала.  Он
+как  я понял  использует &lt;em&gt;Groovy&lt;/em&gt;  console  для формирования  дополнений. И  это
+похоже   порой  не   быстрый  процесс.    В   общем  от   этого  варианта   тоже
+отказался.   Кроме  того   проект  также   загибается.  Хотя   в  знакомстве   с
+&lt;code&gt;malabar-mode&lt;/code&gt; есть свой плюс: я узнал что такое &lt;em&gt;Maven&lt;/em&gt; и как с ним работать.&lt;/p&gt;
+&lt;h2&gt;Eclime&lt;/h2&gt;
+&lt;p&gt;Вот это вообще монстр.  Идея затащить в &lt;em&gt;Emacs&lt;/em&gt; (изначально в &lt;em&gt;Vim&lt;/em&gt;) функционал &lt;em&gt;Eclipse&lt;/em&gt; через некий
+интерфейс тоже  на деле  оказывается не шибко  производительна. В  данном случае
+&lt;em&gt;eclime&lt;/em&gt;  запускает &lt;em&gt;Eclipse&lt;/em&gt;  на  заднем плане  и общается  с  ним, чтобы  получить
+автодополнения  и еще  некоторый функционал  (рефакторинг, навигация  по коду  и
+т.п.). Скорость отзывчивости данной системы еще меньше, чем у &lt;em&gt;Malabar&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Auto Java Complete&lt;/h2&gt;
+&lt;p&gt;Смысл данного расширения прост:  сгенерировать теги необходимых &lt;em&gt;Java&lt;/em&gt; библиотек
+и предоставить интерфейс для  &lt;code&gt;auto-complete&lt;/code&gt;. Я попробовал использовать готовые
+теги  и это  работает достаточно  быстро  и удобно.  Но тут  мы получаем  только
+информацию  системных библиотек  и того  что сами  укажем ручками  при генерации
+тегов.  В  принципе в связке со  стандартным &lt;em&gt;Cedet&lt;/em&gt; идущим с  &lt;em&gt;Emacs&lt;/em&gt;'ом должно
+всего этого хватить.&lt;/p&gt;
+&lt;h2&gt;Cedet Dev&lt;/h2&gt;
+&lt;p&gt;Самый  удобный,  как мне  кажется,  вариант  это использовать  последнюю  версию
+&lt;em&gt;Cedet&lt;/em&gt;  из  &lt;em&gt;Bazaar&lt;/em&gt; репозитория.   Тут  сейчас  &lt;em&gt;Java&lt;/em&gt; хорошо  поддерживается.
+&lt;em&gt;Maven&lt;/em&gt;  проекты кстати  тоже  отлично воспринимаются.   По  работе и  настройке
+&lt;em&gt;Cedet&lt;/em&gt; лучше обращаться к &lt;a href="http://alexott.net/ru/writings/emacs-devenv/EmacsCedet.html"&gt;статье Alex Ott'а&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;На  данный   момент  я  остановился   на  последнем  варианте:  &lt;em&gt;Cedet&lt;/em&gt;   Dev  +
+&lt;code&gt;auto-complete&lt;/code&gt;. Есть  у кого  еще предложения  как улучшить  жизнь в  Emacs при
+работе с &lt;em&gt;Java&lt;/em&gt;?  Или все таки &lt;em&gt;Cedet&lt;/em&gt;  это наше все и смотреть в другие стороны
+лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry><entry><title>Панов В. - Анклавы</title><link href="http://puzan.github.io/read/2013-08-20-panov-v-anklavy.html" rel="alternate"></link><updated>2013-08-20T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-08-20:read/2013-08-20-panov-v-anklavy.html</id><summary type="html">&lt;p&gt;За  последний  год  я  познакомился  с  тремя  произведениями  &lt;em&gt;Вадима  Панова&lt;/em&gt;,
+связанными с миром &lt;em&gt;Анклавов&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Поводыри на распутье&lt;/li&gt;
+&lt;li&gt;Костры на алтарях&lt;/li&gt;
+&lt;li&gt;Продавцы невозможного&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Первую книгу из серии я читал ранее, про нее был отдельный &lt;a href="http://puzan-read.blogspot.com/2010/01/blog-post_741.html"&gt;пост&lt;/a&gt;.  Так как
+отдельно про  указанные выше  произведения не писал,  то решил  скомпоновать все
+свои анклавские заметки в одном месте.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Анклавы&lt;/em&gt; сначала мне очень понравились. Помню, во время прочтения первой книги,
+я был восхищен  новым технологическим миром.  Борьба  корпораций, новый источник
+энергии, наноштуки и  супер программисты. Затем возник  некоторый дискомфорт при
+появлении всякой  мистики, волшебных и  религиозных вещей.   Да, это все  было с
+самого начала, но не так сильно выпячивалось.&lt;/p&gt;
+&lt;p&gt;Очень удивило,  что главного героя первой  книги, хакера Чайку, автор  засунул в
+Африку (я кстати сам  сейчас в ЮАР) и держал там аж до  4-ой книги? В общем пока
+его мусолили в Африке  я совершенно охладел к серии. И  в итоге последнюю книгу,
+&lt;em&gt;Хаосовершенство&lt;/em&gt;, я даже не открывал.&lt;/p&gt;
+&lt;p&gt;На протяжении всей серии каждая книга заканчивается почти счастливым концом. Все
+главные герои  умудряются остаться  в живых после  ого-го каких  передряг. Урзак
+точно  должен был  прихватить кого-нибудь  на тот  свет.  Но  нет. В  этом плане
+видимо "Костры на алтарях" несколько отличились: Дорадо все таки погибает.&lt;/p&gt;
+&lt;p&gt;В серии видимо ставится будоражащий вопрос сосуществования религии и технологий,
+но раскрывается  он методами, которые меня  совсем не захватывают. Да  экшен, да
+полюбившиеся мне рваное повествование.  Но я ожидал качественную технологическую
+историю, а не борьбу религиозных фанатиков.&lt;/p&gt;
+&lt;p&gt;Понравился  стеб над  Европой, которая  в мире  &lt;em&gt;Анклавов&lt;/em&gt; вступила  в Исламский
+союз: "для правоверного европейца помолиться в мечети Трех имамов почти столь же
+важно, как совершить хадж в Мекку". Весело да смешно, да только похоже именно до
+этого докатится современная Европа когда-нибудь.&lt;/p&gt;
+&lt;p&gt;Ну  и на  последок  надо сказать,  что  всегда на  жизнь  будут большое  влияние
+оказывать чувства  и вера. Технологии это  только побочный продукт жизни.   В то
+время как наши  чувства и есть сама жизнь. Данная  мысль, по-моему, периодически
+поднималась во всех книгах серии. И это конечно здорово.&lt;/p&gt;</summary><category term="Панов В."></category><category term="Анклавы"></category></entry><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.github.io/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
+меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
+какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
+&lt;em&gt;Emacs&lt;/em&gt;. И  наткнулся тагда я на  &lt;em&gt;Version Control&lt;/em&gt; расширение. Именно  оттуда я
+узнал о  более древней  системе: &lt;em&gt;RCS&lt;/em&gt;.   Как ни странно,  именно в  эту систему
+&lt;em&gt;Emacs&lt;/em&gt; предлагает добавить файлы по умолчанию (&lt;code&gt;C-x v v&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Так вот,  с тех  давних пор  у меня все  хранилось в  &lt;em&gt;RCS&lt;/em&gt;.  Вообще  говоря это
+достаточно удобно, если единственная задача:  хранить историю изменений на одной
+машине. Все управление через  &lt;em&gt;Emacs&lt;/em&gt;. Я даже не особо знаю  ключи команд &lt;code&gt;ci&lt;/code&gt; и
+&lt;code&gt;co&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Теперь  же  у  меня  фактически  4  компьютера, на  которых  я  хотел  бы  иметь
+одинаковые, хотя бы,  пользовательские настройки. Например, для  &lt;em&gt;bash&lt;/em&gt; или того
+же  &lt;em&gt;git&lt;/em&gt;. Для  этого  я задумал  поместить все  необходимые  файлы из  домашней
+директории в  &lt;em&gt;git&lt;/em&gt; репозиторий.   Но положить  в &lt;em&gt;git&lt;/em&gt;  всю или  часть домашней
+директории похоже нехорошая идея. Однозначно будут глюки с &lt;em&gt;git prompt&lt;/em&gt;. Если не
+добавить  все файлы  в &lt;code&gt;.gitignore&lt;/code&gt;,  то &lt;em&gt;git  prompt&lt;/em&gt; просто  подвесит консоль:
+сканирование  всей   домашней  директории  не   быстрое  дело.   Думаю   это  не
+единственная проблема.&lt;/p&gt;
+&lt;p&gt;Я  решил   воспользоваться  следующей   схемой.   Нужные  файлы   скопировать  в
+специальную  папочку.   В ней  организовать  &lt;em&gt;git&lt;/em&gt;  репозиторий.  А  в  домашней
+директории создать  ссылки на файлы  из этой папки. Для  автоматизации последней
+задачи   я   написал   небольшой   скриптик.    Когда   доработаю,   выложу   на
+&lt;a href="https://github.com/puzan"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Еще одна проблема: специфичные настройки определенных машин.  Например, &lt;code&gt;PATH&lt;/code&gt; в
+&lt;em&gt;Linux&lt;/em&gt; и &lt;em&gt;OS X&lt;/em&gt; местами  различаются (избыточности не хочется).  В &lt;code&gt;.gitconfig&lt;/code&gt;
+у меня даже различие есть. Для решения этого вопроса я создал для каждой машины,
+которой  необходимы какие-то  особенности,  специальную  ветку. Общие  настройки
+хранятся на  &lt;em&gt;master&lt;/em&gt; ветке.   Неудобство этой  схемы связанно  с тем,  что надо
+постоянно  сливать  изменения с  &lt;em&gt;master&lt;/em&gt;'а  в  специфичные ветки.   Может  есть
+какое-то более простое и элегантное решение?&lt;/p&gt;
+&lt;p&gt;Ну а системные настройки (&lt;code&gt;/etc/&lt;/code&gt;) я так и продолжаю хранить в &lt;em&gt;RCS&lt;/em&gt;. Если будет
+задача настройки  нескольких одинаковых машин,  то можно будет подумать  на тему
+синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
+достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
+истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Замятин Е. - Мы</title><link href="http://puzan.github.io/read/2013-06-06-zamiatin-e-my.html" rel="alternate"></link><updated>2013-06-06T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-06:read/2013-06-06-zamiatin-e-my.html</id><summary type="html">&lt;p&gt;Полюбил я антиутопии!  Просто красота!   &lt;em&gt;"Мы"&lt;/em&gt; было прочитано мной примерно год
+назад. Имен героев даже не помню. Хотя,  как их запомнишь?  Они же все нумера. А
+вот память на цифры у меня ужасная.&lt;/p&gt;
+&lt;p&gt;Замечательный стройный  и ровный мир цифр.   Читаешь и думаешь, что  все они там
+сумашедшие.   Нереально современному  человеку  спокойно выжить  в этом  гладком
+мире.  Наверное  именно эта  абсурдность антиутопий  меня и  привлекает.  Вообще
+думаю умение  понять, когда что-то  или кто-то начинает перебарщивать  и вовремя
+его остановить очень полезно. Для людей в целом.&lt;/p&gt;
+&lt;p&gt;Во время развития  сюжета, чувствуется как у героя изменяется  ощущение мира.  В
+самом  начале мир  изображен  очень  четко.  Резкие  границы,  прямые линии.   К
+середине   все  уже   в   тумане.   Появляются   длинные,  красивые   лирические
+отступления. Герой видит все немножко расплывчатым, не обращает внимания на этот
+угловатый мир. Ему это все становится не важно. Он влюблен…&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"-"  (минус)&lt;/em&gt;  — просто  чудеснейшее  из  известных  мне ругательств  (&lt;em&gt;"Все  в
+рот!!!"&lt;/em&gt; нервно курит в сторонке).  Как просто и стройно оно вписывается в общую
+концепцию  представленного мира.   Интересно, что  в тексте  ни разу  само слово
+&lt;em&gt;минус&lt;/em&gt;  не было  использовано.   Только  знак.  Так  автор  еще больше  придает
+отрицательную окраску данному ругательству.   Мнимая единица наверное это вообще
+что-то нереально грубое.   Придумать аналог из современного мира  мне сложно.  Я
+не ругаюсь.&lt;/p&gt;
+&lt;p&gt;Вообще говоря удивительно, как произведение  &lt;em&gt;Оруэлла&lt;/em&gt; &lt;em&gt;"1984"&lt;/em&gt; похоже на детище
+&lt;em&gt;Замятина&lt;/em&gt;.  Сюжеты  одинаково завязаны на  женщинах. Герои благодаряя  им &lt;em&gt;(или
+из-за них)&lt;/em&gt; попадают в некое подобие сопротивления.  Ну и в итоге все конечно же
+срывается.   Но  есть  существенная   разница  в  концовках.   Герой  &lt;em&gt;Замятина&lt;/em&gt;
+прогибается под  научный прогресс и лишает  себя чувств. Наука побеждает  в этом
+мире  т  тут  не  остается  места  эмоциям.   А  герой  Оруэлла  не  выдерживает
+психологического давления и признается в  любви &lt;em&gt;Большому Брату&lt;/em&gt;.  Даже не знаю,
+что хуже. Однозначно только то, что все это печально.&lt;/p&gt;
+&lt;p&gt;Надо бы  обязательно прочитать еще  &lt;em&gt;"Утопию" Мора&lt;/em&gt;.   Вся история про  утопии и
+антиутопии как раз с  этого произведения началась, а я и не  знаю точно, что там
+внутри.  Государство Платона, кстати, тоже думаю из той же оперы.&lt;/p&gt;</summary><category term="Замятин Е."></category><category term="художественная литература"></category></entry><entry><title>Gems и другие пакетные менеджеры</title><link href="http://puzan.github.io/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><updated>2013-06-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-04:linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
+пишут нечто вроде следующего:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gem install git-up
+gem install bundle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
+менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько  этого  не
+находилось даже в различных &lt;em&gt;overlay&lt;/em&gt;'ях.  И вот в один из таких моментов, решив
+сэкономить время на поиск &lt;em&gt;ebuild&lt;/em&gt;'ов,  я все-таки выполнил указанную команду. И
+получил необходимое приложение в &lt;code&gt;~/.gem/ruby/1.9.1/bin&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Но  тут  пользователи  &lt;em&gt;gentoo&lt;/em&gt;  столкнуться  с  некоторым  затруднением.   Этот
+дистрибутив  не очень  дружелюбен для  &lt;em&gt;ruby&lt;/em&gt;.   То, что  установится, не  будет
+доступно в  &lt;code&gt;PATH&lt;/code&gt;.  В  других используемых  мной системах  аналогичной проблемы
+замечено не было. В &lt;em&gt;OS X&lt;/em&gt;  и &lt;em&gt;Windows&lt;/em&gt; (&lt;em&gt;Cygwin&lt;/em&gt;) &lt;code&gt;PATH&lt;/code&gt; сам без дополнительных
+движений обновляется.&lt;/p&gt;
+&lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
+папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${RUBY}&amp;quot;&lt;/span&gt; in
+        *18&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.8&amp;quot;&lt;/span&gt; ;;
+        *19&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.9.1&amp;quot;&lt;/span&gt; ;;
+          *&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${RUBY##*/}&amp;quot;&lt;/span&gt; ;;
+    &lt;span class="k"&gt;esac&lt;/span&gt;
+
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.gem/ruby/${VERSION}/bin:${PATH}&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого все будет доступно как надо.&lt;/p&gt;
+&lt;p&gt;Похоже   использовать   &lt;em&gt;gem&lt;/em&gt;   намного  удобнее,   чем   стандартный   пакетный
+менеджер. Тем более  на своей локальной машине с  фактически одним пользователем
+(root не считается).   Конечно можно добавлять себе постоянно  новые &lt;em&gt;overlay&lt;/em&gt; и
+писать новые  &lt;em&gt;ebuild&lt;/em&gt;.  Но как  показала моя практика это  занимает существенно
+больше  времени.   Да  и  кроме  того написание  однотипных  &lt;em&gt;ebuild&lt;/em&gt;  не  особо
+интересное занятие.  Генератора нету случаем?  Не знаю как дело обстоит в других
+дистрибутивах, но думаю как-то также.&lt;/p&gt;
+&lt;p&gt;Еще в последнее  время натолкнулся на &lt;em&gt;pip&lt;/em&gt; для &lt;em&gt;python&lt;/em&gt;  и &lt;em&gt;npm&lt;/em&gt; для &lt;em&gt;node.js&lt;/em&gt;.
+Идея общественных  хранилищ для программ,  написанных на определенном  языке как
+никак популярна сейчас. И это реально удобно.&lt;/p&gt;</summary><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry><entry><title>Личный Firefox Sync</title><link href="http://puzan.github.io/linux/2013-06-03-lichnyi-firefox-sync.html" rel="alternate"></link><updated>2013-06-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-03:linux/2013-06-03-lichnyi-firefox-sync.html</id><summary type="html">&lt;p&gt;Для синхронизации браузерной  информации я использую &lt;em&gt;Firefox  Sync&lt;/em&gt;.  Но совсем
+недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер
+не доступен, хотя  на сайте &lt;a href="https://services.mozilla.com/status/"&gt;mozilla&lt;/a&gt; не было  сообщений о каких-то
+ошибках и неполадках в работе сервиса. Сейчас кстати есть:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The  Firefox  Sync  service  is  undergoing  some  load  issues,  if  you  are
+experiencing problems  please wait and  try again soon.  We are working  on it
+presently.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Помучившись так  недельку, я решил поднять  личный Firefox Sync сервер  на своем
+псевдо сервере. Быстренько нашел &lt;a href="http://gpo.zugaina.org/Search?search=mozilla-sync-server"&gt;ebuild'ы&lt;/a&gt;  для &lt;em&gt;gentoo&lt;/em&gt;.  И, вуа-ля, у
+меня рабочий  сервер для синхронизации. Еще  я написал &lt;em&gt;init&lt;/em&gt; скрипты  и выложил
+свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;overlay  на github&lt;/a&gt;.  Если  кому-то нужно —  пользуйтесь на
+здоровье.&lt;/p&gt;
+&lt;p&gt;Плюсы которые обнаружил во время использования личного Firefox Sync сервера:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Нет проблем с  доступом, точнее их я  могу решить сам.  Более того,  так как я
+  единственный пользователь своего сервера, то  нет проблем с загруженностью.  А
+  вот доступной  поддержки для  Firefox Sync  не нашел.   Признаюсь не  сильно и
+  искал.&lt;/li&gt;
+&lt;li&gt;Фактически  нет  ограничения  на  размер  хранимых  данных.  Стандартный  5-ти
+  мегабайтный предел я умудрился превысить.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="firefox"></category><category term="gentoo"></category><category term="portage"></category><category term="ebuild"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.github.io/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
+ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
+&lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
+я видел следующие варианты:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Самый простой  способ: сделать  еще один  &lt;code&gt;merge&lt;/code&gt;. В  итоге получаем  еще один
+  дополнительный &lt;em&gt;commit&lt;/em&gt; и разветвленную историю.&lt;/li&gt;
+&lt;li&gt;Сделать полный &lt;code&gt;merge&lt;/code&gt; заново. Повторять уже сделанное не хочется.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Я  решил  найти  вариант,  позволяющий в  результате  первого  простого  способа
+получить один коммит.  Оказалось эта операция  не совсем очевидна.  Как всегда в
+последнее время, нашел  решение на &lt;a href="http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together"&gt;stackoverflow&lt;/a&gt;. Опишу  весь процесс с
+начала до  конца с  историей тестового репозитория  (&lt;code&gt;git log  --oneline --graph
+--decorate&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
+  исправлением всех конфликтов:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout feature
+$ git merge origin/master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 2a55e67 (origin/feature) b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (origin/feature) c&amp;#39;
+| *   b8c37f7 (HEAD, feature) c&amp;#39;
+| |\
+|/ /
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git merge origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+|\
+| * 3820f07 (origin/feature) c&amp;#39;
+* |   b8c37f7 c&amp;#39;
+|\ \
+| |/
+|/|
+| * 7020561 (origin/master) b
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
+  с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git reset --soft origin/feature
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+* 2a55e67 b&amp;#39;
+| * 7020561 (origin/master) b
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+$ git commit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+|\
+| * 7020561 (origin/master) b
+* | 3820f07 (origin/feature) c&amp;#39;
+* | 2a55e67 b&amp;#39;
+|/
+* b888f61 a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием
+веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
+объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
+&lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.github.io/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
+&lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
+&lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
+&lt;p&gt;Есть у  меня репозиторий, в  котором я храню все  свои заметки. Половина  из них
+была написана в &lt;a href="http://mwolson.org/projects/EmacsMuse.html"&gt;muse-mode&lt;/a&gt;, остальное в &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;.  Соответственно
+имена  файлов  с  текстом  содержат заголовки,  содержащие  кириллицу.  Мне  так
+удобнее. Ранее с таким подходом ни разу проблем не встречал.&lt;/p&gt;
+&lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
+в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
+помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#
+# Untracked files:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to include in what will be committed)
+#
+#   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#   .....
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
+&lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.precomposeunicode true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого видим следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
+символы в именах новых и измененных файлов все равно отображаются в восьмеричном
+виде. Как вариант можно использовать &lt;code&gt;git  add -i&lt;/code&gt;. Там все символы отображаются
+в привычном виде.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
+проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.quotepath false
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="http://puzan.github.io/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-23:linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
+для ведения заметок.  Пользуюсь им с &lt;em&gt;iPhone&lt;/em&gt; и через  веб интерфейс с остальных
+систем  (дом  - &lt;em&gt;Linux&lt;/em&gt;,  работа  -  &lt;em&gt;Windows&lt;/em&gt;).  А  теперь еще  и  оригинальным
+приложением для &lt;em&gt;Mac&lt;/em&gt;'а пользоваться начал.&lt;/p&gt;
+&lt;p&gt;Все  это к  чему?   Есть у  этого замечательного  сервиса  казалось бы  отличное
+дополнение для &lt;em&gt;Firefox&lt;/em&gt;: &lt;em&gt;Evernote Web Clipper&lt;/em&gt;. Но!  После одного из последних
+обновлений он напрочь  отказывается запоминать пароль и  с жуткой периодичностью
+просит авторизоваться.&lt;/p&gt;
+&lt;p&gt;В &lt;em&gt;Firefox&lt;/em&gt;  на &lt;em&gt;Mac&lt;/em&gt;'е  подобные проблемы не  наблюдаются. Логиниться  часто не
+просит.  Думаю  это  связано  с  тем  что  последнее  обновление  клиппера  было
+установлено на чистый профиль.&lt;/p&gt;
+&lt;p&gt;Буду завтра  на работе  (до домашнего  компа пока  добраться не  могу) пробовать
+установить &lt;em&gt;Evernote Web clipper&lt;/em&gt; поверх нового профиля &lt;em&gt;Firefox&lt;/em&gt;'а.&lt;/p&gt;
+&lt;p&gt;P.S. [2013-05-24] На  работе поставил поверх чистого профиля  клиппер. Он пароль
+вроде  как перестал  агрессивно  спрашивать. Когда  до стационарного  компьютера
+доберусь, попробую найти файлы, которые надо почистить, чтобы профиль не менять.&lt;/p&gt;</summary><category term="web"></category><category term="evernote"></category></entry><entry><title>Xbox One. Впечатления</title><link href="http://puzan.github.io/linux/2013-05-22-xbox-one-vpechatleniia.html" rel="alternate"></link><updated>2013-05-22T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-22:linux/2013-05-22-xbox-one-vpechatleniia.html</id><summary type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
+Похоже  уже давним  являюсь  поклонником  Xbox'а. Давным  давно  купил Xbox  360
+пополам с  сестрой.  Веселая  была история! Чтобы  уговорить сестру  на подобную
+сделку, был куплен специальный &lt;strong&gt;розовый&lt;/strong&gt; джойстик.   До этого я долго не играл
+на PC,  так как  снес Windows  и погрузился  в мир  Linux.  Было  в общем  не до
+компьютерных развлечений.  После  приобретения приставки я вернулся  в новый для
+меня мир игр. Сейчас же играю в основном в хоккейчик, но и то редко.&lt;/p&gt;
+&lt;p&gt;Вернемся к Xbox  One. Девайс однозначно крутой.  Начинка его  будет покруче всех
+моих  девайсов вместе  взятых. И  видимо надо  будет брать,  если будет  желание
+порвать всех в новом хоккейчике. А он то однозначно будет.&lt;/p&gt;
+&lt;p&gt;Не понравились некоторые маркетинговые и  дизайнерские фишки.  Например само имя
+"Xbox Единственный"  (не знаю как  лучше перевести.   "Xbox Один"?).  У  меня по
+крайней мере сразу складывается впечатление, что вот он венец игровых технологий
+и лучше точно не  будет. Привередливый я. Напомнило iPad New  и следующий за ним
+iPad 4. Напридумывают всяких хитрых имен для устройств, а потом мучаются. Кстати
+почему Xbox 360 я тоже не знаю. Не интересовался.&lt;/p&gt;
+&lt;p&gt;Сам вид  нового устройства с первого  раза больше напомнил страшно  сказать Play
+Station. Черный,  квадратно-прямоугольный. Где элегантность  предыдущих Xbox'ов?
+Также  ожидал,  что все  поместят  в  одну небольшую  коробочку,  а  в итоге  их
+две. Сенсор  Kinect снова  в отдельной  коробке. В  принципе понимаю  почему так
+сделали (удобнее и легче Kinect устанавливать отдельно над или под телевизором).
+Но было бы думаю круто иметь  одну компактную коробку вместо нескольких. Надеюсь
+они общаются без проводов. Пропустил этот момент.&lt;/p&gt;
+&lt;p&gt;В джойстике порадовало,  что кнопку Xbox передвинули подальше  вперед. На старых
+(ох, они уже  старые) контроллерах периодически случайно  эта кнопка нажимается.
+И это уж очень мешает игре.&lt;/p&gt;
+&lt;p&gt;Можно заметить, что мои претензии  достаточно мизерны. Это все последствия моего
+дурного  вкуса. Но  мой  совет всем:  надо брать.   Чего  только стоит  устроить
+танцевальную вечеринку (Dance  Central). Сколько с друзьями не  собирались все в
+полном  восторге.    Xbox  однозначно  лучший   продукт  Microsoft  (как   бы  я
+недолюбливал  эту компанию).  Если игры  и компьютерные  развлечения, то  только
+Xbox.&lt;/p&gt;</summary><category term="xbox"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.github.io/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
+своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
+заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
+решения которых не  получается с первого раза найти в  &lt;em&gt;google&lt;/em&gt; (искать наверное
+разучился). Буду выносить все это дело в виде постов сюда. Постараюсь чтобы сюда
+попадали  исключительно околотехнические  темы.  Остальное  в &lt;a href="https://plus.google.com/100903917371621392768/posts"&gt;Google+&lt;/a&gt;  или
+&lt;a href="https://twitter.com/puzan"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Итак начну  с того, что любимая  девушка подарила мне на  день рождение &lt;em&gt;MacBook
+Air&lt;/em&gt;. Поэтому с этого момента на данном блоге будут появляться посты посвященные
+и данному замечательному устройству, а также  &lt;em&gt;OS X&lt;/em&gt; (название блога видимо надо
+немного поменять). Все они будут помечены с помощью тега &lt;a href="http://puzan-linux.blogspot.ru/search/label/mac"&gt;&lt;em&gt;mac&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;На  Mac'е как  раз и  столкнулся с  одной неприятной  мелкой проблемой,  которая
+несколько меня раздражает, но  на данный момент я не знаю,  как ее решить. Сразу
+же при  получении этого девайся  я начал устанавливать привычное  мне консольное
+окружение. Для этого я использовал &lt;a href="http://www.macports.org/"&gt;macports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Настроил  git completion  и prompt,  используя скрипты  из git-core  порта. Были
+установлены следующие версии портов:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bash 4.2.42_0&lt;/li&gt;
+&lt;li&gt;bash-completion 2.0_1&lt;/li&gt;
+&lt;li&gt;git-core 1.8.2.3_0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
+такой ошибкой:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+*** set a breakpoint in malloc_error_break to debug
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При этом  я не  совсем уверен,  что эта ошибка  связана с  &lt;em&gt;bash-completion&lt;/em&gt; или
+&lt;em&gt;git&lt;/em&gt;.  Буду  искать решение, но отказываться  от completion и prompt  совсем не
+хочется.   Думаю   попробовать  &lt;em&gt;bash&lt;/em&gt;  из  &lt;a href="http://mxcl.github.io/homebrew/"&gt;homebrew&lt;/a&gt;,   ну  или  ручками
+собрать. Какие еще варианты? Куда копать на mac'е?&lt;/p&gt;
+&lt;p&gt;PS. Вот и ушло у меня пару часов на написание казалось бы небольшого текста.&lt;/p&gt;
+&lt;p&gt;P.S.   [2013-05-25]  &lt;em&gt;bash&lt;/em&gt; все  равно  продолжает  падать даже  с  выключенными
+completions и git-prompt. Происходит это стабильно раз в день.&lt;/p&gt;</summary><category term="mac"></category><category term="bash"></category></entry><entry><title>Infinality патчи на стабильной ветке</title><link href="http://puzan.github.io/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html" rel="alternate"></link><updated>2013-02-12T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-12:linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</id><summary type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
+&lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
+&lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;emerge -1q freetype
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect lcdfilter set infinality
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Как видим теперь необходимо несколько раз дополнительно запустить &lt;code&gt;eselect&lt;/code&gt;. При
+этом   вариантов  для   выбора  &lt;code&gt;eselect   infinality&lt;/code&gt;  и   &lt;code&gt;eselect  lcdfilter&lt;/code&gt;
+предоставляют многовато.   Я с  ними не  экспериментировал.  Если  кто пробовал,
+поделитесь впечатлениями.&lt;/p&gt;</summary><category term="gentoo"></category><category term="infinality"></category><category term="fonts"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.github.io/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+на   домашнем    сервере.    Для   управления   git    репозиториями   использую
+&lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
+всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
+только у пользователя &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.  &lt;em&gt;Redmine&lt;/em&gt; же запускает пользователь &lt;em&gt;&lt;code&gt;redmine&lt;/code&gt;&lt;/em&gt;.
+В общем главная загвоздка — найти &lt;em&gt;umask&lt;/em&gt; опцию в настройках &lt;em&gt;Gitolite&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Решение со &lt;a href="http://stackoverflow.com/questions/13000247/redmine-gitolite-issue-with-repository-permissions-and-more"&gt;Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Добавляем   в   Redmine   путь    к   необходимому   репозиторию.    Например:
+  &lt;code&gt;/home/git/repositories/repo.git&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
+  &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  usermod -a -G git redmine
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;В  файле &lt;code&gt;.gitolite.rc&lt;/code&gt;  (находится  в домашней  директории &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;)  поменять
+  значение  &lt;code&gt;UMASK&lt;/code&gt; с  &lt;code&gt;0077&lt;/code&gt; на  &lt;code&gt;0027&lt;/code&gt;.  Теперь  новые файлы  &lt;em&gt;Gitolite&lt;/em&gt; будет
+  создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;  chmod -R g+rX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="http://puzan.github.io/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><updated>2013-02-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-02-03:linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;Руководство к действию&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q | grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; | awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; | sort | uniq&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for &lt;/span&gt;author in &lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${author} = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную заменяем на необходимые значения.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Склонировать &lt;em&gt;svn&lt;/em&gt; репозиторий&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Пара слов про опции:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt; — необходима,  если используются стандартные svn  папки (trunk, tags,
+  branches).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--no-metadata&lt;/code&gt; — удаление записей &lt;code&gt;git-svn-id&lt;/code&gt; из логов.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--username&lt;/code&gt; — тут все понятно.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--author-file&lt;/code&gt; — список авторов в svn репозитории (см. пункт выше).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Импорт ignore файлов&lt;/p&gt;
+&lt;p&gt;На каждой ветке необходимо сделать следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git checkout BRANCH
+git svn create-ignore
+git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Полезные ссылки&lt;/h3&gt;
+&lt;p&gt;Весь этот небольшой материал основан на следующих статьях:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://leonid.shevtsov.me/ru/perenos-svn-repozitariya-v-git" title="Перенос SVN-репозитария в git"&gt;Перенос SVN-репозитария в git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/post/144626/" title="Переезд проекта с SVN на Git"&gt;Переезд проекта с SVN на Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/company/wapstart/blog/159477/" title="how to: Как и зачем работать с svn через git"&gt;how to: Как и зачем работать с svn через git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="svn"></category><category term="git"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.github.io/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
+вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
+— проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
+сообщений из &lt;em&gt;Emacs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ранее  для   написания  заметок   я  использовал   &lt;em&gt;&lt;a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse"&gt;muse-mode&lt;/a&gt;&lt;/em&gt;.   Каждая
+&lt;em&gt;muse&lt;/em&gt;-заметка экспортировалась в  &lt;em&gt;html&lt;/em&gt;.  А далее я ручками  копировал в форму
+&lt;a href="http://blogger.com" title="Blogger"&gt;Блоггера&lt;/a&gt;  нужный  контент.   Долго  я пользовался  именно  этой  схемой.
+&lt;em&gt;Muse&lt;/em&gt; в какой-то  момент перестал удовлетворять моим требованиям.   Были у него
+некоторые проблемы со вложенными списками и вставками кода. А всякие списки я ой
+как  люблю.  Это  наверное последствия  долгого использования  &lt;em&gt;org-mode&lt;/em&gt;. Ну  а
+потом я вообще перестал что-либо публиковать в сети.&lt;/p&gt;
+&lt;p&gt;Также когда-то я пробовал наладить &lt;em&gt;google&lt;/em&gt;  интерфейс, который шел в поставке с
+&lt;em&gt;emacsspeak&lt;/em&gt;. Но  безуспешно. Интересно в  каком состоянии он сейчас?   Давно не
+слышал.&lt;/p&gt;
+&lt;p&gt;Теперь я собираюсь изобрести новый  велосипед. В его основе &lt;em&gt;&lt;a href="http://daringfireball.net/projects/markdown/" title="Markdown"&gt;Markdown&lt;/a&gt;&lt;/em&gt; и
+&lt;em&gt;&lt;a href="http://code.google.com/p/googlecl" title="googlecl"&gt;Googlecl&lt;/a&gt;&lt;/em&gt;.  Собственно смысл  в том, чтобы написать  мини скрипт на
+&lt;em&gt;bash&lt;/em&gt;, который переведет &lt;em&gt;md&lt;/em&gt;-файл  в &lt;em&gt;html&lt;/em&gt; (&lt;a href="http://www.freewisdom.org/projects/python-markdown" title="python-markdown"&gt;python-markdown&lt;/a&gt;).  При
+этом  он  должен  вырезать  избыточные поля.   Например,  заголовок,  который  в
+блоггере в  отдельное поле  вводится.  Далее отправить  это добро  в &lt;em&gt;googlecl&lt;/em&gt;,
+который  успешно опубликует  новую заметку  с правильным  заголовком и  тегами в
+нужном месте.  То есть из &lt;em&gt;Emacs&lt;/em&gt;  надо будет дернуть этот скриптик и собственно
+все.&lt;/p&gt;
+&lt;p&gt;Как вариант можно  написать полностью тоже самое на &lt;em&gt;elisp&lt;/em&gt;,  но хочется простой
+возможности публиковать  файлы из консоли. Также  я пока не совсем  понимаю, как
+настроить раскраску  кода при  конвертировании &lt;em&gt;md&lt;/em&gt;  в &lt;em&gt;html&lt;/em&gt;,  но думаю  с этим
+больших проблем не должно быть.&lt;/p&gt;
+&lt;p&gt;Как вам такая схема? Не слишком  ли я заворачиваю? Сейчас буду реализовывать это
+добро.&lt;/p&gt;</summary><category term="emacs"></category><category term="google"></category></entry><entry><title>Акунин Б. - «Левиафан»</title><link href="http://puzan.github.io/read/2013-01-14-akunin-b-leviafan.html" rel="alternate"></link><updated>2013-01-14T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-01-14:read/2013-01-14-akunin-b-leviafan.html</id><summary type="html">&lt;p&gt;Начинаю выкладывать свои прошлогодние заметки  о прочитанных книгах. Старался во
+время чтения побольше  записывать в &lt;em&gt;Evernote&lt;/em&gt;, но это  частенько не получалось.
+Увлечешься развитием событий или какой-нибудь  описываемой технологией и в итоге
+записей нет.  Вот прошел год.  Отмечено, что  книги прочитаны, а  заметок совсем
+немного. Буду сейчас вспоминать и сочинять.&lt;/p&gt;
+&lt;p&gt;Комментарии приветствуются ;) Их на этом непопулярном бложике совсем немного.&lt;/p&gt;
+&lt;p&gt;Познал в прошлом 2012 году около десятка книг.  Это была как художественная, так
+и техническая литература. Для начала начнем с &lt;em&gt;Акунина&lt;/em&gt;. &lt;em&gt;«Левиафан»&lt;/em&gt; я прочитал
+в начале 2012 года, а именно &lt;em&gt;4 января 2012-го года&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Произведения &lt;em&gt;Акунина&lt;/em&gt;  мне нравятся, но читаю  я их редко.  Всю  серию никак не
+осилю. Книга  про &lt;em&gt;Фандорина&lt;/em&gt; в год  наверное для меня успех.   Хотя по хорошему
+надо залпом все съесть. Данное произведение прочитал менее чем за месяц, что для
+меня с моей невероятной медлительностью в данном вопросе очень даже неплохо.&lt;/p&gt;
+&lt;p&gt;Что же особенного я заметил в &lt;em&gt;«Левиафан»&lt;/em&gt;-е? Если ранее господин &lt;em&gt;Фандорин&lt;/em&gt; был
+вовлечен в  некие глобальные передряги,  то сейчас  он попал в  расследование на
+корабле.  Собственно  все  события  и происходят  на  борту  этого  злополучного
+&lt;em&gt;«Левиафан»&lt;/em&gt;-а. Немного напомнило &lt;em&gt;Агату Кристи&lt;/em&gt;, хотя я ее никогда не читал.&lt;/p&gt;
+&lt;p&gt;Понравилась  идея   с  японскими  главами.   Необходимо   поворачивать  книгу  и
+перелистывать страницы  снизу вверх.  Необычно.  Автор  видимо надеялся передать
+так японский колорит.  Думаю он этого  добился. На мой взгляд так читатель лучше
+может понять поступки японского героя, господина &lt;em&gt;Аоно&lt;/em&gt; (ох, я уже забыл как его
+зовут).  Особенно  читатель, совершенно не  знакомый с японской  культурой (есть
+такие?). Другое дело была ли эта идея издательства или самого автора?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Фандорин&lt;/em&gt; конкретно в этом произведении показался  мне более высоким, чем я его
+раньше представлял.   Думаю виной этому  являются частые иллюстрации  в издании,
+которое я  читал. Надо  признать они  хороши, но  в моем  воображении &lt;em&gt;Фандорин&lt;/em&gt;
+другой. Наверное у меня он больше похож на &lt;em&gt;Фандорина&lt;/em&gt; из экранизации &lt;em&gt;Турецкого
+гамбита&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Автор отлично  водит сюжет то  туда, то  сюда.  Максимально подпускает  героев к
+разгадке  всей картины,  а потом  отводит ровно  в противоположную  сторону. Это
+впечатляет,  если учитывать,  что действия  происходит в  замкнутом пространстве
+корабля. На  википедии прочитал это называется  «герметичный детектив».  Хорошее
+название. Порадовало.&lt;/p&gt;</summary><category term="Акунин Б."></category></entry></feed>

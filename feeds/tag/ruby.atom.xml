@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/ruby.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-06-04T00:00:00+04:00</updated><entry><title>Gems и другие пакетные менеджеры</title><link href="http://puzan.github.io/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><updated>2013-06-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-04:linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
+пишут нечто вроде следующего:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gem install git-up
+gem install bundle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
+менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько  этого  не
+находилось даже в различных &lt;em&gt;overlay&lt;/em&gt;'ях.  И вот в один из таких моментов, решив
+сэкономить время на поиск &lt;em&gt;ebuild&lt;/em&gt;'ов,  я все-таки выполнил указанную команду. И
+получил необходимое приложение в &lt;code&gt;~/.gem/ruby/1.9.1/bin&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Но  тут  пользователи  &lt;em&gt;gentoo&lt;/em&gt;  столкнуться  с  некоторым  затруднением.   Этот
+дистрибутив  не очень  дружелюбен для  &lt;em&gt;ruby&lt;/em&gt;.   То, что  установится, не  будет
+доступно в  &lt;code&gt;PATH&lt;/code&gt;.  В  других используемых  мной системах  аналогичной проблемы
+замечено не было. В &lt;em&gt;OS X&lt;/em&gt;  и &lt;em&gt;Windows&lt;/em&gt; (&lt;em&gt;Cygwin&lt;/em&gt;) &lt;code&gt;PATH&lt;/code&gt; сам без дополнительных
+движений обновляется.&lt;/p&gt;
+&lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
+папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${RUBY}&amp;quot;&lt;/span&gt; in
+        *18&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.8&amp;quot;&lt;/span&gt; ;;
+        *19&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.9.1&amp;quot;&lt;/span&gt; ;;
+          *&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${RUBY##*/}&amp;quot;&lt;/span&gt; ;;
+    &lt;span class="k"&gt;esac&lt;/span&gt;
+
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.gem/ruby/${VERSION}/bin:${PATH}&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого все будет доступно как надо.&lt;/p&gt;
+&lt;p&gt;Похоже   использовать   &lt;em&gt;gem&lt;/em&gt;   намного  удобнее,   чем   стандартный   пакетный
+менеджер. Тем более  на своей локальной машине с  фактически одним пользователем
+(root не считается).   Конечно можно добавлять себе постоянно  новые &lt;em&gt;overlay&lt;/em&gt; и
+писать новые  &lt;em&gt;ebuild&lt;/em&gt;.  Но как  показала моя практика это  занимает существенно
+больше  времени.   Да  и  кроме  того написание  однотипных  &lt;em&gt;ebuild&lt;/em&gt;  не  особо
+интересное занятие.  Генератора нету случаем?  Не знаю как дело обстоит в других
+дистрибутивах, но думаю как-то также.&lt;/p&gt;
+&lt;p&gt;Еще в последнее  время натолкнулся на &lt;em&gt;pip&lt;/em&gt; для &lt;em&gt;python&lt;/em&gt;  и &lt;em&gt;npm&lt;/em&gt; для &lt;em&gt;node.js&lt;/em&gt;.
+Идея общественных  хранилищ для программ,  написанных на определенном  языке как
+никак популярна сейчас. И это реально удобно.&lt;/p&gt;</summary><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry></feed>

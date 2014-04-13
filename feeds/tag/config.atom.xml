@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/config.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.github.io/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
+меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
+какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
+&lt;em&gt;Emacs&lt;/em&gt;. И  наткнулся тагда я на  &lt;em&gt;Version Control&lt;/em&gt; расширение. Именно  оттуда я
+узнал о  более древней  системе: &lt;em&gt;RCS&lt;/em&gt;.   Как ни странно,  именно в  эту систему
+&lt;em&gt;Emacs&lt;/em&gt; предлагает добавить файлы по умолчанию (&lt;code&gt;C-x v v&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Так вот,  с тех  давних пор  у меня все  хранилось в  &lt;em&gt;RCS&lt;/em&gt;.  Вообще  говоря это
+достаточно удобно, если единственная задача:  хранить историю изменений на одной
+машине. Все управление через  &lt;em&gt;Emacs&lt;/em&gt;. Я даже не особо знаю  ключи команд &lt;code&gt;ci&lt;/code&gt; и
+&lt;code&gt;co&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Теперь  же  у  меня  фактически  4  компьютера, на  которых  я  хотел  бы  иметь
+одинаковые, хотя бы,  пользовательские настройки. Например, для  &lt;em&gt;bash&lt;/em&gt; или того
+же  &lt;em&gt;git&lt;/em&gt;. Для  этого  я задумал  поместить все  необходимые  файлы из  домашней
+директории в  &lt;em&gt;git&lt;/em&gt; репозиторий.   Но положить  в &lt;em&gt;git&lt;/em&gt;  всю или  часть домашней
+директории похоже нехорошая идея. Однозначно будут глюки с &lt;em&gt;git prompt&lt;/em&gt;. Если не
+добавить  все файлы  в &lt;code&gt;.gitignore&lt;/code&gt;,  то &lt;em&gt;git  prompt&lt;/em&gt; просто  подвесит консоль:
+сканирование  всей   домашней  директории  не   быстрое  дело.   Думаю   это  не
+единственная проблема.&lt;/p&gt;
+&lt;p&gt;Я  решил   воспользоваться  следующей   схемой.   Нужные  файлы   скопировать  в
+специальную  папочку.   В ней  организовать  &lt;em&gt;git&lt;/em&gt;  репозиторий.  А  в  домашней
+директории создать  ссылки на файлы  из этой папки. Для  автоматизации последней
+задачи   я   написал   небольшой   скриптик.    Когда   доработаю,   выложу   на
+&lt;a href="https://github.com/puzan"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Еще одна проблема: специфичные настройки определенных машин.  Например, &lt;code&gt;PATH&lt;/code&gt; в
+&lt;em&gt;Linux&lt;/em&gt; и &lt;em&gt;OS X&lt;/em&gt; местами  различаются (избыточности не хочется).  В &lt;code&gt;.gitconfig&lt;/code&gt;
+у меня даже различие есть. Для решения этого вопроса я создал для каждой машины,
+которой  необходимы какие-то  особенности,  специальную  ветку. Общие  настройки
+хранятся на  &lt;em&gt;master&lt;/em&gt; ветке.   Неудобство этой  схемы связанно  с тем,  что надо
+постоянно  сливать  изменения с  &lt;em&gt;master&lt;/em&gt;'а  в  специфичные ветки.   Может  есть
+какое-то более простое и элегантное решение?&lt;/p&gt;
+&lt;p&gt;Ну а системные настройки (&lt;code&gt;/etc/&lt;/code&gt;) я так и продолжаю хранить в &lt;em&gt;RCS&lt;/em&gt;. Если будет
+задача настройки  нескольких одинаковых машин,  то можно будет подумать  на тему
+синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
+достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
+истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry></feed>

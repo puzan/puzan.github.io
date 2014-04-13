@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.github.io/" rel="alternate"></link><link href="http://puzan.github.io/feeds/tag/mac.atom.xml" rel="self"></link><id>http://puzan.github.io/</id><updated>2013-05-24T00:00:00+04:00</updated><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.github.io/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
+&lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
+&lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
+&lt;p&gt;Есть у  меня репозиторий, в  котором я храню все  свои заметки. Половина  из них
+была написана в &lt;a href="http://mwolson.org/projects/EmacsMuse.html"&gt;muse-mode&lt;/a&gt;, остальное в &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;.  Соответственно
+имена  файлов  с  текстом  содержат заголовки,  содержащие  кириллицу.  Мне  так
+удобнее. Ранее с таким подходом ни разу проблем не встречал.&lt;/p&gt;
+&lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
+в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
+помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#
+# Untracked files:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to include in what will be committed)
+#
+#   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+#   .....
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
+&lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.precomposeunicode true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого видим следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+# On branch master
+# Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+#   (use &amp;quot;git push&amp;quot; to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+#   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+#
+#   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
+символы в именах новых и измененных файлов все равно отображаются в восьмеричном
+виде. Как вариант можно использовать &lt;code&gt;git  add -i&lt;/code&gt;. Там все символы отображаются
+в привычном виде.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
+проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.quotepath false
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.github.io/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.github.io,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
+своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
+заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
+решения которых не  получается с первого раза найти в  &lt;em&gt;google&lt;/em&gt; (искать наверное
+разучился). Буду выносить все это дело в виде постов сюда. Постараюсь чтобы сюда
+попадали  исключительно околотехнические  темы.  Остальное  в &lt;a href="https://plus.google.com/100903917371621392768/posts"&gt;Google+&lt;/a&gt;  или
+&lt;a href="https://twitter.com/puzan"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Итак начну  с того, что любимая  девушка подарила мне на  день рождение &lt;em&gt;MacBook
+Air&lt;/em&gt;. Поэтому с этого момента на данном блоге будут появляться посты посвященные
+и данному замечательному устройству, а также  &lt;em&gt;OS X&lt;/em&gt; (название блога видимо надо
+немного поменять). Все они будут помечены с помощью тега &lt;a href="http://puzan-linux.blogspot.ru/search/label/mac"&gt;&lt;em&gt;mac&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;На  Mac'е как  раз и  столкнулся с  одной неприятной  мелкой проблемой,  которая
+несколько меня раздражает, но  на данный момент я не знаю,  как ее решить. Сразу
+же при  получении этого девайся  я начал устанавливать привычное  мне консольное
+окружение. Для этого я использовал &lt;a href="http://www.macports.org/"&gt;macports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Настроил  git completion  и prompt,  используя скрипты  из git-core  порта. Были
+установлены следующие версии портов:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bash 4.2.42_0&lt;/li&gt;
+&lt;li&gt;bash-completion 2.0_1&lt;/li&gt;
+&lt;li&gt;git-core 1.8.2.3_0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
+такой ошибкой:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+*** set a breakpoint in malloc_error_break to debug
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При этом  я не  совсем уверен,  что эта ошибка  связана с  &lt;em&gt;bash-completion&lt;/em&gt; или
+&lt;em&gt;git&lt;/em&gt;.  Буду  искать решение, но отказываться  от completion и prompt  совсем не
+хочется.   Думаю   попробовать  &lt;em&gt;bash&lt;/em&gt;  из  &lt;a href="http://mxcl.github.io/homebrew/"&gt;homebrew&lt;/a&gt;,   ну  или  ручками
+собрать. Какие еще варианты? Куда копать на mac'е?&lt;/p&gt;
+&lt;p&gt;PS. Вот и ушло у меня пару часов на написание казалось бы небольшого текста.&lt;/p&gt;
+&lt;p&gt;P.S.   [2013-05-25]  &lt;em&gt;bash&lt;/em&gt; все  равно  продолжает  падать даже  с  выключенными
+completions и git-prompt. Происходит это стабильно раз в день.&lt;/p&gt;</summary><category term="mac"></category><category term="bash"></category></entry></feed>
