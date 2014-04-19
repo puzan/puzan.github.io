@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/blog.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-04-18T00:00:00+04:00</updated><entry><title>Новый блог</title><link href="http://puzan.info/misc/2014-04-18-novyi-blog.html" rel="alternate"></link><updated>2014-04-18T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-04-18:misc/2014-04-18-novyi-blog.html</id><summary type="html">&lt;p&gt;После многих раздумий и рассмотрения  нескольких ваиантов, я решил перенести все
+свои блоги  в одно место. Когда-то  давно я использовал &lt;a href="http://users.livejournal.com/_zain/" title="Пузатая жизнь"&gt;ЖЖ&lt;/a&gt;  для общих тем.
+Потом сделал отдельные бложики для &lt;a href="http://puzan-linux.blogspot.com/" title="Линукс штуки!"&gt;линукса&lt;/a&gt; и &lt;a href="http://puzan-read.blogspot.com/" title="Чего начитался..."&gt;книг&lt;/a&gt; на blogger'е.
+Еще была музыкальная  тема, но онп как-то  совсем у меня не  прокатила. Теперь я
+решил  соединить все  что пишу  в  одном месте,  но публиковать  соответствующие
+записи в разных категориях.&lt;/p&gt;
+&lt;p&gt;Итак  сегодняшний вариант  моего  присутствия  в сети  -  это статический  сайт,
+сгенерированный с помощью &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; и выложенный на &lt;a href="https://github.com/"&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Пару   слов    про   хостинг.   В    качестве   него   я    решил   использовать
+&lt;a href="https://pages.github.com/"&gt;Github  Pages&lt;/a&gt;. Вариант  с доставкой  контента на  сервер с  помощью git
+очень  удобен.  Репозиторий  связанный  с этим  сайтиком  представляет  собой  2
+несвязанные     ветки.    Одна     для    исходных     текстов    в     Markdown
+(&lt;a href="https://github.com/puzan/puzan.github.io/tree/source"&gt;source&lt;/a&gt;).   Другая   для   сгенерированных   &lt;em&gt;html&lt;/em&gt;   страничек
+(&lt;a href="https://github.com/puzan/puzan.github.io/tree/master"&gt;master&lt;/a&gt;).   Для   публикации    на   master   ветку   использую
+&lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt;. Для удобства поправил &lt;em&gt;Makefile&lt;/em&gt; следующим образом:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;ghp&lt;/span&gt;
+    git push origin master
+
+&lt;span class="nf"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;publish&lt;/span&gt;
+    ghp-import -b master -m &lt;span class="s2"&gt;&amp;quot;Site update $(NOW)&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Мне очень  нравится писать  тексты в &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;,  поэтому я  смотрел в
+сторону  движков, генерирующих  статику из  этого формата.   На блоггере  я тоже
+сначала писал в  &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;, потом конвертировал в &lt;em&gt;html&lt;/em&gt;  и с помощью
+&lt;a href="http://code.google.com/p/googlecl/"&gt;googlecl&lt;/a&gt; публиковал заметки. Немного  про публикацию с помощью этого
+варианта   описано  &lt;a href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html"&gt;здесь&lt;/a&gt;.    Сначала
+думал об &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; (Ruby),  но где-то на &lt;a href="http://www.radio-t.com/"&gt;Радио-Т&lt;/a&gt; услышал
+или прочитал о &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; (Python).  И выбор пал именно на этот вариант,
+так  как  &lt;em&gt;Python&lt;/em&gt;  мне  несколько  ближе, чем  &lt;em&gt;Ruby&lt;/em&gt;.   Смогу  в  случае  чего
+подправить что-нибудь под свои нужды.&lt;/p&gt;
+&lt;p&gt;В  общем сейчас  уже работают  &lt;a href="http://disqus.com/"&gt;disqus&lt;/a&gt;-комментарии.  В  ближайшее время
+обновлю  RSS-ленты на  feedburner.   Ну и  потихоньку  перетащу старые  заметки,
+которые я  еще в &lt;a href="http://mwolson.org/projects/EmacsMuse.html"&gt;muse&lt;/a&gt;  писал. Также  буду постепенно править  тему. Если
+есть предложения - высказывайтесь!&lt;/p&gt;</summary><category term="блог"></category><category term="pelican"></category><category term="github"></category></entry></feed>
