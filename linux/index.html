@@ -70,6 +70,17 @@ Puzan's Pages            </a>
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">VirtualBox проблемы с Bridged network через Wifi на Mac</a></h2>
+                <div class="summary"><p>На днях  столкнулся с проблемой настройки  сети в <em>VirtualBox</em> на  <em>MacBook</em>.  В
+качестве гостевой системы пробовал <em>Gentoo</em> и <em>CentOS</em> (от <em>Puppet</em>).  Ноутбук у
+меня  естественно  подключен  к  сети  через  <em>Wifi</em>.   После  некоторых  опытов
+выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
+<code>DHCPOFFER</code> от dhcp сервера. Вот логи ...</p>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html">Как создать bridge на nfs root</a></h2>
                 <div class="summary"><p>Для поднятия сети  на одной железке возникла необходимость  создать <em>bridge</em>. Но
 загвоздка в  том, что система  должна при  загрузке монтировать <em>nfs</em>  в корень.
@@ -175,17 +186,6 @@ gem install bundle
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html">Macbook Air, блог и bash crash</a></h2>
-                <div class="summary"><p>Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
-проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
-своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
-заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
-решения которых не  получается ...</p>
-                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
     <ul class="pagination">
             <li class="prev disabled"><a href="#">&laquo;</a></li>
@@ -222,6 +222,11 @@ gem install bundle
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">
+                                VirtualBox проблемы с Bridged network через Wifi на Mac
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html">
                                 Как создать bridge на nfs root
                             </a>
@@ -239,11 +244,6 @@ gem install bundle
                         <li class="list-group-item">
                             <a href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html">
                                 Gems и другие пакетные менеджеры
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html">
-                                Личный Firefox Sync
                             </a>
                         </li>
                     </ul>
@@ -357,7 +357,7 @@ gem install bundle
                                 linux
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-1">
                             <a href="http://puzan.info/tag/mac.html">
                                 mac
                             </a>
@@ -423,6 +423,11 @@ gem install bundle
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/virtualbox.html">
+                                virtualbox
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/web.html">
                                 web
                             </a>
@@ -456,7 +461,7 @@ gem install bundle
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2013 Ilya Zonov
+         <div class="col-xs-10">&copy; 2014 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

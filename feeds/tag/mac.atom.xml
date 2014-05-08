@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/mac.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-05-24T00:00:00+04:00</updated><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/mac.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-05-08T00:00:00+04:00</updated><entry><title>VirtualBox проблемы с Bridged network через Wifi на Mac</title><link href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html" rel="alternate"></link><updated>2014-05-08T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-08:linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</id><summary type="html">&lt;p&gt;На днях  столкнулся с проблемой настройки  сети в &lt;em&gt;VirtualBox&lt;/em&gt; на  &lt;em&gt;MacBook&lt;/em&gt;.  В
+качестве гостевой системы пробовал &lt;em&gt;Gentoo&lt;/em&gt; и &lt;em&gt;CentOS&lt;/em&gt; (от &lt;em&gt;Puppet&lt;/em&gt;).  Ноутбук у
+меня  естественно  подключен  к  сети  через  &lt;em&gt;Wifi&lt;/em&gt;.   После  некоторых  опытов
+выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
+&lt;code&gt;DHCPOFFER&lt;/code&gt; от dhcp сервера. Вот логи с сервера:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
+May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
+May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;И то что  видно в виртуалке (время немного  не то, но это не  страшно: логи были
+такие же):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
+May  6 21:56:47 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 8 (xid=0x3a4517ed)
+May  6 21:56:55 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 14 (xid=0x3a4517ed)
+May  6 21:57:09 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 1 (xid=0x3a4517ed)
+May 6 21:57:10 learn dhclient[3262]: No DHCPOFFERS received.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Соответственно этот &lt;code&gt;DHCPOFFER&lt;/code&gt; где-то и теряется.  Пока еще не искал конкретное
+место потери  этого сообщения.  Постараюсь  на днях поснифить  трафик. Возможно,
+что &lt;em&gt;Wifi&lt;/em&gt;  точка от &lt;em&gt;D-Link&lt;/em&gt; не  пускает через себя часть  DHCP запросов.  Если
+кто  сталкивался с  подобной проблемой  и нашел  путь настроить  Bridged Network
+через &lt;em&gt;Wifi&lt;/em&gt; на &lt;em&gt;Маке&lt;/em&gt; милости прошу в комментарии.&lt;/p&gt;
+&lt;p&gt;Хочу заметить, что все отлично  работает если &lt;em&gt;Mac&lt;/em&gt; подключать через &lt;em&gt;Ethernet&lt;/em&gt;.
+Также  нашел   &lt;a href="https://www.virtualbox.org/ticket/10019"&gt;багрепорт&lt;/a&gt;  2-х  летней
+давности на подобную  ошибку. И еще где-то полгода  назад настраивал аналогичное
+дело, но вроде бы (могу ошибаться) подобных проблем с сетью не было.&lt;/p&gt;
+&lt;p&gt;Сам нашел  для себя  следующий обходной  путь.  Добавил  2 сетевых  адаптера для
+виртуалки.  Первый настроил через &lt;em&gt;NAT&lt;/em&gt; (для доступа к интернету).  Второй через
+Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  системы).   Соответственно  первая
+сетевуха внутри  виртуалки нормально  поднимается через dhcp.  А вот  для второй
+надо указать  статический ip.  Пробовал  использовать dhcp сервер  для Host-only
+сети (галочка в настойках соответствующей сети в VirtualBox), но ip так и не был
+получен.  В принципе мне достаточно пока  статического адреса, но все же было бы
+удобнее получать его автоматом.&lt;/p&gt;
+&lt;p&gt;Какое  решение тут  будет  самым  оптимальным? Есть  подозрение,  что моя  схема
+несколько избыточна. Для  меня достаточно иметь SSH доступ к  гостевой системе и
+чтобы она имела доступ в интернет.&lt;/p&gt;</summary><category term="mac"></category><category term="virtualbox"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
 казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
 &lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
 &lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;

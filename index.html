@@ -70,6 +70,17 @@ Puzan's Pages            </a>
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">VirtualBox проблемы с Bridged network через Wifi на Mac</a></h2>
+                <div class="summary"><p>На днях  столкнулся с проблемой настройки  сети в <em>VirtualBox</em> на  <em>MacBook</em>.  В
+качестве гостевой системы пробовал <em>Gentoo</em> и <em>CentOS</em> (от <em>Puppet</em>).  Ноутбук у
+меня  естественно  подключен  к  сети  через  <em>Wifi</em>.   После  некоторых  опытов
+выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
+<code>DHCPOFFER</code> от dhcp сервера. Вот логи ...</p>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="http://puzan.info/misc/2014-04-18-novyi-blog.html">Новый блог</a></h2>
                 <div class="summary"><p>После многих раздумий и рассмотрения  нескольких ваиантов, я решил перенести все
 свои блоги  в одно место. Когда-то  давно я использовал <a href="http://users.livejournal.com/_zain/" title="Пузатая жизнь">ЖЖ</a>  для общих тем.
@@ -179,17 +190,6 @@ gem install bundle
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html">Git + кириллические имена файлов на OS X</a></h2>
-                <div class="summary"><p>Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  <em>Unicode</em>.  Мне
-казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
-<em>Unicode</em>'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
-<em>git</em> несколько некорректно работает с русскими именами файлов на <em>Mac</em>'е.</p>
-<p>Есть у  меня репозиторий ...</p>
-                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
     <ul class="pagination">
             <li class="prev disabled"><a href="#">&laquo;</a></li>
@@ -226,6 +226,11 @@ gem install bundle
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">
+                                VirtualBox проблемы с Bridged network через Wifi на Mac
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/misc/2014-04-18-novyi-blog.html">
                                 Новый блог
                             </a>
@@ -243,11 +248,6 @@ gem install bundle
                         <li class="list-group-item">
                             <a href="http://puzan.info/read/2013-08-20-panov-v-anklavy.html">
                                 Панов В. - Анклавы
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html">
-                                Хранение конфигурационных файлов (RCS & Git)
                             </a>
                         </li>
                     </ul>
@@ -361,7 +361,7 @@ gem install bundle
                                 linux
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-1">
                             <a href="http://puzan.info/tag/mac.html">
                                 mac
                             </a>
@@ -424,6 +424,11 @@ gem install bundle
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/svn.html">
                                 svn
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/virtualbox.html">
+                                virtualbox
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
