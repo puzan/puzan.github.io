@@ -1,5 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/all.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-05-08T00:00:00+04:00</updated><entry><title>VirtualBox проблемы с Bridged network через Wifi на Mac</title><link href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html" rel="alternate"></link><updated>2014-05-08T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-08:linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</id><summary type="html">&lt;p&gt;На днях  столкнулся с проблемой настройки  сети в &lt;em&gt;VirtualBox&lt;/em&gt; на  &lt;em&gt;MacBook&lt;/em&gt;.  В
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/all.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-05-14T00:00:00+04:00</updated><entry><title>Direnv</title><link href="http://puzan.info/linux/2014-05-14-direnv.html" rel="alternate"></link><updated>2014-05-14T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-14:linux/2014-05-14-direnv.html</id><summary type="html">&lt;p&gt;Как-то раз в  одном из выпусков &lt;a href="http://razbor-poletov.com/2014/03/episode-56.html"&gt;Разбор Полетов&lt;/a&gt; услышал  про отличную и
+удобную консольную штуку: &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;. Она позволяет выставлять необходимое
+окружение в  зависимости от  текущей директории.  При  этом для  вложенных папок
+&lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;  окружение сохраняется  (если  не было  переопределено), а  при
+выходе из папки возвращается предыдущее рабочее окружение.&lt;/p&gt;
+&lt;p&gt;На    &lt;em&gt;Mac&lt;/em&gt;   можно    установить   из    &lt;em&gt;brew&lt;/em&gt;.    Или    из   исходников    с
+&lt;a href="https://github.com/zimbatm/direnv"&gt;github  репозитория&lt;/a&gt; (пакетов  для  популярных дистрибутивов  не
+видел).  Для компиляции понадобится &lt;a href="http://golang.org/"&gt;Go&lt;/a&gt;.   Для Gentoo я добавил простенький
+&lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
+вашего shell'а подобные строчки:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if &lt;/span&gt;which direnv &amp;gt; /dev/null; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(direnv hook $0)&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Далее переходим в нужную директорию и обновляем для нее окружение:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cd &amp;lt;path/to/project&amp;gt;
+direnv edit .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При  этом  открывается &lt;code&gt;.envrc&lt;/code&gt;  файл  из  текущей  директории в  вашем  любимом
+&lt;strong&gt;$EDITOR&lt;/strong&gt;.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
+виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
+следующего:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=${ANDROID_SDK}&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Теперь при переходе в папку &lt;code&gt;&amp;lt;path/to/project&amp;gt;&lt;/code&gt; мы увидим следующее:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+direnv: loading .envrc
+direnv: export +ANDROID_SDK +ANT_ARGS
+$ echo $ANDROID_SDK
+/Users/puzan/apps/android-sdk
+$ echo $ANT_ARGS 
+-Dsdk.dir=/Users/puzan/apps/android-sdk
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При выходе из директории, например на уровень выше, окружение выгрузится:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ cd ..
+direnv: unloading
+$ echo $ANDROID_SDK
+
+$ echo $ANT_ARGS 
+
+$ 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
+окружения. Помещаем слудующую строчку в &lt;code&gt;.envrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;layout python
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;При этом в папке &lt;code&gt;./.direnv/virtualenv/&lt;/code&gt; будет создано виртуальное окружение и в
+&lt;strong&gt;$PATH&lt;/strong&gt;  будет добавлен  правильный путь.   Другие подобные  возможности можно
+найти &lt;a href="http://direnv.net/#man/direnv-stdlib.1"&gt;здесь&lt;/a&gt; или в &lt;a href="https://github.com/zimbatm/direnv/blob/master/stdlib.sh"&gt;исходниках&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Есть  легкая возможность  добавить  свои  функции. Наприме  я  добавил для  себя
+возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
+&lt;code&gt;~/.virtualenvs/&lt;/code&gt; использовать.   Для этого  добавляем в файл  &lt;code&gt;~/.direnvrc&lt;/code&gt; вот
+такую функцию:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;# Loads the specified python virtualenv&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.virtualenvs/${1}&amp;quot;&lt;/span&gt;
+    PATH_add &lt;span class="s2"&gt;&amp;quot;$VIRTUAL_ENV/bin&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этого в &lt;code&gt;.envrc&lt;/code&gt; можно использовать следующую кострукцию:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;use venv &amp;lt;venv_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;В общем, возможности для расширения  есть. Думаю можно разширить практически под
+любую задачу.  На  мой взгляд &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt; очень  удобная штука, позволяющая
+забыть про  дополнительную настройку  окружения новых  проектов. Кроме  того эта
+методика позволяет избежать захламления файлов инициализации.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>VirtualBox проблемы с Bridged network через Wifi на Mac</title><link href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html" rel="alternate"></link><updated>2014-05-08T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-08:linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</id><summary type="html">&lt;p&gt;На днях  столкнулся с проблемой настройки  сети в &lt;em&gt;VirtualBox&lt;/em&gt; на  &lt;em&gt;MacBook&lt;/em&gt;.  В
 качестве гостевой системы пробовал &lt;em&gt;Gentoo&lt;/em&gt; и &lt;em&gt;CentOS&lt;/em&gt; (от &lt;em&gt;Puppet&lt;/em&gt;).  Ноутбук у
 меня  естественно  подключен  к  сети  через  &lt;em&gt;Wifi&lt;/em&gt;.   После  некоторых  опытов
 выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
