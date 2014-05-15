@@ -17,8 +17,8 @@
 
 
 &lt;p&gt;Далее переходим в нужную директорию и обновляем для нее окружение:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;cd &amp;lt;path/to/project&amp;gt;
-direnv edit .
+&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+$ direnv edit .
 &lt;/pre&gt;&lt;/div&gt;
 
 
