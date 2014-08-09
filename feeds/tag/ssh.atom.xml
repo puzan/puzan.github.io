@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/ssh.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-08-09T00:00:00+04:00</updated><entry><title>Для тех кто за proxy</title><link href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html" rel="alternate"></link><updated>2014-08-09T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-09:linux/2014-08-09-dlia-tekh-kto-za-proxy.html</id><summary type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+злобное  прокси, которое  режет,  например, &lt;em&gt;ssh&lt;/em&gt;  трафик.   Также бывают  такие
+ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
+тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
+указанные выше неудобства.&lt;/p&gt;
+&lt;p&gt;Когда-то  я отчаялся  подключиться  к домашнему  серверу  через прокси,  которое
+беспощадно  режет &lt;em&gt;ssh&lt;/em&gt;  трафик. Пробовал  хитрые  схемы с  переносом &lt;code&gt;sshd&lt;/code&gt;  на
+другой  порт,  надеясь, что  закрыт  просто  22-ой.  Но оказалось  дела  обстоят
+сложнее.&lt;/p&gt;
+&lt;h2&gt;Httptunnel&lt;/h2&gt;
+&lt;p&gt;Сначала    в    своей    практике   столкнулся    с    &lt;a href="http://www.nocrew.org/software/httptunnel.html"&gt;httptunnel&lt;/a&gt;.
+Клиент/серверная  штука,  позволяющая  пустить необходимый  тебе  трафик  поверх
+&lt;em&gt;http&lt;/em&gt;.   Это первое  решение, с  помощью  которого мне  удалось достучаться  до
+домашнего сервака  по &lt;em&gt;ssh&lt;/em&gt; из-за  прокси.  Неудобство данной утилиты  состоит в
+том,  что необходимо  предварительно установить  серверную часть  на машину,  до
+которой хотим добраться.  И запустить например так:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;hts -F localhost:22 8080
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;После этих телодвижений  можно подключаться к локальному порту  &lt;code&gt;8022&lt;/code&gt; с помощью
+&lt;em&gt;ssh&lt;/em&gt; дабы добраться до своего сервака:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ssh -p 8022 user@localhost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Для  &lt;em&gt;Gentoo&lt;/em&gt;  я  в  свое  время  добавил стартовый  скрипт  для  &lt;code&gt;hts&lt;/code&gt;  в  свой
+&lt;a href="https://github.com/puzan/puzan-overlay/tree/master/net-misc/httptunnel"&gt;репозиторий&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Proxychains&lt;/h2&gt;
+&lt;p&gt;Недавно   случайно   наткнулся   на   &lt;a href="https://github.com/rofl0r/proxychains-ng"&gt;proxychains&lt;/a&gt;.   Удивительная
+штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
+конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
+порадовал. Добавляем в конфиг необходимую информацию:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;[ProxyList]
+http    &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
+https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;И теперь можем спокойно подключаться к своему серверу:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Также успешно через &lt;code&gt;proxychain4&lt;/code&gt; запускаю десктопную версию Viber'а, которая не
+поддерживает работу с proxy:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;Указанные    решения   регулярно    использую    на    &lt;em&gt;Mac&lt;/em&gt;'е.    В    основном
+&lt;a href="https://github.com/rofl0r/proxychains-ng"&gt;proxychains&lt;/a&gt;.   Все  устанавливаю  через  &lt;a href="http://brew.sh/"&gt;brew&lt;/a&gt;.   В  любом
+линуксе  они тоже  должны быть  доступны и  успешно работать.   Было бы  здорово
+узнать,  какие решения  есть еще.   Ну и  надеюсь эта  информация будет  кому-то
+полезна.  Сам долго  искал эти утилиты. Лучше конечно, когда  на вашем пути нету
+прокси.&lt;/p&gt;</summary><category term="proxy"></category><category term="network"></category><category term="ssh"></category></entry></feed>

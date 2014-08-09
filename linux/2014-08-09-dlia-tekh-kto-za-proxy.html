@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>художественная литература - Puzan's Pages</title>
+    <title>Для тех кто за proxy - Puzan's Pages</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,10 +12,16 @@
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Puzan's Pages" />
-            <meta property="og:type" content="website"/>
-            <meta property="og:title" content="Puzan's Pages"/>
-            <meta property="og:url" content="http://puzan.info"/>
-            <meta property="og:description" content="Puzan's Pages"/>
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Для тех кто за proxy"/>
+            <meta property="og:url" content="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html"/>
+            <meta property="og:description" content="Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через злобное прокси, которое режет, например, ssh трафик. Также бывают такие ситуации, когда некоторые программы не поддерживают работу через прокси. Это тоже беда. Для себя я нашел 2 запасных способа, которые позволяют решить указанные выше неудобства. Когда-то ..."/>
+            <meta property="article:published_time" content="2014-08-09" />
+                <meta property="article:section" content="linux" />
+                <meta property="article:tag" content="proxy" />
+                <meta property="article:tag" content="network" />
+                <meta property="article:tag" content="ssh" />
+                <meta property="article:author" content="Ilya Zonov" />
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://puzan.info/theme/css/bootstrap.readable-old.min.css" type="text/css"/>
@@ -47,7 +53,7 @@ Puzan's Pages            </a>
                          <li><a href="http://puzan.info/pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
@@ -69,17 +75,130 @@ Puzan's Pages            </a>
     <div class="row">
         <div class="col-sm-9">
 
-            <article>
-                <h2><a href="http://puzan.info/read/2013-06-06-zamiatin-e-my.html">Замятин Е. - Мы</a></h2>
-                <div class="summary"><p>Полюбил я антиутопии!  Просто красота!   <em>"Мы"</em> было прочитано мной примерно год
-назад. Имен героев даже не помню. Хотя,  как их запомнишь?  Они же все нумера. А
-вот память на цифры у меня ужасная.</p>
-<p>Замечательный стройный  и ровный мир цифр.   Читаешь и думаешь, что  все они там
-сумашедшие.   Нереально современному  человеку ...</p>
-                    <a class="btn btn-default btn-xs" href="http://puzan.info/read/2013-06-06-zamiatin-e-my.html">more ...</a>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html"
+                       rel="bookmark"
+                       title="Permalink to Для тех кто за proxy">
+                        Для тех кто за proxy
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-08-09T00:00:00"> Sat 09 August 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://puzan.info/tag/proxy.html">proxy</a>
+        /
+	<a href="http://puzan.info/tag/network.html">network</a>
+        /
+	<a href="http://puzan.info/tag/ssh.html">ssh</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
-            <hr/>
+                <p>Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+злобное  прокси, которое  режет,  например, <em>ssh</em>  трафик.   Также бывают  такие
+ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
+тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
+указанные выше неудобства.</p>
+<p>Когда-то  я отчаялся  подключиться  к домашнему  серверу  через прокси,  которое
+беспощадно  режет <em>ssh</em>  трафик. Пробовал  хитрые  схемы с  переносом <code>sshd</code>  на
+другой  порт,  надеясь, что  закрыт  просто  22-ой.  Но оказалось  дела  обстоят
+сложнее.</p>
+<h2>Httptunnel</h2>
+<p>Сначала    в    своей    практике   столкнулся    с    <a href="http://www.nocrew.org/software/httptunnel.html">httptunnel</a>.
+Клиент/серверная  штука,  позволяющая  пустить необходимый  тебе  трафик  поверх
+<em>http</em>.   Это первое  решение, с  помощью  которого мне  удалось достучаться  до
+домашнего сервака  по <em>ssh</em> из-за  прокси.  Неудобство данной утилиты  состоит в
+том,  что необходимо  предварительно установить  серверную часть  на машину,  до
+которой хотим добраться.  И запустить например так:</p>
+<div class="highlight"><pre>hts -F localhost:22 8080
+</pre></div>
+
+
+<p>Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:</p>
+<div class="highlight"><pre>htc -P &lt;proxy.server.com&gt;:&lt;port&gt; -F 8022 -w &lt;home.server.me&gt;:8080
+</pre></div>
+
+
+<p>После этих телодвижений  можно подключаться к локальному порту  <code>8022</code> с помощью
+<em>ssh</em> дабы добраться до своего сервака:</p>
+<div class="highlight"><pre>ssh -p 8022 user@localhost
+</pre></div>
+
+
+<p>Для  <em>Gentoo</em>  я  в  свое  время  добавил стартовый  скрипт  для  <code>hts</code>  в  свой
+<a href="https://github.com/puzan/puzan-overlay/tree/master/net-misc/httptunnel">репозиторий</a>.</p>
+<h2>Proxychains</h2>
+<p>Недавно   случайно   наткнулся   на   <a href="https://github.com/rofl0r/proxychains-ng">proxychains</a>.   Удивительная
+штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
+конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
+порадовал. Добавляем в конфиг необходимую информацию:</p>
+<div class="highlight"><pre>[ProxyList]
+http    &lt;proxy_ip&gt;      &lt;proxy_port&gt;
+https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
+</pre></div>
+
+
+<p>И теперь можем спокойно подключаться к своему серверу:</p>
+<div class="highlight"><pre>proxychain4 ssh &lt;home.server.me&gt;
+</pre></div>
+
+
+<p>Также успешно через <code>proxychain4</code> запускаю десктопную версию Viber'а, которая не
+поддерживает работу с proxy:</p>
+<div class="highlight"><pre>proxychain4 &lt;/path/to/Viber&gt;
+</pre></div>
+
+
+<hr />
+<p>Указанные    решения   регулярно    использую    на    <em>Mac</em>'е.    В    основном
+<a href="https://github.com/rofl0r/proxychains-ng">proxychains</a>.   Все  устанавливаю  через  <a href="http://brew.sh/">brew</a>.   В  любом
+линуксе  они тоже  должны быть  доступны и  успешно работать.   Было бы  здорово
+узнать,  какие решения  есть еще.   Ну и  надеюсь эта  информация будет  кому-то
+полезна.  Сам долго  искал эти утилиты. Лучше конечно, когда  на вашем пути нету
+прокси.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'puzan'; // required: replace example with your forum shortname
+            var disqus_identifier = 'dlia-tekh-kto-za-proxy';
+            var disqus_url = 'http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html';
+            var disqus_config = function () {
+                this.language = "ru";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
 
         </div>
         <div class="col-sm-3 well well-sm" id="sidebar">
@@ -107,8 +226,28 @@ Puzan's Pages            </a>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
-                            <a href="http://puzan.info/read/2013-06-06-zamiatin-e-my.html">
-                                Замятин Е. - Мы
+                            <a href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html">
+                                Для тех кто за proxy
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2014-05-14-direnv.html">
+                                Direnv
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html">
+                                VirtualBox проблемы с Bridged network через Wifi на Mac
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/misc/2014-04-18-novyi-blog.html">
+                                Новый блог
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html">
+                                Как создать bridge на nfs root
                             </a>
                         </li>
                     </ul>
@@ -341,7 +480,7 @@ Puzan's Pages            </a>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2013 Ilya Zonov
+         <div class="col-xs-10">&copy; 2014 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
