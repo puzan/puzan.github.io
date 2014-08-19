@@ -148,8 +148,8 @@ Environment</em>.</p>
 <div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">init/project-update</span> <span class="p">()</span>
   <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">proj-file</span> <span class="s">&quot;.Project&quot;</span><span class="p">)</span>
          <span class="p">(</span><span class="nv">ede-proj</span> <span class="p">(</span><span class="nv">ede-current-project</span><span class="p">))</span>
-         <span class="p">(</span><span class="nv">proj-dir</span> <span class="p">(</span><span class="nv">expand-file-name</span>
-                    <span class="p">(</span><span class="nv">locate-dominating-file</span> <span class="nv">buffer-file-name</span> <span class="nv">proj-file</span><span class="p">)))</span>
+         <span class="p">(</span><span class="nv">proj-dir-tmp</span> <span class="p">(</span><span class="nv">locate-dominating-file</span> <span class="nv">buffer-file-name</span> <span class="nv">proj-file</span><span class="p">))</span>
+         <span class="p">(</span><span class="nv">proj-dir</span> <span class="p">(</span><span class="nb">when</span> <span class="nv">proj-dir-tmp</span> <span class="p">(</span><span class="nv">expand-file-name</span> <span class="nv">proj-dir-tmp</span><span class="p">)))</span>
          <span class="p">(</span><span class="nv">root-dir</span> <span class="p">(</span><span class="nb">when</span> <span class="nv">ede-proj</span>
                      <span class="p">(</span><span class="nv">expand-file-name</span>
                       <span class="p">(</span><span class="nv">ede-project-root-directory</span> <span class="nv">ede-proj</span><span class="p">)))))</span>
