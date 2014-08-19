@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/ede.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-08-19T00:00:00+04:00</updated><entry><title>EDE боль</title><link href="http://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><updated>2014-08-19T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
+попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
+чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
+&lt;p&gt;Какова вообще задача  использовать &lt;em&gt;EDE&lt;/em&gt;? Я хочу указать  где-то все зависимости
+для конкретного проекта и передать эту  информацию в &lt;em&gt;semantic&lt;/em&gt; для навигации по
+коду  и авто  дополнений. И  есть (по-моему  здравое) желание  не смешивать  эту
+информацию для  различных проектов. По-идее  большего от  &lt;em&gt;EDE&lt;/em&gt; мне не  надо. Ну
+может еще команду для сборки  проекта добавить. Хотя предпочитаю делать подобное
+в  отдельно  взятой  консоли.  Итак,   что  нам  предлатает  &lt;em&gt;Emacs  Development
+Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Пара  слов про  проекты по-умолчанию  (то  что создается  с помощью  &lt;code&gt;ede-new&lt;/code&gt;).
+Больше  всего меня  бесит  настройка через  &lt;em&gt;customize&lt;/em&gt;-подобный интерфейс.   Им
+вообще не пользоваться  для настройки &lt;strong&gt;Emacs'а&lt;/strong&gt; в принципе.   Если пойдешь сам
+что-то  править в  &lt;em&gt;EDE&lt;/em&gt;  файле, то  точно натолкнешься  на  беду.  Как  минимум
+придется перезапускать &lt;strong&gt;Emacs&lt;/strong&gt;  или пересоздавать проект.  Кроме  того, либо я
+что-то  потерял, либо  в проекте  по-умолчанию нельзя  указать список  &lt;em&gt;include&lt;/em&gt;
+папок.   Смысла в  данном  типе EDE-проекта  на мой  взгляд  нет.  Можно  видимо
+использовать  его для  генерации &lt;em&gt;make&lt;/em&gt;-файлов,  но как  показывает практика  их
+писать и поддерживать лучше самому.  &lt;strong&gt;Automake&lt;/strong&gt; и подобное вам в помощь.&lt;/p&gt;
+&lt;p&gt;Также  с помощью  &lt;em&gt;EDE&lt;/em&gt; можно  добавить  и работать  с некоторыми  существующими
+проектами. Например,  есть проекты для &lt;em&gt;C/C++&lt;/em&gt;  (&lt;code&gt;ede-cpp-root-project&lt;/code&gt;), &lt;em&gt;Java&lt;/em&gt;
+(&lt;code&gt;ede-java-root-project&lt;/code&gt;)  и  другие.   В  них как  раз  можно  указать  внешние
+зависимости, и Semantic  с переменным успехом их обрабатывает. Но  есть одно но:
+почему-то  эти  настройки  нельзя  положить в  &lt;code&gt;Project.ede&lt;/code&gt;  файл  для  полного
+счастья.&lt;/p&gt;
+&lt;p&gt;Видел такое решение:  указать настройки всех проектов  в конфигурационных файлах
+&lt;strong&gt;Emacs&lt;/strong&gt;.  Это мне  тоже не нравится.  Моя &lt;strong&gt;Emacs&lt;/strong&gt; конфигурация  все пухнет и
+пухнет,  как я  не пытаюсь  ее аккуратно  структурировать.  Если  еще там  будет
+информация о всех проектах жизнь станет ужасна.&lt;/p&gt;
+&lt;p&gt;Была  у  меня  идея  положить  все настройки  в  &lt;code&gt;.dir-locals.el&lt;/code&gt;.   Но  тут  мы
+сталкиваемся с  проблемой множественного создания  одного и того же  проекта для
+каждого  открытого файла.   По-идее можно  написать всю  обработку этого  случая
+внутри &lt;code&gt;.dir-locals.el&lt;/code&gt;,  но так пришлось бы  тянуть и копировать это  решение в
+каждый проект. Не айс. Хочется более универсального решения.&lt;/p&gt;
+&lt;p&gt;В общем к чему это я все. Для себя я написал небольшой хук для &lt;em&gt;c-mode&lt;/em&gt;, который
+загружает конфигурацию проекта из &lt;code&gt;.Project&lt;/code&gt; файла, если он еще не был загружен.
+Также он  обновляет список &lt;em&gt;include&lt;/em&gt;  путей для &lt;code&gt;clang&lt;/code&gt;, который  используется в
+&lt;code&gt;auto-complete-clang&lt;/code&gt; и &lt;code&gt;flycheck&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;proj-file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.Project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-current-project&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proj-dir&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;expand-file-name&lt;/span&gt;
+                    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;locate-dominating-file&lt;/span&gt; &lt;span class="nv"&gt;buffer-file-name&lt;/span&gt; &lt;span class="nv"&gt;proj-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;root-dir&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="nv"&gt;ede-proj&lt;/span&gt;
+                     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;expand-file-name&lt;/span&gt;
+                      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-project-root-directory&lt;/span&gt; &lt;span class="nv"&gt;ede-proj&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;proj-dir&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;equal&lt;/span&gt; &lt;span class="nv"&gt;proj-dir&lt;/span&gt; &lt;span class="nv"&gt;root-dir&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;load project %s&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;proj-dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;default-directory&lt;/span&gt; &lt;span class="nv"&gt;proj-dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;expand-file-name&lt;/span&gt; &lt;span class="nv"&gt;proj-file&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-current-project&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;root-dir&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="nv"&gt;ede-proj&lt;/span&gt;
+                     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-project-root-directory&lt;/span&gt; &lt;span class="nv"&gt;ede-proj&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="nv"&gt;root-dir&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;flycheck-clang-include-path&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;mapcar&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;root-dir&lt;/span&gt; &lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;oref&lt;/span&gt; &lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="nv"&gt;include-path&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;make-variable-buffer-local&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;ac-clang-flags&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;ac-clang-flags&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;mapcar&lt;/span&gt;
+             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+               &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;concat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-I&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+             &lt;span class="nv"&gt;flycheck-clang-include-path&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
+(как видите реальной проверки на это нету). Например вот такое:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
+                      &lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
+                      &lt;span class="ss"&gt;:file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Makefile&amp;quot;&lt;/span&gt;
+                      &lt;span class="ss"&gt;:include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/inc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                      &lt;span class="ss"&gt;:system-include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/usr/include/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                      &lt;span class="ss"&gt;:spp-table&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PROJECT_EXPORT&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;В душе я надеюсь, что я что-то делаю не так, что все в реальности легко и просто
+настраивается. Что  на самом деле  я просто где-то пропустил  правильный вариант
+настройки  в  мануале &lt;em&gt;CEDET&lt;/em&gt;.   Если  это  действительно  так, укажите  на  мою
+ошибку. Если же эти хуки являются единственным вариантом для удовлетворения моих
+запросов,  то  оформлю  минорный   мод  для  поддержки  автоматической  загрузки
+проектов.  В общем  делитесь вашими вариантами и  впечатлениями от использования
+&lt;em&gt;EDE&lt;/em&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;P.S. Все  эти негативные  впечатления от использования  &lt;em&gt;EDE&lt;/em&gt; видимо  возникли в
+результате годового использования &lt;strong&gt;Eclipse&lt;/strong&gt; и &lt;strong&gt;Idea&lt;/strong&gt; для программирования на
+&lt;em&gt;Java&lt;/em&gt;.   Пробовал  &lt;strong&gt;Emacs&lt;/strong&gt;  заточить  для  &lt;em&gt;Java&lt;/em&gt;,  но  затея  не  увенчалась
+успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</summary><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry></feed>
