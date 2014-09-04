@@ -70,6 +70,26 @@ Puzan's Pages            </a>
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="http://puzan.info/linux/2013-02-03-svn-to-git.html">Svn to Git</a></h2>
+                <div class="summary"><p>Краткая инструкция миграции с <em>svn</em> на <em>git</em></p>
+<h3>Руководство к действию</h3>
+<ul>
+<li>
+<p>Найти всех авторов с помощью скрипта</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q | grep -e <span class="s1">&#39;^r&#39;</span> | awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> | sort | uniq<span class="k">)</span>
+<span class="k">for </span>author in <span class="k">${</span><span class="nv">authors</span><span class="k">}</span>; <span class="k">do</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;${author} = NAME &lt;EMAIL&gt;&quot;</span>;
+<span class="k">done</span>
+</pre></div>
+
+
+<p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную ...</p></li></ul>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-02-03-svn-to-git.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html">Blogger пост из Emacs? Markdown + Googlecl script</a></h2>
                 <div class="summary"><p>Побаловался  с  <em>googlecl</em>.   Умудрился   случайно  наделать  множество  постов,
 состоящих всего  лишь из одного  слова в своем <a href="http://puzan-read.blogspot.ru" title="Чего начитался…">читальном  блоге</a>.  Сейчас
@@ -131,6 +151,11 @@ Puzan's Pages            </a>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/misc/2014-09-04-priiatnosti-ot-apple.html">
+                                Приятности от Apple
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2014-08-19-ede-bol.html">
                                 EDE боль
                             </a>
@@ -150,11 +175,6 @@ Puzan's Pages            </a>
                                 VirtualBox проблемы с Bridged network через Wifi на Mac
                             </a>
                         </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/misc/2014-04-18-novyi-blog.html">
-                                Новый блог
-                            </a>
-                        </li>
                     </ul>
                 </li>
 
@@ -169,6 +189,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/anklavy.html">
                                 Анклавы
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/apple.html">
+                                apple
                             </a>
                         </li>
                         <li class="list-group-item tag-2">

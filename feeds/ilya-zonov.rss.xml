@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Puzan's Pages</title><link>http://puzan.info/</link><description></description><atom:link href="http://puzan.info/feeds/ilya-zonov.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 19 Aug 2014 00:00:00 +0400</lastBuildDate><item><title>EDE боль</title><link>http://puzan.info/linux/2014-08-19-ede-bol.html</link><description>&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Puzan's Pages</title><link>http://puzan.info/</link><description></description><atom:link href="http://puzan.info/feeds/ilya-zonov.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 04 Sep 2014 00:00:00 +0400</lastBuildDate><item><title>Приятности от Apple</title><link>http://puzan.info/misc/2014-09-04-priiatnosti-ot-apple.html</link><description>&lt;p&gt;На днях случайно обнаружил приятную фичу  от &lt;em&gt;Apple&lt;/em&gt;.  Точнее сказать со второго
+раза понял,  что это действительно  фича, а не мой  глюк.  Речь идет  о передаче
+&lt;em&gt;Wifi&lt;/em&gt; паролей  между &lt;em&gt;Apple&lt;/em&gt;  девайсами.  Судя по  всему информация  хранится в
+&lt;em&gt;icloud'&lt;/em&gt;е и привязана к соответствующему &lt;em&gt;AppleID&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;В первый раз я заметил что-то странное, когда поставил домой новую &lt;em&gt;Wifi&lt;/em&gt; точку.
+Отчетливо помню  как подключил &lt;em&gt;MacBook  Air&lt;/em&gt; и  &lt;em&gt;iPhone&lt;/em&gt;.  А вот  как подключал
+&lt;em&gt;iPad&lt;/em&gt; не помню,  но он оказался подключенным.  Я решил  списать данное действие
+на дырьковатую память, но как оказалось память у меня еще о-го-го.&lt;/p&gt;
+&lt;p&gt;Собственно вчера  подключил ноутбук к точке  на новой работе и  вуа-ля! &lt;em&gt;iPhone&lt;/em&gt;
+тут как  тут: тянет  данный через &lt;em&gt;Wifi&lt;/em&gt;,  а не через  &lt;em&gt;3G&lt;/em&gt;.  Приятно  и удобно.
+&lt;em&gt;Apple&lt;/em&gt; действительно умеет удивлять в мелочах.&lt;/p&gt;
+&lt;p&gt;Не  очень  давно  в &lt;em&gt;Радио-Т&lt;/em&gt;  &lt;em&gt;Бобук&lt;/em&gt;  говорил  о  том,  что &lt;em&gt;Wifi&lt;/em&gt;  пароли  не
+сохраняются при  переходе на новое устройство  (&lt;em&gt;iPhone 4&lt;/em&gt; -&amp;gt; &lt;em&gt;iPhone  5s&lt;/em&gt;). Там
+еще речь шла про бекапы мобильных устройств. Но похоже все должно работать после
+привязки нового девайса к вашему  &lt;em&gt;AppleID&lt;/em&gt;.  В общем надо будет протестировать,
+когда созрею на новый телефон.&lt;/p&gt;
+&lt;p&gt;Интересно, как дела обстоят у конкурентов?  Видимо у &lt;em&gt;Microsoft&lt;/em&gt; может быть тоже
+подобное решение с их унифицированной операционной системой на всех устройствах.
+Хотя сомнительно -  не в их стиле.   У &lt;em&gt;Google&lt;/em&gt; тоже подобное  возможно.  Но кто
+нынче пользуется &lt;em&gt;Chrome  OS&lt;/em&gt;? Какие еще варианты? Может  приложения или сервисы
+какие-нибудь хитрые есть?&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Thu, 04 Sep 2014 00:00:00 +0400</pubDate><guid>tag:puzan.info,2014-09-04:misc/2014-09-04-priiatnosti-ot-apple.html</guid><category>apple</category><category>mac</category></item><item><title>EDE боль</title><link>http://puzan.info/linux/2014-08-19-ede-bol.html</link><description>&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
 каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
 попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
 чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
