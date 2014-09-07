@@ -72,6 +72,20 @@ Puzan's Pages            </a>
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="http://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">Infinality патчи на стабильной ветке</a></h2>
+                <div class="summary"><p>Как-то  я пропустил  тот  факт,  что похоже  уже  давно <a href="http://www.infinality.net/blog/">infinality</a>  патчи
+находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
+<a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
+<code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
+<div class="highlight"><pre>emerge -1q freetype
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect ...</pre></div>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html">Использование Gitolite вместе с Redmine</a></h2>
                 <div class="summary"><p>Появилась необходимость  добавить git репозиторий в  <em><a href="http://www.redmine.org">Redmine</a></em> проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
@@ -168,6 +182,11 @@ Puzan's Pages            </a>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/misc/2014-09-07-c-party.html">
+                                C++ party
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html">
                                 Голдинг У. - Повелитель мух
                             </a>
@@ -185,11 +204,6 @@ Puzan's Pages            </a>
                         <li class="list-group-item">
                             <a href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html">
                                 Для тех кто за proxy
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2014-05-14-direnv.html">
-                                Direnv
                             </a>
                         </li>
                     </ul>
@@ -226,6 +240,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/bridge.html">
                                 bridge
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/c.html">
+                                c++
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
@@ -416,6 +435,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/xbox.html">
                                 xbox
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/yandex.html">
+                                yandex
                             </a>
                         </li>
                         <li class="list-group-item tag-3">

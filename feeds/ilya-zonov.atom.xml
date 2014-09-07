@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/ilya-zonov.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-09-07T00:00:00+04:00</updated><entry><title>Голдинг У. - Повелитель мух</title><link href="http://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html" rel="alternate"></link><updated>2014-09-07T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:read/2014-09-07-golding-u-povelitel-mukh.html</id><summary type="html">&lt;p&gt;На прошлых  выходных осилил  чудную историю про  мальчишек, которые  застряли на
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/ilya-zonov.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-09-07T19:27:00+04:00</updated><entry><title>C++ party</title><link href="http://puzan.info/misc/2014-09-07-c-party.html" rel="alternate"></link><updated>2014-09-07T19:27:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:misc/2014-09-07-c-party.html</id><summary type="html">&lt;p&gt;Посетил  на  днях  (&lt;em&gt;2014-08-20&lt;/em&gt;,   задержался  с  постом)  &lt;a href="https://tech.yandex.ru/events/cpp-party/aug-nn/"&gt;c++  party&lt;/a&gt;,
+организованную  &lt;em&gt;Яндексом&lt;/em&gt;   в  Нижнем  Новгороде.   Решил   оставить  тут  свои
+впечатления  от  этого  мероприятия.    Как  раз  под  категорию  &lt;a href="/misc/"&gt;Misc&lt;/a&gt;
+подходит.   Все было  очень  позитивненько и  познавательно.  Интересные люди  и
+занимательные доклады. Ощутилась этакая &lt;em&gt;Яндекс&lt;/em&gt; культура.&lt;/p&gt;
+&lt;p&gt;Особо  понравился  первый доклад.   Он  был  посвящен &lt;em&gt;corutine&lt;/em&gt;'ам  и  простому
+асинхронному коду.   Я так  понял разработчики  были впечатлены  &lt;em&gt;gorutines&lt;/em&gt; при
+построении  своего решения.   Очень  хорошо и  доступно было  продемонстрировано
+упрощение кода. Основной упор был  направлен на объяснение концепций позволяющих
+избавиться от сложных и запутанных конечных автоматах.  Выглядит очень красиво и
+просто. Кода в презентации было достаточно много,  но весь он был легко читаем и
+понятен. Последнее нельзя сказать про второй доклад.&lt;/p&gt;
+&lt;p&gt;Второй доклад был посвящен обобщенному  программированию на &lt;em&gt;C++&lt;/em&gt;. Муть мутная с
+моей    точки    зрения.    Напомнило    статью    на    хабре   о    разработке
+&lt;a href="http://habrahabr.ru/post/218229/"&gt;игры жизнь  на C++  шаблонах&lt;/a&gt;.  Там весь  процесс игры  осуществляется на
+этапе компиляции и к старту приложения  все уже мертвы.  Рассказчик серьезно так
+углубился в  реализацию &lt;em&gt;Boost.Geometry&lt;/em&gt;.   И в  результате чего,  по-моему, зал
+немного приуныл. Вообще говоря из этого  доклада я вынес следующую мысль.  Очень
+удобно  использовать библиотеки,  позволяющие  использовать  некие внешние  типы
+(например, собственные геометрические структуры.   Смотрим &lt;em&gt;Boost.Geometry&lt;/em&gt; с ее
+замечательными макросами).  Но вот реализация  и поддержка подобных библиотек не
+является такой  уж простой задачей. Об  этом как минимум говорит  реакция одного
+слушателя, который яростно критиковал доклад.&lt;/p&gt;
+&lt;p&gt;Наибольшее впечатление произвело  то, что в &lt;em&gt;Яндаксе&lt;/em&gt;  ребята умудряются убедить
+начальство  в  необходимости выполнить  такой  крупный  рефакторинг (по  мотивам
+первого  доклада:  переход от  конечных  автоматов  к корутинам).   Кроме  того,
+видимо,  руководство само  заинтересовано в  подобном развитии  проектов.  Очень
+впечатляет. Я в своей рабочей деятельности такого пока не видел.&lt;/p&gt;</summary><category term="yandex"></category><category term="c++"></category></entry><entry><title>Голдинг У. - Повелитель мух</title><link href="http://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html" rel="alternate"></link><updated>2014-09-07T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:read/2014-09-07-golding-u-povelitel-mukh.html</id><summary type="html">&lt;p&gt;На прошлых  выходных осилил  чудную историю про  мальчишек, которые  застряли на
 необитаемом  остове после  авиакатастрофы.  До  того  как их  нашли, они  успели
 спалить  почти  весь  остров,  превратиться   в  обезумевшее  племя  и  чуть  не
 переубивать друг друга.&lt;/p&gt;
