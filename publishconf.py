@@ -18,6 +18,7 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
 
 FEEDBURNER_ALL_FEED = 'http://feeds.feedburner.com/puzan'
+YANDEX_SHARE = True
 
 DELETE_OUTPUT_DIRECTORY = True
 
