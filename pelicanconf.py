@@ -21,7 +21,8 @@ LINKS = None
 # Social widget
 SOCIAL = (('twitter', 'https://twitter.com/puzan'),
           ('linkedin', 'http://www.linkedin.com/in/zonov'),
-          ('github', 'http://github.com/puzan'),)
+          ('github', 'http://github.com/puzan'),
+          ('rss', 'http://feeds.feedburner.com/puzan'),)
 
 DEFAULT_PAGINATION = 10
 
