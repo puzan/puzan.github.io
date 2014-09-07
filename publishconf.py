@@ -17,6 +17,8 @@ FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
 
+FEEDBURNER_ALL_FEED = 'http://feeds.feedburner.com/puzan'
+
 DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
