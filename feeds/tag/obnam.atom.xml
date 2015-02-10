@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/obnam.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-02-10T00:00:00+03:00</updated><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><updated>2015-02-10T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+(&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
+резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
+бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;
+&lt;p&gt;С  доступом  к  &lt;em&gt;Time  Capsule&lt;/em&gt;  особых   проблем  в  &lt;em&gt;Linux&lt;/em&gt;  нету.   Ее  можно
+подмонтировать с помощью &lt;em&gt;cifs&lt;/em&gt; (не забываем установить &lt;code&gt;cifs-utils&lt;/code&gt;). В &lt;code&gt;fstab&lt;/code&gt;
+закидываем следующую строку и все должно работать после монтирования.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Но при этом в &lt;code&gt;/var/log/messages&lt;/code&gt; порой валит вот такие ошибки:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;[151119.364105] ------------[ cut here ]------------
+[151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
+[151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
+[151119.394514] [&amp;lt;c0015430&amp;gt;] (unwind_backtrace+0x0/0x134) from [&amp;lt;c003322c&amp;gt;] (warn_slowpath_common+0x54/0x64)
+[151119.403340] [&amp;lt;c003322c&amp;gt;] (warn_slowpath_common+0x54/0x64) from [&amp;lt;c00332d8&amp;gt;] (warn_slowpath_null+0x1c/0x24)
+[151119.411578] [&amp;lt;c00332d8&amp;gt;] (warn_slowpath_null+0x1c/0x24) from [&amp;lt;c00f0738&amp;gt;] (drop_nlink+0x54/0x5c)
+[151119.419177] [&amp;lt;c00f0738&amp;gt;] (drop_nlink+0x54/0x5c) from [&amp;lt;c0248cfc&amp;gt;] (cifs_unlink+0x224/0x654)
+[151119.426644] [&amp;lt;c0248cfc&amp;gt;] (cifs_unlink+0x224/0x654) from [&amp;lt;c00e64d0&amp;gt;] (vfs_unlink+0x78/0x104)
+[151119.434358] [&amp;lt;c00e64d0&amp;gt;] (vfs_unlink+0x78/0x104) from [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c)
+[151119.447019] [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c) from [&amp;lt;c000ec40&amp;gt;] (ret_fast_syscall+0x0/0x30)
+[151119.451059] ---[ end trace fddecabeb4cc4bce ]---
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Вроде ничего страшного, но логи забиваются.&lt;/p&gt;
+&lt;p&gt;Далее стоит вопрос,  чем и как бекапить.  Для &lt;em&gt;Linux&lt;/em&gt;  популярны системы бекапов
+на  основе &lt;code&gt;rsync&lt;/code&gt;  и &lt;em&gt;hard  links&lt;/em&gt;.  Например,  &lt;a href="http://www.rsnapshot.org/"&gt;rsnapshot&lt;/a&gt;. Но  тут
+возникает проблема, связанная  с отсутствием поддержки жестких  ссылок в &lt;em&gt;cifs&lt;/em&gt;.
+Есть еще &lt;a href="http://www.nongnu.org/rdiff-backup/"&gt;rdiff-backup&lt;/a&gt;, он вроде  как хранит файлы с изменениями.
+Но это мой  следующий шаг для тестов, а пока  я использую &lt;a href="http://obnam.org/"&gt;&lt;strong&gt;obnam&lt;/strong&gt;&lt;/a&gt;.  И
+сразу скажу: он очень тормозной.&lt;/p&gt;
+&lt;p&gt;На &lt;strong&gt;obnam&lt;/strong&gt;  натолкнулся когда-то  &lt;a href="http://www.opennet.ru/opennews/art.shtml?num=39323"&gt;давно&lt;/a&gt;, но  начал разворачивать
+после приобретения &lt;em&gt;CubieBoard&lt;/em&gt;.  Первоначально  &lt;strong&gt;obnam&lt;/strong&gt; мне очень понравился.
+Гигабайт системных данных бекапил минуты за  2-3.  Я с радости поднял ежечастные
+бекапы.  Вроде как настроил систему  аналогичную &lt;em&gt;Time Capsule&lt;/em&gt; c чисткой старых
+поколений бекапов (см. поле &lt;code&gt;keep&lt;/code&gt; в  настройках ниже).  Для всего этого написал
+небольшой скрипт следующего содержания и положил это добро в крон:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+
+logger &lt;span class="s2"&gt;&amp;quot;Start backup&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; ! &lt;span class="o"&gt;(&lt;/span&gt;df &lt;span class="p"&gt;|&lt;/span&gt; tail -n +2 &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -q &lt;span class="s1"&gt;&amp;#39;^/mnt/tc$&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;then&lt;/span&gt;
+    logger &lt;span class="s2"&gt;&amp;quot;Backup fails: tc is not mounted&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam backup
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; -eq &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;then&lt;/span&gt;
+    logger &lt;span class="s2"&gt;&amp;quot;Backup forget&amp;quot;&lt;/span&gt;
+    nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam forget
+&lt;span class="k"&gt;else&lt;/span&gt;
+    logger &lt;span class="s2"&gt;&amp;quot;Backup failed&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+logger &lt;span class="s2"&gt;&amp;quot;End backup&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;А вот и &lt;strong&gt;obnam&lt;/strong&gt; конфиг:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;[config]
+repository = /mnt/tc/backup
+log = /var/log/obnam.log
+log-max = 10M
+log-keep = 10
+log-level = warning
+one-file-system = True
+root = /etc, /home, /opt, /root
+keep = 24h,7d,15w,24m,5y
+upload-queue-size = 512
+lru-size = 512
+compress-with = deflate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Все это прекрасно  работало до того момента, как я  перенес &lt;a href="http://seafile.com"&gt;seafile&lt;/a&gt; с
+~100  гигабайтами данных.   Первичный  бекап занял  около  30 часов.   Следующие
+занимали более часа.  К сожалению  подробную статистику не сохранил. После этого
+нашел &lt;a href="http://listmaster.pepperfish.net/pipermail/obnam-support-obnam.org/2014-June/003086.html"&gt;пост&lt;/a&gt;, посвященный  тестированию &lt;strong&gt;obnam&lt;/strong&gt; параметров,
+влияющих  на  производительность.  На  основе  информации  из указанной  заметки
+добавил параметры &lt;code&gt;upload-queue-size&lt;/code&gt;  и &lt;code&gt;lru-size&lt;/code&gt; в конфиг  (см.  выше). Бекап
+ускорился до 15 минут.&lt;/p&gt;
+&lt;p&gt;Но далее я обновил &lt;em&gt;seafile&lt;/em&gt; через несколько версий, и вдруг количество файлов в
+его базе увеличилось  примерно в 2-е (в основном жестки  ссылки).  Это привело к
+росту времени бекапов до 1 часа 15  минут.  Я боюсь представить за сколько будет
+проходить бекап  почти забитого  1 Тб  диска.  Надеюсь у  меня не  будет столько
+данных.  Соответственно бекапы теперь запускаются раз в день. Вроде бы этого для
+меня вполне достаточно.&lt;/p&gt;
+&lt;p&gt;И  еще один  шаг, который  как  раз заканчиваю  тестировать: положить  &lt;strong&gt;obnam&lt;/strong&gt;
+репозиторий в &lt;a href="https://github.com/vgough/encfs"&gt;encfs&lt;/a&gt;. Выбор на этот вариант шифрования также пал за счет
+поддержки &lt;em&gt;cifs&lt;/em&gt;. Также  &lt;em&gt;encfs&lt;/em&gt; хороша тем, что нет  необходимости делать некий
+виртуальный диск, который  возможно в будущем придется  расширять. Позже добавлю
+информацию про эти успехи.&lt;/p&gt;
+&lt;p&gt;Данный пост  был создан,  чтобы поделиться собственным  опытом и  возможно найти
+более эффективные альтернативы. Добро  покалывать в комментарии. Высказывайтесь!
+&lt;strong&gt;obnam&lt;/strong&gt; явно не  лучший вариант для бекапов больших  объемов информации поверх
+&lt;em&gt;cifs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.S.&lt;/strong&gt;  К слову  сказать, бекапы  уже  меня успели  спасти. Пусть  они и  идут
+медленно,  но  и  меняются  не сильно  часто.   После  выключения  электричества
+файловая система  на диске с  данными слегка  поплыла.  Чиниться через  &lt;code&gt;fsck&lt;/code&gt; и
+монтироваться  отказывалась.  Данные  в принципе  можно было  бы восстановить  с
+диска,  но  быстрее и  проще  оказалось  воспользоваться бекапом.   Бекаптесь  -
+пригодится!&lt;/p&gt;</summary><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry></feed>

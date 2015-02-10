@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Linux бекапы на Apple Time Capsule (Obnam) - Puzan's Pages</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Puzan's Pages" />
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Linux бекапы на Apple Time Capsule (Obnam)"/>
+            <meta property="og:url" content="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html"/>
+            <meta property="og:description" content="Решил наладить бекапы с CubieBoard, на которой крутится подточеный Debian (Cubian), на Time Capsule. Туда через Time Machine уже делается резервная копия MacBook&#39;а. Захотел организовать аналогичные инкрементальные бекапы для Linux коробки. Попытаюсь далее изложить свой опыт. С доступом к Time Capsule особых проблем в Linux нету. Ее можно подмонтировать ..."/>
+            <meta property="article:published_time" content="2015-02-10" />
+                <meta property="article:section" content="linux" />
+                <meta property="article:tag" content="linux" />
+                <meta property="article:tag" content="apple" />
+                <meta property="article:tag" content="time capsule" />
+                <meta property="article:tag" content="cifs" />
+                <meta property="article:tag" content="obnam" />
+                <meta property="article:tag" content="backup" />
+                <meta property="article:author" content="Ilya Zonov" />
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://puzan.info/theme/css/bootstrap.readable-old.min.css" type="text/css"/>
+    <link href="http://puzan.info/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://puzan.info/theme/css/pygments/zenburn.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://puzan.info/theme/css/style.css" type="text/css"/>
+
+        <link href="http://feeds.feedburner.com/puzan" type="application/atom+xml" rel="alternate"
+              title="Puzan's Pages Feed"/>
+        <link href="http://puzan.info/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Puzan's Pages ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://puzan.info/" class="navbar-brand">
+Puzan's Pages            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://puzan.info/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="http://puzan.info/linux/index.html">Linux</a>
+                        </li>
+                        <li >
+                            <a href="http://puzan.info/misc/index.html">Misc</a>
+                        </li>
+                        <li >
+                            <a href="http://puzan.info/read/index.html">Read</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://puzan.info/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html"
+                       rel="bookmark"
+                       title="Permalink to Linux бекапы на Apple Time Capsule (Obnam)">
+                        Linux бекапы на Apple Time Capsule (Obnam)
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-02-10T00:00:00+03:00"> Tue 10 February 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://puzan.info/tag/linux.html">linux</a>
+        /
+	<a href="http://puzan.info/tag/apple.html">apple</a>
+        /
+	<a href="http://puzan.info/tag/time-capsule.html">time capsule</a>
+        /
+	<a href="http://puzan.info/tag/cifs.html">cifs</a>
+        /
+	<a href="http://puzan.info/tag/obnam.html">obnam</a>
+        /
+	<a href="http://puzan.info/tag/backup.html">backup</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Решил наладить  бекапы с <em>CubieBoard</em>,  на которой крутится  подточеный <em>Debian</em>
+(<a href="http://cubian.org/"><em>Cubian</em></a>), на <em>Time Capsule</em>.  Туда через <em>Time Machine</em> уже делается
+резервная копия  <em>MacBook</em>'а.  Захотел организовать  аналогичные инкрементальные
+бекапы для <em>Linux</em> коробки. Попытаюсь далее изложить свой опыт.</p>
+<p>С  доступом  к  <em>Time  Capsule</em>  особых   проблем  в  <em>Linux</em>  нету.   Ее  можно
+подмонтировать с помощью <em>cifs</em> (не забываем установить <code>cifs-utils</code>). В <code>fstab</code>
+закидываем следующую строку и все должно работать после монтирования.</p>
+<div class="highlight"><pre>//&lt;TC.local or direct ip&gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+</pre></div>
+
+
+<p>Но при этом в <code>/var/log/messages</code> порой валит вот такие ошибки:</p>
+<div class="highlight"><pre>[151119.364105] ------------[ cut here ]------------
+[151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
+[151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
+[151119.394514] [&lt;c0015430&gt;] (unwind_backtrace+0x0/0x134) from [&lt;c003322c&gt;] (warn_slowpath_common+0x54/0x64)
+[151119.403340] [&lt;c003322c&gt;] (warn_slowpath_common+0x54/0x64) from [&lt;c00332d8&gt;] (warn_slowpath_null+0x1c/0x24)
+[151119.411578] [&lt;c00332d8&gt;] (warn_slowpath_null+0x1c/0x24) from [&lt;c00f0738&gt;] (drop_nlink+0x54/0x5c)
+[151119.419177] [&lt;c00f0738&gt;] (drop_nlink+0x54/0x5c) from [&lt;c0248cfc&gt;] (cifs_unlink+0x224/0x654)
+[151119.426644] [&lt;c0248cfc&gt;] (cifs_unlink+0x224/0x654) from [&lt;c00e64d0&gt;] (vfs_unlink+0x78/0x104)
+[151119.434358] [&lt;c00e64d0&gt;] (vfs_unlink+0x78/0x104) from [&lt;c00e66a0&gt;] (do_unlinkat+0x144/0x16c)
+[151119.447019] [&lt;c00e66a0&gt;] (do_unlinkat+0x144/0x16c) from [&lt;c000ec40&gt;] (ret_fast_syscall+0x0/0x30)
+[151119.451059] ---[ end trace fddecabeb4cc4bce ]---
+</pre></div>
+
+
+<p>Вроде ничего страшного, но логи забиваются.</p>
+<p>Далее стоит вопрос,  чем и как бекапить.  Для <em>Linux</em>  популярны системы бекапов
+на  основе <code>rsync</code>  и <em>hard  links</em>.  Например,  <a href="http://www.rsnapshot.org/">rsnapshot</a>. Но  тут
+возникает проблема, связанная  с отсутствием поддержки жестких  ссылок в <em>cifs</em>.
+Есть еще <a href="http://www.nongnu.org/rdiff-backup/">rdiff-backup</a>, он вроде  как хранит файлы с изменениями.
+Но это мой  следующий шаг для тестов, а пока  я использую <a href="http://obnam.org/"><strong>obnam</strong></a>.  И
+сразу скажу: он очень тормозной.</p>
+<p>На <strong>obnam</strong>  натолкнулся когда-то  <a href="http://www.opennet.ru/opennews/art.shtml?num=39323">давно</a>, но  начал разворачивать
+после приобретения <em>CubieBoard</em>.  Первоначально  <strong>obnam</strong> мне очень понравился.
+Гигабайт системных данных бекапил минуты за  2-3.  Я с радости поднял ежечастные
+бекапы.  Вроде как настроил систему  аналогичную <em>Time Capsule</em> c чисткой старых
+поколений бекапов (см. поле <code>keep</code> в  настройках ниже).  Для всего этого написал
+небольшой скрипт следующего содержания и положил это добро в крон:</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+logger <span class="s2">&quot;Start backup&quot;</span>
+
+<span class="k">if</span> ! <span class="o">(</span>df <span class="p">|</span> tail -n +2 <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> grep -q <span class="s1">&#39;^/mnt/tc$&#39;</span><span class="o">)</span>
+<span class="k">then</span>
+    logger <span class="s2">&quot;Backup fails: tc is not mounted&quot;</span>
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+nice -n <span class="m">19</span> ionice -c2 -n7 obnam backup
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span>
+<span class="k">then</span>
+    logger <span class="s2">&quot;Backup forget&quot;</span>
+    nice -n <span class="m">19</span> ionice -c2 -n7 obnam forget
+<span class="k">else</span>
+    logger <span class="s2">&quot;Backup failed&quot;</span>
+<span class="k">fi</span>
+
+logger <span class="s2">&quot;End backup&quot;</span>
+</pre></div>
+
+
+<p>А вот и <strong>obnam</strong> конфиг:</p>
+<div class="highlight"><pre>[config]
+repository = /mnt/tc/backup
+log = /var/log/obnam.log
+log-max = 10M
+log-keep = 10
+log-level = warning
+one-file-system = True
+root = /etc, /home, /opt, /root
+keep = 24h,7d,15w,24m,5y
+upload-queue-size = 512
+lru-size = 512
+compress-with = deflate
+</pre></div>
+
+
+<p>Все это прекрасно  работало до того момента, как я  перенес <a href="http://seafile.com">seafile</a> с
+~100  гигабайтами данных.   Первичный  бекап занял  около  30 часов.   Следующие
+занимали более часа.  К сожалению  подробную статистику не сохранил. После этого
+нашел <a href="http://listmaster.pepperfish.net/pipermail/obnam-support-obnam.org/2014-June/003086.html">пост</a>, посвященный  тестированию <strong>obnam</strong> параметров,
+влияющих  на  производительность.  На  основе  информации  из указанной  заметки
+добавил параметры <code>upload-queue-size</code>  и <code>lru-size</code> в конфиг  (см.  выше). Бекап
+ускорился до 15 минут.</p>
+<p>Но далее я обновил <em>seafile</em> через несколько версий, и вдруг количество файлов в
+его базе увеличилось  примерно в 2-е (в основном жестки  ссылки).  Это привело к
+росту времени бекапов до 1 часа 15  минут.  Я боюсь представить за сколько будет
+проходить бекап  почти забитого  1 Тб  диска.  Надеюсь у  меня не  будет столько
+данных.  Соответственно бекапы теперь запускаются раз в день. Вроде бы этого для
+меня вполне достаточно.</p>
+<p>И  еще один  шаг, который  как  раз заканчиваю  тестировать: положить  <strong>obnam</strong>
+репозиторий в <a href="https://github.com/vgough/encfs">encfs</a>. Выбор на этот вариант шифрования также пал за счет
+поддержки <em>cifs</em>. Также  <em>encfs</em> хороша тем, что нет  необходимости делать некий
+виртуальный диск, который  возможно в будущем придется  расширять. Позже добавлю
+информацию про эти успехи.</p>
+<p>Данный пост  был создан,  чтобы поделиться собственным  опытом и  возможно найти
+более эффективные альтернативы. Добро  покалывать в комментарии. Высказывайтесь!
+<strong>obnam</strong> явно не  лучший вариант для бекапов больших  объемов информации поверх
+<em>cifs</em>.</p>
+<p><strong>P.S.</strong>  К слову  сказать, бекапы  уже  меня успели  спасти. Пусть  они и  идут
+медленно,  но  и  меняются  не сильно  часто.   После  выключения  электричества
+файловая система  на диске с  данными слегка  поплыла.  Чиниться через  <code>fsck</code> и
+монтироваться  отказывалась.  Данные  в принципе  можно было  бы восстановить  с
+диска,  но  быстрее и  проще  оказалось  воспользоваться бекапом.   Бекаптесь  -
+пригодится!</p>
+            </div>
+            <!-- /.entry-content -->
+<hr />
+<!-- Yandex Share BEGIN -->
+<script type="text/javascript" src="//yandex.st/share/share.js"
+        charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareL10n="ru"
+     data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div> 
+    <!-- Yandex Share END -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'puzan'; // required: replace example with your forum shortname
+            var disqus_identifier = 'linux-bekapy-na-apple-time-capsule-obnam';
+            var disqus_url = 'http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html';
+            var disqus_config = function () {
+                this.language = "ru";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://twitter.com/puzan"><i
+                            class="fa fa-twitter-square fa-lg"></i> twitter
+                    </a></li>
+                    <li class="list-group-item"><a href="http://www.linkedin.com/in/zonov"><i
+                            class="fa fa-linkedin-square fa-lg"></i> linkedin
+                    </a></li>
+                    <li class="list-group-item"><a href="http://github.com/puzan"><i
+                            class="fa fa-github-square fa-lg"></i> github
+                    </a></li>
+                    <li class="list-group-item"><a href="http://feeds.feedburner.com/puzan"><i
+                            class="fa fa-rss-square fa-lg"></i> rss
+                    </a></li>
+                  </ul>
+                </li>
+<a href="https://github.com/puzan/puzan.github.io">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                    <ul class="list-group" id="recentposts">
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html">
+                                Linux бекапы на Apple Time Capsule (Obnam)
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/misc/2014-09-07-c-party.html">
+                                C++ party
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html">
+                                Голдинг У. - Повелитель мух
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/misc/2014-09-04-priiatnosti-ot-apple.html">
+                                Приятности от Apple
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2014-08-19-ede-bol.html">
+                                EDE боль
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="list-group-item"><a href="http://puzan.info/tag/index.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group list-inline tagcloud" id="tags">
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/akunin-b.html">
+                                Акунин Б.
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/anklavy.html">
+                                Анклавы
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://puzan.info/tag/apple.html">
+                                apple
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/backup.html">
+                                backup
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://puzan.info/tag/bash.html">
+                                bash
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/blog.html">
+                                блог
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/bridge.html">
+                                bridge
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/c.html">
+                                c++
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/cedet.html">
+                                cedet
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/cifs.html">
+                                cifs
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/config.html">
+                                config
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/ebuild.html">
+                                ebuild
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/ede.html">
+                                ede
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://puzan.info/tag/emacs.html">
+                                emacs
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/evernote.html">
+                                evernote
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/firefox.html">
+                                firefox
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/fonts.html">
+                                fonts
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/gem.html">
+                                gem
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://puzan.info/tag/gentoo.html">
+                                gentoo
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://puzan.info/tag/git.html">
+                                git
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/github.html">
+                                github
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/gitolite.html">
+                                gitolite
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/golding-u.html">
+                                Голдинг У.
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/google.html">
+                                google
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/infinality.html">
+                                infinality
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/java.html">
+                                java
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://puzan.info/tag/khudozhestvennaia-literatura.html">
+                                художественная литература
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://puzan.info/tag/linux.html">
+                                linux
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://puzan.info/tag/mac.html">
+                                mac
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/merge.html">
+                                merge
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/net.html">
+                                net
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/network.html">
+                                network
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/nfs.html">
+                                nfs
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/obnam.html">
+                                obnam
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/panov-v.html">
+                                Панов В.
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/pip.html">
+                                pip
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/portage.html">
+                                portage
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/proxy.html">
+                                proxy
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/python.html">
+                                python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/rcs.html">
+                                rcs
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/redmine.html">
+                                redmine
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/ruby.html">
+                                ruby
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/ssh.html">
+                                ssh
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/svn.html">
+                                svn
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/time-capsule.html">
+                                time capsule
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/virtualbox.html">
+                                virtualbox
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/web.html">
+                                web
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/xbox.html">
+                                xbox
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/yandex.html">
+                                yandex
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/zamiatin-e.html">
+                                Замятин Е.
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://puzan.info/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://puzan.info/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://puzan.info/theme/js/respond.min.js"></script>
+
+    <!-- GitHub JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.jXHR) {
+                var jxhr = document.createElement('script');
+                jxhr.type = 'text/javascript';
+                jxhr.src = 'http://puzan.info/theme/js/jXHR.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(jxhr, s);
+            }
+
+            github.showRepos({
+                user: 'puzan',
+                count: 5,
+                skip_forks: false,
+                target: '#gh_repos'
+            });
+        });
+    </script>
+    <script src="http://puzan.info/theme/js/github.js" type="text/javascript"></script>
+    <!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'puzan'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50875216-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+</body>
+</html>
