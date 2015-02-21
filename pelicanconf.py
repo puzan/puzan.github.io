@@ -64,6 +64,7 @@ MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False
                  'fenced_code']
 
 PYGMENTS_STYLE = 'zenburn'
+CUSTOM_CSS = 'static/custom.css'
 
 GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
 GITHUB_SKIP_FORK = False
@@ -74,7 +75,8 @@ TWITTER_WIDGET_ID = '569200501129220096'
 
 STATIC_PATHS = ['images', 'extra']
 
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
+                       'extra/custom.css': {'path': 'static/custom.css'}}
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
