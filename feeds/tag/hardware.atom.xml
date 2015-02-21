@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/hardware.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-02-21T00:00:00+03:00</updated><entry><title>Куда отдать компьютеры?</title><link href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
+которую  я уже  не использую  и хочу  найти ей  новое место.  Выкидывать немного
+жалко, но и склад дома устраивать нет желания.&lt;/p&gt;
+&lt;p&gt;Было бы здорово  узнать, куда люди уносят отработавшие  компьютеры.  Свое железо
+отдам  даром, но  надо  понимать, что  для того  чтобы  оно заработало  придется
+приложить  некторое усилие.   Нижеописанная техника  нуждается явно  в некоторой
+доработке.   Ноутбукам  нужны  жесткие  диски  и на  каждый  девайс  надо  будет
+устанавливать какую-нибудь операционную систему.   Поэтому отдавать это железо в
+детский дом  или подобные заведения мне  кажется издевательством (переубедите?).
+Наиболее подходящим, на  мой взгляд, было бы отдать технику  в какую-нибудь лабу
+для образовательных целей.   Либо в личное пользование для  знакомства с темами,
+связанными с устройством  компьютеров. Есть ли сейчас радио  кружки, где ребятам
+интересно поставить на старое железо какой-нибудь дистрибутив &lt;em&gt;Linux&lt;/em&gt; в качестве
+образовательных целей?&lt;/p&gt;
+&lt;p&gt;Я  собрал немного  характеристик по  каждому девайсу  и для  наглядности добавил
+фоточки.  Итак  смотрим, выбираем.   Может у  кого появятся  идеи, куда  это все
+пристроить. И было бы интересно узнать опыт в подобных вопросах.&lt;/p&gt;
+&lt;h2&gt;HP G62&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="HP G62" src="http://puzan.info/images/comp-hp.jpg" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU Intel i5 2.53 GHz&lt;/li&gt;
+&lt;li&gt;ОЗУ 4 Gb&lt;/li&gt;
+&lt;li&gt;Видео ATI Radeon HD 5470&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Без жесткого диска!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Это ноутбук моей любимой девушки. На  нем был установлен &lt;em&gt;Windows 7&lt;/em&gt;.  Последнее
+время любимая  на него  сильно ругалась,  в связи с  чем получила  в пользование
+&lt;em&gt;MacBook Air&lt;/em&gt;,  а данный аппарат  перешел в категорию  утиль.  И есть  конечно у
+него кучка проблем:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Выключается  от перегрева.   Есть подставка  с вентилятором.   Ее тоже  отдам.
+  Возможно, если  на него  установить &lt;em&gt;Linux&lt;/em&gt;,  либо старый  &lt;em&gt;Windows&lt;/em&gt;, проблему
+  можно будет побороть. Точно есть связь с подключением дискретной графики.&lt;/li&gt;
+&lt;li&gt;Дохлая батарея. Работает только от розетки.&lt;/li&gt;
+&lt;li&gt;Требуется докупить жесткий диск.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;DELL Inspiron 1501&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="DELL Inspiron 1501" src="http://puzan.info/images/comp-dell.jpg" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU AMD Turion 64 800 MGz&lt;/li&gt;
+&lt;li&gt;ОЗУ 2 Gb&lt;/li&gt;
+&lt;li&gt;Видео ATI Radeon Xpress 1150&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Без жесткого диска!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;А  этот экземпляр  -  бывший  ноутбук мамы.   Работал  под управлением  &lt;em&gt;Windows
+XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; и  отправлен на списание. Проблемы  с ним почти
+такие же:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Дохлая батарея. Работает только от розетки.&lt;/li&gt;
+&lt;li&gt;Требуется докупить жесткий диск.&lt;/li&gt;
+&lt;li&gt;Грязноватый и потертый.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;PC aka «server»&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="PC aka «server»" src="http://puzan.info/images/comp-pc.jpg" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU Intel Celeron 1,8 GHz&lt;/li&gt;
+&lt;li&gt;ОЗУ 2 Gb&lt;/li&gt;
+&lt;li&gt;Какое-то интегрированное видео (работал в &lt;em&gt;headless&lt;/em&gt; режиме)&lt;/li&gt;
+&lt;li&gt;Дохлый  Ethernet на  материнской  плате, но  есть  еще дополнительная  сетевая
+  карточка, которая успешно работает.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3 жестких диска (IDE)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;149.1 Gb&lt;/li&gt;
+&lt;li&gt;Два диска по 37.3 Gb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;А это  мой доблестный  «сервак».  Верой  и правдой  помогал мне  изучать &lt;em&gt;Linux&lt;/em&gt;
+системы. Долгое время был центральной  точкой в домашней сети. Раздавал интернет
+и внутренние сервисы  (&lt;em&gt;http server&lt;/em&gt;, &lt;em&gt;file server&lt;/em&gt;, &lt;em&gt;seafile&lt;/em&gt;,  &lt;em&gt;git&lt;/em&gt; и другое)
+как по &lt;em&gt;Ethernet&lt;/em&gt;, так и по &lt;em&gt;Wifi&lt;/em&gt; (если необходимо приложу и &lt;em&gt;Wifi&lt;/em&gt; карту).  Из
+очевидных  недостатков,  кроме  принципиальной старости  железа,  могу  отметить
+только   шум.    Весь   его   функционал   был   успешно   заменен   с   помощью
+&lt;em&gt;CubieBoard&lt;/em&gt;. Который кстати совсем не шумит.&lt;/p&gt;</summary><category term="hardware"></category><category term="linux"></category></entry></feed>
