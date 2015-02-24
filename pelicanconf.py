@@ -73,10 +73,13 @@ GITHUB_USER = 'puzan'
 TWITTER_USERNAME = 'puzan'
 TWITTER_WIDGET_ID = '569200501129220096'
 
+FAVICON = 'favicon.ico'
+
 STATIC_PATHS = ['images', 'extra']
 
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
-                       'extra/custom.css': {'path': 'static/custom.css'}}
+                       'extra/custom.css': {'path': 'static/custom.css'},
+                       'extra/favicon.ico': {'path': 'favicon.ico'}}
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
