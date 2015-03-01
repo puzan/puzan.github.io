@@ -14,7 +14,7 @@ Tags: ios, evernote
 интерфейсами) занимает  существенно много места, но  при этом не несет  для меня
 полезной нагрузки.
 
-![]({filename}/images/evernote-ios-today-posts.png)
+![Evernote плагин со списком заметок]({filename}/images/evernote-ios-today-posts.png)
 
 Сам  по себе  плагин  изначально  был предельно  прост:  5  кнопок для  создания
 заметок.   Они полностью  повторяют ярлыки  с главного  экрана приложений.   Это
@@ -29,11 +29,11 @@ Tags: ios, evernote
 вариантов даже  рассматривал удаление  плагина. Но  чуток пошарив  по настройкам
 нашел нужную галочку! Она находится в самом конце General секции.
 
-![]({filename}/images/evernote-ios-settings.png)
+![Настройки Evernote]({filename}/images/evernote-ios-settings.png)
 
 После этого виджет принял прежний вид и снова стал маленьким.
 
-![]({filename}/images/evernote-ios-today-buttons.png)
+![Evernote маленький плагин]({filename}/images/evernote-ios-today-buttons.png)
 
 В  идеале конечно  хотелось  бы, чтобы  при создании  заметки  с *Today*  экрана
 появлялось  небольшое  окошко  для  текста,  как это  сделано  в  share  плагине
@@ -42,7 +42,7 @@ Tags: ios, evernote
 *Evernote*  у меня  не  сильно  быстро. А  иметь  быструю возможность  создавать
 заметку очень хочется.
 
-![]({filename}/images/evernote-ios-share.png)
+![Evernote share плагин]({filename}/images/evernote-ios-share.png)
 
 [evernote]: https://itunes.apple.com/ru/app/evernote/id281796108?l=en&mt=8
 [skitch]: https://itunes.apple.com/ru/app/skitch-snap.-mark-up.-share./id425955336?l=en&mt=12
