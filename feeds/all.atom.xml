@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/all.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-02-21T00:00:00+03:00</updated><entry><title>Куда отдать компьютеры?</title><link href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/all.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-03-01T18:58:53+03:00</updated><entry><title>Evernote виджет на Today экране (iOS)</title><link href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html" rel="alternate"></link><updated>2015-03-01T18:58:53+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-01:misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</id><summary type="html">&lt;p&gt;Это   небольшая    заметка   с    картинками   про   мой    опыт   использования
+&lt;a href="https://itunes.apple.com/ru/app/evernote/id281796108?l=en&amp;amp;mt=8"&gt;Evernote&lt;/a&gt; на &lt;em&gt;iPhone 4S&lt;/em&gt;.  Она была задумала под «вау» эффектом после
+находки  полезной галочки  в настройках  этого удобного  приложения для  ведения
+заметок. Потом «вау» прошел, но я  решил все же немного порисовать на скриншотах
+в &lt;a href="https://itunes.apple.com/ru/app/skitch-snap.-mark-up.-share./id425955336?l=en&amp;amp;mt=12"&gt;Skitch&lt;/a&gt; (еще одни &lt;em&gt;Evernote&lt;/em&gt; продукт) и составить этот текст.&lt;/p&gt;
+&lt;p&gt;Итак к сути! На  днях подумал, что &lt;em&gt;Evernote&lt;/em&gt; плагин на  &lt;em&gt;Today&lt;/em&gt; экране (не знаю
+как  его переводят  на  русский язык,  сам  пользуюсь исключительно  английскими
+интерфейсами) занимает  существенно много места, но  при этом не несет  для меня
+полезной нагрузки.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Evernote плагин со списком заметок" src="http://puzan.info/images/evernote-ios-today-posts.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Сам  по себе  плагин  изначально  был предельно  прост:  5  кнопок для  создания
+заметок.   Они полностью  повторяют ярлыки  с главного  экрана приложений.   Это
+позволяет создать заметки из произвольного  состояния.  Единственный минус — для
+этого открывается  само приложение &lt;em&gt;Evernote&lt;/em&gt;  и далее работа  происходит внутри
+него.  Так  вот после очередного  обновления в  этот виджет был  добавлен список
+последних обновленных заметок,  как видно на картинке выше.   Из-за этого плагин
+стал занимать почти весь экран моего &lt;em&gt;iPhone 4s&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Так как  за последние месяцы я  ни разу по  ним не тыкнул, то  возникло логичное
+желание избавится  от списка записок  на &lt;em&gt;Today&lt;/em&gt; экране. В  качестве радикальных
+вариантов даже  рассматривал удаление  плагина. Но  чуток пошарив  по настройкам
+нашел нужную галочку! Она находится в самом конце General секции.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Настройки Evernote" src="http://puzan.info/images/evernote-ios-settings.png" /&gt;&lt;/p&gt;
+&lt;p&gt;После этого виджет принял прежний вид и снова стал маленьким.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Evernote маленький плагин" src="http://puzan.info/images/evernote-ios-today-buttons.png" /&gt;&lt;/p&gt;
+&lt;p&gt;В  идеале конечно  хотелось  бы, чтобы  при создании  заметки  с &lt;em&gt;Today&lt;/em&gt;  экрана
+появлялось  небольшое  окошко  для  текста,  как это  сделано  в  share  плагине
+&lt;em&gt;Evernote&lt;/em&gt; (смотрим последнюю картинку). Оно  конечно начало слегка не влазить в
+пределы  экрана &lt;em&gt;4s&lt;/em&gt;,  но  мне  бы это  больше  нарвилось,  так как  загружается
+&lt;em&gt;Evernote&lt;/em&gt;  у меня  не  сильно  быстро. А  иметь  быструю возможность  создавать
+заметку очень хочется.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Evernote share плагин" src="http://puzan.info/images/evernote-ios-share.png" /&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="evernote"></category></entry><entry><title>Куда отдать компьютеры?</title><link href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
 которую  я уже  не использую  и хочу  найти ей  новое место.  Выкидывать немного
 жалко, но и склад дома устраивать нет желания.&lt;/p&gt;
 &lt;p&gt;Было бы здорово  узнать, куда люди уносят отработавшие  компьютеры.  Свое железо

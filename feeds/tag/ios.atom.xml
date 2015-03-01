@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/evernote.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-03-01T18:58:53+03:00</updated><entry><title>Evernote виджет на Today экране (iOS)</title><link href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html" rel="alternate"></link><updated>2015-03-01T18:58:53+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-01:misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</id><summary type="html">&lt;p&gt;Это   небольшая    заметка   с    картинками   про   мой    опыт   использования
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/ios.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-03-01T18:58:53+03:00</updated><entry><title>Evernote виджет на Today экране (iOS)</title><link href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html" rel="alternate"></link><updated>2015-03-01T18:58:53+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-01:misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</id><summary type="html">&lt;p&gt;Это   небольшая    заметка   с    картинками   про   мой    опыт   использования
 &lt;a href="https://itunes.apple.com/ru/app/evernote/id281796108?l=en&amp;amp;mt=8"&gt;Evernote&lt;/a&gt; на &lt;em&gt;iPhone 4S&lt;/em&gt;.  Она была задумала под «вау» эффектом после
 находки  полезной галочки  в настройках  этого удобного  приложения для  ведения
 заметок. Потом «вау» прошел, но я  решил все же немного порисовать на скриншотах
@@ -29,19 +29,4 @@
 пределы  экрана &lt;em&gt;4s&lt;/em&gt;,  но  мне  бы это  больше  нарвилось,  так как  загружается
 &lt;em&gt;Evernote&lt;/em&gt;  у меня  не  сильно  быстро. А  иметь  быструю возможность  создавать
 заметку очень хочется.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Evernote share плагин" src="http://puzan.info/images/evernote-ios-share.png" /&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="evernote"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="http://puzan.info/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-23:linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
-для ведения заметок.  Пользуюсь им с &lt;em&gt;iPhone&lt;/em&gt; и через  веб интерфейс с остальных
-систем  (дом  - &lt;em&gt;Linux&lt;/em&gt;,  работа  -  &lt;em&gt;Windows&lt;/em&gt;).  А  теперь еще  и  оригинальным
-приложением для &lt;em&gt;Mac&lt;/em&gt;'а пользоваться начал.&lt;/p&gt;
-&lt;p&gt;Все  это к  чему?   Есть у  этого замечательного  сервиса  казалось бы  отличное
-дополнение для &lt;em&gt;Firefox&lt;/em&gt;: &lt;em&gt;Evernote Web Clipper&lt;/em&gt;. Но!  После одного из последних
-обновлений он напрочь  отказывается запоминать пароль и  с жуткой периодичностью
-просит авторизоваться.&lt;/p&gt;
-&lt;p&gt;В &lt;em&gt;Firefox&lt;/em&gt;  на &lt;em&gt;Mac&lt;/em&gt;'е  подобные проблемы не  наблюдаются. Логиниться  часто не
-просит.  Думаю  это  связано  с  тем  что  последнее  обновление  клиппера  было
-установлено на чистый профиль.&lt;/p&gt;
-&lt;p&gt;Буду завтра  на работе  (до домашнего  компа пока  добраться не  могу) пробовать
-установить &lt;em&gt;Evernote Web clipper&lt;/em&gt; поверх нового профиля &lt;em&gt;Firefox&lt;/em&gt;'а.&lt;/p&gt;
-&lt;p&gt;P.S. [2013-05-24] На  работе поставил поверх чистого профиля  клиппер. Он пароль
-вроде  как перестал  агрессивно  спрашивать. Когда  до стационарного  компьютера
-доберусь, попробую найти файлы, которые надо почистить, чтобы профиль не менять.&lt;/p&gt;</summary><category term="web"></category><category term="evernote"></category></entry></feed>
+&lt;p&gt;&lt;img alt="Evernote share плагин" src="http://puzan.info/images/evernote-ios-share.png" /&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="evernote"></category></entry></feed>
