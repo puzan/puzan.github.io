@@ -69,13 +69,6 @@ MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False
 PYGMENTS_STYLE = 'zenburn'
 CUSTOM_CSS = 'static/custom.css'
 
-GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
-GITHUB_SKIP_FORK = False
-GITHUB_USER = 'puzan'
-
-TWITTER_USERNAME = 'puzan'
-TWITTER_WIDGET_ID = '569200501129220096'
-
 FAVICON = 'favicon.ico'
 
 STATIC_PATHS = ['images', 'extra']
