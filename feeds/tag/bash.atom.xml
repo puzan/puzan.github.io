@@ -10,8 +10,8 @@
 &lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if &lt;/span&gt;which direnv &amp;gt; /dev/null; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(direnv hook $0)&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;direnv hook &lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -27,7 +27,7 @@ $ direnv edit .
 виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
 следующего:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=${ANDROID_SDK}&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -71,8 +71,8 @@ $
 &lt;span class="c"&gt;# Loads the specified python virtualenv&lt;/span&gt;
 &lt;span class="c"&gt;#&lt;/span&gt;
 use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.virtualenvs/${1}&amp;quot;&lt;/span&gt;
-    PATH_add &lt;span class="s2"&gt;&amp;quot;$VIRTUAL_ENV/bin&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    PATH_add &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

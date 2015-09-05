@@ -21,9 +21,9 @@ mount -o remount,exec /tmp
 &lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
 &lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
 
-mkdir -p &lt;span class="s2"&gt;&amp;quot;$R/proc&amp;quot;&lt;/span&gt;
-cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt;
-cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+mkdir -p &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/proc&amp;quot;&lt;/span&gt;
+cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;mount -t proc none /proc&lt;/span&gt;
 &lt;span class="s"&gt;brctl addbr br0&lt;/span&gt;
 &lt;span class="s"&gt;brctl addif br0 eth0&lt;/span&gt;
@@ -32,8 +32,8 @@ cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &
 &lt;span class="s"&gt;umount /proc&lt;/span&gt;
 &lt;span class="s"&gt;EOF&lt;/span&gt;
 
-chroot &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt; sh script
-rm -r &lt;span class="s2"&gt;&amp;quot;$R/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/lib&amp;quot;&lt;/span&gt;
+chroot &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; sh script
+rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/lib&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

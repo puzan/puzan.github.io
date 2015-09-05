@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/docker.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><updated>2015-09-06T00:39:07+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+&lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
+сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
+оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
+эмулировать production окружение и не засорять рабочую машину.&lt;/p&gt;
+&lt;p&gt;В то время я столкнулся с  несколько проблематичным способом инициализации бд из
+официального &lt;em&gt;postgres&lt;/em&gt; образа во время  старта контейнера.  Тогда все сводилось
+к тому  чтобы написать скрипт, который  стартует &lt;em&gt;postgres&lt;/em&gt; в &lt;em&gt;single&lt;/em&gt;  режиме и
+выполняет нужные &lt;em&gt;sql&lt;/em&gt; запросы. Например вот так:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+gosu postgres postgres --single &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/create-testdb.sql
+gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/date-db.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Затем скрипт  и &lt;em&gt;sql&lt;/em&gt; файлы  надо было добавить в  контейнер во время  &lt;em&gt;build&lt;/em&gt; в
+папочку &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;. Пример &lt;em&gt;Dockerfile&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;FROM postgres:9
+
+ENV INIT_SQL /init-sql
+
+COPY init-db.sh /docker-entrypoint-initdb.d/
+COPY *.sql ${INIT_SQL}/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;А далее на старте контейнера запускался &lt;em&gt;docker-entrypoint.sh&lt;/em&gt;, который выполнял
+все скрипты из &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Это  работало,  но было  очень  не  удобно.   Главная проблема  -  необходимость
+запускать &lt;em&gt;postgres&lt;/em&gt;  в &lt;em&gt;single&lt;/em&gt; режиме,  так как на момент  выполнения postgres
+еще не  был стартован.  Из-за  этого возникают  ограничения в &lt;em&gt;SQL&lt;/em&gt;  запросах, а
+также  невозможно  подложить dump  сделанный  &lt;code&gt;pg_dump&lt;/code&gt;'ом  либо подключиться  с
+помощью &lt;code&gt;psql&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Пока   я   собирался  с   мыслями   чтобы   опубликовать  вышеописанный   метод,
+&lt;em&gt;docker-entrypoint.sh&lt;/em&gt;   был   &lt;a href="https://github.com/docker-library/postgres/commit/66c7b2dee78980482b83337d16febc4251cb2ae7"&gt;переписан&lt;/a&gt;.   Теперь   на   время
+инициализации  базы  запускается полноценный  экземпляр  базы,  с которым  можно
+взаимодействовать с помощью &lt;code&gt;psql&lt;/code&gt;. Также появилась возможность создавать базу и
+пользователя через определение переменных  окружения. Плюс &lt;em&gt;shell&lt;/em&gt; скрипт теперь
+писать     не    обязательно.      Просто    складываем     &lt;em&gt;sql&lt;/em&gt;    файлы     в
+&lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;,    а   они    передаются    на   выполнение    в
+&lt;code&gt;psql&lt;/code&gt;. Красотень.&lt;/p&gt;
+&lt;p&gt;В конце  хотел бы отметить,  что нынче  технологии развиваются и  меняются очень
+быстро.   Надо быть  все  время  на чеку.   По  идее  вышеописанные изменения  в
+&lt;em&gt;docker-entrypoint.sh&lt;/em&gt;  для   &lt;em&gt;postgres&lt;/em&gt;  образа  могут  привести   к  вероятным
+проблемам    (особенно     если    ранее    &lt;em&gt;sql&lt;/em&gt;    скрипты     складывали    в
+&lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;   папку),  а   вот   версионирования  образов   в
+зависимости от изменения  &lt;em&gt;Dockerfile&lt;/em&gt; на &lt;a href="https://hub.docker.com/"&gt;хабе&lt;/a&gt; нету.  Отсюда  вывод - без
+своего  &lt;em&gt;docker  registry&lt;/em&gt; никак  не  обойтись  и  на  внешние образы  лучше  не
+надеяться.&lt;/p&gt;</summary><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry></feed>

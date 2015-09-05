@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-05-04T19:25:00+03:00</updated><entry><title>Операционные системы?</title><link href="http://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><updated>2015-09-06T00:39:07+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+&lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
+сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
+оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
+эмулировать production окружение и не засорять рабочую машину.&lt;/p&gt;
+&lt;p&gt;В то время я столкнулся с  несколько проблематичным способом инициализации бд из
+официального &lt;em&gt;postgres&lt;/em&gt; образа во время  старта контейнера.  Тогда все сводилось
+к тому  чтобы написать скрипт, который  стартует &lt;em&gt;postgres&lt;/em&gt; в &lt;em&gt;single&lt;/em&gt;  режиме и
+выполняет нужные &lt;em&gt;sql&lt;/em&gt; запросы. Например вот так:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+gosu postgres postgres --single &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/create-testdb.sql
+gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/date-db.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Затем скрипт  и &lt;em&gt;sql&lt;/em&gt; файлы  надо было добавить в  контейнер во время  &lt;em&gt;build&lt;/em&gt; в
+папочку &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;. Пример &lt;em&gt;Dockerfile&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;FROM postgres:9
+
+ENV INIT_SQL /init-sql
+
+COPY init-db.sh /docker-entrypoint-initdb.d/
+COPY *.sql ${INIT_SQL}/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;А далее на старте контейнера запускался &lt;em&gt;docker-entrypoint.sh&lt;/em&gt;, который выполнял
+все скрипты из &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Это  работало,  но было  очень  не  удобно.   Главная проблема  -  необходимость
+запускать &lt;em&gt;postgres&lt;/em&gt;  в &lt;em&gt;single&lt;/em&gt; режиме,  так как на момент  выполнения postgres
+еще не  был стартован.  Из-за  этого возникают  ограничения в &lt;em&gt;SQL&lt;/em&gt;  запросах, а
+также  невозможно  подложить dump  сделанный  &lt;code&gt;pg_dump&lt;/code&gt;'ом  либо подключиться  с
+помощью &lt;code&gt;psql&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Пока   я   собирался  с   мыслями   чтобы   опубликовать  вышеописанный   метод,
+&lt;em&gt;docker-entrypoint.sh&lt;/em&gt;   был   &lt;a href="https://github.com/docker-library/postgres/commit/66c7b2dee78980482b83337d16febc4251cb2ae7"&gt;переписан&lt;/a&gt;.   Теперь   на   время
+инициализации  базы  запускается полноценный  экземпляр  базы,  с которым  можно
+взаимодействовать с помощью &lt;code&gt;psql&lt;/code&gt;. Также появилась возможность создавать базу и
+пользователя через определение переменных  окружения. Плюс &lt;em&gt;shell&lt;/em&gt; скрипт теперь
+писать     не    обязательно.      Просто    складываем     &lt;em&gt;sql&lt;/em&gt;    файлы     в
+&lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;,    а   они    передаются    на   выполнение    в
+&lt;code&gt;psql&lt;/code&gt;. Красотень.&lt;/p&gt;
+&lt;p&gt;В конце  хотел бы отметить,  что нынче  технологии развиваются и  меняются очень
+быстро.   Надо быть  все  время  на чеку.   По  идее  вышеописанные изменения  в
+&lt;em&gt;docker-entrypoint.sh&lt;/em&gt;  для   &lt;em&gt;postgres&lt;/em&gt;  образа  могут  привести   к  вероятным
+проблемам    (особенно     если    ранее    &lt;em&gt;sql&lt;/em&gt;    скрипты     складывали    в
+&lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;   папку),  а   вот   версионирования  образов   в
+зависимости от изменения  &lt;em&gt;Dockerfile&lt;/em&gt; на &lt;a href="https://hub.docker.com/"&gt;хабе&lt;/a&gt; нету.  Отсюда  вывод - без
+своего  &lt;em&gt;docker  registry&lt;/em&gt; никак  не  обойтись  и  на  внешние образы  лучше  не
+надеяться.&lt;/p&gt;</summary><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry><entry><title>Операционные системы?</title><link href="http://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
 операционным  системам.   Этакое  лирическое   отступление.   Один  из  мотивов:
 структурировать  информацию и  самому  разобраться, что  мне  больше нравится  в
 каждой из  ОС.  Но похоже получился  некий экскурс в историю  моего знакомства с
@@ -522,8 +571,8 @@ https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 &lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if &lt;/span&gt;which direnv &amp;gt; /dev/null; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(direnv hook $0)&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;direnv hook &lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -539,7 +588,7 @@ $ direnv edit .
 виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
 следующего:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=${ANDROID_SDK}&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -583,8 +632,8 @@ $
 &lt;span class="c"&gt;# Loads the specified python virtualenv&lt;/span&gt;
 &lt;span class="c"&gt;#&lt;/span&gt;
 use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.virtualenvs/${1}&amp;quot;&lt;/span&gt;
-    PATH_add &lt;span class="s2"&gt;&amp;quot;$VIRTUAL_ENV/bin&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    PATH_add &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -662,9 +711,9 @@ mount -o remount,exec /tmp
 &lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
 &lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
 
-mkdir -p &lt;span class="s2"&gt;&amp;quot;$R/proc&amp;quot;&lt;/span&gt;
-cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt;
-cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+mkdir -p &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/proc&amp;quot;&lt;/span&gt;
+cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/script&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
 &lt;span class="s"&gt;mount -t proc none /proc&lt;/span&gt;
 &lt;span class="s"&gt;brctl addbr br0&lt;/span&gt;
 &lt;span class="s"&gt;brctl addif br0 eth0&lt;/span&gt;
@@ -673,8 +722,8 @@ cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;$R/script&amp;quot;&lt;/span&gt; &
 &lt;span class="s"&gt;umount /proc&lt;/span&gt;
 &lt;span class="s"&gt;EOF&lt;/span&gt;
 
-chroot &lt;span class="s2"&gt;&amp;quot;$R&amp;quot;&lt;/span&gt; sh script
-rm -r &lt;span class="s2"&gt;&amp;quot;$R/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$R/lib&amp;quot;&lt;/span&gt;
+chroot &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; sh script
+rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/lib&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -805,16 +854,16 @@ gem install bundle
 движений обновляется.&lt;/p&gt;
 &lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
 папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
 
-    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${RUBY}&amp;quot;&lt;/span&gt; in
-        *18&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.8&amp;quot;&lt;/span&gt; ;;
-        *19&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.9.1&amp;quot;&lt;/span&gt; ;;
-          *&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${RUBY##*/}&amp;quot;&lt;/span&gt; ;;
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; in
+        *18&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.8&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+        *19&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.9.1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+          *&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
     &lt;span class="k"&gt;esac&lt;/span&gt;
 
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${HOME}/.gem/ruby/${VERSION}/bin:${PATH}&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.gem/ruby/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/bin:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1146,9 +1195,9 @@ eselect lcdfilter set infinality
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env bash&lt;/span&gt;
-&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q | grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; | awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; | sort | uniq&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;for &lt;/span&gt;author in &lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;; &lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${author} = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;;
+&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

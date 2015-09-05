@@ -117,11 +117,11 @@
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/source"&gt;source&lt;/a&gt;).   Другая   для   сгенерированных   &lt;em&gt;html&lt;/em&gt;   страничек
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/master"&gt;master&lt;/a&gt;).   Для   публикации    на   master   ветку   использую
 &lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt;. Для удобства поправил &lt;em&gt;Makefile&lt;/em&gt; следующим образом:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;ghp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;
     git push origin master
 
-&lt;span class="nf"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;publish&lt;/span&gt;
-    ghp-import -b master -m &lt;span class="s2"&gt;&amp;quot;Site update $(NOW)&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
+    ghp-import -b master -m &lt;span class="s2"&gt;&amp;quot;Site update &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;NOW&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

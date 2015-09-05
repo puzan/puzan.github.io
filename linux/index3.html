@@ -74,6 +74,26 @@ Puzan's Pages            </a>
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="http://puzan.info/linux/2013-02-03-svn-to-git.html">Svn to Git</a></h2>
+                <div class="summary"><p>Краткая инструкция миграции с <em>svn</em> на <em>git</em></p>
+<h3>Руководство к действию</h3>
+<ul>
+<li>
+<p>Найти всех авторов с помощью скрипта</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
+<span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
+<span class="k">done</span>
+</pre></div>
+
+
+<p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную ...</p></li></ul>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-02-03-svn-to-git.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html">Blogger пост из Emacs? Markdown + Googlecl script</a></h2>
                 <div class="summary"><p>Побаловался  с  <em>googlecl</em>.   Умудрился   случайно  наделать  множество  постов,
 состоящих всего  лишь из одного  слова в своем <a href="http://puzan-read.blogspot.ru" title="Чего начитался…">читальном  блоге</a>.  Сейчас
@@ -126,6 +146,11 @@ Puzan's Pages            </a>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
+                                Docker: Инициализация postgres
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html">
                                 Операционные системы?
                             </a>
@@ -143,11 +168,6 @@ Puzan's Pages            </a>
                         <li class="list-group-item">
                             <a href="http://puzan.info/linux/2014-08-19-ede-bol.html">
                                 EDE боль
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html">
-                                Для тех кто за proxy
                             </a>
                         </li>
                     </ul>
@@ -209,6 +229,16 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/config.html">
                                 config
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/database.html">
+                                database
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/docker.html">
+                                docker
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
@@ -359,6 +389,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/portage.html">
                                 portage
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/postgresql.html">
+                                postgresql
                             </a>
                         </li>
                         <li class="list-group-item tag-3">

@@ -81,9 +81,9 @@ Puzan's Pages            </a>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
 <div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
-<span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q | grep -e <span class="s1">&#39;^r&#39;</span> | awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> | sort | uniq<span class="k">)</span>
-<span class="k">for </span>author in <span class="k">${</span><span class="nv">authors</span><span class="k">}</span>; <span class="k">do</span>
-<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;${author} = NAME &lt;EMAIL&gt;&quot;</span>;
+<span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
+<span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
 <span class="k">done</span>
 </pre></div>
 
@@ -186,6 +186,16 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/config.html">
                                 config
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/database.html">
+                                database
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/docker.html">
+                                docker
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
@@ -336,6 +346,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/portage.html">
                                 portage
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/postgresql.html">
+                                postgresql
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
