@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['tag_cloud']
+
 AUTHOR = u'Ilya Zonov'
 SITENAME = u"Puzan's Pages"
 SITEURL = ''
