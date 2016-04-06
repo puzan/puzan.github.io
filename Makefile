@@ -25,6 +25,15 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 
 DROPBOX_DIR=~/Dropbox/Public/
 
+DRAFTDIR=$(INPUTDIR)/draft
+DATE := $(shell date +'%Y-%m-%d')
+DATETIME := $(shell date +'%Y-%m-%d %H:%M:%S')
+SLUG := $(shell echo '${NAME}' | sed -e 's/[^[:alnum:]]/-/g' | \
+	tr -s '-' | tr A-ZА-Я a-zа-я | sed -e 's/-$$//g')
+CATEGORY ?= linux
+EXT ?= md
+POSTFILE := $(DRAFTDIR)/$(DATE)-$(SLUG).$(EXT)
+
 NOW := $(shell date +"%c")
 
 DEBUG ?= 0
@@ -108,5 +117,18 @@ github: ghp
 
 ghp: publish
 	ghp-import -b master -m "Site update $(NOW)" $(OUTPUTDIR)
+
+newpost:
+ifdef NAME
+	@echo "Title: $(NAME)" > $(POSTFILE)
+	@echo "Category: $(CATEGORY)" >> $(POSTFILE)
+	@echo "Date: $(DATETIME)" >> $(POSTFILE)
+	@echo "" >> $(POSTFILE)
+	@echo "" >> $(POSTFILE)
+	@${EDITOR} ${POSTFILE}
+else
+	@echo 'Variable NAME is not defined.'
+	@echo 'Do make newpost NAME='"'"'Post Name'"'"
+endif
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
