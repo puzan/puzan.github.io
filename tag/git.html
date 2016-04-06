@@ -55,6 +55,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -125,7 +128,7 @@ Puzan's Pages            </a>
 <ul>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 <span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
 <span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
@@ -441,6 +444,11 @@ Puzan's Pages            </a>
                         <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ruby.html">
                                 ruby
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
                             </a>
                         </li>
                         <li class="list-group-item tag-3">

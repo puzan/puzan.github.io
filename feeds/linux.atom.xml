@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><updated>2015-09-06T00:39:07+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><published>2015-09-06T00:39:07+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
 &lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
 сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
 оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
@@ -8,7 +8,7 @@
 официального &lt;em&gt;postgres&lt;/em&gt; образа во время  старта контейнера.  Тогда все сводилось
 к тому  чтобы написать скрипт, который  стартует &lt;em&gt;postgres&lt;/em&gt; в &lt;em&gt;single&lt;/em&gt;  режиме и
 выполняет нужные &lt;em&gt;sql&lt;/em&gt; запросы. Например вот так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 gosu postgres postgres --single &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/create-testdb.sql
 gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/date-db.sql
@@ -17,7 +17,7 @@ gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;
 
 &lt;p&gt;Затем скрипт  и &lt;em&gt;sql&lt;/em&gt; файлы  надо было добавить в  контейнер во время  &lt;em&gt;build&lt;/em&gt; в
 папочку &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;. Пример &lt;em&gt;Dockerfile&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;FROM postgres:9
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM postgres:9
 
 ENV INIT_SQL /init-sql
 
@@ -48,7 +48,7 @@ COPY *.sql ${INIT_SQL}/
 &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;   папку),  а   вот   версионирования  образов   в
 зависимости от изменения  &lt;em&gt;Dockerfile&lt;/em&gt; на &lt;a href="https://hub.docker.com/"&gt;хабе&lt;/a&gt; нету.  Отсюда  вывод - без
 своего  &lt;em&gt;docker  registry&lt;/em&gt; никак  не  обойтись  и  на  внешние образы  лучше  не
-надеяться.&lt;/p&gt;</summary><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry><entry><title>Операционные системы?</title><link href="http://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
+надеяться.&lt;/p&gt;</summary><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry><entry><title>Операционные системы?</title><link href="http://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><published>2015-05-04T19:25:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
 операционным  системам.   Этакое  лирическое   отступление.   Один  из  мотивов:
 структурировать  информацию и  самому  разобраться, что  мне  больше нравится  в
 каждой из  ОС.  Но похоже получился  некий экскурс в историю  моего знакомства с
@@ -227,7 +227,7 @@ posix  совместимую  операционную систему,  кот�
   и яблочной инфраструктуры перекрывает  некоторые неудобства. В последнее время
   в &lt;em&gt;OS X&lt;/em&gt; не мало глюков (я тоже попал на баг с 5 Гц-вым &lt;em&gt;WiFi&lt;/em&gt;), но надежда на
   светлое будущее есть.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="linux"></category><category term="os x"></category><category term="windows"></category></entry><entry><title>Куда отдать компьютеры?</title><link href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
+&lt;/ul&gt;</summary><category term="linux"></category><category term="os x"></category><category term="windows"></category></entry><entry><title>Куда отдать компьютеры?</title><link href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><published>2015-02-21T00:00:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
 которую  я уже  не использую  и хочу  найти ей  новое место.  Выкидывать немного
 жалко, но и склад дома устраивать нет желания.&lt;/p&gt;
 &lt;p&gt;Было бы здорово  узнать, куда люди уносят отработавшие  компьютеры.  Свое железо
@@ -301,19 +301,19 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 как по &lt;em&gt;Ethernet&lt;/em&gt;, так и по &lt;em&gt;Wifi&lt;/em&gt; (если необходимо приложу и &lt;em&gt;Wifi&lt;/em&gt; карту).  Из
 очевидных  недостатков,  кроме  принципиальной старости  железа,  могу  отметить
 только   шум.    Весь   его   функционал   был   успешно   заменен   с   помощью
-&lt;em&gt;CubieBoard&lt;/em&gt;. Который кстати совсем не шумит.&lt;/p&gt;</summary><category term="hardware"></category><category term="linux"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><updated>2015-02-10T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+&lt;em&gt;CubieBoard&lt;/em&gt;. Который кстати совсем не шумит.&lt;/p&gt;</summary><category term="hardware"></category><category term="linux"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
 (&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
 резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
 бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;
 &lt;p&gt;С  доступом  к  &lt;em&gt;Time  Capsule&lt;/em&gt;  особых   проблем  в  &lt;em&gt;Linux&lt;/em&gt;  нету.   Ее  можно
 подмонтировать с помощью &lt;em&gt;cifs&lt;/em&gt; (не забываем установить &lt;code&gt;cifs-utils&lt;/code&gt;). В &lt;code&gt;fstab&lt;/code&gt;
 закидываем следующую строку и все должно работать после монтирования.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Но при этом в &lt;code&gt;/var/log/messages&lt;/code&gt; порой валит вот такие ошибки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;[151119.364105] ------------[ cut here ]------------
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[151119.364105] ------------[ cut here ]------------
 [151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
 [151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
 [151119.394514] [&amp;lt;c0015430&amp;gt;] (unwind_backtrace+0x0/0x134) from [&amp;lt;c003322c&amp;gt;] (warn_slowpath_common+0x54/0x64)
@@ -340,14 +340,14 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 бекапы.  Вроде как настроил систему  аналогичную &lt;em&gt;Time Capsule&lt;/em&gt; c чисткой старых
 поколений бекапов (см. поле &lt;code&gt;keep&lt;/code&gt; в  настройках ниже).  Для всего этого написал
 небольшой скрипт следующего содержания и положил это добро в крон:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
 
 logger &lt;span class="s2"&gt;&amp;quot;Start backup&amp;quot;&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; ! &lt;span class="o"&gt;(&lt;/span&gt;df &lt;span class="p"&gt;|&lt;/span&gt; tail -n +2 &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -q &lt;span class="s1"&gt;&amp;#39;^/mnt/tc$&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;then&lt;/span&gt;
     logger &lt;span class="s2"&gt;&amp;quot;Backup fails: tc is not mounted&amp;quot;&lt;/span&gt;
-    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+    &lt;span class="nb"&gt;exit&lt;/span&gt; 1
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
 nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam backup
@@ -365,7 +365,7 @@ logger &lt;span class="s2"&gt;&amp;quot;End backup&amp;quot;&lt;/span&gt;
 
 
 &lt;p&gt;А вот и &lt;strong&gt;obnam&lt;/strong&gt; конфиг:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;[config]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[config]
 repository = /mnt/tc/backup
 log = /var/log/obnam.log
 log-max = 10M
@@ -407,7 +407,7 @@ compress-with = deflate
 файловая система  на диске с  данными слегка  поплыла.  Чиниться через  &lt;code&gt;fsck&lt;/code&gt; и
 монтироваться  отказывалась.  Данные  в принципе  можно было  бы восстановить  с
 диска,  но  быстрее и  проще  оказалось  воспользоваться бекапом.   Бекаптесь  -
-пригодится!&lt;/p&gt;</summary><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry><entry><title>EDE боль</title><link href="http://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><updated>2014-08-19T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+пригодится!&lt;/p&gt;</summary><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry><entry><title>EDE боль</title><link href="http://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><published>2014-08-19T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
 каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
 попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
 чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
@@ -446,7 +446,7 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 загружает конфигурацию проекта из &lt;code&gt;.Project&lt;/code&gt; файла, если он еще не был загружен.
 Также он  обновляет список &lt;em&gt;include&lt;/em&gt;  путей для &lt;code&gt;clang&lt;/code&gt;, который  используется в
 &lt;code&gt;auto-complete-clang&lt;/code&gt; и &lt;code&gt;flycheck&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;proj-file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.Project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-current-project&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proj-dir-tmp&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;locate-dominating-file&lt;/span&gt; &lt;span class="nv"&gt;buffer-file-name&lt;/span&gt; &lt;span class="nv"&gt;proj-file&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -479,7 +479,7 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
 (как видите реальной проверки на это нету). Например вот такое:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Makefile&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/inc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -499,7 +499,7 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;P.S. Все  эти негативные  впечатления от использования  &lt;em&gt;EDE&lt;/em&gt; видимо  возникли в
 результате годового использования &lt;strong&gt;Eclipse&lt;/strong&gt; и &lt;strong&gt;Idea&lt;/strong&gt; для программирования на
 &lt;em&gt;Java&lt;/em&gt;.   Пробовал  &lt;strong&gt;Emacs&lt;/strong&gt;  заточить  для  &lt;em&gt;Java&lt;/em&gt;,  но  затея  не  увенчалась
-успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</summary><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry><entry><title>Для тех кто за proxy</title><link href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html" rel="alternate"></link><updated>2014-08-09T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-09:linux/2014-08-09-dlia-tekh-kto-za-proxy.html</id><summary type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</summary><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry><entry><title>Для тех кто за proxy</title><link href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html" rel="alternate"></link><published>2014-08-09T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-09:linux/2014-08-09-dlia-tekh-kto-za-proxy.html</id><summary type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
 злобное  прокси, которое  режет,  например, &lt;em&gt;ssh&lt;/em&gt;  трафик.   Также бывают  такие
 ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
 тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
@@ -515,18 +515,18 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 домашнего сервака  по &lt;em&gt;ssh&lt;/em&gt; из-за  прокси.  Неудобство данной утилиты  состоит в
 том,  что необходимо  предварительно установить  серверную часть  на машину,  до
 которой хотим добраться.  И запустить например так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;hts -F localhost:22 8080
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hts -F localhost:22 8080
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этих телодвижений  можно подключаться к локальному порту  &lt;code&gt;8022&lt;/code&gt; с помощью
 &lt;em&gt;ssh&lt;/em&gt; дабы добраться до своего сервака:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;ssh -p 8022 user@localhost
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -p 8022 user@localhost
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -537,20 +537,20 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
 конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
 порадовал. Добавляем в конфиг необходимую информацию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;[ProxyList]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[ProxyList]
 http    &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;И теперь можем спокойно подключаться к своему серверу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Также успешно через &lt;code&gt;proxychain4&lt;/code&gt; запускаю десктопную версию Viber'а, которая не
 поддерживает работу с proxy:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -560,7 +560,7 @@ https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 линуксе  они тоже  должны быть  доступны и  успешно работать.   Было бы  здорово
 узнать,  какие решения  есть еще.   Ну и  надеюсь эта  информация будет  кому-то
 полезна.  Сам долго  искал эти утилиты. Лучше конечно, когда  на вашем пути нету
-прокси.&lt;/p&gt;</summary><category term="proxy"></category><category term="network"></category><category term="ssh"></category></entry><entry><title>Direnv</title><link href="http://puzan.info/linux/2014-05-14-direnv.html" rel="alternate"></link><updated>2014-05-14T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-14:linux/2014-05-14-direnv.html</id><summary type="html">&lt;p&gt;Как-то раз в  одном из выпусков &lt;a href="http://razbor-poletov.com/2014/03/episode-56.html"&gt;Разбор Полетов&lt;/a&gt; услышал  про отличную и
+прокси.&lt;/p&gt;</summary><category term="proxy"></category><category term="network"></category><category term="ssh"></category></entry><entry><title>Direnv</title><link href="http://puzan.info/linux/2014-05-14-direnv.html" rel="alternate"></link><published>2014-05-14T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-14:linux/2014-05-14-direnv.html</id><summary type="html">&lt;p&gt;Как-то раз в  одном из выпусков &lt;a href="http://razbor-poletov.com/2014/03/episode-56.html"&gt;Разбор Полетов&lt;/a&gt; услышал  про отличную и
 удобную консольную штуку: &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;. Она позволяет выставлять необходимое
 окружение в  зависимости от  текущей директории.  При  этом для  вложенных папок
 &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;  окружение сохраняется  (если  не было  переопределено), а  при
@@ -571,14 +571,14 @@ https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 &lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;direnv hook &lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее переходим в нужную директорию и обновляем для нее окружение:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
 $ direnv edit .
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -587,13 +587,13 @@ $ direnv edit .
 &lt;strong&gt;$EDITOR&lt;/strong&gt;.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
 виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
 следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Теперь при переходе в папку &lt;code&gt;&amp;lt;path/to/project&amp;gt;&lt;/code&gt; мы увидим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
 direnv: loading .envrc
 direnv: export +ANDROID_SDK +ANT_ARGS
 $ echo $ANDROID_SDK
@@ -604,7 +604,7 @@ $ echo $ANT_ARGS
 
 
 &lt;p&gt;При выходе из директории, например на уровень выше, окружение выгрузится:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd ..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ..
 direnv: unloading
 $ echo $ANDROID_SDK
 
@@ -616,7 +616,7 @@ $
 
 &lt;p&gt;Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
 окружения. Помещаем слудующую строчку в &lt;code&gt;.envrc&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;layout python
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;layout python
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -627,31 +627,31 @@ $
 возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
 &lt;code&gt;~/.virtualenvs/&lt;/code&gt; использовать.   Для этого  добавляем в файл  &lt;code&gt;~/.direnvrc&lt;/code&gt; вот
 такую функцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
-&lt;span class="c"&gt;#&lt;/span&gt;
-&lt;span class="c"&gt;# Loads the specified python virtualenv&lt;/span&gt;
-&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Loads the specified python virtualenv&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
 use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
     PATH_add &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого в &lt;code&gt;.envrc&lt;/code&gt; можно использовать следующую кострукцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;use venv &amp;lt;venv_name&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;use venv &amp;lt;venv_name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В общем, возможности для расширения  есть. Думаю можно разширить практически под
 любую задачу.  На  мой взгляд &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt; очень  удобная штука, позволяющая
 забыть про  дополнительную настройку  окружения новых  проектов. Кроме  того эта
-методика позволяет избежать захламления файлов инициализации.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>VirtualBox проблемы с Bridged network через Wifi на Mac</title><link href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html" rel="alternate"></link><updated>2014-05-08T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-08:linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</id><summary type="html">&lt;p&gt;На днях  столкнулся с проблемой настройки  сети в &lt;em&gt;VirtualBox&lt;/em&gt; на  &lt;em&gt;MacBook&lt;/em&gt;.  В
+методика позволяет избежать захламления файлов инициализации.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>VirtualBox проблемы с Bridged network через Wifi на Mac</title><link href="http://puzan.info/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html" rel="alternate"></link><published>2014-05-08T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-08:linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</id><summary type="html">&lt;p&gt;На днях  столкнулся с проблемой настройки  сети в &lt;em&gt;VirtualBox&lt;/em&gt; на  &lt;em&gt;MacBook&lt;/em&gt;.  В
 качестве гостевой системы пробовал &lt;em&gt;Gentoo&lt;/em&gt; и &lt;em&gt;CentOS&lt;/em&gt; (от &lt;em&gt;Puppet&lt;/em&gt;).  Ноутбук у
 меня  естественно  подключен  к  сети  через  &lt;em&gt;Wifi&lt;/em&gt;.   После  некоторых  опытов
 выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
 &lt;code&gt;DHCPOFFER&lt;/code&gt; от dhcp сервера. Вот логи с сервера:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
@@ -662,7 +662,7 @@ May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27
 
 &lt;p&gt;И то что  видно в виртуалке (время немного  не то, но это не  страшно: логи были
 такие же):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
 May  6 21:56:47 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 8 (xid=0x3a4517ed)
 May  6 21:56:55 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 14 (xid=0x3a4517ed)
 May  6 21:57:09 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 1 (xid=0x3a4517ed)
@@ -689,7 +689,7 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 удобнее получать его автоматом.&lt;/p&gt;
 &lt;p&gt;Какое  решение тут  будет  самым  оптимальным? Есть  подозрение,  что моя  схема
 несколько избыточна. Для  меня достаточно иметь SSH доступ к  гостевой системе и
-чтобы она имела доступ в интернет.&lt;/p&gt;</summary><category term="mac"></category><category term="virtualbox"></category></entry><entry><title>Как создать bridge на nfs root</title><link href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-09-03:linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+чтобы она имела доступ в интернет.&lt;/p&gt;</summary><category term="mac"></category><category term="virtualbox"></category></entry><entry><title>Как создать bridge на nfs root</title><link href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><published>2013-09-03T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-09-03:linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
 загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
 Данное условие необходимо  для возможности быстро изменить что-то  в системе без
 необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
@@ -706,7 +706,7 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 &lt;em&gt;bridge&lt;/em&gt;  из нового  окружения.   Данный  метод работает  на  ура, нареканий  не
 заметил.&lt;/p&gt;
 &lt;p&gt;Вот собственно решение с моими малюсенькими изменениями:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
 mount -o remount,exec /tmp
 &lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
 &lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
@@ -729,7 +729,7 @@ rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt
 
 &lt;p&gt;В нутрь &lt;code&gt;script&lt;/code&gt; в принципе можно вставить все, что вам будет необходимо.&lt;/p&gt;
 &lt;p&gt;Хорош ли  метод?  Мне  по крайней  мере понравился.   Есть еще  предложения, как
-возможно решить данный вопрос?&lt;/p&gt;</summary><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry><entry><title>Emacs + Java</title><link href="http://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><updated>2013-08-25T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+возможно решить данный вопрос?&lt;/p&gt;</summary><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry><entry><title>Emacs + Java</title><link href="http://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><published>2013-08-25T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
 Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
 всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
 сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
@@ -798,7 +798,7 @@ rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt
 &lt;p&gt;На  данный   момент  я  остановился   на  последнем  варианте:  &lt;em&gt;Cedet&lt;/em&gt;   Dev  +
 &lt;code&gt;auto-complete&lt;/code&gt;. Есть  у кого  еще предложения  как улучшить  жизнь в  Emacs при
 работе с &lt;em&gt;Java&lt;/em&gt;?  Или все таки &lt;em&gt;Cedet&lt;/em&gt;  это наше все и смотреть в другие стороны
-лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><published>2013-06-11T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
 Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
 меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
 какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
@@ -834,10 +834,10 @@ rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt
 синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
 достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
 истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
-пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Gems и другие пакетные менеджеры</title><link href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><updated>2013-06-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-04:linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Gems и другие пакетные менеджеры</title><link href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><published>2013-06-04T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-04:linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;gem install git-up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
 gem install bundle
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -854,7 +854,7 @@ gem install bundle
 движений обновляется.&lt;/p&gt;
 &lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
 папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; in
@@ -863,7 +863,7 @@ gem install bundle
           *&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
     &lt;span class="k"&gt;esac&lt;/span&gt;
 
-    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.gem/ruby/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/bin:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.gem/ruby/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/bin:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -878,7 +878,7 @@ gem install bundle
 дистрибутивах, но думаю как-то также.&lt;/p&gt;
 &lt;p&gt;Еще в последнее  время натолкнулся на &lt;em&gt;pip&lt;/em&gt; для &lt;em&gt;python&lt;/em&gt;  и &lt;em&gt;npm&lt;/em&gt; для &lt;em&gt;node.js&lt;/em&gt;.
 Идея общественных  хранилищ для программ,  написанных на определенном  языке как
-никак популярна сейчас. И это реально удобно.&lt;/p&gt;</summary><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry><entry><title>Личный Firefox Sync</title><link href="http://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html" rel="alternate"></link><updated>2013-06-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-03:linux/2013-06-03-lichnyi-firefox-sync.html</id><summary type="html">&lt;p&gt;Для синхронизации браузерной  информации я использую &lt;em&gt;Firefox  Sync&lt;/em&gt;.  Но совсем
+никак популярна сейчас. И это реально удобно.&lt;/p&gt;</summary><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry><entry><title>Личный Firefox Sync</title><link href="http://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html" rel="alternate"></link><published>2013-06-03T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-03:linux/2013-06-03-lichnyi-firefox-sync.html</id><summary type="html">&lt;p&gt;Для синхронизации браузерной  информации я использую &lt;em&gt;Firefox  Sync&lt;/em&gt;.  Но совсем
 недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер
 не доступен, хотя  на сайте &lt;a href="https://services.mozilla.com/status/"&gt;mozilla&lt;/a&gt; не было  сообщений о каких-то
 ошибках и неполадках в работе сервиса. Сейчас кстати есть:&lt;/p&gt;
@@ -900,7 +900,7 @@ presently.&lt;/p&gt;
   искал.&lt;/li&gt;
 &lt;li&gt;Фактически  нет  ограничения  на  размер  хранимых  данных.  Стандартный  5-ти
   мегабайтный предел я умудрился превысить.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="firefox"></category><category term="gentoo"></category><category term="portage"></category><category term="ebuild"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+&lt;/ul&gt;</summary><category term="firefox"></category><category term="gentoo"></category><category term="portage"></category><category term="ebuild"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
 большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
 ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
 &lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
@@ -919,12 +919,12 @@ presently.&lt;/p&gt;
 &lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
   исправлением всех конфликтов:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout feature
 $ git merge origin/master
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 2a55e67 (origin/feature) b&amp;#39;
@@ -936,7 +936,7 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (origin/feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (origin/feature) c&amp;#39;
 | *   b8c37f7 (HEAD, feature) c&amp;#39;
 | |\
 |/ /
@@ -950,11 +950,11 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git merge origin/feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git merge origin/feature
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   781dea7 (HEAD, feature) d&amp;#39;
 |\
 | * 3820f07 (origin/feature) c&amp;#39;
 * |   b8c37f7 c&amp;#39;
@@ -972,11 +972,11 @@ $ git merge origin/master
 &lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
   с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git reset --soft origin/feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git reset --soft origin/feature
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
 * 2a55e67 b&amp;#39;
 | * 7020561 (origin/master) b
 |/
@@ -987,12 +987,12 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
 $ git commit
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 3820f07 (origin/feature) c&amp;#39;
@@ -1006,7 +1006,7 @@ $ git commit
 веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
 объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
 &lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
-слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><published>2013-05-24T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
 казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
 &lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
 &lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
@@ -1017,7 +1017,7 @@ $ git commit
 &lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
 в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
 помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -1038,12 +1038,12 @@ $ git commit
 
 &lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
 &lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.precomposeunicode true
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.precomposeunicode true
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого видим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -1062,8 +1062,8 @@ $ git commit
 в привычном виде.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
 проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.quotepath false
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="http://puzan.info/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-23:linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath false
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="http://puzan.info/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><published>2013-05-23T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-23:linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
 для ведения заметок.  Пользуюсь им с &lt;em&gt;iPhone&lt;/em&gt; и через  веб интерфейс с остальных
 систем  (дом  - &lt;em&gt;Linux&lt;/em&gt;,  работа  -  &lt;em&gt;Windows&lt;/em&gt;).  А  теперь еще  и  оригинальным
 приложением для &lt;em&gt;Mac&lt;/em&gt;'а пользоваться начал.&lt;/p&gt;
@@ -1078,7 +1078,7 @@ $ git commit
 установить &lt;em&gt;Evernote Web clipper&lt;/em&gt; поверх нового профиля &lt;em&gt;Firefox&lt;/em&gt;'а.&lt;/p&gt;
 &lt;p&gt;P.S. [2013-05-24] На  работе поставил поверх чистого профиля  клиппер. Он пароль
 вроде  как перестал  агрессивно  спрашивать. Когда  до стационарного  компьютера
-доберусь, попробую найти файлы, которые надо почистить, чтобы профиль не менять.&lt;/p&gt;</summary><category term="web"></category><category term="evernote"></category></entry><entry><title>Xbox One. Впечатления</title><link href="http://puzan.info/linux/2013-05-22-xbox-one-vpechatleniia.html" rel="alternate"></link><updated>2013-05-22T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-22:linux/2013-05-22-xbox-one-vpechatleniia.html</id><summary type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
+доберусь, попробую найти файлы, которые надо почистить, чтобы профиль не менять.&lt;/p&gt;</summary><category term="web"></category><category term="evernote"></category></entry><entry><title>Xbox One. Впечатления</title><link href="http://puzan.info/linux/2013-05-22-xbox-one-vpechatleniia.html" rel="alternate"></link><published>2013-05-22T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-22:linux/2013-05-22-xbox-one-vpechatleniia.html</id><summary type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
 Похоже  уже давним  являюсь  поклонником  Xbox'а. Давным  давно  купил Xbox  360
 пополам с  сестрой.  Веселая  была история! Чтобы  уговорить сестру  на подобную
 сделку, был куплен специальный &lt;strong&gt;розовый&lt;/strong&gt; джойстик.   До этого я долго не играл
@@ -1109,7 +1109,7 @@ Station. Черный,  квадратно-прямоугольный. Где э
 танцевальную вечеринку (Dance  Central). Сколько с друзьями не  собирались все в
 полном  восторге.    Xbox  однозначно  лучший   продукт  Microsoft  (как   бы  я
 недолюбливал  эту компанию).  Если игры  и компьютерные  развлечения, то  только
-Xbox.&lt;/p&gt;</summary><category term="xbox"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+Xbox.&lt;/p&gt;</summary><category term="xbox"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><published>2013-05-21T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
 проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
 своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
 заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
@@ -1134,7 +1134,7 @@ Air&lt;/em&gt;. Поэтому с этого момента на данном б
 &lt;/ul&gt;
 &lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
 такой ошибкой:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1145,11 +1145,11 @@ Air&lt;/em&gt;. Поэтому с этого момента на данном б
 собрать. Какие еще варианты? Куда копать на mac'е?&lt;/p&gt;
 &lt;p&gt;PS. Вот и ушло у меня пару часов на написание казалось бы небольшого текста.&lt;/p&gt;
 &lt;p&gt;P.S.   [2013-05-25]  &lt;em&gt;bash&lt;/em&gt; все  равно  продолжает  падать даже  с  выключенными
-completions и git-prompt. Происходит это стабильно раз в день.&lt;/p&gt;</summary><category term="mac"></category><category term="bash"></category></entry><entry><title>Infinality патчи на стабильной ветке</title><link href="http://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html" rel="alternate"></link><updated>2013-02-12T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-12:linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</id><summary type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+completions и git-prompt. Происходит это стабильно раз в день.&lt;/p&gt;</summary><category term="mac"></category><category term="bash"></category></entry><entry><title>Infinality патчи на стабильной ветке</title><link href="http://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html" rel="alternate"></link><published>2013-02-12T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-12:linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</id><summary type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
@@ -1159,7 +1159,7 @@ eselect lcdfilter set infinality
 &lt;p&gt;Как видим теперь необходимо несколько раз дополнительно запустить &lt;code&gt;eselect&lt;/code&gt;. При
 этом   вариантов  для   выбора  &lt;code&gt;eselect   infinality&lt;/code&gt;  и   &lt;code&gt;eselect  lcdfilter&lt;/code&gt;
 предоставляют многовато.   Я с  ними не  экспериментировал.  Если  кто пробовал,
-поделитесь впечатлениями.&lt;/p&gt;</summary><category term="gentoo"></category><category term="infinality"></category><category term="fonts"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+поделитесь впечатлениями.&lt;/p&gt;</summary><category term="gentoo"></category><category term="infinality"></category><category term="fonts"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
 &lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
 всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
@@ -1172,7 +1172,7 @@ eselect lcdfilter set infinality
 &lt;li&gt;
 &lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
   &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  usermod -a -G git redmine
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  usermod -a -G git redmine
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1183,18 +1183,18 @@ eselect lcdfilter set infinality
   создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
-  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;  chmod -R g+rX
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  chmod -R g+rX
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="http://puzan.info/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><updated>2013-02-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-03:linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="http://puzan.info/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><published>2013-02-03T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-03:linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
 &lt;h3&gt;Руководство к действию&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1206,7 +1206,7 @@ eselect lcdfilter set infinality
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Склонировать &lt;em&gt;svn&lt;/em&gt; репозиторий&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1222,7 +1222,7 @@ eselect lcdfilter set infinality
 &lt;li&gt;
 &lt;p&gt;Импорт ignore файлов&lt;/p&gt;
 &lt;p&gt;На каждой ветке необходимо сделать следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git checkout BRANCH
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout BRANCH
 git svn create-ignore
 git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1236,7 +1236,7 @@ git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
 &lt;li&gt;&lt;a href="http://leonid.shevtsov.me/ru/perenos-svn-repozitariya-v-git" title="Перенос SVN-репозитария в git"&gt;Перенос SVN-репозитария в git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/post/144626/" title="Переезд проекта с SVN на Git"&gt;Переезд проекта с SVN на Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/company/wapstart/blog/159477/" title="how to: Как и зачем работать с svn через git"&gt;how to: Как и зачем работать с svn через git&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="svn"></category><category term="git"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+&lt;/ul&gt;</summary><category term="svn"></category><category term="git"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><published>2013-01-24T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
 состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
 вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
 — проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации

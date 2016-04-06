@@ -61,6 +61,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -119,7 +122,7 @@ Puzan's Pages            </a>
 официального <em>postgres</em> образа во время  старта контейнера.  Тогда все сводилось
 к тому  чтобы написать скрипт, который  стартует <em>postgres</em> в <em>single</em>  режиме и
 выполняет нужные <em>sql</em> запросы. Например вот так:</p>
-<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 gosu postgres postgres --single &lt; <span class="si">${</span><span class="nv">INIT_SQL</span><span class="si">}</span>/create-testdb.sql
 gosu postgres postgres --single -j testdb &lt; <span class="si">${</span><span class="nv">INIT_SQL</span><span class="si">}</span>/date-db.sql
@@ -128,7 +131,7 @@ gosu postgres postgres --single -j testdb &lt; <span class="si">${</span><span c
 
 <p>Затем скрипт  и <em>sql</em> файлы  надо было добавить в  контейнер во время  <em>build</em> в
 папочку <code>/docker-entrypoint-initdb.d/</code>. Пример <em>Dockerfile</em>:</p>
-<div class="highlight"><pre>FROM postgres:9
+<div class="highlight"><pre><span></span>FROM postgres:9
 
 ENV INIT_SQL /init-sql
 
@@ -228,6 +231,11 @@ COPY *.sql ${INIT_SQL}/
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -245,11 +253,6 @@ COPY *.sql ${INIT_SQL}/
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -504,6 +507,11 @@ COPY *.sql ${INIT_SQL}/
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -575,7 +583,7 @@ COPY *.sql ${INIT_SQL}/
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

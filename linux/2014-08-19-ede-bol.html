@@ -61,6 +61,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -149,7 +152,7 @@ Environment</em>.</p>
 загружает конфигурацию проекта из <code>.Project</code> файла, если он еще не был загружен.
 Также он  обновляет список <em>include</em>  путей для <code>clang</code>, который  используется в
 <code>auto-complete-clang</code> и <code>flycheck</code>.</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">init/project-update</span> <span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">init/project-update</span> <span class="p">()</span>
   <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">proj-file</span> <span class="s">&quot;.Project&quot;</span><span class="p">)</span>
          <span class="p">(</span><span class="nv">ede-proj</span> <span class="p">(</span><span class="nv">ede-current-project</span><span class="p">))</span>
          <span class="p">(</span><span class="nv">proj-dir-tmp</span> <span class="p">(</span><span class="nv">locate-dominating-file</span> <span class="nv">buffer-file-name</span> <span class="nv">proj-file</span><span class="p">))</span>
@@ -182,7 +185,7 @@ Environment</em>.</p>
 
 <p>А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
 (как видите реальной проверки на это нету). Например вот такое:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nv">ede-cpp-root-project</span> <span class="s">&quot;NewProject&quot;</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">ede-cpp-root-project</span> <span class="s">&quot;NewProject&quot;</span>
                       <span class="ss">:name</span> <span class="s">&quot;NewProject&quot;</span>
                       <span class="ss">:file</span> <span class="s">&quot;Makefile&quot;</span>
                       <span class="ss">:include-path</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;/inc&quot;</span><span class="p">)</span>
@@ -271,6 +274,11 @@ Environment</em>.</p>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -288,11 +296,6 @@ Environment</em>.</p>
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -547,6 +550,11 @@ Environment</em>.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -618,7 +626,7 @@ Environment</em>.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

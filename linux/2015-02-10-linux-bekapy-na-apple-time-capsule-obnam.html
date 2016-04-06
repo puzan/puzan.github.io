@@ -64,6 +64,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -126,12 +129,12 @@ Puzan's Pages            </a>
 <p>С  доступом  к  <em>Time  Capsule</em>  особых   проблем  в  <em>Linux</em>  нету.   Ее  можно
 подмонтировать с помощью <em>cifs</em> (не забываем установить <code>cifs-utils</code>). В <code>fstab</code>
 закидываем следующую строку и все должно работать после монтирования.</p>
-<div class="highlight"><pre>//&lt;TC.local or direct ip&gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+<div class="highlight"><pre><span></span>//&lt;TC.local or direct ip&gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
 </pre></div>
 
 
 <p>Но при этом в <code>/var/log/messages</code> порой валит вот такие ошибки:</p>
-<div class="highlight"><pre>[151119.364105] ------------[ cut here ]------------
+<div class="highlight"><pre><span></span>[151119.364105] ------------[ cut here ]------------
 [151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
 [151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
 [151119.394514] [&lt;c0015430&gt;] (unwind_backtrace+0x0/0x134) from [&lt;c003322c&gt;] (warn_slowpath_common+0x54/0x64)
@@ -158,14 +161,14 @@ Puzan's Pages            </a>
 бекапы.  Вроде как настроил систему  аналогичную <em>Time Capsule</em> c чисткой старых
 поколений бекапов (см. поле <code>keep</code> в  настройках ниже).  Для всего этого написал
 небольшой скрипт следующего содержания и положил это добро в крон:</p>
-<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 logger <span class="s2">&quot;Start backup&quot;</span>
 
 <span class="k">if</span> ! <span class="o">(</span>df <span class="p">|</span> tail -n +2 <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> grep -q <span class="s1">&#39;^/mnt/tc$&#39;</span><span class="o">)</span>
 <span class="k">then</span>
     logger <span class="s2">&quot;Backup fails: tc is not mounted&quot;</span>
-    <span class="nb">exit </span>1
+    <span class="nb">exit</span> 1
 <span class="k">fi</span>
 
 nice -n <span class="m">19</span> ionice -c2 -n7 obnam backup
@@ -183,7 +186,7 @@ logger <span class="s2">&quot;End backup&quot;</span>
 
 
 <p>А вот и <strong>obnam</strong> конфиг:</p>
-<div class="highlight"><pre>[config]
+<div class="highlight"><pre><span></span>[config]
 repository = /mnt/tc/backup
 log = /var/log/obnam.log
 log-max = 10M
@@ -294,6 +297,11 @@ compress-with = deflate
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -311,11 +319,6 @@ compress-with = deflate
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -570,6 +573,11 @@ compress-with = deflate
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -641,7 +649,7 @@ compress-with = deflate
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

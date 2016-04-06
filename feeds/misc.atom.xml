@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/misc.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-03-15T10:48:45+03:00</updated><entry><title>Полоса загрузки в OS X</title><link href="http://puzan.info/misc/2015-03-15-polosa-zagruzki-v-os-x.html" rel="alternate"></link><updated>2015-03-15T10:48:45+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-15:misc/2015-03-15-polosa-zagruzki-v-os-x.html</id><summary type="html">&lt;p&gt;Одно  из  чудовищных нововведений  &lt;em&gt;Yosemite&lt;/em&gt;  —  это полоса  загрузки.   Звучит
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/misc.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-03-15T10:48:45+03:00</updated><entry><title>Полоса загрузки в OS X</title><link href="http://puzan.info/misc/2015-03-15-polosa-zagruzki-v-os-x.html" rel="alternate"></link><published>2015-03-15T10:48:45+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-15:misc/2015-03-15-polosa-zagruzki-v-os-x.html</id><summary type="html">&lt;p&gt;Одно  из  чудовищных нововведений  &lt;em&gt;Yosemite&lt;/em&gt;  —  это полоса  загрузки.   Звучит
 немного громко,  но все же &lt;em&gt;Apple&lt;/em&gt;  всегда славилась своим вниманием  к мелочам,
 особенно в дизайне. И вот эта полоска стопудово лишняя.&lt;/p&gt;
 &lt;p&gt;Когда я впервые включил свой &lt;em&gt;MacBook&lt;/em&gt;,  это был вау эффект. Он просто включился
@@ -25,7 +25,7 @@
 вот  реализация  как  известно  у  программных  продуктов  яблочной  компании  в
 последнее  время подхрамывает.   Судя по  всему они  берут курс  на стабилизацию
 системы. И это не  может не радовать. Будем надеятся, что  &lt;em&gt;OS X&lt;/em&gt; будет грузится
-так быстро, что полоса загрузки точно не понадобится.&lt;/p&gt;</summary><category term="os x"></category><category term="apple"></category><category term="mac"></category></entry><entry><title>Evernote виджет на Today экране (iOS)</title><link href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html" rel="alternate"></link><updated>2015-03-01T18:58:53+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-01:misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</id><summary type="html">&lt;p&gt;Это   небольшая    заметка   с    картинками   про   мой    опыт   использования
+так быстро, что полоса загрузки точно не понадобится.&lt;/p&gt;</summary><category term="os x"></category><category term="apple"></category><category term="mac"></category></entry><entry><title>Evernote виджет на Today экране (iOS)</title><link href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html" rel="alternate"></link><published>2015-03-01T18:58:53+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-03-01:misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</id><summary type="html">&lt;p&gt;Это   небольшая    заметка   с    картинками   про   мой    опыт   использования
 &lt;a href="https://itunes.apple.com/ru/app/evernote/id281796108?l=en&amp;amp;mt=8"&gt;Evernote&lt;/a&gt; на &lt;em&gt;iPhone 4S&lt;/em&gt;.  Она была задумала под «вау» эффектом после
 находки  полезной галочки  в настройках  этого удобного  приложения для  ведения
 заметок. Потом «вау» прошел, но я  решил все же немного порисовать на скриншотах
@@ -55,7 +55,7 @@
 пределы  экрана &lt;em&gt;4s&lt;/em&gt;,  но  мне  бы это  больше  нравилось,  так как  загружается
 &lt;em&gt;Evernote&lt;/em&gt;  у меня  не  сильно  быстро. А  иметь  быструю возможность  создавать
 заметку очень хочется.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Evernote share плагин" src="http://puzan.info/images/evernote-ios-share.png" /&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="evernote"></category></entry><entry><title>C++ party</title><link href="http://puzan.info/misc/2014-09-07-c-party.html" rel="alternate"></link><updated>2014-09-07T19:27:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:misc/2014-09-07-c-party.html</id><summary type="html">&lt;p&gt;Посетил  на  днях  (&lt;em&gt;2014-08-20&lt;/em&gt;,   задержался  с  постом)  &lt;a href="https://tech.yandex.ru/events/cpp-party/aug-nn/"&gt;c++  party&lt;/a&gt;,
+&lt;p&gt;&lt;img alt="Evernote share плагин" src="http://puzan.info/images/evernote-ios-share.png" /&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="evernote"></category></entry><entry><title>C++ party</title><link href="http://puzan.info/misc/2014-09-07-c-party.html" rel="alternate"></link><published>2014-09-07T19:27:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:misc/2014-09-07-c-party.html</id><summary type="html">&lt;p&gt;Посетил  на  днях  (&lt;em&gt;2014-08-20&lt;/em&gt;,   задержался  с  постом)  &lt;a href="https://tech.yandex.ru/events/cpp-party/aug-nn/"&gt;c++  party&lt;/a&gt;,
 организованную  &lt;em&gt;Яндексом&lt;/em&gt;   в  Нижнем  Новгороде.   Решил   оставить  тут  свои
 впечатления  от  этого  мероприятия.    Как  раз  под  категорию  &lt;a href="/misc/"&gt;Misc&lt;/a&gt;
 подходит.   Все было  очень  позитивненько и  познавательно.  Интересные люди  и
@@ -82,7 +82,7 @@
 начальство  в  необходимости выполнить  такой  крупный  рефакторинг (по  мотивам
 первого  доклада:  переход от  конечных  автоматов  к корутинам).   Кроме  того,
 видимо,  руководство само  заинтересовано в  подобном развитии  проектов.  Очень
-впечатляет. Я в своей рабочей деятельности такого пока не видел.&lt;/p&gt;</summary><category term="yandex"></category><category term="c++"></category></entry><entry><title>Приятности от Apple</title><link href="http://puzan.info/misc/2014-09-04-priiatnosti-ot-apple.html" rel="alternate"></link><updated>2014-09-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-04:misc/2014-09-04-priiatnosti-ot-apple.html</id><summary type="html">&lt;p&gt;На днях случайно обнаружил приятную фичу  от &lt;em&gt;Apple&lt;/em&gt;.  Точнее сказать со второго
+впечатляет. Я в своей рабочей деятельности такого пока не видел.&lt;/p&gt;</summary><category term="yandex"></category><category term="c++"></category></entry><entry><title>Приятности от Apple</title><link href="http://puzan.info/misc/2014-09-04-priiatnosti-ot-apple.html" rel="alternate"></link><published>2014-09-04T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-04:misc/2014-09-04-priiatnosti-ot-apple.html</id><summary type="html">&lt;p&gt;На днях случайно обнаружил приятную фичу  от &lt;em&gt;Apple&lt;/em&gt;.  Точнее сказать со второго
 раза понял,  что это действительно  фича, а не мой  глюк.  Речь идет  о передаче
 &lt;em&gt;Wifi&lt;/em&gt; паролей  между &lt;em&gt;Apple&lt;/em&gt;  девайсами.  Судя по  всему информация  хранится в
 &lt;em&gt;icloud'&lt;/em&gt;е и привязана к соответствующему &lt;em&gt;AppleID&lt;/em&gt;.&lt;/p&gt;
@@ -102,7 +102,7 @@
 подобное решение с их унифицированной операционной системой на всех устройствах.
 Хотя сомнительно -  не в их стиле.   У &lt;em&gt;Google&lt;/em&gt; тоже подобное  возможно.  Но кто
 нынче пользуется &lt;em&gt;Chrome  OS&lt;/em&gt;? Какие еще варианты? Может  приложения или сервисы
-какие-нибудь хитрые есть?&lt;/p&gt;</summary><category term="apple"></category><category term="mac"></category></entry><entry><title>Новый блог</title><link href="http://puzan.info/misc/2014-04-18-novyi-blog.html" rel="alternate"></link><updated>2014-04-18T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-04-18:misc/2014-04-18-novyi-blog.html</id><summary type="html">&lt;p&gt;После многих раздумий и рассмотрения  нескольких ваиантов, я решил перенести все
+какие-нибудь хитрые есть?&lt;/p&gt;</summary><category term="apple"></category><category term="mac"></category></entry><entry><title>Новый блог</title><link href="http://puzan.info/misc/2014-04-18-novyi-blog.html" rel="alternate"></link><published>2014-04-18T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-04-18:misc/2014-04-18-novyi-blog.html</id><summary type="html">&lt;p&gt;После многих раздумий и рассмотрения  нескольких ваиантов, я решил перенести все
 свои блоги  в одно место. Когда-то  давно я использовал &lt;a href="http://users.livejournal.com/_zain/" title="Пузатая жизнь"&gt;ЖЖ&lt;/a&gt;  для общих тем.
 Потом сделал отдельные бложики для &lt;a href="http://puzan-linux.blogspot.com/" title="Линукс штуки!"&gt;линукса&lt;/a&gt; и &lt;a href="http://puzan-read.blogspot.com/" title="Чего начитался..."&gt;книг&lt;/a&gt; на blogger'е.
 Еще была музыкальная  тема, но онп как-то  совсем у меня не  прокатила. Теперь я
@@ -117,7 +117,7 @@
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/source"&gt;source&lt;/a&gt;).   Другая   для   сгенерированных   &lt;em&gt;html&lt;/em&gt;   страничек
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/master"&gt;master&lt;/a&gt;).   Для   публикации    на   master   ветку   использую
 &lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt;. Для удобства поправил &lt;em&gt;Makefile&lt;/em&gt; следующим образом:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;
     git push origin master
 
 &lt;span class="nf"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;

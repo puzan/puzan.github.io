@@ -61,6 +61,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -126,18 +129,18 @@ Puzan's Pages            </a>
 домашнего сервака  по <em>ssh</em> из-за  прокси.  Неудобство данной утилиты  состоит в
 том,  что необходимо  предварительно установить  серверную часть  на машину,  до
 которой хотим добраться.  И запустить например так:</p>
-<div class="highlight"><pre>hts -F localhost:22 8080
+<div class="highlight"><pre><span></span>hts -F localhost:22 8080
 </pre></div>
 
 
 <p>Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:</p>
-<div class="highlight"><pre>htc -P &lt;proxy.server.com&gt;:&lt;port&gt; -F 8022 -w &lt;home.server.me&gt;:8080
+<div class="highlight"><pre><span></span>htc -P &lt;proxy.server.com&gt;:&lt;port&gt; -F 8022 -w &lt;home.server.me&gt;:8080
 </pre></div>
 
 
 <p>После этих телодвижений  можно подключаться к локальному порту  <code>8022</code> с помощью
 <em>ssh</em> дабы добраться до своего сервака:</p>
-<div class="highlight"><pre>ssh -p 8022 user@localhost
+<div class="highlight"><pre><span></span>ssh -p 8022 user@localhost
 </pre></div>
 
 
@@ -148,20 +151,20 @@ Puzan's Pages            </a>
 штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
 конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
 порадовал. Добавляем в конфиг необходимую информацию:</p>
-<div class="highlight"><pre>[ProxyList]
+<div class="highlight"><pre><span></span>[ProxyList]
 http    &lt;proxy_ip&gt;      &lt;proxy_port&gt;
 https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
 </pre></div>
 
 
 <p>И теперь можем спокойно подключаться к своему серверу:</p>
-<div class="highlight"><pre>proxychain4 ssh &lt;home.server.me&gt;
+<div class="highlight"><pre><span></span>proxychain4 ssh &lt;home.server.me&gt;
 </pre></div>
 
 
 <p>Также успешно через <code>proxychain4</code> запускаю десктопную версию Viber'а, которая не
 поддерживает работу с proxy:</p>
-<div class="highlight"><pre>proxychain4 &lt;/path/to/Viber&gt;
+<div class="highlight"><pre><span></span>proxychain4 &lt;/path/to/Viber&gt;
 </pre></div>
 
 
@@ -240,6 +243,11 @@ https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -257,11 +265,6 @@ https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -516,6 +519,11 @@ https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -587,7 +595,7 @@ https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

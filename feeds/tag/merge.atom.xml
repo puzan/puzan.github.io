@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/merge.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-01T00:00:00+04:00</updated><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/merge.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-01T00:00:00+04:00</updated><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
 большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
 ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
 &lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
@@ -18,12 +18,12 @@
 &lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
   исправлением всех конфликтов:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout feature
 $ git merge origin/master
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 2a55e67 (origin/feature) b&amp;#39;
@@ -35,7 +35,7 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (origin/feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (origin/feature) c&amp;#39;
 | *   b8c37f7 (HEAD, feature) c&amp;#39;
 | |\
 |/ /
@@ -49,11 +49,11 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git merge origin/feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git merge origin/feature
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   781dea7 (HEAD, feature) d&amp;#39;
 |\
 | * 3820f07 (origin/feature) c&amp;#39;
 * |   b8c37f7 c&amp;#39;
@@ -71,11 +71,11 @@ $ git merge origin/master
 &lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
   с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git reset --soft origin/feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git reset --soft origin/feature
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
 * 2a55e67 b&amp;#39;
 | * 7020561 (origin/master) b
 |/
@@ -86,12 +86,12 @@ $ git merge origin/master
 &lt;ul&gt;
 &lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
 $ git commit
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 3820f07 (origin/feature) c&amp;#39;

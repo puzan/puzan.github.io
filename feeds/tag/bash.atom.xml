@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/bash.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-05-14T00:00:00+04:00</updated><entry><title>Direnv</title><link href="http://puzan.info/linux/2014-05-14-direnv.html" rel="alternate"></link><updated>2014-05-14T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-14:linux/2014-05-14-direnv.html</id><summary type="html">&lt;p&gt;Как-то раз в  одном из выпусков &lt;a href="http://razbor-poletov.com/2014/03/episode-56.html"&gt;Разбор Полетов&lt;/a&gt; услышал  про отличную и
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/bash.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-05-14T00:00:00+04:00</updated><entry><title>Direnv</title><link href="http://puzan.info/linux/2014-05-14-direnv.html" rel="alternate"></link><published>2014-05-14T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-05-14:linux/2014-05-14-direnv.html</id><summary type="html">&lt;p&gt;Как-то раз в  одном из выпусков &lt;a href="http://razbor-poletov.com/2014/03/episode-56.html"&gt;Разбор Полетов&lt;/a&gt; услышал  про отличную и
 удобную консольную штуку: &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;. Она позволяет выставлять необходимое
 окружение в  зависимости от  текущей директории.  При  этом для  вложенных папок
 &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt;  окружение сохраняется  (если  не было  переопределено), а  при
@@ -10,14 +10,14 @@
 &lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;direnv hook &lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее переходим в нужную директорию и обновляем для нее окружение:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
 $ direnv edit .
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -26,13 +26,13 @@ $ direnv edit .
 &lt;strong&gt;$EDITOR&lt;/strong&gt;.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
 виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
 следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Теперь при переходе в папку &lt;code&gt;&amp;lt;path/to/project&amp;gt;&lt;/code&gt; мы увидим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
 direnv: loading .envrc
 direnv: export +ANDROID_SDK +ANT_ARGS
 $ echo $ANDROID_SDK
@@ -43,7 +43,7 @@ $ echo $ANT_ARGS
 
 
 &lt;p&gt;При выходе из директории, например на уровень выше, окружение выгрузится:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cd ..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ..
 direnv: unloading
 $ echo $ANDROID_SDK
 
@@ -55,7 +55,7 @@ $
 
 &lt;p&gt;Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
 окружения. Помещаем слудующую строчку в &lt;code&gt;.envrc&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;layout python
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;layout python
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -66,26 +66,26 @@ $
 возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
 &lt;code&gt;~/.virtualenvs/&lt;/code&gt; использовать.   Для этого  добавляем в файл  &lt;code&gt;~/.direnvrc&lt;/code&gt; вот
 такую функцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
-&lt;span class="c"&gt;#&lt;/span&gt;
-&lt;span class="c"&gt;# Loads the specified python virtualenv&lt;/span&gt;
-&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Loads the specified python virtualenv&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
 use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-    &lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
     PATH_add &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого в &lt;code&gt;.envrc&lt;/code&gt; можно использовать следующую кострукцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;use venv &amp;lt;venv_name&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;use venv &amp;lt;venv_name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В общем, возможности для расширения  есть. Думаю можно разширить практически под
 любую задачу.  На  мой взгляд &lt;a href="http://direnv.net/"&gt;direnv&lt;/a&gt; очень  удобная штука, позволяющая
 забыть про  дополнительную настройку  окружения новых  проектов. Кроме  того эта
-методика позволяет избежать захламления файлов инициализации.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+методика позволяет избежать захламления файлов инициализации.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="http://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><published>2013-05-21T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
 проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
 своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
 заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
@@ -110,7 +110,7 @@ Air&lt;/em&gt;. Поэтому с этого момента на данном б
 &lt;/ul&gt;
 &lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
 такой ошибкой:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
 &lt;/pre&gt;&lt;/div&gt;
 

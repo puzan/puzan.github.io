@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/redmine.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-02-05T00:00:00+04:00</updated><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/redmine.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-02-05T00:00:00+04:00</updated><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
 &lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
 всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
@@ -12,7 +12,7 @@
 &lt;li&gt;
 &lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
   &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  usermod -a -G git redmine
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  usermod -a -G git redmine
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -23,7 +23,7 @@
   создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
-  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;  chmod -R g+rX
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  chmod -R g+rX
 &lt;/pre&gt;&lt;/div&gt;
 
 

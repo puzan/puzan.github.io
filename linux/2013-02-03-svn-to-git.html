@@ -60,6 +60,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -112,7 +115,7 @@ Puzan's Pages            </a>
 <ul>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 <span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
 <span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
@@ -124,7 +127,7 @@ Puzan's Pages            </a>
 </li>
 <li>
 <p>Склонировать <em>svn</em> репозиторий</p>
-<div class="highlight"><pre>git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+<div class="highlight"><pre><span></span>git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
 </pre></div>
 
 
@@ -140,7 +143,7 @@ Puzan's Pages            </a>
 <li>
 <p>Импорт ignore файлов</p>
 <p>На каждой ветке необходимо сделать следующее:</p>
-<div class="highlight"><pre>git checkout BRANCH
+<div class="highlight"><pre><span></span>git checkout BRANCH
 git svn create-ignore
 git commit -a -m &quot;Import svn:ignore.&quot;
 </pre></div>
@@ -223,6 +226,11 @@ git commit -a -m &quot;Import svn:ignore.&quot;
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -240,11 +248,6 @@ git commit -a -m &quot;Import svn:ignore.&quot;
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -499,6 +502,11 @@ git commit -a -m &quot;Import svn:ignore.&quot;
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -570,7 +578,7 @@ git commit -a -m &quot;Import svn:ignore.&quot;
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

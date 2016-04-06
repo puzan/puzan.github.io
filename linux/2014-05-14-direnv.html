@@ -59,6 +59,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -115,14 +118,14 @@ Puzan's Pages            </a>
 <a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild">ebuild</a> в свой <a href="https://github.com/puzan/puzan-overlay">оверлей</a>.</p>
 <p>Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:</p>
-<div class="highlight"><pre><span class="k">if</span> which direnv &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> which direnv &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
     <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>direnv hook <span class="nv">$0</span><span class="k">)</span><span class="s2">&quot;</span>
 <span class="k">fi</span>
 </pre></div>
 
 
 <p>Далее переходим в нужную директорию и обновляем для нее окружение:</p>
-<div class="highlight"><pre>$ cd &lt;path/to/project&gt;
+<div class="highlight"><pre><span></span>$ cd &lt;path/to/project&gt;
 $ direnv edit .
 </pre></div>
 
@@ -131,13 +134,13 @@ $ direnv edit .
 <strong>$EDITOR</strong>.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
 виде: <code>export VAR=value</code>. Например, для Android проектов я использую нечто вроде
 следующего:</p>
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">ANDROID_SDK</span><span class="o">=</span>/Users/puzan/apps/android-sdk
-<span class="nb">export </span><span class="nv">ANT_ARGS</span><span class="o">=</span><span class="s2">&quot;-Dsdk.dir=</span><span class="si">${</span><span class="nv">ANDROID_SDK</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ANDROID_SDK</span><span class="o">=</span>/Users/puzan/apps/android-sdk
+<span class="nb">export</span> <span class="nv">ANT_ARGS</span><span class="o">=</span><span class="s2">&quot;-Dsdk.dir=</span><span class="si">${</span><span class="nv">ANDROID_SDK</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 
 
 <p>Теперь при переходе в папку <code>&lt;path/to/project&gt;</code> мы увидим следующее:</p>
-<div class="highlight"><pre>$ cd &lt;path/to/project&gt;
+<div class="highlight"><pre><span></span>$ cd &lt;path/to/project&gt;
 direnv: loading .envrc
 direnv: export +ANDROID_SDK +ANT_ARGS
 $ echo $ANDROID_SDK
@@ -148,7 +151,7 @@ $ echo $ANT_ARGS
 
 
 <p>При выходе из директории, например на уровень выше, окружение выгрузится:</p>
-<div class="highlight"><pre>$ cd ..
+<div class="highlight"><pre><span></span>$ cd ..
 direnv: unloading
 $ echo $ANDROID_SDK
 
@@ -160,7 +163,7 @@ $
 
 <p>Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
 окружения. Помещаем слудующую строчку в <code>.envrc</code>:</p>
-<div class="highlight"><pre>layout python
+<div class="highlight"><pre><span></span>layout python
 </pre></div>
 
 
@@ -171,19 +174,19 @@ $
 возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
 <code>~/.virtualenvs/</code> использовать.   Для этого  добавляем в файл  <code>~/.direnvrc</code> вот
 такую функцию:</p>
-<div class="highlight"><pre><span class="c"># Usage: use venv &lt;venv&gt;</span>
-<span class="c">#</span>
-<span class="c"># Loads the specified python virtualenv</span>
-<span class="c">#</span>
+<div class="highlight"><pre><span></span><span class="c1"># Usage: use venv &lt;venv&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># Loads the specified python virtualenv</span>
+<span class="c1">#</span>
 use_venv<span class="o">()</span> <span class="o">{</span>
-    <span class="nb">export </span><span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.virtualenvs/</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">export</span> <span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.virtualenvs/</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
     PATH_add <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/bin&quot;</span>
 <span class="o">}</span>
 </pre></div>
 
 
 <p>После этого в <code>.envrc</code> можно использовать следующую кострукцию:</p>
-<div class="highlight"><pre>use venv &lt;venv_name&gt;
+<div class="highlight"><pre><span></span>use venv &lt;venv_name&gt;
 </pre></div>
 
 
@@ -259,6 +262,11 @@ use_venv<span class="o">()</span> <span class="o">{</span>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -276,11 +284,6 @@ use_venv<span class="o">()</span> <span class="o">{</span>
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -535,6 +538,11 @@ use_venv<span class="o">()</span> <span class="o">{</span>
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -606,7 +614,7 @@ use_venv<span class="o">()</span> <span class="o">{</span>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

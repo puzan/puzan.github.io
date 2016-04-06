@@ -55,6 +55,9 @@ Puzan's Pages            </a>
                             <a href="http://puzan.info/linux/index.html">Linux</a>
                         </li>
                         <li >
+                            <a href="http://puzan.info/linux-backup/index.html">Linux, backup</a>
+                        </li>
+                        <li >
                             <a href="http://puzan.info/misc/index.html">Misc</a>
                         </li>
                         <li >
@@ -73,6 +76,22 @@ Puzan's Pages            </a>
     <div class="row">
         <div class="col-sm-9">
 
+            <article>
+                <h2><a href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html">Gems и другие пакетные менеджеры</a></h2>
+                <div class="summary"><p>Только  недавно  столкнулся и  попробовал  использовать  <em>rubygems</em>.  Ранее  все
+устанавливал через <em>portage</em>.   Но частенько стали попадаться  статьи, в которых
+пишут нечто вроде следующего:</p>
+<div class="highlight"><pre><span></span>gem install git-up
+gem install bundle
+</pre></div>
+
+
+<p>Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
+менеджеры???)   и  я бежал  искать  аналоги  в  <em>portage</em>.  Частенько ...</p>
+                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2><a href="http://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html">Личный Firefox Sync</a></h2>
                 <div class="summary"><p>Для синхронизации браузерной  информации я использую <em>Firefox  Sync</em>.  Но совсем
@@ -147,7 +166,7 @@ Puzan's Pages            </a>
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 <a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
 <code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
-<div class="highlight"><pre>emerge -1q freetype
+<div class="highlight"><pre><span></span>emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect ...</pre></div>
@@ -174,7 +193,7 @@ eselect ...</pre></div>
 <ul>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 <span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
 <span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
@@ -184,18 +203,6 @@ eselect ...</pre></div>
 
 <p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную ...</p></li></ul>
                     <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-02-03-svn-to-git.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html">Blogger пост из Emacs? Markdown + Googlecl script</a></h2>
-                <div class="summary"><p>Побаловался  с  <em>googlecl</em>.   Умудрился   случайно  наделать  множество  постов,
-состоящих всего  лишь из одного  слова в своем <a href="http://puzan-read.blogspot.ru" title="Чего начитался…">читальном  блоге</a>.  Сейчас
-вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
-— проверил,  что <em>googlecl</em>  работает. Далее  хочу обсудить  варианты публикации
-сообщений из <em>Emacs</em>.</p>
-<p>Ранее  для   написания  заметок   я  использовал   <em><a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse">muse-mode</a></em>.   Каждая ...</p>
-                    <a class="btn btn-default btn-xs" href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -243,6 +250,11 @@ eselect ...</pre></div>
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                     <ul class="list-group" id="recentposts">
                         <li class="list-group-item">
+                            <a href="http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html">
+                                Маленькие тулы
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">
                                 Docker: Инициализация postgres
                             </a>
@@ -260,11 +272,6 @@ eselect ...</pre></div>
                         <li class="list-group-item">
                             <a href="http://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">
                                 Evernote виджет на Today экране (iOS)
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">
-                                Куда отдать компьютеры?
                             </a>
                         </li>
                     </ul>
@@ -519,6 +526,11 @@ eselect ...</pre></div>
                             </a>
                         </li>
                         <li class="list-group-item tag-3">
+                            <a href="http://puzan.info/tag/shell.html">
+                                shell
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
                             <a href="http://puzan.info/tag/ssh.html">
                                 ssh
                             </a>
@@ -590,7 +602,7 @@ eselect ...</pre></div>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Ilya Zonov
+         <div class="col-xs-10">&copy; 2016 Ilya Zonov
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
