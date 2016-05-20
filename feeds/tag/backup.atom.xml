@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/backup.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-02-10T00:00:00+03:00</updated><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/backup.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2016-04-06T22:25:00+03:00</updated><entry><title>Маленькие тулы</title><link href="http://puzan.info/linux/2016-04-06-malenkie-tuly.html" rel="alternate"></link><published>2016-04-06T22:25:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2016-04-06:linux/2016-04-06-malenkie-tuly.html</id><summary type="html">&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники
+как обычно подкасты (&lt;a href="https://radio-t.com"&gt;Радио-Т&lt;/a&gt;, &lt;a href="http://razbor-poletov.com"&gt;Разбор Полетов&lt;/a&gt;) и бложики.&lt;/p&gt;
+&lt;h2&gt;Fzf&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Подслушал в &lt;a href="http://razbor-poletov.com"&gt;Разборе Полетов&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href="https://github.com/junegunn/fzf"&gt;https://github.com/junegunn/fzf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Данная &lt;a href="https://github.com/junegunn/fzf"&gt;утилита&lt;/a&gt; делает очень удобный поиск по спискам в консоли. Например,
+поиск по  истории, по  файлам и  в принципе по  любой информации,  переданной на
+стандартный ввод  &lt;code&gt;fzf&lt;/code&gt;.  Для меня очень  удачно &lt;code&gt;fzf&lt;/code&gt; зашла, в  качестве замены
+&lt;code&gt;Ctrl-R&lt;/code&gt; в консоли.&lt;/p&gt;
+&lt;p&gt;Пользуюсь локально на ноутбуке. Есть интеграция с  &lt;em&gt;tmux&lt;/em&gt;, но я на него так и не
+переехал со &lt;em&gt;screen&lt;/em&gt;.  Хотелось бы осуществлять поиск локально, используя данные
+с удаленной  машины, но я  плохо представляю  подобную возможность без  танцев с
+бубном.&lt;/p&gt;
+&lt;h2&gt;Borgbackup&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Прочитал на &lt;a href="http://www.opennet.ru/opennews/art.shtml?num=44000"&gt;OpenNet&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href="https://github.com/borgbackup/borg"&gt;https://github.com/borgbackup/borg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Данная     &lt;a href="http://borgbackup.readthedocs.org/en/stable/"&gt;программа     для     бекапов&lt;/a&gt;    скорее     всего     заменит
+&lt;a href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html"&gt;&lt;em&gt;obnam&lt;/em&gt; на  моем &lt;em&gt;cubieboard&lt;/em&gt;&lt;/a&gt;.   Бекапы с  помощью &lt;code&gt;borg&lt;/code&gt;  в моих
+тестах показали  10-ти кратное преимущество  в скорости по сравнению  с &lt;em&gt;obnam&lt;/em&gt;.
+Это меня мелко  сказать восхитило и я планирую как  можно скорее переделать сбор
+резервных копий на эту систему.&lt;/p&gt;
+&lt;h2&gt;sudolikeaboss&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Подслушал в &lt;a href="https://radio-t.com"&gt;Радио-Т&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href="https://github.com/ravenac95/sudolikeaboss"&gt;https://github.com/ravenac95/sudolikeaboss&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ravenac95/sudolikeaboss"&gt;&lt;code&gt;sudolikeaboss&lt;/code&gt;&lt;/a&gt;  —   утилита  позволяющая  вводить   пароли  из
+&lt;em&gt;1password&lt;/em&gt; в консоли.  В частности, это очень удобно делать для &lt;em&gt;ssh&lt;/em&gt;, &lt;em&gt;sudo&lt;/em&gt; и
+других паролей.  Так  все пароли продолжают лежать в одном  защищенном месте и в
+тоже время к ним есть удобный  интерфейс. Все необходимые инструкции можно найти
+на &lt;em&gt;github&lt;/em&gt;'е.&lt;/p&gt;</summary><category term="shell"></category><category term="backup"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
 (&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
 резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
 бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;

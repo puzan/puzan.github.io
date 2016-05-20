@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Puzan's Pages</title><link>http://puzan.info/</link><description></description><lastBuildDate>Wed, 06 Apr 2016 22:25:00 +0300</lastBuildDate><item><title>Маленькие тулы</title><link>http://puzan.info/linux-backup/2016-04-06-malenkie-tuly.html</link><description>&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники
+<rss version="2.0"><channel><title>Puzan's Pages</title><link>http://puzan.info/</link><description></description><lastBuildDate>Wed, 06 Apr 2016 22:25:00 +0300</lastBuildDate><item><title>Маленькие тулы</title><link>http://puzan.info/linux/2016-04-06-malenkie-tuly.html</link><description>&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники
 как обычно подкасты (&lt;a href="https://radio-t.com"&gt;Радио-Т&lt;/a&gt;, &lt;a href="http://razbor-poletov.com"&gt;Разбор Полетов&lt;/a&gt;) и бложики.&lt;/p&gt;
 &lt;h2&gt;Fzf&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Подслушал в &lt;a href="http://razbor-poletov.com"&gt;Разборе Полетов&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -27,7 +27,7 @@
 &lt;em&gt;1password&lt;/em&gt; в консоли.  В частности, это очень удобно делать для &lt;em&gt;ssh&lt;/em&gt;, &lt;em&gt;sudo&lt;/em&gt; и
 других паролей.  Так  все пароли продолжают лежать в одном  защищенном месте и в
 тоже время к ним есть удобный  интерфейс. Все необходимые инструкции можно найти
-на &lt;em&gt;github&lt;/em&gt;'е.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Wed, 06 Apr 2016 22:25:00 +0300</pubDate><guid isPermaLink="false">tag:puzan.info,2016-04-06:linux-backup/2016-04-06-malenkie-tuly.html</guid><category>shell</category></item><item><title>Docker: Инициализация postgres</title><link>http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html</link><description>&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+на &lt;em&gt;github&lt;/em&gt;'е.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Wed, 06 Apr 2016 22:25:00 +0300</pubDate><guid isPermaLink="false">tag:puzan.info,2016-04-06:linux/2016-04-06-malenkie-tuly.html</guid><category>shell</category><category>backup</category></item><item><title>Docker: Инициализация postgres</title><link>http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html</link><description>&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
 &lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
 сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
 оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
