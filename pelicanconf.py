@@ -75,7 +75,8 @@ STATIC_PATHS = ['images', 'extra']
 
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
                        'extra/custom.css': {'path': 'static/custom.css'},
-                       'extra/favicon.ico': {'path': 'favicon.ico'}}
+                       'extra/favicon.ico': {'path': 'favicon.ico'},
+                       'extra/keybase.txt': {'path': 'keybase.txt'}}
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
