@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/puzan
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://puzan.info
+  * I am puzan (https://keybase.io/puzan) on keybase.
+  * I have a public key ASBa0PXrIHGIUrppxFnD0WsEpnrVWvQJ4yGMVS6s8WBkrgo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01205ad0f5eb20718852ba69c459c3d16b04a67ad55af409e3218c552eacf16064ae0a",
+            "host": "keybase.io",
+            "kid": "01205ad0f5eb20718852ba69c459c3d16b04a67ad55af409e3218c552eacf16064ae0a",
+            "uid": "024e203617fa6bfbbeef1f27b937a819",
+            "username": "puzan"
+        },
+        "service": {
+            "hostname": "puzan.info",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.17"
+    },
+    "ctime": 1473520034,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1473519960,
+        "hash": "d70b9dc3063b1283a8f11c8e26fff6b856b62a308334f44ff55ab5e325b5d1cae2e8c9b9e0176d3ff342c43c47bce334ed1a8bd4117a1e44e69a9128a11c10cc",
+        "seqno": 628811
+    },
+    "prev": "3c3de54ff0db76652909ad8eea1855b8c74cb902016f9ae086e0797db525401c",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgWtD16yBxiFK6acRZw9FrBKZ61Vr0CeMhjFUurPFgZK4Kp3BheWxvYWTFAu57ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNWFkMGY1ZWIyMDcxODg1MmJhNjljNDU5YzNkMTZiMDRhNjdhZDU1YWY0MDllMzIxOGM1NTJlYWNmMTYwNjRhZTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNWFkMGY1ZWIyMDcxODg1MmJhNjljNDU5YzNkMTZiMDRhNjdhZDU1YWY0MDllMzIxOGM1NTJlYWNmMTYwNjRhZTBhIiwidWlkIjoiMDI0ZTIwMzYxN2ZhNmJmYmJlZWYxZjI3YjkzN2E4MTkiLCJ1c2VybmFtZSI6InB1emFuIn0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJwdXphbi5pbmZvIiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4xNyJ9LCJjdGltZSI6MTQ3MzUyMDAzNCwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDczNTE5OTYwLCJoYXNoIjoiZDcwYjlkYzMwNjNiMTI4M2E4ZjExYzhlMjZmZmY2Yjg1NmI2MmEzMDgzMzRmNDRmZjU1YWI1ZTMyNWI1ZDFjYWUyZThjOWI5ZTAxNzZkM2ZmMzQyYzQzYzQ3YmNlMzM0ZWQxYThiZDQxMTdhMWU0NGU2OWE5MTI4YTExYzEwY2MiLCJzZXFubyI6NjI4ODExfSwicHJldiI6IjNjM2RlNTRmZjBkYjc2NjUyOTA5YWQ4ZWVhMTg1NWI4Yzc0Y2I5MDIwMTZmOWFlMDg2ZTA3OTdkYjUyNTQwMWMiLCJzZXFubyI6OCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEDZ8LVmAPbycYXdV45troht9HYVi2E9Nsr7kvS7zxTaPYO/12cKf+nO0Vi9isqaLh/Xut5y+9nga5qE1AGcFM8KqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgkAml0nGraKQHJVeWwIvNHyVDNdwJj3f7IOCe3I0UkJOjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/puzan
+
+==================================================================
