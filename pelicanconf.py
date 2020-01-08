@@ -5,18 +5,22 @@ from __future__ import unicode_literals
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tag_cloud']
 
-AUTHOR = u'Ilya Zonov'
-SITENAME = u"Puzan's Pages"
+AUTHOR = 'Ilya Zonov'
+SITENAME = "Puzan's Pages"
 SITEURL = ''
+
+PATH = 'content'
 
 TIMEZONE = 'Europe/Moscow'
 
-DEFAULT_LANG = u'ru'
+DEFAULT_LANG = 'ru'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = None
@@ -62,9 +66,17 @@ TAG_CLOUD_MAX_ITEMS = 100
 DISPLAY_TAGS_INLINE = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
-MD_EXTENSIONS = ['codehilite(guess_lang=False,css_class=highlight,linenums=False)',
-                 'extra',
-                 'fenced_code']
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {
+            'css_class': 'highlight',
+            'guess_lang': False,
+            'linenums': False
+        },
+        'markdown.extensions.extra': {},
+        'markdown.extensions.fenced_code': {}
+    }
+}
 
 PYGMENTS_STYLE = 'zenburn'
 CUSTOM_CSS = 'static/custom.css'
