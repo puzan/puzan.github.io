@@ -15,8 +15,8 @@ SITEURL = 'https://puzan.info'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
-TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+TAG_FEED_ATOM = 'feeds/tag/{slug}.atom.xml'
 
 FEEDBURNER_ALL_FEED = 'http://feeds.feedburner.com/puzan'
 YANDEX_SHARE = True
