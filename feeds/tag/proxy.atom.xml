@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/proxy.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-08-09T00:00:00+04:00</updated><entry><title>Для тех кто за proxy</title><link href="http://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html" rel="alternate"></link><published>2014-08-09T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-09:linux/2014-08-09-dlia-tekh-kto-za-proxy.html</id><summary type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - proxy</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/proxy.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2014-08-09T00:00:00+04:00</updated><entry><title>Для тех кто за proxy</title><link href="https://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html" rel="alternate"></link><published>2014-08-09T00:00:00+04:00</published><updated>2014-08-09T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-09:/linux/2014-08-09-dlia-tekh-kto-za-proxy.html</id><summary type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+злобное  прокси, которое  режет,  например, &lt;em&gt;ssh&lt;/em&gt;  трафик.   Также бывают  такие
+ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
+тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
+указанные выше неудобства.&lt;/p&gt;
+&lt;p&gt;Когда-то …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
 злобное  прокси, которое  режет,  например, &lt;em&gt;ssh&lt;/em&gt;  трафик.   Также бывают  такие
 ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
 тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
@@ -60,4 +65,4 @@ https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 линуксе  они тоже  должны быть  доступны и  успешно работать.   Было бы  здорово
 узнать,  какие решения  есть еще.   Ну и  надеюсь эта  информация будет  кому-то
 полезна.  Сам долго  искал эти утилиты. Лучше конечно, когда  на вашем пути нету
-прокси.&lt;/p&gt;</summary><category term="proxy"></category><category term="network"></category><category term="ssh"></category></entry></feed>
+прокси.&lt;/p&gt;</content><category term="linux"></category><category term="proxy"></category><category term="network"></category><category term="ssh"></category></entry></feed>

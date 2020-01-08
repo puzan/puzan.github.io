@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/backup.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2016-04-06T22:25:00+03:00</updated><entry><title>Маленькие тулы</title><link href="http://puzan.info/linux/2016-04-06-malenkie-tuly.html" rel="alternate"></link><published>2016-04-06T22:25:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2016-04-06:linux/2016-04-06-malenkie-tuly.html</id><summary type="html">&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - backup</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/backup.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2016-04-06T22:25:00+03:00</updated><entry><title>Маленькие тулы</title><link href="https://puzan.info/linux/2016-04-06-malenkie-tuly.html" rel="alternate"></link><published>2016-04-06T22:25:00+03:00</published><updated>2016-04-06T22:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2016-04-06:/linux/2016-04-06-malenkie-tuly.html</id><summary type="html">&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники как обычно подкасты (Радио-Т, Разбор Полетов) и бложики.&lt;/p&gt;</summary><content type="html">&lt;p&gt;За последние пару недель узнал  несколько маленьких, но удобных тулов. Источники
 как обычно подкасты (&lt;a href="https://radio-t.com"&gt;Радио-Т&lt;/a&gt;, &lt;a href="http://razbor-poletov.com"&gt;Разбор Полетов&lt;/a&gt;) и бложики.&lt;/p&gt;
 &lt;h2&gt;Fzf&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Подслушал в &lt;a href="http://razbor-poletov.com"&gt;Разборе Полетов&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -16,7 +16,7 @@
 &lt;p&gt;&lt;em&gt;Прочитал на &lt;a href="http://www.opennet.ru/opennews/art.shtml?num=44000"&gt;OpenNet&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Github: &lt;a href="https://github.com/borgbackup/borg"&gt;https://github.com/borgbackup/borg&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Данная     &lt;a href="http://borgbackup.readthedocs.org/en/stable/"&gt;программа     для     бекапов&lt;/a&gt;    скорее     всего     заменит
-&lt;a href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html"&gt;&lt;em&gt;obnam&lt;/em&gt; на  моем &lt;em&gt;cubieboard&lt;/em&gt;&lt;/a&gt;.   Бекапы с  помощью &lt;code&gt;borg&lt;/code&gt;  в моих
+&lt;a href="https://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html"&gt;&lt;em&gt;obnam&lt;/em&gt; на  моем &lt;em&gt;cubieboard&lt;/em&gt;&lt;/a&gt;.   Бекапы с  помощью &lt;code&gt;borg&lt;/code&gt;  в моих
 тестах показали  10-ти кратное преимущество  в скорости по сравнению  с &lt;em&gt;obnam&lt;/em&gt;.
 Это меня мелко  сказать восхитило и я планирую как  можно скорее переделать сбор
 резервных копий на эту систему.&lt;/p&gt;
@@ -27,7 +27,12 @@
 &lt;em&gt;1password&lt;/em&gt; в консоли.  В частности, это очень удобно делать для &lt;em&gt;ssh&lt;/em&gt;, &lt;em&gt;sudo&lt;/em&gt; и
 других паролей.  Так  все пароли продолжают лежать в одном  защищенном месте и в
 тоже время к ним есть удобный  интерфейс. Все необходимые инструкции можно найти
-на &lt;em&gt;github&lt;/em&gt;'е.&lt;/p&gt;</summary><category term="shell"></category><category term="backup"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="http://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+на &lt;em&gt;github&lt;/em&gt;'е.&lt;/p&gt;</content><category term="linux"></category><category term="shell"></category><category term="backup"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="https://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><updated>2015-02-10T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+(&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
+резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
+бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;
+&lt;p&gt;С  доступом  к  &lt;em&gt;Time  Capsule&lt;/em&gt;  особых   проблем  в  &lt;em&gt;Linux&lt;/em&gt;  нету.   Ее  можно
+подмонтировать …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
 (&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
 резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
 бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;
@@ -73,7 +78,7 @@ logger &lt;span class="s2"&gt;&amp;quot;Start backup&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; ! &lt;span class="o"&gt;(&lt;/span&gt;df &lt;span class="p"&gt;|&lt;/span&gt; tail -n +2 &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -q &lt;span class="s1"&gt;&amp;#39;^/mnt/tc$&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;then&lt;/span&gt;
     logger &lt;span class="s2"&gt;&amp;quot;Backup fails: tc is not mounted&amp;quot;&lt;/span&gt;
-    &lt;span class="nb"&gt;exit&lt;/span&gt; 1
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
 nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam backup
@@ -133,4 +138,4 @@ compress-with = deflate
 файловая система  на диске с  данными слегка  поплыла.  Чиниться через  &lt;code&gt;fsck&lt;/code&gt; и
 монтироваться  отказывалась.  Данные  в принципе  можно было  бы восстановить  с
 диска,  но  быстрее и  проще  оказалось  воспользоваться бекапом.   Бекаптесь  -
-пригодится!&lt;/p&gt;</summary><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry></feed>
+пригодится!&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry></feed>

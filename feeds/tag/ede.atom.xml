@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/ede.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-08-19T00:00:00+04:00</updated><entry><title>EDE боль</title><link href="http://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><published>2014-08-19T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - ede</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/ede.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2014-08-19T00:00:00+04:00</updated><entry><title>EDE боль</title><link href="https://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><published>2014-08-19T00:00:00+04:00</published><updated>2014-08-19T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:/linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
+попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
+чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
+&lt;p&gt;Какова вообще задача  использовать &lt;em&gt;EDE&lt;/em&gt;? Я хочу указать  где-то …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
 каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
 попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
 чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
@@ -91,4 +95,4 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;P.S. Все  эти негативные  впечатления от использования  &lt;em&gt;EDE&lt;/em&gt; видимо  возникли в
 результате годового использования &lt;strong&gt;Eclipse&lt;/strong&gt; и &lt;strong&gt;Idea&lt;/strong&gt; для программирования на
 &lt;em&gt;Java&lt;/em&gt;.   Пробовал  &lt;strong&gt;Emacs&lt;/strong&gt;  заточить  для  &lt;em&gt;Java&lt;/em&gt;,  но  затея  не  увенчалась
-успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</summary><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry></feed>
+успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry></feed>

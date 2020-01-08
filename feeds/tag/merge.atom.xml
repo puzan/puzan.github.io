@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/merge.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-01T00:00:00+04:00</updated><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - merge</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/merge.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-06-01T00:00:00+04:00</updated><entry><title>Git: Объединение merge коммитов</title><link href="https://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:/linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
+ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
+&lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
+я видел следующие варианты …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
 большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
 ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
 &lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
@@ -105,4 +109,4 @@ $ git commit
 веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
 объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
 &lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
-слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry></feed>
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</content><category term="linux"></category><category term="git"></category><category term="merge"></category></entry></feed>

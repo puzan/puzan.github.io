@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/emacs.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-08-19T00:00:00+04:00</updated><entry><title>EDE боль</title><link href="http://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><published>2014-08-19T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - emacs</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/emacs.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2014-08-19T00:00:00+04:00</updated><entry><title>EDE боль</title><link href="https://puzan.info/linux/2014-08-19-ede-bol.html" rel="alternate"></link><published>2014-08-19T00:00:00+04:00</published><updated>2014-08-19T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-08-19:/linux/2014-08-19-ede-bol.html</id><summary type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
+попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
+чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
+&lt;p&gt;Какова вообще задача  использовать &lt;em&gt;EDE&lt;/em&gt;? Я хочу указать  где-то …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
 каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
 попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
 чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
@@ -91,7 +95,11 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;P.S. Все  эти негативные  впечатления от использования  &lt;em&gt;EDE&lt;/em&gt; видимо  возникли в
 результате годового использования &lt;strong&gt;Eclipse&lt;/strong&gt; и &lt;strong&gt;Idea&lt;/strong&gt; для программирования на
 &lt;em&gt;Java&lt;/em&gt;.   Пробовал  &lt;strong&gt;Emacs&lt;/strong&gt;  заточить  для  &lt;em&gt;Java&lt;/em&gt;,  но  затея  не  увенчалась
-успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</summary><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry><entry><title>Emacs + Java</title><link href="http://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><published>2013-08-25T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+успехом. Но для &lt;em&gt;C/C++&lt;/em&gt; проектов только &lt;strong&gt;Emacs&lt;/strong&gt;, только хардкор.&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="cedet"></category><category term="ede"></category></entry><entry><title>Emacs + Java</title><link href="https://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><published>2013-08-25T00:00:00+04:00</published><updated>2013-08-25T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:/linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
+всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
+сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
+быстренько познать его …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
 Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
 всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
 сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
@@ -160,7 +168,12 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;На  данный   момент  я  остановился   на  последнем  варианте:  &lt;em&gt;Cedet&lt;/em&gt;   Dev  +
 &lt;code&gt;auto-complete&lt;/code&gt;. Есть  у кого  еще предложения  как улучшить  жизнь в  Emacs при
 работе с &lt;em&gt;Java&lt;/em&gt;?  Или все таки &lt;em&gt;Cedet&lt;/em&gt;  это наше все и смотреть в другие стороны
-лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><published>2013-01-24T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+лучше не стоит?&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="java"></category></entry><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="https://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><published>2013-01-24T00:00:00+04:00</published><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
+вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
+— проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
+сообщений из &lt;em&gt;Emacs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ранее  для   написания  заметок   я  использовал   &lt;em&gt;&lt;a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse"&gt;muse-mode&lt;/a&gt;&lt;/em&gt;.   Каждая …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
 состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
 вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
 — проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
@@ -188,4 +201,4 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 настроить раскраску  кода при  конвертировании &lt;em&gt;md&lt;/em&gt;  в &lt;em&gt;html&lt;/em&gt;,  но думаю  с этим
 больших проблем не должно быть.&lt;/p&gt;
 &lt;p&gt;Как вам такая схема? Не слишком  ли я заворачиваю? Сейчас буду реализовывать это
-добро.&lt;/p&gt;</summary><category term="emacs"></category><category term="google"></category></entry></feed>
+добро.&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="google"></category></entry></feed>

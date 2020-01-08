@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/google.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-01-24T00:00:00+04:00</updated><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="http://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><published>2013-01-24T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - google</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/google.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-01-24T00:00:00+04:00</updated><entry><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link href="https://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html" rel="alternate"></link><published>2013-01-24T00:00:00+04:00</published><updated>2013-01-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-01-24:/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</id><summary type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
+состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
+вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
+— проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
+сообщений из &lt;em&gt;Emacs&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ранее  для   написания  заметок   я  использовал   &lt;em&gt;&lt;a href="http://mwolson.org/projects/EmacsMuse.html" title="Emacs Muse"&gt;muse-mode&lt;/a&gt;&lt;/em&gt;.   Каждая …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,
 состоящих всего  лишь из одного  слова в своем &lt;a href="http://puzan-read.blogspot.ru" title="Чего начитался…"&gt;читальном  блоге&lt;/a&gt;.  Сейчас
 вроде бы все исправил.  Постараюсь  подобное предотвращать в будущем. Но главное
 — проверил,  что &lt;em&gt;googlecl&lt;/em&gt;  работает. Далее  хочу обсудить  варианты публикации
@@ -27,4 +32,4 @@
 настроить раскраску  кода при  конвертировании &lt;em&gt;md&lt;/em&gt;  в &lt;em&gt;html&lt;/em&gt;,  но думаю  с этим
 больших проблем не должно быть.&lt;/p&gt;
 &lt;p&gt;Как вам такая схема? Не слишком  ли я заворачиваю? Сейчас буду реализовывать это
-добро.&lt;/p&gt;</summary><category term="emacs"></category><category term="google"></category></entry></feed>
+добро.&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="google"></category></entry></feed>

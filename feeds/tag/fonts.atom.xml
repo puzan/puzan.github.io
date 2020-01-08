@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/fonts.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-02-12T00:00:00+04:00</updated><entry><title>Infinality патчи на стабильной ветке</title><link href="http://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html" rel="alternate"></link><published>2013-02-12T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-12:linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</id><summary type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - fonts</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/fonts.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-02-12T00:00:00+04:00</updated><entry><title>Infinality патчи на стабильной ветке</title><link href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html" rel="alternate"></link><published>2013-02-12T00:00:00+04:00</published><updated>2013-02-12T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-12:/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</id><summary type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
+&lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
+&lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
@@ -13,4 +20,4 @@ eselect lcdfilter set infinality
 &lt;p&gt;Как видим теперь необходимо несколько раз дополнительно запустить &lt;code&gt;eselect&lt;/code&gt;. При
 этом   вариантов  для   выбора  &lt;code&gt;eselect   infinality&lt;/code&gt;  и   &lt;code&gt;eselect  lcdfilter&lt;/code&gt;
 предоставляют многовато.   Я с  ними не  экспериментировал.  Если  кто пробовал,
-поделитесь впечатлениями.&lt;/p&gt;</summary><category term="gentoo"></category><category term="infinality"></category><category term="fonts"></category></entry></feed>
+поделитесь впечатлениями.&lt;/p&gt;</content><category term="linux"></category><category term="gentoo"></category><category term="infinality"></category><category term="fonts"></category></entry></feed>

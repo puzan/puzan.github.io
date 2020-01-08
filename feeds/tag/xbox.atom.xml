@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/xbox.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-05-22T00:00:00+04:00</updated><entry><title>Xbox One. Впечатления</title><link href="http://puzan.info/linux/2013-05-22-xbox-one-vpechatleniia.html" rel="alternate"></link><published>2013-05-22T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-22:linux/2013-05-22-xbox-one-vpechatleniia.html</id><summary type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - xbox</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/xbox.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-05-22T00:00:00+04:00</updated><entry><title>Xbox One. Впечатления</title><link href="https://puzan.info/linux/2013-05-22-xbox-one-vpechatleniia.html" rel="alternate"></link><published>2013-05-22T00:00:00+04:00</published><updated>2013-05-22T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-22:/linux/2013-05-22-xbox-one-vpechatleniia.html</id><summary type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
+Похоже  уже давним  являюсь  поклонником  Xbox'а. Давным  давно  купил Xbox  360
+пополам с  сестрой.  Веселая  была история! Чтобы  уговорить сестру  на подобную
+сделку, был куплен специальный &lt;strong&gt;розовый&lt;/strong&gt; джойстик.   До этого я долго не играл
+на PC,  так как  снес …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Во время написания  вчерашнего поста одним глазом смотрел  презентацию Xbox One.
 Похоже  уже давним  являюсь  поклонником  Xbox'а. Давным  давно  купил Xbox  360
 пополам с  сестрой.  Веселая  была история! Чтобы  уговорить сестру  на подобную
 сделку, был куплен специальный &lt;strong&gt;розовый&lt;/strong&gt; джойстик.   До этого я долго не играл
@@ -30,4 +34,4 @@ Station. Черный,  квадратно-прямоугольный. Где э
 танцевальную вечеринку (Dance  Central). Сколько с друзьями не  собирались все в
 полном  восторге.    Xbox  однозначно  лучший   продукт  Microsoft  (как   бы  я
 недолюбливал  эту компанию).  Если игры  и компьютерные  развлечения, то  только
-Xbox.&lt;/p&gt;</summary><category term="xbox"></category></entry></feed>
+Xbox.&lt;/p&gt;</content><category term="linux"></category><category term="xbox"></category></entry></feed>

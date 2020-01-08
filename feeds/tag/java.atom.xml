@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/java.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-08-25T00:00:00+04:00</updated><entry><title>Emacs + Java</title><link href="http://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><published>2013-08-25T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - java</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/java.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-08-25T00:00:00+04:00</updated><entry><title>Emacs + Java</title><link href="https://puzan.info/linux/2013-08-25-emacs-java.html" rel="alternate"></link><published>2013-08-25T00:00:00+04:00</published><updated>2013-08-25T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-08-25:/linux/2013-08-25-emacs-java.html</id><summary type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
+Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
+всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
+сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
+быстренько познать его …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Появилась у  меня в последнее  время необходимость основательно  познать &lt;em&gt;Java&lt;/em&gt;.
 Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
 всегда думал,  что &lt;em&gt;plain  C&lt;/em&gt; и  &lt;em&gt;Lisp&lt;/em&gt; это  наше все.   И этого  достаточно.  А
 сейчас  работа повернулась  стороной  с &lt;em&gt;Java&lt;/em&gt;  лицом  и соответственно  захотел
@@ -68,4 +72,4 @@
 &lt;p&gt;На  данный   момент  я  остановился   на  последнем  варианте:  &lt;em&gt;Cedet&lt;/em&gt;   Dev  +
 &lt;code&gt;auto-complete&lt;/code&gt;. Есть  у кого  еще предложения  как улучшить  жизнь в  Emacs при
 работе с &lt;em&gt;Java&lt;/em&gt;?  Или все таки &lt;em&gt;Cedet&lt;/em&gt;  это наше все и смотреть в другие стороны
-лучше не стоит?&lt;/p&gt;</summary><category term="emacs"></category><category term="java"></category></entry></feed>
+лучше не стоит?&lt;/p&gt;</content><category term="linux"></category><category term="emacs"></category><category term="java"></category></entry></feed>

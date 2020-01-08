@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/golding-u.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2014-09-07T00:00:00+04:00</updated><entry><title>Голдинг У. - Повелитель мух</title><link href="http://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html" rel="alternate"></link><published>2014-09-07T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:read/2014-09-07-golding-u-povelitel-mukh.html</id><summary type="html">&lt;p&gt;На прошлых  выходных осилил  чудную историю про  мальчишек, которые  застряли на
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - Голдинг У.</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/golding-u.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2014-09-07T00:00:00+04:00</updated><entry><title>Голдинг У. - Повелитель мух</title><link href="https://puzan.info/read/2014-09-07-golding-u-povelitel-mukh.html" rel="alternate"></link><published>2014-09-07T00:00:00+04:00</published><updated>2014-09-07T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2014-09-07:/read/2014-09-07-golding-u-povelitel-mukh.html</id><summary type="html">&lt;p&gt;На прошлых  выходных осилил  чудную историю про  мальчишек, которые  застряли на
+необитаемом  остове после  авиакатастрофы.  До  того  как их  нашли, они  успели
+спалить  почти  весь  остров,  превратиться   в  обезумевшее  племя  и  чуть  не
+переубивать друг друга.&lt;/p&gt;
+&lt;p&gt;Похоже я  нашел для  себя еще  один любимый  жанр (после  антиутопий): поведение
+людей в …&lt;/p&gt;</summary><content type="html">&lt;p&gt;На прошлых  выходных осилил  чудную историю про  мальчишек, которые  застряли на
 необитаемом  остове после  авиакатастрофы.  До  того  как их  нашли, они  успели
 спалить  почти  весь  остров,  превратиться   в  обезумевшее  племя  и  чуть  не
 переубивать друг друга.&lt;/p&gt;
@@ -14,4 +19,4 @@
 же так?".&lt;/p&gt;
 &lt;p&gt;Все это происходит на  фоне войны в большом мире. Дети  не могут договориться на
 меленьком острове.  Соответственно не  возникает вопростов, почему взрослые тоже
-решают проблемы силовым методом.&lt;/p&gt;</summary><category term="художественная литература"></category><category term="Голдинг У."></category></entry></feed>
+решают проблемы силовым методом.&lt;/p&gt;</content><category term="read"></category><category term="художественная литература"></category><category term="Голдинг У."></category></entry></feed>

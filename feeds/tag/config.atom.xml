@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/config.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><published>2013-06-11T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - config</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/config.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="https://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><published>2013-06-11T00:00:00+04:00</published><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
+меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
+какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
+&lt;em&gt;Emacs&lt;/em&gt;. И …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
 Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
 меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
 какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
@@ -35,4 +39,4 @@
 синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
 достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
 истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
-пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry></feed>
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</content><category term="linux"></category><category term="git"></category><category term="rcs"></category><category term="config"></category></entry></feed>

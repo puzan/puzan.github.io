@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/git.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="http://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><published>2013-06-11T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - git</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/git.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-06-11T00:00:00+04:00</updated><entry><title>Хранение конфигурационных файлов (RCS &amp; Git)</title><link href="https://puzan.info/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html" rel="alternate"></link><published>2013-06-11T00:00:00+04:00</published><updated>2013-06-11T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-11:/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</id><summary type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
+Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
+меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
+какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
+&lt;em&gt;Emacs&lt;/em&gt;. И …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Когда-то  давным давно,  я  впервые познакомился  с  системами контроля  версий.
 Наверное это была &lt;em&gt;CVS&lt;/em&gt;.   &lt;em&gt;Git&lt;/em&gt;'а тогда еще в планах думаю  не было. Возникла у
 меня  примерно  в  то  далекое  время логичная  идея  хранить  все  настройки  в
 какой-нибудь  подобной системе.   Так совпало,  что  тогда же  я активно  изучал
@@ -35,7 +39,11 @@
 синхронизации через  &lt;em&gt;git&lt;/em&gt;.  Пока это  не нужно.   &lt;em&gt;RCS&lt;/em&gt; хранит историю  и этого
 достаточно.  Насколько знаю &lt;em&gt;portage&lt;/em&gt; в  &lt;em&gt;gentoo&lt;/em&gt; можно настроить для сохранения
 истории в &lt;em&gt;RCS&lt;/em&gt; (см. &lt;code&gt;/etc/dispatch-conf.conf&lt;/code&gt;).   Но сам я этой возможностью не
-пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</summary><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="http://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+пользуюсь.  Что-то там не состыковывается с моими привычками.&lt;/p&gt;</content><category term="linux"></category><category term="git"></category><category term="rcs"></category><category term="config"></category></entry><entry><title>Git: Объединение merge коммитов</title><link href="https://puzan.info/linux/2013-06-01-git-obedinenie-merge-kommitov.html" rel="alternate"></link><published>2013-06-01T00:00:00+04:00</published><updated>2013-06-01T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-01:/linux/2013-06-01-git-obedinenie-merge-kommitov.html</id><summary type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
+большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
+ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
+&lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
+я видел следующие варианты …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Возникла у  меня на работе необходимость  объединить два &lt;em&gt;merge&lt;/em&gt; в  один.  Делал
 большое и  несколько конфликтное слияние. А  во время этого в  &lt;strong&gt;Gerrit&lt;/strong&gt; на мою
 ветку   успели  залить   что-то  новое,   вызвавшее  новые   конфликты  с   моим
 &lt;em&gt;merge&lt;/em&gt;. Соответственно необходимо было слить  эти изменения тоже. На тот момент
@@ -141,7 +149,11 @@ $ git commit
 веток.  Теперь  можно  делать  &lt;code&gt;push&lt;/code&gt;.  Данный  способ  можно  использовать  для
 объединения любого количества &lt;em&gt;merge&lt;/em&gt; коммитов.&lt;/p&gt;
 &lt;p&gt;По  идее  надо  запрещать  людям  добавлять новые  изменения  во  время  крупных
-слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</summary><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="http://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><published>2013-05-24T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+слияний. Так будет возникать меньше затруднительных ситуаций.&lt;/p&gt;</content><category term="linux"></category><category term="git"></category><category term="merge"></category></entry><entry><title>Git + кириллические имена файлов на OS X</title><link href="https://puzan.info/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html" rel="alternate"></link><published>2013-05-24T00:00:00+04:00</published><updated>2013-05-24T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-24:/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</id><summary type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
+казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
+&lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
+&lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
+&lt;p&gt;Есть у  меня репозиторий …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Не ожидал,  что в  мире современного  ПО могут быть  проблемы с  &lt;em&gt;Unicode&lt;/em&gt;.  Мне
 казалось,   что  все   неприятности   с  кодировками   закончились  с   приходом
 &lt;em&gt;Unicode&lt;/em&gt;'а. Давно  по крайней мере  с ними  не встречался.  Но,  как оказалось,
 &lt;em&gt;git&lt;/em&gt; несколько некорректно работает с русскими именами файлов на &lt;em&gt;Mac&lt;/em&gt;'е.&lt;/p&gt;
@@ -198,7 +210,12 @@ $ git commit
 &lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
 проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath false
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="git"></category><category term="mac"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="http://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+на   домашнем    сервере.    Для   управления   git    репозиториями   использую
+&lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
+всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
+только у пользователя &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.  &lt;em&gt;Redmine&lt;/em&gt; же запускает пользователь &lt;em&gt;&lt;code&gt;redmine&lt;/code&gt;&lt;/em&gt;.
+В общем главная загвоздка — найти &lt;em&gt;umask&lt;/em&gt; опцию …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
 &lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
 всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
@@ -228,7 +245,20 @@ $ git commit
 
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</summary><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="http://puzan.info/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><published>2013-02-03T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-03:linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Есть еще варианты решения этого вопроса?&lt;/p&gt;</content><category term="linux"></category><category term="git"></category><category term="redmine"></category><category term="gitolite"></category></entry><entry><title>Svn to Git</title><link href="https://puzan.info/linux/2013-02-03-svn-to-git.html" rel="alternate"></link><published>2013-02-03T00:00:00+04:00</published><updated>2013-02-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-03:/linux/2013-02-03-svn-to-git.html</id><summary type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;Руководство к действию&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
 &lt;h3&gt;Руководство к действию&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -275,4 +305,4 @@ git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
 &lt;li&gt;&lt;a href="http://leonid.shevtsov.me/ru/perenos-svn-repozitariya-v-git" title="Перенос SVN-репозитария в git"&gt;Перенос SVN-репозитария в git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/post/144626/" title="Переезд проекта с SVN на Git"&gt;Переезд проекта с SVN на Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Habr&lt;/em&gt;: &lt;a href="http://habrahabr.ru/company/wapstart/blog/159477/" title="how to: Как и зачем работать с svn через git"&gt;how to: Как и зачем работать с svn через git&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="svn"></category><category term="git"></category></entry></feed>
+&lt;/ul&gt;</content><category term="linux"></category><category term="svn"></category><category term="git"></category></entry></feed>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/net.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-09-03T00:00:00+04:00</updated><entry><title>Как создать bridge на nfs root</title><link href="http://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><published>2013-09-03T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-09-03:linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - net</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/net.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-09-03T00:00:00+04:00</updated><entry><title>Как создать bridge на nfs root</title><link href="https://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><published>2013-09-03T00:00:00+04:00</published><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-09-03:/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
+Данное условие необходимо  для возможности быстро изменить что-то  в системе без
+необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
+как раз в том, что …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
 загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
 Данное условие необходимо  для возможности быстро изменить что-то  в системе без
 необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
@@ -19,7 +23,7 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
 mount -o remount,exec /tmp
 &lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
-&lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;192.168.0.159/8
+&lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.159/8
 
 mkdir -p &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/proc&amp;quot;&lt;/span&gt;
 cp -r /sbin /bin /lib &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
@@ -39,4 +43,4 @@ rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt
 
 &lt;p&gt;В нутрь &lt;code&gt;script&lt;/code&gt; в принципе можно вставить все, что вам будет необходимо.&lt;/p&gt;
 &lt;p&gt;Хорош ли  метод?  Мне  по крайней  мере понравился.   Есть еще  предложения, как
-возможно решить данный вопрос?&lt;/p&gt;</summary><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry></feed>
+возможно решить данный вопрос?&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="nfs"></category><category term="net"></category><category term="bridge"></category></entry></feed>

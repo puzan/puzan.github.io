@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/python.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2013-06-04T00:00:00+04:00</updated><entry><title>Gems и другие пакетные менеджеры</title><link href="http://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><published>2013-06-04T00:00:00+04:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-04:linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - python</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/python.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2013-06-04T00:00:00+04:00</updated><entry><title>Gems и другие пакетные менеджеры</title><link href="https://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><published>2013-06-04T00:00:00+04:00</published><updated>2013-06-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-04:/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
+пишут нечто вроде следующего:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
+gem install bundle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
+менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
@@ -20,7 +29,7 @@ gem install bundle
 &lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
 папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    &lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby 2&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; in
         *18&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.8&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
@@ -43,4 +52,4 @@ gem install bundle
 дистрибутивах, но думаю как-то также.&lt;/p&gt;
 &lt;p&gt;Еще в последнее  время натолкнулся на &lt;em&gt;pip&lt;/em&gt; для &lt;em&gt;python&lt;/em&gt;  и &lt;em&gt;npm&lt;/em&gt; для &lt;em&gt;node.js&lt;/em&gt;.
 Идея общественных  хранилищ для программ,  написанных на определенном  языке как
-никак популярна сейчас. И это реально удобно.&lt;/p&gt;</summary><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry></feed>
+никак популярна сейчас. И это реально удобно.&lt;/p&gt;</content><category term="linux"></category><category term="ruby"></category><category term="gem"></category><category term="python"></category><category term="pip"></category><category term="gentoo"></category></entry></feed>

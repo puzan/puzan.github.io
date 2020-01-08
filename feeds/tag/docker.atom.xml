@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages</title><link href="http://puzan.info/" rel="alternate"></link><link href="http://puzan.info/feeds/tag/docker.atom.xml" rel="self"></link><id>http://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="http://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><published>2015-09-06T00:39:07+03:00</published><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - docker</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/docker.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2015-09-06T00:39:07+03:00</updated><entry><title>Docker: Инициализация postgres</title><link href="https://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html" rel="alternate"></link><published>2015-09-06T00:39:07+03:00</published><updated>2015-09-06T00:39:07+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-09-06:/linux/2015-09-06-docker-initsializatsiia-postgres.html</id><summary type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
+&lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
+сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
+оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
+эмулировать production окружение и не засорять рабочую …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Где-то  полгода назад  по личной  инициативе я  стал разворачивать  компоненты в
 &lt;strong&gt;docker&lt;/strong&gt; контейнерах для разработки и  тестирования продуктов.  При этом самая
 сложная система состояла  из базы данных (&lt;em&gt;postgres&lt;/em&gt;) и  пары &lt;em&gt;tomcat&lt;/em&gt;'ов. Самое
 оно  чтобы  попробовать  новую  технологию.   Такой  подход  позволял  в  чем-то
@@ -48,4 +52,4 @@ COPY *.sql ${INIT_SQL}/
 &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;   папку),  а   вот   версионирования  образов   в
 зависимости от изменения  &lt;em&gt;Dockerfile&lt;/em&gt; на &lt;a href="https://hub.docker.com/"&gt;хабе&lt;/a&gt; нету.  Отсюда  вывод - без
 своего  &lt;em&gt;docker  registry&lt;/em&gt; никак  не  обойтись  и  на  внешние образы  лучше  не
-надеяться.&lt;/p&gt;</summary><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry></feed>
+надеяться.&lt;/p&gt;</content><category term="linux"></category><category term="docker"></category><category term="database"></category><category term="postgresql"></category></entry></feed>
