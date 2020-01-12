@@ -3,7 +3,11 @@
 from __future__ import unicode_literals
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tag_cloud']
+PLUGINS = ['tag_cloud', 'i18n_subsites']
+
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
 
 AUTHOR = 'Ilya Zonov'
 SITENAME = "Puzan's Pages"
