@@ -32,7 +32,4 @@ GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
 GITHUB_SKIP_FORK = False
 GITHUB_USER = 'puzan'
 
-TWITTER_USERNAME = 'puzan'
-TWITTER_WIDGET_ID = '569200501129220096'
-
 ARTICLE_EXCLUDES = ['draft']
