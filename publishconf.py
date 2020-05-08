@@ -27,6 +27,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 DISQUS_SITENAME = "puzan"
 GOOGLE_ANALYTICS = "UA-50875216-1"
+YANDEX_METRIKA = 62664328
 
 GITHUB_URL = 'https://github.com/puzan/puzan.github.io'
 GITHUB_SKIP_FORK = False
