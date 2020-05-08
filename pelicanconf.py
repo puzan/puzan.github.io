@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tag_cloud', 'i18n_subsites']
+PLUGINS = ['tag_cloud', 'i18n_subsites', 'sitemap']
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
@@ -93,6 +93,20 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
                        'extra/custom.css': {'path': 'static/custom.css'},
                        'extra/favicon.ico': {'path': 'favicon.ico'},
                        'extra/keybase.txt': {'path': 'keybase.txt'}}
+
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'monthly',
+        'pages': 'monthly'
+    }
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
