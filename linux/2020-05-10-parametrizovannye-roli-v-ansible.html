@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Личный Firefox Sync - Puzan's Pages</title>
+    <title>Параметризованные роли в Ansible - Puzan's Pages</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,23 +10,21 @@
 
     <link href="https://puzan.info/favicon.ico" rel="icon">
 
-<link rel="canonical" href="https://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html">
+<link rel="canonical" href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html">
 
         <meta name="author" content="Ilya Zonov" />
-        <meta name="keywords" content="firefox,gentoo,portage,ebuild" />
-        <meta name="description" content="Для синхронизации браузерной информации я использую Firefox Sync. Но совсем недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер не доступен, хотя на сайте mozilla не было сообщений о каких-то ошибках и неполадках в работе сервиса. Сейчас кстати есть: The Firefox Sync service is undergoing some load issues, if you …" />
+        <meta name="keywords" content="ansible,devops" />
+        <meta name="description" content="Никогда не было и вот снова В очередной раз возвращаюсь к своему маленькому бложику. На этот раз после 4-х летнего перерыва. Будем считать на это повлияли смена работы и самоизоляция. Продолжить я решил с небольшой заметки про нежно любимый мной Ansible. А точнее про его волшебные особенности работы с переменными …" />
 
         <meta property="og:site_name" content="Puzan's Pages" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Личный Firefox Sync"/>
-        <meta property="og:url" content="https://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html"/>
-        <meta property="og:description" content="Для синхронизации браузерной информации я использую Firefox Sync. Но совсем недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер не доступен, хотя на сайте mozilla не было сообщений о каких-то ошибках и неполадках в работе сервиса. Сейчас кстати есть: The Firefox Sync service is undergoing some load issues, if you …"/>
-        <meta property="article:published_time" content="2013-06-03" />
+        <meta property="og:title" content="Параметризованные роли в Ansible"/>
+        <meta property="og:url" content="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html"/>
+        <meta property="og:description" content="Никогда не было и вот снова В очередной раз возвращаюсь к своему маленькому бложику. На этот раз после 4-х летнего перерыва. Будем считать на это повлияли смена работы и самоизоляция. Продолжить я решил с небольшой заметки про нежно любимый мной Ansible. А точнее про его волшебные особенности работы с переменными …"/>
+        <meta property="article:published_time" content="2020-05-10" />
             <meta property="article:section" content="linux" />
-            <meta property="article:tag" content="firefox" />
-            <meta property="article:tag" content="gentoo" />
-            <meta property="article:tag" content="portage" />
-            <meta property="article:tag" content="ebuild" />
+            <meta property="article:tag" content="ansible" />
+            <meta property="article:tag" content="devops" />
             <meta property="article:author" content="Ilya Zonov" />
 
 
@@ -109,10 +107,10 @@ Puzan's Pages            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html"
+                    <a href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html"
                        rel="bookmark"
-                       title="Permalink to Личный Firefox Sync">
-                        Личный Firefox Sync
+                       title="Permalink to Параметризованные роли в Ansible">
+                        Параметризованные роли в Ansible
                     </a>
                 </h1>
             </header>
@@ -122,7 +120,7 @@ Puzan's Pages            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2013-06-03T00:00:00+04:00"> Mon 03 June 2013</time>
+        <i class="fa fa-calendar"></i><time datetime="2020-05-10T13:45:00+03:00"> Sun 10 May 2020</time>
     </span>
 
 
@@ -130,39 +128,177 @@ Puzan's Pages            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://puzan.info/tag/firefox.html">firefox</a>
+	<a href="https://puzan.info/tag/ansible.html">ansible</a>
         /
-	<a href="https://puzan.info/tag/gentoo.html">gentoo</a>
-        /
-	<a href="https://puzan.info/tag/portage.html">portage</a>
-        /
-	<a href="https://puzan.info/tag/ebuild.html">ebuild</a>
+	<a href="https://puzan.info/tag/devops.html">devops</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>Для синхронизации браузерной  информации я использую <em>Firefox  Sync</em>.  Но совсем
-недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер
-не доступен, хотя  на сайте <a href="https://services.mozilla.com/status/">mozilla</a> не было  сообщений о каких-то
-ошибках и неполадках в работе сервиса. Сейчас кстати есть:</p>
-<blockquote>
-<p>The  Firefox  Sync  service  is  undergoing  some  load  issues,  if  you  are
-experiencing problems  please wait and  try again soon.  We are working  on it
-presently.</p>
+                <blockquote>
+<p>Никогда не было и вот снова</p>
 </blockquote>
-<p>Помучившись так  недельку, я решил поднять  личный Firefox Sync сервер  на своем
-псевдо сервере. Быстренько нашел <a href="http://gpo.zugaina.org/Search?search=mozilla-sync-server">ebuild'ы</a>  для <em>gentoo</em>.  И, вуа-ля, у
-меня рабочий  сервер для синхронизации. Еще  я написал <em>init</em> скрипты  и выложил
-свой <a href="https://github.com/puzan/puzan-overlay">overlay  на github</a>.  Если  кому-то нужно —  пользуйтесь на
-здоровье.</p>
-<p>Плюсы которые обнаружил во время использования личного Firefox Sync сервера:</p>
+<p>В очередной раз возвращаюсь к своему маленькому бложику. На этот раз после 4-х летнего перерыва. Будем считать на это повлияли смена работы и самоизоляция. Продолжить я решил с небольшой заметки про нежно любимый мной <em>Ansible</em>. А точнее про его волшебные особенности работы с переменными и ролями. Мне всегда хотелось видеть в ролях <em>Ansible</em> жесткую изоляцию. Но это конечно совсем не так. Разберу на примере, то что я имею в виду, основываясь на поведении <em>Ansible 2.9.7</em>.</p>
+<p><em>Ansible</em> я очень активно использовал на работе в <em>Qligent</em> для автоматизации ручных инструкций по установке продукта. В результате за 3-4 года сформировалась достаточно большая база кастомных ролей и плейбуков. Ну а сейчас я использую <em>Ansible</em> исключительно для настройки домашнего <em>HP MicroServer</em>, на котором крутится парочка локальных сервисов в <em>docker</em> контейнерах. Каждый сервис фактически представляет собой <code>docker-compose.yml</code>, специфичные конфиги и директории, с которыми он работает.</p>
+<p>Итак, во время написания ролей для локальных сервисов я решил вынести повторяющиеся действия необходимые для инициализации в отдельную роль. Назовем ее <code>puzan_service</code>. Туда попали:</p>
 <ul>
-<li>Нет проблем с  доступом, точнее их я  могу решить сам.  Более того,  так как я
-  единственный пользователь своего сервера, то  нет проблем с загруженностью.  А
-  вот доступной  поддержки для  Firefox Sync  не нашел.   Признаюсь не  сильно и
-  искал.</li>
-<li>Фактически  нет  ограничения  на  размер  хранимых  данных.  Стандартный  5-ти
-  мегабайтный предел я умудрился превысить.</li>
+<li>создание отдельного пользователя</li>
+<li><code>assert</code>'ы</li>
+<li>создание директории с именем сервиса</li>
+<li>определение необходимых фактов</li>
 </ul>
+<p>Ну и роль сама получила как минимум один параметр, который определяет ее поведение - <code>puzan_service_name</code>. В упрощенном варианте это имя директории, в которую в последующем копируется <code>compose</code> файл. Теперь для инициализации сервисов достаточно в <code>meta</code> добавлять нечто вроде:</p>
+<div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">puzan_service</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">puzan_service_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usefull_service</span>
+</pre></div>
+
+
+<p>Примерно тут мои ожидания несколько расходятся с реальностью. Указанный подход отлично работает. Более того на текущий момент похоже это <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies">официальный подход</a> для подключения ролей с параметрами в качестве зависимостей. Но есть нюанс — после выполнения роли в контексте останется переменная <code>puzan_service_name</code>. В целом может показаться, что это не страшно. Но меня это не устраивает: <code>puzan_service</code> предназначена для множественного использования, а это значит каждый ее запуск не должен быть связан с предыдущим. В текущем примере <code>puzan_service_name</code> обязательный параметр и его каждый раз необходимо определять. Но что, если у роли будет еще необязательный параметр или кто-то допустит опечатку в имени переменной? Это приведет к неожиданному поведению и вероятно сложному поиску причины ошибки, так как роль может выполнится со старыми значениями переменных.</p>
+<p>Я начал работать с <em>Ansible</em> где-то около версии 1.9. И как ни странно там был немного <a href="https://docs.ansible.com/ansible/2.3/playbooks_roles.html#role-dependencies">другой метод</a> определения зависимостей с переменными:</p>
+<div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">puzan_service</span>
+    <span class="nt">puzan_service_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usefull_service</span>
+</pre></div>
+
+
+<p>Данный метод также до сих пор работает. Но более удивительно то, что он работает, как я хочу: <code>puzan_service_name</code> не попадает в глобальный контекст. Я подготовил <a href="https://github.com/puzan/ansible_role_vars_tests">небольшой репозиторий</a> с тестами данного поведения. Кроме использования meta <code>dependencies</code> там также продемонстрирована работа использования ролей в playbook'ах, а также разница поведения <code>import_role</code> и <code>include_role</code>.</p>
+<p>Следует отменить, что из всех конструкций только <code>include_role</code> на текущий момент имеет явный механизм контроля доступа к переменным снаружи. Это реализовано через <a href="https://docs.ansible.com/ansible/latest/modules/include_role_module.html">параметр <code>public</code></a>.</p>
+<p>Уже давненько имеются issues на github'е на эту тему:</p>
+<ul>
+<li><a href="https://github.com/ansible/ansible/issues/63558">https://github.com/ansible/ansible/issues/63558</a></li>
+<li><a href="https://github.com/ansible/ansible/issues/43543">https://github.com/ansible/ansible/issues/43543</a></li>
+</ul>
+<p>Исправляться они не спешат. Один из моих PR'ов в ansible, был замержен всего лишь за <a href="https://github.com/ansible/ansible/pull/19073">3 года</a>. Поэтому я не думаю, что тут что-то быстро изменится.</p>
+<p>В целом мои рекомендации свозятся к следующему:</p>
+<ul>
+<li>Используйте только вариант передачи параметров в роль без <code>vars</code></li>
+<li>Не используйте <code>import_role</code> и <code>include_role</code> с <code>public: yes</code></li>
+<li>Есть конечно исключения: <em>В любой непонятной ситуации — думай!</em></li>
+</ul>
+<p>В итоге. Будьте внимательны и пишите больше тестов. Даже на роли в <em>Anisble</em>. Переменные и факты в <em>Ansible</em> здоровенная перемешенная куча. <em>Ansible</em> к сожалению сам не дает никаких явных инструментов по ограничению доступов к ним. Поэтому тут надежда только на Вас самих и на практики, которые вы используете. Ниже небольшая сводка по описанному поведению для версии <em>Ansible</em> 2.9.7</p>
+<ul>
+<li>
+<p>Использование в playbook'ах и meta <code>dependencies</code></p>
+<p>Поведение одинаковое при подключении ролей в playbook'ах и через <code>dependencies</code>.</p>
+<ul>
+<li>
+<p>Без <code>vars</code></p>
+<p>Playbook пример:</p>
+<div class="highlight"><pre><span></span>- name: Playbook
+  hosts: localhost
+  roles:
+    - role: some_role
+      some_role_var: some
+</pre></div>
+
+
+<p>Meta role пример:</p>
+<div class="highlight"><pre><span></span>dependencies:
+  - role: some_role
+    some_role_var: some
+</pre></div>
+
+
+<p><code>some_role_var</code> не доступна во внешнем контексте до и после запуска роли</p>
+</li>
+<li>
+<p>C <code>vars</code></p>
+<p>Playbook пример:</p>
+<div class="highlight"><pre><span></span>- name: Playbook
+  hosts: localhost
+  roles:
+    - role: some_role
+      vars:
+        some_role_var: some
+</pre></div>
+
+
+<p>Meta role пример:</p>
+<div class="highlight"><pre><span></span>dependencies:
+  - role: some_role
+    vars:
+      some_role_var: some
+</pre></div>
+
+
+<p><code>some_role_var</code> доступна во внешнем контексте до и после запуска роли</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Использование <code>import_role</code></p>
+<div class="highlight"><pre><span></span>- import_role:
+  name: some_role
+  vars:
+    some_role_var: some
+</pre></div>
+
+
+<p><code>some_role_var</code> доступна во внешнем контексте до и после запуска роли</p>
+</li>
+<li>
+<p>Использование <code>include_role</code> с <code>public: no</code></p>
+<div class="highlight"><pre><span></span>- include_role:
+    name: some_role
+    public: no
+  vars:
+    some_role_var: some
+</pre></div>
+
+
+<p><code>some_role_var</code> не доступна во внешнем контексте до и после запуска роли</p>
+</li>
+<li>
+<p>Использование <code>include_role</code> с <code>public: yes</code></p>
+<div class="highlight"><pre><span></span>- include_role:
+    name: some_role
+    public: yes
+  vars:
+    some_role_var: some
+</pre></div>
+
+
+<p><code>some_role_var</code> не доступна во внешнем контексте до запуска роли, но доступна после.</p>
+</li>
+</ul>
+<p>И в виде таблички:</p>
+<table>
+<thead>
+<tr>
+<th>Кейс</th>
+<th>Переменные до</th>
+<th>Переменные после</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>roles</code> без <code>vars</code></td>
+<td>Не доступны</td>
+<td>Не доступны</td>
+</tr>
+<tr>
+<td><code>roles</code> с <code>vars</code></td>
+<td>Доступны</td>
+<td>Доступны</td>
+</tr>
+<tr>
+<td><code>import_role</code></td>
+<td>Доступны</td>
+<td>Доступны</td>
+</tr>
+<tr>
+<td><code>include_role</code>, <code>public: no</code></td>
+<td>Не доступны</td>
+<td>Не доступны</td>
+</tr>
+<tr>
+<td><code>include_role</code>, <code>public: yes</code></td>
+<td>Не доступны</td>
+<td>Доступны</td>
+</tr>
+</tbody>
+</table>
             </div>
             <!-- /.entry-content -->
 <hr />
@@ -184,8 +320,8 @@ presently.</p>
             var disqus_config = function () {
                 this.language = "ru";
 
-                        this.page.identifier = '2013-06-03-lichnyi-firefox-sync';
-                        this.page.url = 'https://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html';
+                        this.page.identifier = '2020-05-10-parametrizovannye-roli-v-ansible';
+                        this.page.url = 'https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */

@@ -98,6 +98,17 @@ Puzan's Pages            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h2><a href="https://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html">Как создать bridge на nfs root</a></h2>
+                <div class="summary"><p>Для поднятия сети  на одной железке возникла необходимость  создать <em>bridge</em>. Но
+загвоздка в  том, что система  должна при  загрузке монтировать <em>nfs</em>  в корень.
+Данное условие необходимо  для возможности быстро изменить что-то  в системе без
+необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
+как раз в том, что …</p>
+                    <a class="btn btn-default btn-xs" href="https://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="https://puzan.info/linux/2013-08-25-emacs-java.html">Emacs + Java</a></h2>
                 <div class="summary"><p>Появилась у  меня в последнее  время необходимость основательно  познать <em>Java</em>.
 Очень долго  не смотрел в  его сторону, были  у меня некоторые  предубеждения. Я
@@ -203,20 +214,6 @@ gem install bundle
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">Infinality патчи на стабильной ветке</a></h2>
-                <div class="summary"><p>Как-то  я пропустил  тот  факт,  что похоже  уже  давно <a href="http://www.infinality.net/blog/">infinality</a>  патчи
-находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
-<a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
-<code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
-<div class="highlight"><pre><span></span>emerge -1q freetype
-eselect fontconfig enable 52-infinality.conf
-eselect infinality set infinality
-eselect …</pre></div>
-                    <a class="btn btn-default btn-xs" href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="https://puzan.info/linux/index.html">&laquo;</a>
@@ -253,11 +250,11 @@ eselect …</pre></div>
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
   <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html">Параметризованные роли в Ansible</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2016-04-06-malenkie-tuly.html">Маленькие тулы</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">Docker: Инициализация postgres</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html">Операционные системы?</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html">Куда отдать компьютеры?</a></li>
-    <li class="list-group-item"><a href="https://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html">Linux бекапы на Apple Time Capsule (Obnam)</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
@@ -271,6 +268,9 @@ eselect …</pre></div>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/anklavy.html">Анклавы</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ansible.html">ansible</a>
     </li>
     <li class="list-group-item tag-1">
       <a href="https://puzan.info/tag/apple.html">apple</a>
@@ -301,6 +301,9 @@ eselect …</pre></div>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/database.html">database</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/devops.html">devops</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/docker.html">docker</a>
@@ -467,7 +470,7 @@ eselect …</pre></div>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2016 Ilya Zonov
+         <div class="col-xs-10">&copy; 2020 Ilya Zonov
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

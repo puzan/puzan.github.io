@@ -96,6 +96,17 @@ Puzan's Pages            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h2><a href="https://puzan.info/read/2013-06-06-zamiatin-e-my.html">Замятин Е. - Мы</a></h2>
+                <div class="summary"><p>Полюбил я антиутопии!  Просто красота!   <em>"Мы"</em> было прочитано мной примерно год
+назад. Имен героев даже не помню. Хотя,  как их запомнишь?  Они же все нумера. А
+вот память на цифры у меня ужасная.</p>
+<p>Замечательный стройный  и ровный мир цифр.   Читаешь и думаешь, что  все они там
+сумашедшие.   Нереально современному  человеку …</p>
+                    <a class="btn btn-default btn-xs" href="https://puzan.info/read/2013-06-06-zamiatin-e-my.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="https://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html">Gems и другие пакетные менеджеры</a></h2>
                 <div class="summary"><p>Только  недавно  столкнулся и  попробовал  использовать  <em>rubygems</em>.  Ранее  все
 устанавливал через <em>portage</em>.   Но частенько стали попадаться  статьи, в которых
@@ -205,26 +216,6 @@ eselect …</pre></div>
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="https://puzan.info/linux/2013-02-03-svn-to-git.html">Svn to Git</a></h2>
-                <div class="summary"><p>Краткая инструкция миграции с <em>svn</em> на <em>git</em></p>
-<h3>Руководство к действию</h3>
-<ul>
-<li>
-<p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
-<span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
-<span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
-<span class="k">done</span>
-</pre></div>
-
-
-<p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную …</p></li></ul>
-                    <a class="btn btn-default btn-xs" href="https://puzan.info/linux/2013-02-03-svn-to-git.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="https://puzan.info/index2.html">&laquo;</a>
@@ -263,11 +254,11 @@ eselect …</pre></div>
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
   <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html">Параметризованные роли в Ansible</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2016-04-06-malenkie-tuly.html">Маленькие тулы</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">Docker: Инициализация postgres</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html">Операционные системы?</a></li>
     <li class="list-group-item"><a href="https://puzan.info/misc/2015-03-15-polosa-zagruzki-v-os-x.html">Полоса загрузки в OS X</a></li>
-    <li class="list-group-item"><a href="https://puzan.info/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html">Evernote виджет на Today экране (iOS)</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
@@ -281,6 +272,9 @@ eselect …</pre></div>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/anklavy.html">Анклавы</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ansible.html">ansible</a>
     </li>
     <li class="list-group-item tag-1">
       <a href="https://puzan.info/tag/apple.html">apple</a>
@@ -311,6 +305,9 @@ eselect …</pre></div>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/database.html">database</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/devops.html">devops</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/docker.html">docker</a>
@@ -477,7 +474,7 @@ eselect …</pre></div>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2016 Ilya Zonov
+         <div class="col-xs-10">&copy; 2020 Ilya Zonov
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
