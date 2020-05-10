@@ -21,6 +21,16 @@ ifeq ($(RELATIVE), 1)
 	PELICANOPTS += --relative-urls
 endif
 
+# New post variables
+DRAFTDIR=$(INPUTDIR)/draft
+DATE := $(shell date +'%Y-%m-%d')
+DATETIME := $(shell date +'%Y-%m-%d %H:%M:%S')
+SLUG := $(shell echo '${NAME}' | sed -e 's/[^[:alnum:]]/-/g' | \
+	tr -s '-' | tr A-ZА-Я a-zа-я | sed -e 's/-$$//g')
+CATEGORY ?= linux
+EXT ?= md
+POSTFILE := $(DRAFTDIR)/$(DATE)-$(SLUG).$(EXT)
+
 help:
 	@echo 'Makefile for a pelican Web site                                           '
 	@echo '                                                                          '
@@ -78,5 +88,17 @@ github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
+newpost:
+ifdef NAME
+	@echo "Title: $(NAME)" > $(POSTFILE)
+	@echo "Category: $(CATEGORY)" >> $(POSTFILE)
+	@echo "Date: $(DATETIME)" >> $(POSTFILE)
+	@echo "" >> $(POSTFILE)
+	@echo "" >> $(POSTFILE)
+	@${EDITOR} ${POSTFILE}
+else
+	@echo 'Variable NAME is not defined.'
+	@echo 'Do make newpost NAME='"'"'Post Name'"'"
+endif
 
 .PHONY: html help clean regenerate serve serve-global devserver publish github
