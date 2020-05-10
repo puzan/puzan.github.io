@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /CNAME
+Disallow: /keybase.txt
+Disallow: /theme/*
+
+Sitemap: https://puzan.info/sitemap.xml

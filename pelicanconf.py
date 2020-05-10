@@ -90,10 +90,12 @@ FAVICON = 'favicon.ico'
 
 STATIC_PATHS = ['images', 'extra']
 
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
-                       'extra/custom.css': {'path': 'static/custom.css'},
-                       'extra/favicon.ico': {'path': 'favicon.ico'},
-                       'extra/keybase.txt': {'path': 'keybase.txt'}}
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/custom.css': {'path': 'static/custom.css'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/keybase.txt': {'path': 'keybase.txt'},
+    'extra/robots.txt': {'path': 'robots.txt'}}
 
 SITEMAP = {
     'format': 'xml',
