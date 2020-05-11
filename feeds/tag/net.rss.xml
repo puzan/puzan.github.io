@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Puzan's Pages - net</title><link>https://puzan.info/</link><description></description><lastBuildDate>Tue, 03 Sep 2013 00:00:00 +0400</lastBuildDate><item><title>Как создать bridge на nfs root</title><link>https://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</link><description>&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
+Данное условие необходимо  для возможности быстро изменить что-то  в системе без
+необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема
+как раз в том, что …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 03 Sep 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-09-03:/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</guid><category>linux</category><category>linux</category><category>nfs</category><category>net</category><category>bridge</category></item></channel></rss>

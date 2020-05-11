@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Puzan's Pages - cedet</title><link>https://puzan.info/</link><description></description><lastBuildDate>Tue, 19 Aug 2014 00:00:00 +0400</lastBuildDate><item><title>EDE боль</title><link>https://puzan.info/linux/2014-08-19-ede-bol.html</link><description>&lt;p&gt;Примерно раз  в год я возвращаюсь  к работе над некоторыми  &lt;em&gt;C/C++&lt;/em&gt; проектами. И
+каждый  раз я  сталкиваюсь с  неудобствами работы  &lt;strong&gt;CEDET +  EDE&lt;/strong&gt;.  Сначала  я
+попробую описать  свои невзгоды, а в  конце предложу свой вариант  сделать жизнь
+чуточку лучше. Комментарии приветствуются.&lt;/p&gt;
+&lt;p&gt;Какова вообще задача  использовать &lt;em&gt;EDE&lt;/em&gt;? Я хочу указать  где-то …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 19 Aug 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2014-08-19:/linux/2014-08-19-ede-bol.html</guid><category>linux</category><category>emacs</category><category>cedet</category><category>ede</category></item></channel></rss>

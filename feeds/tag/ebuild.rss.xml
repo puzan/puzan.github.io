@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Puzan's Pages - ebuild</title><link>https://puzan.info/</link><description></description><lastBuildDate>Mon, 03 Jun 2013 00:00:00 +0400</lastBuildDate><item><title>Личный Firefox Sync</title><link>https://puzan.info/linux/2013-06-03-lichnyi-firefox-sync.html</link><description>&lt;p&gt;Для синхронизации браузерной  информации я использую &lt;em&gt;Firefox  Sync&lt;/em&gt;.  Но совсем
+недавно замучили проблемы синхронизации. Постоянно появлялась ошибка, что сервер
+не доступен, хотя  на сайте &lt;a href="https://services.mozilla.com/status/"&gt;mozilla&lt;/a&gt; не было  сообщений о каких-то
+ошибках и неполадках в работе сервиса. Сейчас кстати есть:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The  Firefox  Sync  service  is  undergoing  some  load  issues,  if  you …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Mon, 03 Jun 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-06-03:/linux/2013-06-03-lichnyi-firefox-sync.html</guid><category>linux</category><category>firefox</category><category>gentoo</category><category>portage</category><category>ebuild</category></item></channel></rss>

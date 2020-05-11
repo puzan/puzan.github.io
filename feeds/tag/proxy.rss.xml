@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Puzan's Pages - proxy</title><link>https://puzan.info/</link><description></description><lastBuildDate>Sat, 09 Aug 2014 00:00:00 +0400</lastBuildDate><item><title>Для тех кто за proxy</title><link>https://puzan.info/linux/2014-08-09-dlia-tekh-kto-za-proxy.html</link><description>&lt;p&gt;Как не крути, а бывают такие ситуации, когда надо залезть на свой сервачок через
+злобное  прокси, которое  режет,  например, &lt;em&gt;ssh&lt;/em&gt;  трафик.   Также бывают  такие
+ситуации, когда  некоторые программы не  поддерживают работу через  прокси.  Это
+тоже  беда. Для  себя  я  нашел 2  запасных  способа,  которые позволяют  решить
+указанные выше неудобства.&lt;/p&gt;
+&lt;p&gt;Когда-то …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Sat, 09 Aug 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2014-08-09:/linux/2014-08-09-dlia-tekh-kto-za-proxy.html</guid><category>linux</category><category>proxy</category><category>network</category><category>ssh</category></item></channel></rss>
