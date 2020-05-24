@@ -31,6 +31,8 @@ CATEGORY ?= linux
 EXT ?= md
 POSTFILE := $(DRAFTDIR)/$(DATE)-$(SLUG).$(EXT)
 
+NOW := $(shell date +"%c")
+
 help:
 	@echo 'Makefile for a pelican Web site                                           '
 	@echo '                                                                          '
@@ -84,8 +86,10 @@ endif
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
-github: publish
-	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+ghp: publish
+	ghp-import -m "Generate Pelican $(NOW)" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+
+github: ghp
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 newpost:
@@ -101,4 +105,4 @@ else
 	@echo 'Do make newpost NAME='"'"'Post Name'"'"
 endif
 
-.PHONY: html help clean regenerate serve serve-global devserver publish github
+.PHONY: html help clean regenerate serve serve-global devserver publish ghp github
