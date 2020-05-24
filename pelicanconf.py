@@ -95,7 +95,8 @@ EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
     'extra/keybase.txt': {'path': 'keybase.txt'},
-    'extra/robots.txt': {'path': 'robots.txt'}}
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/.gitattributes': {'path': '.gitattributes'}}
 
 SITEMAP = {
     'format': 'xml',
