@@ -7,6 +7,7 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
+PUBLISHDIR=$(BASEDIR)/publish
 
 GITHUB_PAGES_BRANCH=master
 
@@ -32,6 +33,7 @@ EXT ?= md
 POSTFILE := $(DRAFTDIR)/$(DATE)-$(SLUG).$(EXT)
 
 NOW := $(shell date +"%c")
+GIT_TMP := $(shell mktemp)
 
 help:
 	@echo 'Makefile for a pelican Web site                                           '
@@ -83,13 +85,20 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
-publish:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+$(PUBLISHDIR)/.git:
+	git worktree add $(PUBLISHDIR) -B master origin/master
 
-ghp: publish
-	ghp-import -m "Generate Pelican $(NOW)" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+publish: $(PUBLISHDIR)/.git
+	@cp $(PUBLISHDIR)/.git $(GIT_TMP)
+	$(PELICAN) $(INPUTDIR) -o $(PUBLISHDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	@cp $(GIT_TMP) $(PUBLISHDIR)/.git
+	@rm $(GIT_TMP)
+	cd $(PUBLISHDIR) && git status
 
-github: ghp
+commit: publish
+	cd $(PUBLISHDIR) && git add --all && git commit -m "Generate Pelican $(NOW)"
+
+github: commit
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 newpost:
@@ -105,4 +114,4 @@ else
 	@echo 'Do make newpost NAME='"'"'Post Name'"'"
 endif
 
-.PHONY: html help clean regenerate serve serve-global devserver publish ghp github
+.PHONY: html help clean regenerate serve serve-global devserver publish commit github
