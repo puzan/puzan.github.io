@@ -7,3 +7,6 @@
 .tagcloud {
     text-align: center;
 }
+
+/* It's just hack to avoid use img tag directly in markdown */
+img[alt="600"] { width: 600px; }
