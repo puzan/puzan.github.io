@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage:
 #
@@ -11,7 +11,7 @@
 # * png
 
 FILE=$1
-SIZE=$2
+SIZE=${2:-1200}
 
 if [ -z "$FILE" ]; then
     echo "Missed file"
@@ -19,8 +19,11 @@ if [ -z "$FILE" ]; then
 fi
 
 if [ -n "$SIZE" ]; then
-    echo "Scale image to $SIZE"
-    sips -Z "$SIZE" "$FILE"
+    mapfile -t image_size < <(sips -g pixelWidth -g pixelHeight "$FILE" | grep pixel | grep -o '[0-9]*$')
+    if [[ ${image_size[0]} -gt $SIZE || ${image_size[1]} -gt $SIZE ]]; then
+        echo "Scale image to max size: $SIZE"
+        sips -Z "$SIZE" "$FILE"
+    fi
 fi
 
 case ${FILE##*.} in
