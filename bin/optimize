@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Usage:
+#
+# $ optimize <path/to/file> [size]
+
+# Dependencies:
+#
+# * sips
+# * jpegtran
+# * png
+
+FILE=$1
+SIZE=$2
+
+if [ -z "$FILE" ]; then
+    echo "Missed file"
+    exit 1
+fi
+
+if [ -n "$SIZE" ]; then
+    echo "Scale image to $SIZE"
+    sips -Z "$SIZE" "$FILE"
+fi
+
+case ${FILE##*.} in
+    jpeg|jpg)
+        jpegtran -copy none -optimize -progressive -v -outfile "$FILE" "$FILE"
+        ;;
+    png)
+        optipng "$FILE"
+        ;;
+    *)
+        echo "Unsupported file: $FILE"
+        exit 1
+esac
