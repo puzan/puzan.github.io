@@ -20,19 +20,19 @@
 домашнего сервака  по &lt;em&gt;ssh&lt;/em&gt; из-за  прокси.  Неудобство данной утилиты  состоит в
 том,  что необходимо  предварительно установить  серверную часть  на машину,  до
 которой хотим добраться.  И запустить например так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hts -F localhost:22 8080
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hts -F localhost:22 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этих телодвижений  можно подключаться к локальному порту  &lt;code&gt;8022&lt;/code&gt; с помощью
 &lt;em&gt;ssh&lt;/em&gt; дабы добраться до своего сервака:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -p 8022 user@localhost
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh -p 8022 user@localhost
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Для  &lt;em&gt;Gentoo&lt;/em&gt;  я  в  свое  время  добавил стартовый  скрипт  для  &lt;code&gt;hts&lt;/code&gt;  в  свой
@@ -42,21 +42,21 @@
 штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
 конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
 порадовал. Добавляем в конфиг необходимую информацию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[ProxyList]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[ProxyList]
 http    &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;И теперь можем спокойно подключаться к своему серверу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Также успешно через &lt;code&gt;proxychain4&lt;/code&gt; запускаю десктопную версию Viber'а, которая не
 поддерживает работу с proxy:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr /&gt;

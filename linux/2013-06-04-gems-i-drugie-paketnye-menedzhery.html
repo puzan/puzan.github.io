@@ -151,9 +151,9 @@ Puzan's Pages            </a>
                 <p>Только  недавно  столкнулся и  попробовал  использовать  <em>rubygems</em>.  Ранее  все
 устанавливал через <em>portage</em>.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:</p>
-<div class="highlight"><pre><span></span>gem install git-up
+<div class="highlight"><pre><span></span><code>gem install git-up
 gem install bundle
-</pre></div>
+</code></pre></div>
 
 
 <p>Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
@@ -168,7 +168,7 @@ gem install bundle
 движений обновляется.</p>
 <p>На  <a href="https://bugs.gentoo.org/show_bug.cgi?id=403157">bugs.gentoo.org</a> нашел  следующее  универсальное  решение.  Создаем  в
 папке <code>/etc/profile</code> файл следующего содержания:</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">[[</span> -L <span class="s2">&quot;/usr/bin/ruby&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="o">[[</span> -L <span class="s2">&quot;/usr/bin/ruby&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nv">RUBY</span><span class="o">=</span><span class="k">$(</span>readlink /usr/bin/ruby <span class="m">2</span>&gt; /dev/null<span class="k">)</span>
 
     <span class="k">case</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">RUBY</span><span class="si">}</span><span class="s2">&quot;</span> in
@@ -179,7 +179,7 @@ gem install bundle
 
     <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.gem/ruby/</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">fi</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>После этого все будет доступно как надо.</p>

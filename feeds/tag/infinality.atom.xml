@@ -3,18 +3,18 @@
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
-eselect …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+eselect …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Как видим теперь необходимо несколько раз дополнительно запустить &lt;code&gt;eselect&lt;/code&gt;. При

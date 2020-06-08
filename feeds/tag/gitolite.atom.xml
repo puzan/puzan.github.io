@@ -17,8 +17,8 @@
 &lt;li&gt;
 &lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
   &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  usermod -a -G git redmine
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  usermod -a -G git redmine
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -28,8 +28,8 @@
   создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
-  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  chmod -R g+rX
-&lt;/pre&gt;&lt;/div&gt;
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  chmod -R g+rX
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;

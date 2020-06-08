@@ -62,24 +62,24 @@
 &lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
   исправлением всех конфликтов:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git checkout feature
 $ git merge origin/master
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 2a55e67 (origin/feature) b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (origin/feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;* 3820f07 (origin/feature) c&amp;#39;
 | *   b8c37f7 (HEAD, feature) c&amp;#39;
 | |\
 |/ /
@@ -87,17 +87,17 @@ $ git merge origin/master
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git merge origin/feature
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git merge origin/feature
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   781dea7 (HEAD, feature) d&amp;#39;
 |\
 | * 3820f07 (origin/feature) c&amp;#39;
 * |   b8c37f7 c&amp;#39;
@@ -108,41 +108,41 @@ $ git merge origin/master
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
   с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git reset --soft origin/feature
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git reset --soft origin/feature
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
 * 2a55e67 b&amp;#39;
 | * 7020561 (origin/master) b
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
 $ git commit
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 3820f07 (origin/feature) c&amp;#39;
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием
@@ -164,7 +164,7 @@ $ git commit
 &lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
 в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
 помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -180,17 +180,17 @@ $ git commit
 #
 #   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
 #   .....
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
 &lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.precomposeunicode true
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.precomposeunicode true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого видим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -200,7 +200,7 @@ $ git commit
 #   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
 #
 #   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
@@ -209,8 +209,8 @@ $ git commit
 в привычном виде.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
 проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath false
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.quotepath false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Использование Gitolite вместе с Redmine</title><link href="https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html" rel="alternate"></link><published>2013-02-05T00:00:00+04:00</published><updated>2013-02-05T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-02-05:/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</id><summary type="html">&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
 &lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
 всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
@@ -228,8 +228,8 @@ $ git commit
 &lt;li&gt;
 &lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
   &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  usermod -a -G git redmine
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  usermod -a -G git redmine
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -239,8 +239,8 @@ $ git commit
   создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
-  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  chmod -R g+rX
-&lt;/pre&gt;&lt;/div&gt;
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  chmod -R g+rX
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -250,12 +250,12 @@ $ git commit
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
@@ -263,20 +263,20 @@ $ git commit
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную заменяем на необходимые значения.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Склонировать &lt;em&gt;svn&lt;/em&gt; репозиторий&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Пара слов про опции:&lt;/p&gt;
@@ -291,10 +291,10 @@ $ git commit
 &lt;li&gt;
 &lt;p&gt;Импорт ignore файлов&lt;/p&gt;
 &lt;p&gt;На каждой ветке необходимо сделать следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout BRANCH
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git checkout BRANCH
 git svn create-ignore
 git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;

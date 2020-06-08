@@ -62,23 +62,23 @@
 меня  естественно  подключен  к  сети  через  &lt;em&gt;Wifi&lt;/em&gt;.   После  некоторых  опытов
 выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
 &lt;code&gt;DHCPOFFER&lt;/code&gt; от dhcp сервера. Вот логи с сервера:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;И то что  видно в виртуалке (время немного  не то, но это не  страшно: логи были
 такие же):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
 May  6 21:56:47 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 8 (xid=0x3a4517ed)
 May  6 21:56:55 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 14 (xid=0x3a4517ed)
 May  6 21:57:09 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 1 (xid=0x3a4517ed)
 May 6 21:57:10 learn dhclient[3262]: No DHCPOFFERS received.
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Соответственно этот &lt;code&gt;DHCPOFFER&lt;/code&gt; где-то и теряется.  Пока еще не искал конкретное
@@ -115,7 +115,7 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 &lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
 в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
 помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -131,17 +131,17 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 #
 #   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
 #   .....
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
 &lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.precomposeunicode true
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.precomposeunicode true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого видим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -151,7 +151,7 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 #   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
 #
 #   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
@@ -160,8 +160,8 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 в привычном виде.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
 проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath false
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="https://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><published>2013-05-21T00:00:00+04:00</published><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:/linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.quotepath false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Macbook Air, блог и bash crash</title><link href="https://puzan.info/linux/2013-05-21-macbook-air-blog-i-bash-crash.html" rel="alternate"></link><published>2013-05-21T00:00:00+04:00</published><updated>2013-05-21T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-21:/linux/2013-05-21-macbook-air-blog-i-bash-crash.html</id><summary type="html">&lt;p&gt;Со вчерашнего дня решил писать по записи  в день в данный блог, но умудрился уже
 проштрафиться. Просто напросто  не успел. Этот план  направлен на структуризацию
 своих мыслей.  Хочу  лучше понимать куда стремиться и  чем лучше интересоваться,
 заниматься. Кроме того довольно часто начал сталкиваться с различными вопросами,
@@ -190,9 +190,9 @@ Air&lt;/em&gt;. Поэтому с этого момента на данном б
 &lt;/ul&gt;
 &lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
 такой ошибкой:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;При этом  я не  совсем уверен,  что эта ошибка  связана с  &lt;em&gt;bash-completion&lt;/em&gt; или

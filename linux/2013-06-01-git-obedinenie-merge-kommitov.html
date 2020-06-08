@@ -158,24 +158,24 @@ Puzan's Pages            </a>
 <li>Итак, мы  сделали какой-то  абстрактный <code>merge</code> <em>master</em>  в <em>feature</em>  ветку с
   исправлением всех конфликтов:</li>
 </ul>
-<div class="highlight"><pre><span></span>$ git checkout feature
+<div class="highlight"><pre><span></span><code>$ git checkout feature
 $ git merge origin/master
-</pre></div>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>*   b8c37f7 (HEAD, feature) c&#39;
+<div class="highlight"><pre><span></span><code>*   b8c37f7 (HEAD, feature) c&#39;
 |\
 | * 7020561 (origin/master) b
 * | 2a55e67 (origin/feature) b&#39;
 |/
 * b888f61 a
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>Далее кто-то добавил что-то новое на <em>feature</em> ветку:</li>
 </ul>
-<div class="highlight"><pre><span></span>* 3820f07 (origin/feature) c&#39;
+<div class="highlight"><pre><span></span><code>* 3820f07 (origin/feature) c&#39;
 | *   b8c37f7 (HEAD, feature) c&#39;
 | |\
 |/ /
@@ -183,17 +183,17 @@ $ git merge origin/master
 * | 2a55e67 b&#39;
 |/
 * b888f61 a
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>Делаем дополнительный <code>merge</code> и видим не особо приятную историю:</li>
 </ul>
-<div class="highlight"><pre><span></span>$ git merge origin/feature
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git merge origin/feature
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>*   781dea7 (HEAD, feature) d&#39;
+<div class="highlight"><pre><span></span><code>*   781dea7 (HEAD, feature) d&#39;
 |\
 | * 3820f07 (origin/feature) c&#39;
 * |   b8c37f7 c&#39;
@@ -204,41 +204,41 @@ $ git merge origin/master
 * | 2a55e67 b&#39;
 |/
 * b888f61 a
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>А теперь собственно решение с  выправлением истории. Делаем <code>reset</code> на коммит,
   с которого надо делать <code>merge</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span>$ git reset --soft origin/feature
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git reset --soft origin/feature
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>* 3820f07 (HEAD, origin/feature, feature) c&#39;
+<div class="highlight"><pre><span></span><code>* 3820f07 (HEAD, origin/feature, feature) c&#39;
 * 2a55e67 b&#39;
 | * 7020561 (origin/master) b
 |/
 * b888f61 a
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>Далее симулируем <code>merge</code> с <em>origin/master</em> и делаем <code>commit</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span>$ git rev-parse origin/master &gt; .git/MERGE_HEAD
+<div class="highlight"><pre><span></span><code>$ git rev-parse origin/master &gt; .git/MERGE_HEAD
 $ git commit
-</pre></div>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>*   3b01bf0 (HEAD, feature) d&#39;
+<div class="highlight"><pre><span></span><code>*   3b01bf0 (HEAD, feature) d&#39;
 |\
 | * 7020561 (origin/master) b
 * | 3820f07 (origin/feature) c&#39;
 * | 2a55e67 b&#39;
 |/
 * b888f61 a
-</pre></div>
+</code></pre></div>
 
 
 <p>Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием

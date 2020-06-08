@@ -41,12 +41,12 @@
 &lt;p&gt;С  доступом  к  &lt;em&gt;Time  Capsule&lt;/em&gt;  особых   проблем  в  &lt;em&gt;Linux&lt;/em&gt;  нету.   Ее  можно
 подмонтировать с помощью &lt;em&gt;cifs&lt;/em&gt; (не забываем установить &lt;code&gt;cifs-utils&lt;/code&gt;). В &lt;code&gt;fstab&lt;/code&gt;
 закидываем следующую строку и все должно работать после монтирования.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Но при этом в &lt;code&gt;/var/log/messages&lt;/code&gt; порой валит вот такие ошибки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[151119.364105] ------------[ cut here ]------------
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[151119.364105] ------------[ cut here ]------------
 [151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
 [151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
 [151119.394514] [&amp;lt;c0015430&amp;gt;] (unwind_backtrace+0x0/0x134) from [&amp;lt;c003322c&amp;gt;] (warn_slowpath_common+0x54/0x64)
@@ -57,7 +57,7 @@
 [151119.434358] [&amp;lt;c00e64d0&amp;gt;] (vfs_unlink+0x78/0x104) from [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c)
 [151119.447019] [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c) from [&amp;lt;c000ec40&amp;gt;] (ret_fast_syscall+0x0/0x30)
 [151119.451059] ---[ end trace fddecabeb4cc4bce ]---
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Вроде ничего страшного, но логи забиваются.&lt;/p&gt;
@@ -73,7 +73,7 @@
 бекапы.  Вроде как настроил систему  аналогичную &lt;em&gt;Time Capsule&lt;/em&gt; c чисткой старых
 поколений бекапов (см. поле &lt;code&gt;keep&lt;/code&gt; в  настройках ниже).  Для всего этого написал
 небольшой скрипт следующего содержания и положил это добро в крон:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
 
 logger &lt;span class="s2"&gt;&amp;quot;Start backup&amp;quot;&lt;/span&gt;
 
@@ -94,11 +94,11 @@ nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam backup
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
 logger &lt;span class="s2"&gt;&amp;quot;End backup&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А вот и &lt;strong&gt;obnam&lt;/strong&gt; конфиг:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[config]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[config]
 repository = /mnt/tc/backup
 log = /var/log/obnam.log
 log-max = 10M
@@ -110,7 +110,7 @@ keep = 24h,7d,15w,24m,5y
 upload-queue-size = 512
 lru-size = 512
 compress-with = deflate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все это прекрасно  работало до того момента, как я  перенес &lt;a href="http://seafile.com"&gt;seafile&lt;/a&gt; с

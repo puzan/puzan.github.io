@@ -150,7 +150,7 @@ Puzan's Pages            </a>
 <p>И вот проблема на <em>Mac</em>'е. Все  русские буквы в выводе <code>git status</code> отображаются
 в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
 помечаются как <em>untracked</em>. Пример:</p>
-<div class="highlight"><pre><span></span>$ izonov:text izonov$ git status
+<div class="highlight"><pre><span></span><code>$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &#39;origin/master&#39; by 1 commit.
 #   (use &quot;git push&quot; to publish your local commits)
@@ -166,17 +166,17 @@ Puzan's Pages            </a>
 #
 #   &quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&quot;
 #   .....
-</pre></div>
+</code></pre></div>
 
 
 <p>Вторая проблема  (<em>untracked</em> файлы)  решается достаточно легко.   Подсмотрено в
 <a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x">вопросе на Stackoverflow</a>:</p>
-<div class="highlight"><pre><span></span>git config --global core.precomposeunicode true
-</pre></div>
+<div class="highlight"><pre><span></span><code>git config --global core.precomposeunicode true
+</code></pre></div>
 
 
 <p>После этого видим следующее:</p>
-<div class="highlight"><pre><span></span>$ izonov:text izonov$ git status
+<div class="highlight"><pre><span></span><code>$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &#39;origin/master&#39; by 1 commit.
 #   (use &quot;git push&quot; to publish your local commits)
@@ -186,7 +186,7 @@ Puzan's Pages            </a>
 #   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 #
 #   modified:   &quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>Решения  отображения русских  букв в  <code>git  status</code> я  не нашел.   Кириллические
@@ -195,8 +195,8 @@ Puzan's Pages            </a>
 в привычном виде.</p>
 <p><strong>P.S.  [2013-05-28]</strong>:  Вчера  <em>Konstantin  Khomoutov</em>  подсказал,  как  решить
 проблему отображения русских букв в <em>git</em>:</p>
-<div class="highlight"><pre><span></span>git config --global core.quotepath false
-</pre></div>
+<div class="highlight"><pre><span></span><code>git config --global core.quotepath false
+</code></pre></div>
             </div>
             <!-- /.entry-content -->
 <hr />

@@ -12,22 +12,22 @@
 официального &lt;em&gt;postgres&lt;/em&gt; образа во время  старта контейнера.  Тогда все сводилось
 к тому  чтобы написать скрипт, который  стартует &lt;em&gt;postgres&lt;/em&gt; в &lt;em&gt;single&lt;/em&gt;  режиме и
 выполняет нужные &lt;em&gt;sql&lt;/em&gt; запросы. Например вот так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 gosu postgres postgres --single &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/create-testdb.sql
 gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/date-db.sql
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Затем скрипт  и &lt;em&gt;sql&lt;/em&gt; файлы  надо было добавить в  контейнер во время  &lt;em&gt;build&lt;/em&gt; в
 папочку &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;. Пример &lt;em&gt;Dockerfile&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM postgres:9
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FROM postgres:9
 
 ENV INIT_SQL /init-sql
 
 COPY init-db.sh /docker-entrypoint-initdb.d/
 COPY *.sql ${INIT_SQL}/
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А далее на старте контейнера запускался &lt;em&gt;docker-entrypoint.sh&lt;/em&gt;, который выполнял

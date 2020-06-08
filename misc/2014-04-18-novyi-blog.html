@@ -157,12 +157,12 @@ Puzan's Pages            </a>
 (<a href="https://github.com/puzan/puzan.github.io/tree/source">source</a>).   Другая   для   сгенерированных   <em>html</em>   страничек
 (<a href="https://github.com/puzan/puzan.github.io/tree/master">master</a>).   Для   публикации    на   master   ветку   использую
 <a href="https://github.com/davisp/ghp-import">ghp-import</a>. Для удобства поправил <em>Makefile</em> следующим образом:</p>
-<div class="highlight"><pre><span></span><span class="nf">github</span><span class="o">:</span> <span class="n">ghp</span>
+<div class="highlight"><pre><span></span><code><span class="nf">github</span><span class="o">:</span> <span class="n">ghp</span>
     git push origin master
 
 <span class="nf">ghp</span><span class="o">:</span> <span class="n">publish</span>
     ghp-import -b master -m <span class="s2">&quot;Site update </span><span class="k">$(</span>NOW<span class="k">)</span><span class="s2">&quot;</span> <span class="k">$(</span>OUTPUTDIR<span class="k">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Мне очень  нравится писать  тексты в <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>,  поэтому я  смотрел в

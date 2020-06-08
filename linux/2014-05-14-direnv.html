@@ -147,53 +147,53 @@ Puzan's Pages            </a>
 <a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild">ebuild</a> в свой <a href="https://github.com/puzan/puzan-overlay">оверлей</a>.</p>
 <p>Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> which direnv &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> which direnv &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
     <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>direnv hook <span class="nv">$0</span><span class="k">)</span><span class="s2">&quot;</span>
 <span class="k">fi</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Далее переходим в нужную директорию и обновляем для нее окружение:</p>
-<div class="highlight"><pre><span></span>$ cd &lt;path/to/project&gt;
+<div class="highlight"><pre><span></span><code>$ cd &lt;path/to/project&gt;
 $ direnv edit .
-</pre></div>
+</code></pre></div>
 
 
 <p>При  этом  открывается <code>.envrc</code>  файл  из  текущей  директории в  вашем  любимом
 <strong>$EDITOR</strong>.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
 виде: <code>export VAR=value</code>. Например, для Android проектов я использую нечто вроде
 следующего:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ANDROID_SDK</span><span class="o">=</span>/Users/puzan/apps/android-sdk
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ANDROID_SDK</span><span class="o">=</span>/Users/puzan/apps/android-sdk
 <span class="nb">export</span> <span class="nv">ANT_ARGS</span><span class="o">=</span><span class="s2">&quot;-Dsdk.dir=</span><span class="si">${</span><span class="nv">ANDROID_SDK</span><span class="si">}</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Теперь при переходе в папку <code>&lt;path/to/project&gt;</code> мы увидим следующее:</p>
-<div class="highlight"><pre><span></span>$ cd &lt;path/to/project&gt;
+<div class="highlight"><pre><span></span><code>$ cd &lt;path/to/project&gt;
 direnv: loading .envrc
 direnv: export +ANDROID_SDK +ANT_ARGS
 $ echo $ANDROID_SDK
 /Users/puzan/apps/android-sdk
 $ echo $ANT_ARGS 
 -Dsdk.dir=/Users/puzan/apps/android-sdk
-</pre></div>
+</code></pre></div>
 
 
 <p>При выходе из директории, например на уровень выше, окружение выгрузится:</p>
-<div class="highlight"><pre><span></span>$ cd ..
+<div class="highlight"><pre><span></span><code>$ cd ..
 direnv: unloading
 $ echo $ANDROID_SDK
 
 $ echo $ANT_ARGS 
 
 $ 
-</pre></div>
+</code></pre></div>
 
 
 <p>Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
 окружения. Помещаем слудующую строчку в <code>.envrc</code>:</p>
-<div class="highlight"><pre><span></span>layout python
-</pre></div>
+<div class="highlight"><pre><span></span><code>layout python
+</code></pre></div>
 
 
 <p>При этом в папке <code>./.direnv/virtualenv/</code> будет создано виртуальное окружение и в
@@ -203,7 +203,7 @@ $
 возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
 <code>~/.virtualenvs/</code> использовать.   Для этого  добавляем в файл  <code>~/.direnvrc</code> вот
 такую функцию:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Usage: use venv &lt;venv&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Usage: use venv &lt;venv&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Loads the specified python virtualenv</span>
 <span class="c1">#</span>
@@ -211,12 +211,12 @@ use_venv<span class="o">()</span> <span class="o">{</span>
     <span class="nb">export</span> <span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.virtualenvs/</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
     PATH_add <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/bin&quot;</span>
 <span class="o">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>После этого в <code>.envrc</code> можно использовать следующую кострукцию:</p>
-<div class="highlight"><pre><span></span>use venv &lt;venv_name&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>use venv &lt;venv_name&gt;
+</code></pre></div>
 
 
 <p>В общем, возможности для расширения  есть. Думаю можно разширить практически под

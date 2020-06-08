@@ -162,7 +162,7 @@ Puzan's Pages            </a>
 <em>bridge</em>  из нового  окружения.   Данный  метод работает  на  ура, нареканий  не
 заметил.</p>
 <p>Вот собственно решение с моими малюсенькими изменениями:</p>
-<div class="highlight"><pre><span></span><span class="nb">set</span> -x
+<div class="highlight"><pre><span></span><code><span class="nb">set</span> -x
 mount -o remount,exec /tmp
 <span class="nv">R</span><span class="o">=</span>/tmp/root
 <span class="nv">IPADDR</span><span class="o">=</span><span class="m">192</span>.168.0.159/8
@@ -180,7 +180,7 @@ cat &gt; <span class="s2">&quot;</span><span class="nv">$R</span><span class="s2
 
 chroot <span class="s2">&quot;</span><span class="nv">$R</span><span class="s2">&quot;</span> sh script
 rm -r <span class="s2">&quot;</span><span class="nv">$R</span><span class="s2">/sbin&quot;</span> <span class="s2">&quot;</span><span class="nv">$R</span><span class="s2">/bin&quot;</span> <span class="s2">&quot;</span><span class="nv">$R</span><span class="s2">/lib&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>В нутрь <code>script</code> в принципе можно вставить все, что вам будет необходимо.</p>

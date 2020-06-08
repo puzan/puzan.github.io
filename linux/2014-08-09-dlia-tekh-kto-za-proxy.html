@@ -158,19 +158,19 @@ Puzan's Pages            </a>
 домашнего сервака  по <em>ssh</em> из-за  прокси.  Неудобство данной утилиты  состоит в
 том,  что необходимо  предварительно установить  серверную часть  на машину,  до
 которой хотим добраться.  И запустить например так:</p>
-<div class="highlight"><pre><span></span>hts -F localhost:22 8080
-</pre></div>
+<div class="highlight"><pre><span></span><code>hts -F localhost:22 8080
+</code></pre></div>
 
 
 <p>Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:</p>
-<div class="highlight"><pre><span></span>htc -P &lt;proxy.server.com&gt;:&lt;port&gt; -F 8022 -w &lt;home.server.me&gt;:8080
-</pre></div>
+<div class="highlight"><pre><span></span><code>htc -P &lt;proxy.server.com&gt;:&lt;port&gt; -F 8022 -w &lt;home.server.me&gt;:8080
+</code></pre></div>
 
 
 <p>После этих телодвижений  можно подключаться к локальному порту  <code>8022</code> с помощью
 <em>ssh</em> дабы добраться до своего сервака:</p>
-<div class="highlight"><pre><span></span>ssh -p 8022 user@localhost
-</pre></div>
+<div class="highlight"><pre><span></span><code>ssh -p 8022 user@localhost
+</code></pre></div>
 
 
 <p>Для  <em>Gentoo</em>  я  в  свое  время  добавил стартовый  скрипт  для  <code>hts</code>  в  свой
@@ -180,21 +180,21 @@ Puzan's Pages            </a>
 штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
 конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
 порадовал. Добавляем в конфиг необходимую информацию:</p>
-<div class="highlight"><pre><span></span>[ProxyList]
+<div class="highlight"><pre><span></span><code>[ProxyList]
 http    &lt;proxy_ip&gt;      &lt;proxy_port&gt;
 https   &lt;proxy_ip&gt;      &lt;proxy_port&gt;
-</pre></div>
+</code></pre></div>
 
 
 <p>И теперь можем спокойно подключаться к своему серверу:</p>
-<div class="highlight"><pre><span></span>proxychain4 ssh &lt;home.server.me&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>proxychain4 ssh &lt;home.server.me&gt;
+</code></pre></div>
 
 
 <p>Также успешно через <code>proxychain4</code> запускаю десктопную версию Viber'а, которая не
 поддерживает работу с proxy:</p>
-<div class="highlight"><pre><span></span>proxychain4 &lt;/path/to/Viber&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>proxychain4 &lt;/path/to/Viber&gt;
+</code></pre></div>
 
 
 <hr />

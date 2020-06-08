@@ -151,22 +151,22 @@ Puzan's Pages            </a>
 официального <em>postgres</em> образа во время  старта контейнера.  Тогда все сводилось
 к тому  чтобы написать скрипт, который  стартует <em>postgres</em> в <em>single</em>  режиме и
 выполняет нужные <em>sql</em> запросы. Например вот так:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 gosu postgres postgres --single &lt; <span class="si">${</span><span class="nv">INIT_SQL</span><span class="si">}</span>/create-testdb.sql
 gosu postgres postgres --single -j testdb &lt; <span class="si">${</span><span class="nv">INIT_SQL</span><span class="si">}</span>/date-db.sql
-</pre></div>
+</code></pre></div>
 
 
 <p>Затем скрипт  и <em>sql</em> файлы  надо было добавить в  контейнер во время  <em>build</em> в
 папочку <code>/docker-entrypoint-initdb.d/</code>. Пример <em>Dockerfile</em>:</p>
-<div class="highlight"><pre><span></span>FROM postgres:9
+<div class="highlight"><pre><span></span><code>FROM postgres:9
 
 ENV INIT_SQL /init-sql
 
 COPY init-db.sh /docker-entrypoint-initdb.d/
 COPY *.sql ${INIT_SQL}/
-</pre></div>
+</code></pre></div>
 
 
 <p>А далее на старте контейнера запускался <em>docker-entrypoint.sh</em>, который выполнял

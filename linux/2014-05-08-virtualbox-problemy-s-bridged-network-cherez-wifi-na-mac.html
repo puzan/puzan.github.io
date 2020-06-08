@@ -144,23 +144,23 @@ Puzan's Pages            </a>
 меня  естественно  подключен  к  сети  через  <em>Wifi</em>.   После  некоторых  опытов
 выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
 <code>DHCPOFFER</code> от dhcp сервера. Вот логи с сервера:</p>
-<div class="highlight"><pre><span></span>May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+<div class="highlight"><pre><span></span><code>May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e
-</pre></div>
+</code></pre></div>
 
 
 <p>И то что  видно в виртуалке (время немного  не то, но это не  страшно: логи были
 такие же):</p>
-<div class="highlight"><pre><span></span>May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
+<div class="highlight"><pre><span></span><code>May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
 May  6 21:56:47 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 8 (xid=0x3a4517ed)
 May  6 21:56:55 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 14 (xid=0x3a4517ed)
 May  6 21:57:09 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 1 (xid=0x3a4517ed)
 May 6 21:57:10 learn dhclient[3262]: No DHCPOFFERS received.
-</pre></div>
+</code></pre></div>
 
 
 <p>Соответственно этот <code>DHCPOFFER</code> где-то и теряется.  Пока еще не искал конкретное

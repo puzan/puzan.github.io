@@ -52,9 +52,9 @@
 &lt;em&gt;Emacs&lt;/em&gt;. И …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 11 Jun 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-06-11:/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</guid><category>linux</category><category>git</category><category>rcs</category><category>config</category></item><item><title>Gems и другие пакетные менеджеры</title><link>https://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</link><description>&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gem install git-up
 gem install bundle
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
@@ -88,10 +88,10 @@ gem install bundle
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
-eselect …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 12 Feb 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-02-12:/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</guid><category>linux</category><category>gentoo</category><category>infinality</category><category>fonts</category></item><item><title>Использование Gitolite вместе с Redmine</title><link>https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</link><description>&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
+eselect …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 12 Feb 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-02-12:/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</guid><category>linux</category><category>gentoo</category><category>infinality</category><category>fonts</category></item><item><title>Использование Gitolite вместе с Redmine</title><link>https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</link><description>&lt;p&gt;Появилась необходимость  добавить git репозиторий в  &lt;em&gt;&lt;a href="http://www.redmine.org"&gt;Redmine&lt;/a&gt;&lt;/em&gt; проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
 &lt;em&gt;&lt;a href="https://github.com/sitaramc/gitolite"&gt;Gitolite&lt;/a&gt;&lt;/em&gt;. Как  оказалось по-умолчанию &lt;em&gt;Gitolite&lt;/em&gt;  запрещает доступ
 всем кроме  пользователя, которым  он обслуживается. В  моем случае  доступ есть
@@ -101,12 +101,12 @@ eselect …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://pu
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Sun, 03 Feb 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.info,2013-02-03:/linux/2013-02-03-svn-to-git.html</guid><category>linux</category><category>svn</category><category>git</category></item><item><title>Blogger пост из Emacs? Markdown + Googlecl script</title><link>https://puzan.info/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</link><description>&lt;p&gt;Побаловался  с  &lt;em&gt;googlecl&lt;/em&gt;.   Умудрился   случайно  наделать  множество  постов,

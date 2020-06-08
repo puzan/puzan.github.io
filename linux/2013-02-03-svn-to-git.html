@@ -144,20 +144,20 @@ Puzan's Pages            </a>
 <ul>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 <span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
 <span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную заменяем на необходимые значения.</p>
 </li>
 <li>
 <p>Склонировать <em>svn</em> репозиторий</p>
-<div class="highlight"><pre><span></span>git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
-</pre></div>
+<div class="highlight"><pre><span></span><code>git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+</code></pre></div>
 
 
 <p>Пара слов про опции:</p>
@@ -172,10 +172,10 @@ Puzan's Pages            </a>
 <li>
 <p>Импорт ignore файлов</p>
 <p>На каждой ветке необходимо сделать следующее:</p>
-<div class="highlight"><pre><span></span>git checkout BRANCH
+<div class="highlight"><pre><span></span><code>git checkout BRANCH
 git svn create-ignore
 git commit -a -m &quot;Import svn:ignore.&quot;
-</pre></div>
+</code></pre></div>
 
 
 </li>

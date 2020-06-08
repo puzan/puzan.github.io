@@ -22,19 +22,19 @@
 &lt;li&gt;определение необходимых фактов&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ну и роль сама получила как минимум один параметр, который определяет ее поведение - &lt;code&gt;puzan_service_name&lt;/code&gt;. В упрощенном варианте это имя директории, в которую в последующем копируется &lt;code&gt;compose&lt;/code&gt; файл. Теперь для инициализации сервисов достаточно в &lt;code&gt;meta&lt;/code&gt; добавлять нечто вроде:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;role&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;puzan_service&lt;/span&gt;
     &lt;span class="nt"&gt;vars&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
       &lt;span class="nt"&gt;puzan_service_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usefull_service&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Примерно тут мои ожидания несколько расходятся с реальностью. Указанный подход отлично работает. Более того на текущий момент похоже это &lt;a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies"&gt;официальный подход&lt;/a&gt; для подключения ролей с параметрами в качестве зависимостей. Но есть нюанс — после выполнения роли в контексте останется переменная &lt;code&gt;puzan_service_name&lt;/code&gt;. В целом может показаться, что это не страшно. Но меня это не устраивает: &lt;code&gt;puzan_service&lt;/code&gt; предназначена для множественного использования, а это значит каждый ее запуск не должен быть связан с предыдущим. В текущем примере &lt;code&gt;puzan_service_name&lt;/code&gt; обязательный параметр и его каждый раз необходимо определять. Но что, если у роли будет еще необязательный параметр или кто-то допустит опечатку в имени переменной? Это приведет к неожиданному поведению и вероятно сложному поиску причины ошибки, так как роль может выполнится со старыми значениями переменных.&lt;/p&gt;
 &lt;p&gt;Я начал работать с &lt;em&gt;Ansible&lt;/em&gt; где-то около версии 1.9. И как ни странно там был немного &lt;a href="https://docs.ansible.com/ansible/2.3/playbooks_roles.html#role-dependencies"&gt;другой метод&lt;/a&gt; определения зависимостей с переменными:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;role&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;puzan_service&lt;/span&gt;
     &lt;span class="nt"&gt;puzan_service_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usefull_service&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Данный метод также до сих пор работает. Но более удивительно то, что он работает, как я хочу: &lt;code&gt;puzan_service_name&lt;/code&gt; не попадает в глобальный контекст. Я подготовил &lt;a href="https://github.com/puzan/ansible_role_vars_tests"&gt;небольшой репозиторий&lt;/a&gt; с тестами данного поведения. Кроме использования meta &lt;code&gt;dependencies&lt;/code&gt; там также продемонстрирована работа использования ролей в playbook'ах, а также разница поведения &lt;code&gt;import_role&lt;/code&gt; и &lt;code&gt;include_role&lt;/code&gt;.&lt;/p&gt;
@@ -60,19 +60,19 @@
 &lt;li&gt;
 &lt;p&gt;Без &lt;code&gt;vars&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Playbook пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- name: Playbook
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Meta role пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dependencies:
   - role: some_role
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
@@ -80,21 +80,21 @@
 &lt;li&gt;
 &lt;p&gt;C &lt;code&gt;vars&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Playbook пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- name: Playbook
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       vars:
         some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Meta role пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dependencies:
   - role: some_role
     vars:
       some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
@@ -103,35 +103,35 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;import_role&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- import_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- import_role:
   name: some_role
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;include_role&lt;/code&gt; с &lt;code&gt;public: no&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- include_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- include_role:
     name: some_role
     public: no
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;include_role&lt;/code&gt; с &lt;code&gt;public: yes&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- include_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- include_role:
     name: some_role
     public: yes
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до запуска роли, но доступна после.&lt;/p&gt;
@@ -214,22 +214,22 @@
 официального &lt;em&gt;postgres&lt;/em&gt; образа во время  старта контейнера.  Тогда все сводилось
 к тому  чтобы написать скрипт, который  стартует &lt;em&gt;postgres&lt;/em&gt; в &lt;em&gt;single&lt;/em&gt;  режиме и
 выполняет нужные &lt;em&gt;sql&lt;/em&gt; запросы. Например вот так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 gosu postgres postgres --single &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/create-testdb.sql
 gosu postgres postgres --single -j testdb &amp;lt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INIT_SQL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/date-db.sql
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Затем скрипт  и &lt;em&gt;sql&lt;/em&gt; файлы  надо было добавить в  контейнер во время  &lt;em&gt;build&lt;/em&gt; в
 папочку &lt;code&gt;/docker-entrypoint-initdb.d/&lt;/code&gt;. Пример &lt;em&gt;Dockerfile&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM postgres:9
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;FROM postgres:9
 
 ENV INIT_SQL /init-sql
 
 COPY init-db.sh /docker-entrypoint-initdb.d/
 COPY *.sql ${INIT_SQL}/
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А далее на старте контейнера запускался &lt;em&gt;docker-entrypoint.sh&lt;/em&gt;, который выполнял
@@ -591,12 +591,12 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 &lt;p&gt;С  доступом  к  &lt;em&gt;Time  Capsule&lt;/em&gt;  особых   проблем  в  &lt;em&gt;Linux&lt;/em&gt;  нету.   Ее  можно
 подмонтировать с помощью &lt;em&gt;cifs&lt;/em&gt; (не забываем установить &lt;code&gt;cifs-utils&lt;/code&gt;). В &lt;code&gt;fstab&lt;/code&gt;
 закидываем следующую строку и все должно работать после монтирования.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;//&amp;lt;TC.local or direct ip&amp;gt;/Data /mnt/tc cifs passwd=thebestpass,sec=ntlm,iocharset=utf8 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Но при этом в &lt;code&gt;/var/log/messages&lt;/code&gt; порой валит вот такие ошибки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[151119.364105] ------------[ cut here ]------------
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[151119.364105] ------------[ cut here ]------------
 [151119.375676] WARNING: at fs/inode.c:280 drop_nlink+0x54/0x5c()
 [151119.380041] Modules linked in: sunxi_cedar_mod mali ump gpio_sunxi
 [151119.394514] [&amp;lt;c0015430&amp;gt;] (unwind_backtrace+0x0/0x134) from [&amp;lt;c003322c&amp;gt;] (warn_slowpath_common+0x54/0x64)
@@ -607,7 +607,7 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 [151119.434358] [&amp;lt;c00e64d0&amp;gt;] (vfs_unlink+0x78/0x104) from [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c)
 [151119.447019] [&amp;lt;c00e66a0&amp;gt;] (do_unlinkat+0x144/0x16c) from [&amp;lt;c000ec40&amp;gt;] (ret_fast_syscall+0x0/0x30)
 [151119.451059] ---[ end trace fddecabeb4cc4bce ]---
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Вроде ничего страшного, но логи забиваются.&lt;/p&gt;
@@ -623,7 +623,7 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 бекапы.  Вроде как настроил систему  аналогичную &lt;em&gt;Time Capsule&lt;/em&gt; c чисткой старых
 поколений бекапов (см. поле &lt;code&gt;keep&lt;/code&gt; в  настройках ниже).  Для всего этого написал
 небольшой скрипт следующего содержания и положил это добро в крон:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
 
 logger &lt;span class="s2"&gt;&amp;quot;Start backup&amp;quot;&lt;/span&gt;
 
@@ -644,11 +644,11 @@ nice -n &lt;span class="m"&gt;19&lt;/span&gt; ionice -c2 -n7 obnam backup
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
 logger &lt;span class="s2"&gt;&amp;quot;End backup&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А вот и &lt;strong&gt;obnam&lt;/strong&gt; конфиг:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[config]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[config]
 repository = /mnt/tc/backup
 log = /var/log/obnam.log
 log-max = 10M
@@ -660,7 +660,7 @@ keep = 24h,7d,15w,24m,5y
 upload-queue-size = 512
 lru-size = 512
 compress-with = deflate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все это прекрасно  работало до того момента, как я  перенес &lt;a href="http://seafile.com"&gt;seafile&lt;/a&gt; с
@@ -809,7 +809,7 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 загружает конфигурацию проекта из &lt;code&gt;.Project&lt;/code&gt; файла, если он еще не был загружен.
 Также он  обновляет список &lt;em&gt;include&lt;/em&gt;  путей для &lt;code&gt;clang&lt;/code&gt;, который  используется в
 &lt;code&gt;auto-complete-clang&lt;/code&gt; и &lt;code&gt;flycheck&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;proj-file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.Project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-current-project&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proj-dir-tmp&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;locate-dominating-file&lt;/span&gt; &lt;span class="nv"&gt;buffer-file-name&lt;/span&gt; &lt;span class="nv"&gt;proj-file&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -837,18 +837,18 @@ Environment&lt;/em&gt;.&lt;/p&gt;
              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;concat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-I&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
              &lt;span class="nv"&gt;flycheck-clang-include-path&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
 (как видите реальной проверки на это нету). Например вот такое:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Makefile&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/inc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                       &lt;span class="ss"&gt;:system-include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/usr/include/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                       &lt;span class="ss"&gt;:spp-table&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PROJECT_EXPORT&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В душе я надеюсь, что я что-то делаю не так, что все в реальности легко и просто
@@ -883,19 +883,19 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 домашнего сервака  по &lt;em&gt;ssh&lt;/em&gt; из-за  прокси.  Неудобство данной утилиты  состоит в
 том,  что необходимо  предварительно установить  серверную часть  на машину,  до
 которой хотим добраться.  И запустить например так:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hts -F localhost:22 8080
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hts -F localhost:22 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее на своей рабочей машине запускаем клиентскую часть, дабы создать туннель:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;htc -P &amp;lt;proxy.server.com&amp;gt;:&amp;lt;port&amp;gt; -F 8022 -w &amp;lt;home.server.me&amp;gt;:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этих телодвижений  можно подключаться к локальному порту  &lt;code&gt;8022&lt;/code&gt; с помощью
 &lt;em&gt;ssh&lt;/em&gt; дабы добраться до своего сервака:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh -p 8022 user@localhost
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh -p 8022 user@localhost
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Для  &lt;em&gt;Gentoo&lt;/em&gt;  я  в  свое  время  добавил стартовый  скрипт  для  &lt;code&gt;hts&lt;/code&gt;  в  свой
@@ -905,21 +905,21 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 штука. Главная идея подменить socket вызовы так, чтобы они шли через указанные в
 конфиге прокси. Как подробно это работает не разбирался, но результат меня очень
 порадовал. Добавляем в конфиг необходимую информацию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[ProxyList]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[ProxyList]
 http    &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;И теперь можем спокойно подключаться к своему серверу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;proxychain4 ssh &amp;lt;home.server.me&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Также успешно через &lt;code&gt;proxychain4&lt;/code&gt; запускаю десктопную версию Viber'а, которая не
 поддерживает работу с proxy:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;proxychain4 &amp;lt;/path/to/Viber&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr /&gt;
@@ -944,53 +944,53 @@ https   &amp;lt;proxy_ip&amp;gt;      &amp;lt;proxy_port&amp;gt;
 &lt;a href="https://github.com/puzan/puzan-overlay/blob/master/app-shells/direnv/direnv-2.3.0.ebuild"&gt;ebuild&lt;/a&gt; в свой &lt;a href="https://github.com/puzan/puzan-overlay"&gt;оверлей&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Использование предельно простое.  Для начала  надо добавить в файл инициализации
 вашего shell'а подобные строчки:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; which direnv &amp;gt; /dev/null&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;direnv hook &lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Далее переходим в нужную директорию и обновляем для нее окружение:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cd &amp;lt;path/to/project&amp;gt;
 $ direnv edit .
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;При  этом  открывается &lt;code&gt;.envrc&lt;/code&gt;  файл  из  текущей  директории в  вашем  любимом
 &lt;strong&gt;$EDITOR&lt;/strong&gt;.   Сюда и  добавляем  необходимое окружение  в достаточно  привычном
 виде: &lt;code&gt;export VAR=value&lt;/code&gt;. Например, для Android проектов я использую нечто вроде
 следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/Users/puzan/apps/android-sdk
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANT_ARGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-Dsdk.dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ANDROID_SDK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Теперь при переходе в папку &lt;code&gt;&amp;lt;path/to/project&amp;gt;&lt;/code&gt; мы увидим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd &amp;lt;path/to/project&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cd &amp;lt;path/to/project&amp;gt;
 direnv: loading .envrc
 direnv: export +ANDROID_SDK +ANT_ARGS
 $ echo $ANDROID_SDK
 /Users/puzan/apps/android-sdk
 $ echo $ANT_ARGS 
 -Dsdk.dir=/Users/puzan/apps/android-sdk
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;При выходе из директории, например на уровень выше, окружение выгрузится:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cd ..
 direnv: unloading
 $ echo $ANDROID_SDK
 
 $ echo $ANT_ARGS 
 
 $ 
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Для   Python  проектов   можно   добавить   создание  внутреннего   виртуального
 окружения. Помещаем слудующую строчку в &lt;code&gt;.envrc&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;layout python
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;layout python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;При этом в папке &lt;code&gt;./.direnv/virtualenv/&lt;/code&gt; будет создано виртуальное окружение и в
@@ -1000,7 +1000,7 @@ $
 возможнось  указать,   какое  существующее   Python  виртуальное   окружение  из
 &lt;code&gt;~/.virtualenvs/&lt;/code&gt; использовать.   Для этого  добавляем в файл  &lt;code&gt;~/.direnvrc&lt;/code&gt; вот
 такую функцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Usage: use venv &amp;lt;venv&amp;gt;&lt;/span&gt;
 &lt;span class="c1"&gt;#&lt;/span&gt;
 &lt;span class="c1"&gt;# Loads the specified python virtualenv&lt;/span&gt;
 &lt;span class="c1"&gt;#&lt;/span&gt;
@@ -1008,12 +1008,12 @@ use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&g
     &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
     PATH_add &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого в &lt;code&gt;.envrc&lt;/code&gt; можно использовать следующую кострукцию:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;use venv &amp;lt;venv_name&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;use venv &amp;lt;venv_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В общем, возможности для расширения  есть. Думаю можно разширить практически под
@@ -1028,23 +1028,23 @@ use_venv&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&g
 меня  естественно  подключен  к  сети  через  &lt;em&gt;Wifi&lt;/em&gt;.   После  некоторых  опытов
 выяснилось, что Bridged Network не работает. Точнее говоря виртуалка не получает
 &lt;code&gt;DHCPOFFER&lt;/code&gt; от dhcp сервера. Вот логи с сервера:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:41 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:45 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPDISCOVER(enp1s0) 10.0.2.15 08:00:27:af:18:1e 
 May  6 21:03:57 edi dnsmasq-dhcp[9996]: DHCPOFFER(enp1s0) 192.168.0.209 08:00:27:af:18:1e
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;И то что  видно в виртуалке (время немного  не то, но это не  страшно: логи были
 такие же):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;May  6 21:56:32 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 15 (xid=0x3a4517ed)
 May  6 21:56:47 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 8 (xid=0x3a4517ed)
 May  6 21:56:55 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 14 (xid=0x3a4517ed)
 May  6 21:57:09 learn dhclient[3262]: DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 1 (xid=0x3a4517ed)
 May 6 21:57:10 learn dhclient[3262]: No DHCPOFFERS received.
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Соответственно этот &lt;code&gt;DHCPOFFER&lt;/code&gt; где-то и теряется.  Пока еще не искал конкретное
@@ -1085,12 +1085,12 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/source"&gt;source&lt;/a&gt;).   Другая   для   сгенерированных   &lt;em&gt;html&lt;/em&gt;   страничек
 (&lt;a href="https://github.com/puzan/puzan.github.io/tree/master"&gt;master&lt;/a&gt;).   Для   публикации    на   master   ветку   использую
 &lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt;. Для удобства поправил &lt;em&gt;Makefile&lt;/em&gt; следующим образом:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;
     git push origin master
 
 &lt;span class="nf"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
     ghp-import -b master -m &lt;span class="s2"&gt;&amp;quot;Site update &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;NOW&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Мне очень  нравится писать  тексты в &lt;a href="http://daringfireball.net/projects/markdown/syntax"&gt;Markdown&lt;/a&gt;,  поэтому я  смотрел в
@@ -1126,7 +1126,7 @@ Host-only  Adapter  (для  &lt;em&gt;SSH&lt;/em&gt;  из  внешней  с�
 &lt;em&gt;bridge&lt;/em&gt;  из нового  окружения.   Данный  метод работает  на  ура, нареканий  не
 заметил.&lt;/p&gt;
 &lt;p&gt;Вот собственно решение с моими малюсенькими изменениями:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -x
 mount -o remount,exec /tmp
 &lt;span class="nv"&gt;R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/root
 &lt;span class="nv"&gt;IPADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.0.159/8
@@ -1144,7 +1144,7 @@ cat &amp;gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&g
 
 chroot &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; sh script
 rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/sbin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/bin&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt;/span&gt;&lt;span class="s2"&gt;/lib&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В нутрь &lt;code&gt;script&lt;/code&gt; в принципе можно вставить все, что вам будет необходимо.&lt;/p&gt;
@@ -1342,18 +1342,18 @@ rm -r &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$R&lt
 внутри.  Государство Платона, кстати, тоже думаю из той же оперы.&lt;/p&gt;</content><category term="read"></category><category term="Замятин Е."></category><category term="художественная литература"></category></entry><entry><title>Gems и другие пакетные менеджеры</title><link href="https://puzan.info/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html" rel="alternate"></link><published>2013-06-04T00:00:00+04:00</published><updated>2013-06-04T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-06-04:/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</id><summary type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gem install git-up
 gem install bundle
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
 менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gem install git-up
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gem install git-up
 gem install bundle
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
@@ -1368,7 +1368,7 @@ gem install bundle
 движений обновляется.&lt;/p&gt;
 &lt;p&gt;На  &lt;a href="https://bugs.gentoo.org/show_bug.cgi?id=403157"&gt;bugs.gentoo.org&lt;/a&gt; нашел  следующее  универсальное  решение.  Создаем  в
 папке &lt;code&gt;/etc/profile&lt;/code&gt; файл следующего содержания:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -L &lt;span class="s2"&gt;&amp;quot;/usr/bin/ruby&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;readlink /usr/bin/ruby &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt; /dev/null&lt;span class="k"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RUBY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; in
@@ -1379,7 +1379,7 @@ gem install bundle
 
     &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.gem/ruby/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VERSION&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/bin:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого все будет доступно как надо.&lt;/p&gt;
@@ -1442,24 +1442,24 @@ presently.&lt;/p&gt;
 &lt;li&gt;Итак, мы  сделали какой-то  абстрактный &lt;code&gt;merge&lt;/code&gt; &lt;em&gt;master&lt;/em&gt;  в &lt;em&gt;feature&lt;/em&gt;  ветку с
   исправлением всех конфликтов:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout feature
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git checkout feature
 $ git merge origin/master
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   b8c37f7 (HEAD, feature) c&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 2a55e67 (origin/feature) b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Далее кто-то добавил что-то новое на &lt;em&gt;feature&lt;/em&gt; ветку:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (origin/feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;* 3820f07 (origin/feature) c&amp;#39;
 | *   b8c37f7 (HEAD, feature) c&amp;#39;
 | |\
 |/ /
@@ -1467,17 +1467,17 @@ $ git merge origin/master
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Делаем дополнительный &lt;code&gt;merge&lt;/code&gt; и видим не особо приятную историю:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git merge origin/feature
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git merge origin/feature
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   781dea7 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   781dea7 (HEAD, feature) d&amp;#39;
 |\
 | * 3820f07 (origin/feature) c&amp;#39;
 * |   b8c37f7 c&amp;#39;
@@ -1488,41 +1488,41 @@ $ git merge origin/master
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;А теперь собственно решение с  выправлением истории. Делаем &lt;code&gt;reset&lt;/code&gt; на коммит,
   с которого надо делать &lt;code&gt;merge&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git reset --soft origin/feature
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git reset --soft origin/feature
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;* 3820f07 (HEAD, origin/feature, feature) c&amp;#39;
 * 2a55e67 b&amp;#39;
 | * 7020561 (origin/master) b
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Далее симулируем &lt;code&gt;merge&lt;/code&gt; с &lt;em&gt;origin/master&lt;/em&gt; и делаем &lt;code&gt;commit&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git rev-parse origin/master &amp;gt; .git/MERGE_HEAD
 $ git commit
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;*   3b01bf0 (HEAD, feature) d&amp;#39;
 |\
 | * 7020561 (origin/master) b
 * | 3820f07 (origin/feature) c&amp;#39;
 * | 2a55e67 b&amp;#39;
 |/
 * b888f61 a
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Как видим  в итоге получилась  аккуратная история с необходимым  полным слиянием
@@ -1544,7 +1544,7 @@ $ git commit
 &lt;p&gt;И вот проблема на &lt;em&gt;Mac&lt;/em&gt;'е. Все  русские буквы в выводе &lt;code&gt;git status&lt;/code&gt; отображаются
 в  восьмеричном виде.   И более  того все  файлы содержащие  в именах  кириллицу
 помечаются как &lt;em&gt;untracked&lt;/em&gt;. Пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -1560,17 +1560,17 @@ $ git commit
 #
 #   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\270\314\206\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
 #   .....
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Вторая проблема  (&lt;em&gt;untracked&lt;/em&gt; файлы)  решается достаточно легко.   Подсмотрено в
 &lt;a href="http://stackoverflow.com/questions/5581857/git-and-the-umlaut-problem-on-mac-os-x"&gt;вопросе на Stackoverflow&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.precomposeunicode true
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.precomposeunicode true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;После этого видим следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ izonov:text izonov$ git status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ izonov:text izonov$ git status
 # On branch master
 # Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
 #   (use &amp;quot;git push&amp;quot; to publish your local commits)
@@ -1580,7 +1580,7 @@ $ git commit
 #   (use &amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
 #
 #   modified:   &amp;quot;linux/2013-05-24 - Git + \320\272\320\270\321\200\320\270\320\273\320\273\320\270\321\207\320\265\321\201\320\272\320\270\320\265 \320\270\320\274\320\265\320\275\320\260 \321\204\320\260\320\271\320\273\320\276\320\262 \320\275\320\260 OS X.md&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Решения  отображения русских  букв в  &lt;code&gt;git  status&lt;/code&gt; я  не нашел.   Кириллические
@@ -1589,8 +1589,8 @@ $ git commit
 в привычном виде.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;P.S.  [2013-05-28]&lt;/strong&gt;:  Вчера  &lt;em&gt;Konstantin  Khomoutov&lt;/em&gt;  подсказал,  как  решить
 проблему отображения русских букв в &lt;em&gt;git&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath false
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="https://puzan.info/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><published>2013-05-23T00:00:00+04:00</published><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-23:/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git config --global core.quotepath false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="git"></category><category term="mac"></category></entry><entry><title>Evernote Web Clipper. Опять забыл пароль?</title><link href="https://puzan.info/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html" rel="alternate"></link><published>2013-05-23T00:00:00+04:00</published><updated>2013-05-23T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-05-23:/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</id><summary type="html">&lt;p&gt;Довольно часто пользуюсь &lt;a href="http://www.evernote.com"&gt;Evernote&lt;/a&gt;.  Это действительно удобный инструмент
 для ведения заметок.  Пользуюсь им с &lt;em&gt;iPhone&lt;/em&gt; и через  веб интерфейс с остальных
 систем  (дом  - &lt;em&gt;Linux&lt;/em&gt;,  работа  -  &lt;em&gt;Windows&lt;/em&gt;).  А  теперь еще  и  оригинальным
 приложением для &lt;em&gt;Mac&lt;/em&gt;'а пользоваться начал.&lt;/p&gt;
@@ -1674,9 +1674,9 @@ Air&lt;/em&gt;. Поэтому с этого момента на данном б
 &lt;/ul&gt;
 &lt;p&gt;И теперь,  время от времени  после выхода из свящего  режима, bash падает  вот с
 такой ошибкой:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;-bash(23573,0x7fff75972180) malloc: *** error for object 0x7fb1cb40c530: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;При этом  я не  совсем уверен,  что эта ошибка  связана с  &lt;em&gt;bash-completion&lt;/em&gt; или
@@ -1689,18 +1689,18 @@ completions и git-prompt. Происходит это стабильно раз
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
-eselect …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
+eselect …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Как-то  я пропустил  тот  факт,  что похоже  уже  давно &lt;a href="http://www.infinality.net/blog/"&gt;infinality&lt;/a&gt;  патчи
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 &lt;a href="http://gitorious.org/lcd-filtering"&gt;lcd-filtering&lt;/a&gt;.   Теперь все  намного  &lt;a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/"&gt;проще&lt;/a&gt;.  Добавляем  USE-флаг
 &lt;code&gt;infinality&lt;/code&gt; в &lt;code&gt;make.conf&lt;/code&gt; и пересобираем &lt;em&gt;freetype&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;emerge -1q freetype
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Как видим теперь необходимо несколько раз дополнительно запустить &lt;code&gt;eselect&lt;/code&gt;. При
@@ -1724,8 +1724,8 @@ eselect lcdfilter set infinality
 &lt;li&gt;
 &lt;p&gt;Добавить   пользователя,   который   запускает  веб-сервер   с   &lt;em&gt;Redmine&lt;/em&gt;   в
   &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;-группу:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  usermod -a -G git redmine
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  usermod -a -G git redmine
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -1735,8 +1735,8 @@ eselect lcdfilter set infinality
   создавать с правами на чтение для группы &lt;em&gt;&lt;code&gt;git&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Также необходимо поменять права доступа  для всех существующих репозиториев. В
-  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  chmod -R g+rX
-&lt;/pre&gt;&lt;/div&gt;
+  директории с репозиториями запускаем следующее:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  chmod -R g+rX
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -1746,12 +1746,12 @@ eselect lcdfilter set infinality
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Краткая инструкция миграции с &lt;em&gt;svn&lt;/em&gt; на &lt;em&gt;git&lt;/em&gt;&lt;/p&gt;
@@ -1759,20 +1759,20 @@ eselect lcdfilter set infinality
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Найти всех авторов с помощью скрипта&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;svn log -q &lt;span class="p"&gt;|&lt;/span&gt; grep -e &lt;span class="s1"&gt;&amp;#39;^r&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { FS = &amp;quot;|&amp;quot; } ; { print $2 }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; uniq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; author in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;authors&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;author&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; = NAME &amp;lt;EMAIL&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Все записи &lt;code&gt;NAME&lt;/code&gt; и &lt;code&gt;EMAIL&lt;/code&gt; вручную заменяем на необходимые значения.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Склонировать &lt;em&gt;svn&lt;/em&gt; репозиторий&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git svn clone [-s] --no-metadata --username=USER --authors-file=SVN-AUTHORS SVN_URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Пара слов про опции:&lt;/p&gt;
@@ -1787,10 +1787,10 @@ eselect lcdfilter set infinality
 &lt;li&gt;
 &lt;p&gt;Импорт ignore файлов&lt;/p&gt;
 &lt;p&gt;На каждой ветке необходимо сделать следующее:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout BRANCH
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git checkout BRANCH
 git svn create-ignore
 git commit -a -m &amp;quot;Import svn:ignore.&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;

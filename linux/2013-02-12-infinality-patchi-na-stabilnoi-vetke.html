@@ -146,11 +146,11 @@ Puzan's Pages            </a>
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 <a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
 <code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
-<div class="highlight"><pre><span></span>emerge -1q freetype
+<div class="highlight"><pre><span></span><code>emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
-</pre></div>
+</code></pre></div>
 
 
 <p>Как видим теперь необходимо несколько раз дополнительно запустить <code>eselect</code>. При

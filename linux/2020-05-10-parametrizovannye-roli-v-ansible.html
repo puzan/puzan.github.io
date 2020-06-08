@@ -152,19 +152,19 @@ Puzan's Pages            </a>
 <li>определение необходимых фактов</li>
 </ul>
 <p>Ну и роль сама получила как минимум один параметр, который определяет ее поведение - <code>puzan_service_name</code>. В упрощенном варианте это имя директории, в которую в последующем копируется <code>compose</code> файл. Теперь для инициализации сервисов достаточно в <code>meta</code> добавлять нечто вроде:</p>
-<div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">dependencies</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">puzan_service</span>
     <span class="nt">vars</span><span class="p">:</span>
       <span class="nt">puzan_service_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usefull_service</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Примерно тут мои ожидания несколько расходятся с реальностью. Указанный подход отлично работает. Более того на текущий момент похоже это <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies">официальный подход</a> для подключения ролей с параметрами в качестве зависимостей. Но есть нюанс — после выполнения роли в контексте останется переменная <code>puzan_service_name</code>. В целом может показаться, что это не страшно. Но меня это не устраивает: <code>puzan_service</code> предназначена для множественного использования, а это значит каждый ее запуск не должен быть связан с предыдущим. В текущем примере <code>puzan_service_name</code> обязательный параметр и его каждый раз необходимо определять. Но что, если у роли будет еще необязательный параметр или кто-то допустит опечатку в имени переменной? Это приведет к неожиданному поведению и вероятно сложному поиску причины ошибки, так как роль может выполнится со старыми значениями переменных.</p>
 <p>Я начал работать с <em>Ansible</em> где-то около версии 1.9. И как ни странно там был немного <a href="https://docs.ansible.com/ansible/2.3/playbooks_roles.html#role-dependencies">другой метод</a> определения зависимостей с переменными:</p>
-<div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">dependencies</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">puzan_service</span>
     <span class="nt">puzan_service_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">usefull_service</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Данный метод также до сих пор работает. Но более удивительно то, что он работает, как я хочу: <code>puzan_service_name</code> не попадает в глобальный контекст. Я подготовил <a href="https://github.com/puzan/ansible_role_vars_tests">небольшой репозиторий</a> с тестами данного поведения. Кроме использования meta <code>dependencies</code> там также продемонстрирована работа использования ролей в playbook'ах, а также разница поведения <code>import_role</code> и <code>include_role</code>.</p>
@@ -190,19 +190,19 @@ Puzan's Pages            </a>
 <li>
 <p>Без <code>vars</code></p>
 <p>Playbook пример:</p>
-<div class="highlight"><pre><span></span>- name: Playbook
+<div class="highlight"><pre><span></span><code>- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p>Meta role пример:</p>
-<div class="highlight"><pre><span></span>dependencies:
+<div class="highlight"><pre><span></span><code>dependencies:
   - role: some_role
     some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p><code>some_role_var</code> не доступна во внешнем контексте до и после запуска роли</p>
@@ -210,21 +210,21 @@ Puzan's Pages            </a>
 <li>
 <p>C <code>vars</code></p>
 <p>Playbook пример:</p>
-<div class="highlight"><pre><span></span>- name: Playbook
+<div class="highlight"><pre><span></span><code>- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       vars:
         some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p>Meta role пример:</p>
-<div class="highlight"><pre><span></span>dependencies:
+<div class="highlight"><pre><span></span><code>dependencies:
   - role: some_role
     vars:
       some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p><code>some_role_var</code> доступна во внешнем контексте до и после запуска роли</p>
@@ -233,35 +233,35 @@ Puzan's Pages            </a>
 </li>
 <li>
 <p>Использование <code>import_role</code></p>
-<div class="highlight"><pre><span></span>- import_role:
+<div class="highlight"><pre><span></span><code>- import_role:
   name: some_role
   vars:
     some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p><code>some_role_var</code> доступна во внешнем контексте до и после запуска роли</p>
 </li>
 <li>
 <p>Использование <code>include_role</code> с <code>public: no</code></p>
-<div class="highlight"><pre><span></span>- include_role:
+<div class="highlight"><pre><span></span><code>- include_role:
     name: some_role
     public: no
   vars:
     some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p><code>some_role_var</code> не доступна во внешнем контексте до и после запуска роли</p>
 </li>
 <li>
 <p>Использование <code>include_role</code> с <code>public: yes</code></p>
-<div class="highlight"><pre><span></span>- include_role:
+<div class="highlight"><pre><span></span><code>- include_role:
     name: some_role
     public: yes
   vars:
     some_role_var: some
-</pre></div>
+</code></pre></div>
 
 
 <p><code>some_role_var</code> не доступна во внешнем контексте до запуска роли, но доступна после.</p>

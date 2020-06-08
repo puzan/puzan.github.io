@@ -109,10 +109,10 @@ Puzan's Pages            </a>
 находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
 <a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
 <code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
-<div class="highlight"><pre><span></span>emerge -1q freetype
+<div class="highlight"><pre><span></span><code>emerge -1q freetype
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
-eselect …</pre></div>
+eselect …</code></pre></div>
                     <a class="btn btn-default btn-xs" href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">more ...</a>
                 </div>
             </article>
@@ -136,12 +136,12 @@ eselect …</pre></div>
 <ul>
 <li>
 <p>Найти всех авторов с помощью скрипта</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 <span class="nv">authors</span><span class="o">=</span><span class="k">$(</span>svn log -q <span class="p">|</span> grep -e <span class="s1">&#39;^r&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN { FS = &quot;|&quot; } ; { print $2 }&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
 <span class="k">for</span> author in <span class="si">${</span><span class="nv">authors</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">author</span><span class="si">}</span><span class="s2"> = NAME &lt;EMAIL&gt;&quot;</span><span class="p">;</span>
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Все записи <code>NAME</code> и <code>EMAIL</code> вручную …</p></li></ul>

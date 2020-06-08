@@ -181,7 +181,7 @@ Environment</em>.</p>
 загружает конфигурацию проекта из <code>.Project</code> файла, если он еще не был загружен.
 Также он  обновляет список <em>include</em>  путей для <code>clang</code>, который  используется в
 <code>auto-complete-clang</code> и <code>flycheck</code>.</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">init/project-update</span> <span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">init/project-update</span> <span class="p">()</span>
   <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">proj-file</span> <span class="s">&quot;.Project&quot;</span><span class="p">)</span>
          <span class="p">(</span><span class="nv">ede-proj</span> <span class="p">(</span><span class="nv">ede-current-project</span><span class="p">))</span>
          <span class="p">(</span><span class="nv">proj-dir-tmp</span> <span class="p">(</span><span class="nv">locate-dominating-file</span> <span class="nv">buffer-file-name</span> <span class="nv">proj-file</span><span class="p">))</span>
@@ -209,18 +209,18 @@ Environment</em>.</p>
              <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">item</span><span class="p">)</span>
                <span class="p">(</span><span class="nv">concat</span> <span class="s">&quot;-I&quot;</span> <span class="nv">item</span><span class="p">))</span>
              <span class="nv">flycheck-clang-include-path</span><span class="p">)))))</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
 (как видите реальной проверки на это нету). Например вот такое:</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">ede-cpp-root-project</span> <span class="s">&quot;NewProject&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nv">ede-cpp-root-project</span> <span class="s">&quot;NewProject&quot;</span>
                       <span class="ss">:name</span> <span class="s">&quot;NewProject&quot;</span>
                       <span class="ss">:file</span> <span class="s">&quot;Makefile&quot;</span>
                       <span class="ss">:include-path</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;/inc&quot;</span><span class="p">)</span>
                       <span class="ss">:system-include-path</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;/usr/include/&quot;</span><span class="p">)</span>
                       <span class="ss">:spp-table</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;PROJECT_EXPORT&quot;</span> <span class="o">.</span> <span class="s">&quot;&quot;</span><span class="p">)))</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>В душе я надеюсь, что я что-то делаю не так, что все в реальности легко и просто

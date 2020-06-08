@@ -42,7 +42,7 @@ Environment&lt;/em&gt;.&lt;/p&gt;
 загружает конфигурацию проекта из &lt;code&gt;.Project&lt;/code&gt; файла, если он еще не был загружен.
 Также он  обновляет список &lt;em&gt;include&lt;/em&gt;  путей для &lt;code&gt;clang&lt;/code&gt;, который  используется в
 &lt;code&gt;auto-complete-clang&lt;/code&gt; и &lt;code&gt;flycheck&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;init/project-update&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;proj-file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.Project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-proj&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-current-project&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proj-dir-tmp&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;locate-dominating-file&lt;/span&gt; &lt;span class="nv"&gt;buffer-file-name&lt;/span&gt; &lt;span class="nv"&gt;proj-file&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -70,18 +70,18 @@ Environment&lt;/em&gt;.&lt;/p&gt;
              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;concat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-I&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;item&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
              &lt;span class="nv"&gt;flycheck-clang-include-path&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;А сам  .Project файл лежит  в корне проекта  и содержит только  описание проекта
 (как видите реальной проверки на это нету). Например вот такое:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ede-cpp-root-project&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NewProject&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Makefile&amp;quot;&lt;/span&gt;
                       &lt;span class="ss"&gt;:include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/inc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                       &lt;span class="ss"&gt;:system-include-path&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/usr/include/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                       &lt;span class="ss"&gt;:spp-table&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PROJECT_EXPORT&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;В душе я надеюсь, что я что-то делаю не так, что все в реальности легко и просто

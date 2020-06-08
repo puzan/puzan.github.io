@@ -15,19 +15,19 @@
 &lt;li&gt;определение необходимых фактов&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ну и роль сама получила как минимум один параметр, который определяет ее поведение - &lt;code&gt;puzan_service_name&lt;/code&gt;. В упрощенном варианте это имя директории, в которую в последующем копируется &lt;code&gt;compose&lt;/code&gt; файл. Теперь для инициализации сервисов достаточно в &lt;code&gt;meta&lt;/code&gt; добавлять нечто вроде:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;role&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;puzan_service&lt;/span&gt;
     &lt;span class="nt"&gt;vars&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
       &lt;span class="nt"&gt;puzan_service_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usefull_service&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Примерно тут мои ожидания несколько расходятся с реальностью. Указанный подход отлично работает. Более того на текущий момент похоже это &lt;a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies"&gt;официальный подход&lt;/a&gt; для подключения ролей с параметрами в качестве зависимостей. Но есть нюанс — после выполнения роли в контексте останется переменная &lt;code&gt;puzan_service_name&lt;/code&gt;. В целом может показаться, что это не страшно. Но меня это не устраивает: &lt;code&gt;puzan_service&lt;/code&gt; предназначена для множественного использования, а это значит каждый ее запуск не должен быть связан с предыдущим. В текущем примере &lt;code&gt;puzan_service_name&lt;/code&gt; обязательный параметр и его каждый раз необходимо определять. Но что, если у роли будет еще необязательный параметр или кто-то допустит опечатку в имени переменной? Это приведет к неожиданному поведению и вероятно сложному поиску причины ошибки, так как роль может выполнится со старыми значениями переменных.&lt;/p&gt;
 &lt;p&gt;Я начал работать с &lt;em&gt;Ansible&lt;/em&gt; где-то около версии 1.9. И как ни странно там был немного &lt;a href="https://docs.ansible.com/ansible/2.3/playbooks_roles.html#role-dependencies"&gt;другой метод&lt;/a&gt; определения зависимостей с переменными:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;role&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;puzan_service&lt;/span&gt;
     &lt;span class="nt"&gt;puzan_service_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usefull_service&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Данный метод также до сих пор работает. Но более удивительно то, что он работает, как я хочу: &lt;code&gt;puzan_service_name&lt;/code&gt; не попадает в глобальный контекст. Я подготовил &lt;a href="https://github.com/puzan/ansible_role_vars_tests"&gt;небольшой репозиторий&lt;/a&gt; с тестами данного поведения. Кроме использования meta &lt;code&gt;dependencies&lt;/code&gt; там также продемонстрирована работа использования ролей в playbook'ах, а также разница поведения &lt;code&gt;import_role&lt;/code&gt; и &lt;code&gt;include_role&lt;/code&gt;.&lt;/p&gt;
@@ -53,19 +53,19 @@
 &lt;li&gt;
 &lt;p&gt;Без &lt;code&gt;vars&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Playbook пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- name: Playbook
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Meta role пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dependencies:
   - role: some_role
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
@@ -73,21 +73,21 @@
 &lt;li&gt;
 &lt;p&gt;C &lt;code&gt;vars&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Playbook пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- name: Playbook
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- name: Playbook
   hosts: localhost
   roles:
     - role: some_role
       vars:
         some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Meta role пример:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dependencies:
   - role: some_role
     vars:
       some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
@@ -96,35 +96,35 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;import_role&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- import_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- import_role:
   name: some_role
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;include_role&lt;/code&gt; с &lt;code&gt;public: no&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- include_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- include_role:
     name: some_role
     public: no
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до и после запуска роли&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Использование &lt;code&gt;include_role&lt;/code&gt; с &lt;code&gt;public: yes&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- include_role:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;- include_role:
     name: some_role
     public: yes
   vars:
     some_role_var: some
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;some_role_var&lt;/code&gt; не доступна во внешнем контексте до запуска роли, но доступна после.&lt;/p&gt;
