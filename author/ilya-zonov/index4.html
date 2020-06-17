@@ -99,6 +99,20 @@ Puzan's Pages            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h2><a href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">Infinality патчи на стабильной ветке</a></h2>
+                <div class="summary"><p>Как-то  я пропустил  тот  факт,  что похоже  уже  давно <a href="http://www.infinality.net/blog/">infinality</a>  патчи
+находятся  на  стабильной  ветке  в  gentoo portage.   До  этого  ставил  их  из
+<a href="http://gitorious.org/lcd-filtering">lcd-filtering</a>.   Теперь все  намного  <a href="http://od-eon.com/blogs/stefan/improving-the-font-rendering-on-gentoo-infinality/">проще</a>.  Добавляем  USE-флаг
+<code>infinality</code> в <code>make.conf</code> и пересобираем <em>freetype</em>:</p>
+<div class="highlight"><pre><span></span><code>emerge -1q freetype
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect …</code></pre></div>
+                    <a class="btn btn-default btn-xs" href="https://puzan.info/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="https://puzan.info/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html">Использование Gitolite вместе с Redmine</a></h2>
                 <div class="summary"><p>Появилась необходимость  добавить git репозиторий в  <em><a href="http://www.redmine.org">Redmine</a></em> проект
 на   домашнем    сервере.    Для   управления   git    репозиториями   использую
@@ -192,11 +206,11 @@ Puzan's Pages            </a>
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
   <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://puzan.info/misc/2020-06-17-rabochee-mesto.html">Рабочее место</a></li>
     <li class="list-group-item"><a href="https://puzan.info/misc/2020-05-24-zhizn-v-samoizoliatsii.html">Жизнь в самоизоляции</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html">Параметризованные роли в Ansible</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2016-04-06-malenkie-tuly.html">Маленькие тулы</a></li>
     <li class="list-group-item"><a href="https://puzan.info/linux/2015-09-06-docker-initsializatsiia-postgres.html">Docker: Инициализация postgres</a></li>
-    <li class="list-group-item"><a href="https://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html">Операционные системы?</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
@@ -292,7 +306,7 @@ Puzan's Pages            </a>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/google.html">google</a>
     </li>
-    <li class="list-group-item tag-3">
+    <li class="list-group-item tag-2">
       <a href="https://puzan.info/tag/hardware.html">hardware</a>
     </li>
     <li class="list-group-item tag-3">
@@ -361,7 +375,7 @@ Puzan's Pages            </a>
     <li class="list-group-item tag-3">
       <a href="https://puzan.info/tag/ruby.html">ruby</a>
     </li>
-    <li class="list-group-item tag-3">
+    <li class="list-group-item tag-2">
       <a href="https://puzan.info/tag/samoizoliatsiia.html">самоизоляция</a>
     </li>
     <li class="list-group-item tag-3">
