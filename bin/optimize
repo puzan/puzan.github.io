@@ -20,9 +20,9 @@ fi
 
 if [ -n "$SIZE" ]; then
     mapfile -t image_size < <(sips -g pixelWidth -g pixelHeight "$FILE" | grep pixel | grep -o '[0-9]*$')
-    if [[ ${image_size[0]} -gt $SIZE || ${image_size[1]} -gt $SIZE ]]; then
+    if [[ ${image_size[0]} -gt $SIZE ]]; then
         echo "Scale image to max size: $SIZE"
-        sips -Z "$SIZE" "$FILE"
+        sips --resampleWidth "$SIZE" "$FILE"
     fi
 fi
 
