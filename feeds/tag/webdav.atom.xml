@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - webdav</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/webdav.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2020-06-19T22:55:22+03:00</updated><entry><title>WebDav за https proxy</title><link href="https://puzan.info/linux/2020-06-19-webdav-za-https-proxy.html" rel="alternate"></link><published>2020-06-19T22:55:22+03:00</published><updated>2020-06-19T22:55:22+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2020-06-19:/linux/2020-06-19-webdav-za-https-proxy.html</id><summary type="html">&lt;p&gt;&lt;img alt="Title" src="https://puzan.info/images/2020-06-19-webdav-proxy-title.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Регулярно читаю различную литературу. Зачастую в &lt;em&gt;pdf&lt;/em&gt; формате. &lt;em&gt;Pdf&lt;/em&gt; книги читаю через &lt;a href="TODO add link"&gt;GoodReader&lt;/a&gt; на &lt;em&gt;iPad&lt;/em&gt; (&lt;em&gt;liara&lt;/em&gt;). Постоянно отмечаю и комментирую текст через аннотации, которые сохраняются непосредственно в pdf файл. А для синхронизации книжек использую &lt;em&gt;webdav&lt;/em&gt;, настроенный на домашнем сервере с помощью &lt;em&gt;nginx&lt;/em&gt;. Ранее все крутилось почти на голом &lt;em&gt;CubieBoard&lt;/em&gt; (&lt;em&gt;edi2 …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Title" src="https://puzan.info/images/2020-06-19-webdav-proxy-title.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Регулярно читаю различную литературу. Зачастую в &lt;em&gt;pdf&lt;/em&gt; формате. &lt;em&gt;Pdf&lt;/em&gt; книги читаю через &lt;a href="TODO add link"&gt;GoodReader&lt;/a&gt; на &lt;em&gt;iPad&lt;/em&gt; (&lt;em&gt;liara&lt;/em&gt;). Постоянно отмечаю и комментирую текст через аннотации, которые сохраняются непосредственно в pdf файл. А для синхронизации книжек использую &lt;em&gt;webdav&lt;/em&gt;, настроенный на домашнем сервере с помощью &lt;em&gt;nginx&lt;/em&gt;. Ранее все крутилось почти на голом &lt;em&gt;CubieBoard&lt;/em&gt; (&lt;em&gt;edi2&lt;/em&gt;), а теперь на &lt;em&gt;HP MicroServer&lt;/em&gt; (&lt;em&gt;edi3&lt;/em&gt;) в контейнерах. В скобках указаны имена девайсов в моей локальной сети. Называю железки по именам героев из &lt;em&gt;Mass Effect&lt;/em&gt;. &lt;em&gt;edi3&lt;/em&gt; — это уже третья реинкарнация моего центрального домашнего сервера.&lt;/p&gt;
+&lt;p&gt;Как-то раз я задумал скрыть все сервисы, запущенные на сервере за proxy. Задача proxy сводится к распределению трафика на основе имени домена и поддержке &lt;em&gt;https&lt;/em&gt;. Внутренний (фактически межконтейнерный) трафик остается нешифрованным. Изначально роль proxy выполнял &lt;em&gt;nginx&lt;/em&gt;. На нем же был настроен &lt;em&gt;webdav&lt;/em&gt; для книг. Но достаточно быстро я перешел на &lt;a href="https://fabiolb.net"&gt;&lt;em&gt;Fabio&lt;/em&gt;&lt;/a&gt;. Решение судя по всему не сильно популярное, но гибкое и динамичное. Работает примерно так:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Настройки задаются в labels контейнеров&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gliderlabs/registrator"&gt;&lt;em&gt;Registrator&lt;/em&gt;&lt;/a&gt; копирует информацию в &lt;a href="https://www.consul.io"&gt;&lt;em&gt;consul&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fabiolb.net"&gt;&lt;em&gt;Fabio&lt;/em&gt;&lt;/a&gt; читает данные из &lt;a href="https://www.consul.io"&gt;&lt;em&gt;consul&lt;/em&gt;&lt;/a&gt; и строит Routing Table. Обновления динамические, ничего ребутать или релоудить не надо.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Вот пример кусочка &lt;code&gt;docker-compose&lt;/code&gt; для &lt;a href="https://gitea.io"&gt;&lt;em&gt;gitea&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;services:
+  gitea:
+    image: gitea/gitea:1.11
+    labels:
+      SERVICE_3000_NAME: gitea
+      SERVICE_3000_CHECK_HTTP: /api/v1/version
+      SERVICE_3000_CHECK_INTERVAL: 15s
+      SERVICE_3000_TAGS: urlprefix-gitea.puzan.info:443/
+      SERVICE_22_NAME: gitea-ssh
+      SERVICE_22_CHECK_TCP: true
+      SERVICE_22_CHECK_INTERVAL: 15s
+      SERVICE_22_TAGS: urlprefix-:2222 proto=tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Вернемся к &lt;em&gt;webdav&lt;/em&gt;. В этой схеме &lt;em&gt;webdav&lt;/em&gt; переехал в отдельный &lt;em&gt;nginx&lt;/em&gt; (80 порт в контейнере), доступ к которому осуществляется через &lt;a href="https://fabiolb.net"&gt;&lt;em&gt;fabio&lt;/em&gt;&lt;/a&gt; через &lt;em&gt;https&lt;/em&gt; (443 порт на &lt;em&gt;edi3&lt;/em&gt;). Ничего не предвещало беды, но я столкнулся вот с такой ошибкой во время обновления файлов (&lt;em&gt;nginx&lt;/em&gt; лог):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;read_1  | 172.21.0.7 - puzan [18/Jun/2020:20:49:46 +0000] &amp;quot;PROPFIND /current/ HTTP/1.1&amp;quot; 207 2657 &amp;quot;-&amp;quot; &amp;quot;GoodReader&amp;quot;
+read_1  | 172.21.0.7 - puzan [18/Jun/2020:20:49:46 +0000] &amp;quot;PUT /current/temp1 HTTP/1.1&amp;quot; 201 0 &amp;quot;-&amp;quot; &amp;quot;GoodReader&amp;quot;
+read_1  | 2020/06/18 20:49:46 [error] 6#6: *7 client sent invalid &amp;quot;Destination&amp;quot; header: &amp;quot;https://read.puzan.info/current/some_book.pdf&amp;quot;, client: 172.21.0.7, server: www.read.puzan.info, request: &amp;quot;MOVE /current/temp1 HTTP/1.1&amp;quot;, host: &amp;quot;read.puzan.info&amp;quot;
+read_1  | 172.21.0.7 - puzan [18/Jun/2020:20:49:46 +0000] &amp;quot;MOVE /current/temp1 HTTP/1.1&amp;quot; 400 173 &amp;quot;-&amp;quot; &amp;quot;GoodReader&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Как видно сначала происходит поиск файлов через &lt;code&gt;PROPFIND&lt;/code&gt;. Затем выполняется &lt;code&gt;PUT&lt;/code&gt; обновленного файла во временный файл &lt;code&gt;/current/temp1&lt;/code&gt;. Дальше выполняется попытка &lt;code&gt;MOVE&lt;/code&gt;. Но &lt;code&gt;MOVE&lt;/code&gt; выполняется для &lt;code&gt;Destination="https://read.puzan.info/…"&lt;/code&gt;. И как видно &lt;em&gt;nginx&lt;/em&gt; ничего не знает про &lt;em&gt;https&lt;/em&gt; сервис. Тут встает вопрос почему &lt;em&gt;GoodReader&lt;/em&gt; не использует относительные пути. Но это немного другая история, которая не поддается быстрому исправлению.&lt;/p&gt;
+&lt;p&gt;Починить проблему на серверной стороне (без поднятия внутренней &lt;em&gt;https&lt;/em&gt; точки) помогает модуль &lt;a href="https://www.nginx.com/resources/wiki/modules/headers_more/"&gt;Headers More&lt;/a&gt;. Суть фикса заключается в том, чтобы переписать значение &lt;code&gt;Destination&lt;/code&gt; заголовка c &lt;code&gt;https://…&lt;/code&gt;, на &lt;code&gt;http://…&lt;/code&gt;. &lt;em&gt;Nginx&lt;/em&gt; конфиг для &lt;em&gt;webdav&lt;/em&gt; теперь у меня выглядит примерно так:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="s"&gt;www.read.puzan.info&lt;/span&gt; &lt;span class="s"&gt;read.puzan.info&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="kn"&gt;location&lt;/span&gt; &lt;span class="s"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;# Rewrite destination header if it starts with https&lt;/span&gt;
+        &lt;span class="kn"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;$destination&lt;/span&gt; &lt;span class="nv"&gt;$http_destination&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="kn"&gt;if&lt;/span&gt; &lt;span class="s"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$destination&lt;/span&gt; &lt;span class="p"&gt;~&lt;/span&gt; &lt;span class="sr"&gt;^https://(.+))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="kn"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;$destination&lt;/span&gt; &lt;span class="s"&gt;http://&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="kn"&gt;more_set_input_headers&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Destination:&lt;/span&gt; &lt;span class="nv"&gt;$destination&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;/data/read&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="kn"&gt;dav_methods&lt;/span&gt; &lt;span class="s"&gt;PUT&lt;/span&gt; &lt;span class="s"&gt;DELETE&lt;/span&gt; &lt;span class="s"&gt;MKCOL&lt;/span&gt; &lt;span class="s"&gt;COPY&lt;/span&gt; &lt;span class="s"&gt;MOVE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="kn"&gt;dav_ext_methods&lt;/span&gt; &lt;span class="s"&gt;PROPFIND&lt;/span&gt; &lt;span class="s"&gt;OPTIONS&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Установка модуля в &lt;em&gt;debian&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;apt-get install -y nginx libnginx-mod-http-headers-more-filter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Использую базовый образ &lt;em&gt;debian&lt;/em&gt; в контейнере для webdab, чтобы не искать и собирать нужные &lt;em&gt;nginx&lt;/em&gt; модули (тут есть еще зависимость на &lt;code&gt;dav_ext_module&lt;/code&gt;). Изначально пробовал &lt;em&gt;alpine&lt;/em&gt;, но быстро сдался.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;PS. Решение было найдено на каком-то китайском форуме (ссылку потерял уже), который вывел на &lt;a href="https://serverfault.com/questions/901325/how-to-rewrite-webdav-http-destination-request-header-on-nginx"&gt;идею с перезаписью заголовка&lt;/a&gt;.&lt;/p&gt;</content><category term="linux"></category><category term="webdav"></category><category term="nginx"></category><category term="https"></category></entry></feed>
