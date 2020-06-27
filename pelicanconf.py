@@ -34,6 +34,7 @@ SOCIAL = (('twitter', 'https://twitter.com/puzan'),
           ('linkedin', 'https://www.linkedin.com/in/zonov'),
           ('github', 'https://github.com/puzan'),
           ('zen', 'https://zen.yandex.ru/id/5c4d6cc29c57e900ad31e8ba', 'home'),
+          ('photos', 'https://yandex.ru/collections/user/ilzon', 'camera'),
           ('rss', 'https://feeds.feedburner.com/puzan'))
 
 DEFAULT_PAGINATION = 10
