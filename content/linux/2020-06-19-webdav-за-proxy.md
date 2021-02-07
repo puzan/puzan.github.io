@@ -2,6 +2,7 @@ Title: WebDav за https proxy
 Category: linux
 Date: 2020-06-19 22:55:22
 Tags: webdav, nginx, https
+og_image: images/2020-06-19-webdav-proxy-title.png
 
 ![Title]({static}/images/2020-06-19-webdav-proxy-title.png)
 
