@@ -29,8 +29,12 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = None
 
+TWITTER_CARDS = True
+USE_OPEN_GRAPH = True
+TWITTER_USERNAME = "puzan"
+
 # Social widget
-SOCIAL = (('twitter', 'https://twitter.com/puzan'),
+SOCIAL = (('twitter', f'https://twitter.com/{TWITTER_USERNAME}'),
           ('linkedin', 'https://www.linkedin.com/in/zonov'),
           ('github', 'https://github.com/puzan'),
           ('zen', 'https://zen.yandex.ru/id/5c4d6cc29c57e900ad31e8ba', 'home'),
