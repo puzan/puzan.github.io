@@ -1,5 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - linux</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2020-06-19T22:55:22+03:00</updated><entry><title>WebDav за https proxy</title><link href="https://puzan.info/linux/2020-06-19-webdav-za-https-proxy.html" rel="alternate"></link><published>2020-06-19T22:55:22+03:00</published><updated>2020-06-19T22:55:22+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2020-06-19:/linux/2020-06-19-webdav-za-https-proxy.html</id><summary type="html">&lt;p&gt;&lt;img alt="Title" src="https://puzan.info/images/2020-06-19-webdav-proxy-title.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - linux</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/linux.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2021-07-23T23:34:18+03:00</updated><entry><title>Kotlin</title><link href="https://puzan.info/linux/2021-07-23-kotlin.html" rel="alternate"></link><published>2021-07-23T23:34:18+03:00</published><updated>2021-07-23T23:34:18+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2021-07-23:/linux/2021-07-23-kotlin.html</id><summary type="html">&lt;p&gt;&lt;img alt="Kotlin" src="https://puzan.info/images/2021-07-23-kotlin-title.png" /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Данный материал я написал примерно год назад. Была идея переработать его, но сейчас я решил его опубликовать в изначальном виде.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Первое впечатление&lt;/h2&gt;
+&lt;p&gt;После перехода в новую компанию оперативно изучил Kotlin. Главная причина — 99% проектов, с которыми связан, используют этот язык. До смены работы Kotlin видел только в докладах на конференциях …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Kotlin" src="https://puzan.info/images/2021-07-23-kotlin-title.png" /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Данный материал я написал примерно год назад. Была идея переработать его, но сейчас я решил его опубликовать в изначальном виде.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Первое впечатление&lt;/h2&gt;
+&lt;p&gt;После перехода в новую компанию оперативно изучил Kotlin. Главная причина — 99% проектов, с которыми связан, используют этот язык. До смены работы Kotlin видел только в докладах на конференциях и один раз писал мини-задачки в поезде по дороге с Jpoint 2018. Kotlin освоить легко. Java опыт и увлечение функциональными языками помогают в этом. Я почти влюбился в этот язык. Из-за "влюбился" и "почти", родилась идея записать мысли о Kotlin в этой статье.&lt;/p&gt;
+&lt;p&gt;Kotlin чудовищно прагматичный язык. Похоже, каждая синтаксическая конструкция родилась из практических задач, которые приходится решать разработчикам каждый день. Оригинальный конструкций мало — даже затрудняюсь назвать хотя бы одну. У создателей не было задачи удивить мир новыми подходами. Kotlin — это компиляция практик, которые выжили и доказали успех в других языках. Напоминает подходы Apple — найти рабочие решения у конкурентов и соединить в одном идеальном продукте.&lt;/p&gt;
+&lt;h2&gt;"Влюбился"&lt;/h2&gt;
+&lt;h3&gt;Nullability&lt;/h3&gt;
+&lt;p&gt;Когда пишут о Kotlin, в 90% случаях касаются темы Nullability и безопасных программ без NPE. Null safe подходами Kotlin пропитан насквозь. При этом больше впечатляет система типов с Nullable, чем синтаксический сахар, который вырос вокруг не. Прощайте &lt;code&gt;@Nullable&lt;/code&gt;, &lt;code&gt;@NotNull&lt;/code&gt; и, вероятно, &lt;code&gt;@NonNull&lt;/code&gt;! А также решения, построенные на договоренностях, IDE и сторонних плагинах.&lt;/p&gt;
+&lt;h3&gt;Перегрузка операторов и конвенции&lt;/h3&gt;
+&lt;p&gt;Перегрузка операторов и конвенции позволяют существенно упростить код. Пример, из практики. Есть такая конструкция c &lt;code&gt;DateTime&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;||&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isAfter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ее можно, конечно, смело поменять на следующую конструкцию, в попытках что-то сэкономить:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compareTo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Но Kotlin дает простой и понятный всем (всем ведь?) вариант:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Посмотрите внимательнее на конвенции, связанные с операторами. Они сократят и улучшат ваш код.&lt;/p&gt;
+&lt;h3&gt;DSL&lt;/h3&gt;
+&lt;p&gt;Двинемся дальше и чуть-чуть поговорим про DSL. Продают эту тему очень активно. Иногда кажется, что процентов 80% в Kotlin было сделано для DSL. У меня за пару месяцев использования Kotlin появилось дикое желание написать свой DSL для описания BPMN. Язык буквально подталкивает тебя к тому, чтобы все заDSLить. Вот список крутых фич, которые делают Kotlin настолько благоприятным для написания своих DSL:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Расширения&lt;/li&gt;
+&lt;li&gt;Инфиксные функции&lt;/li&gt;
+&lt;li&gt;Перегрузка операторов&lt;/li&gt;
+&lt;li&gt;Конвенции — тут еще напомню про get метод&lt;/li&gt;
+&lt;li&gt;Вынос lambda за скобки&lt;/li&gt;
+&lt;li&gt;Lambda with a receiver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;И еще немного&lt;/h3&gt;
+&lt;p&gt;И еще чуть-чуть про любимые конструкции:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Если все же вернутся к сахару, то &lt;code&gt;?.&lt;/code&gt; и &lt;code&gt;?:&lt;/code&gt; выглядят прекрасно. Отличная компактная замена &lt;code&gt;Optional&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;as?&lt;/code&gt; — безопасность везде, в том числе во время приведения типов.&lt;/li&gt;
+&lt;li&gt;Активно продается идея immutability через пропаганду использования &lt;code&gt;val&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Почти все является выражениями: и &lt;code&gt;if&lt;/code&gt;, и &lt;code&gt;when&lt;/code&gt;, и &lt;code&gt;try&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Data классы. Без комментариев.&lt;/li&gt;
+&lt;li&gt;А еще замечаешь, что перестал ставить &lt;code&gt;;&lt;/code&gt; в java на автомате.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;"Почти"&lt;/h2&gt;
+&lt;p&gt;Перейдем к поведениям, которые вызывают вопросы.&lt;/p&gt;
+&lt;h3&gt;&lt;code&gt;also&lt;/code&gt; vs &lt;code&gt;apply&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Для начала хочется отметить &lt;code&gt;also&lt;/code&gt; vs &lt;code&gt;apply&lt;/code&gt;. Сама фича &lt;em&gt;lambda with a receiver&lt;/em&gt; очень крутая, но иногда она позволяет изрядно запутать код. В практике столкнулся со следующим. Дано: много сгенерированных java объектов с конструктором без аргументов и толпой getter/setter'ов (в примерах указаны только поля для экономии пространства):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;User&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;systemId&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;Account&lt;/span&gt; &lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Account&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;apply&lt;/code&gt; позволяет вызывать конструктор с инициализацией нужных полей в достаточно компактном стиле:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="py"&gt;account&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Test account&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Выглядит красиво. Но мешанина начинается при инициализации вложенных объектов:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="py"&gt;user&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Test user&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;account&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
+        &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Test account&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;systemId&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Напутать в такой структуре очень легко. Держать в голове, где какой &lt;code&gt;this&lt;/code&gt; непросто. Есть вариант использовать labels, но код становится загроможденным. Можно заметить, что &lt;code&gt;systemId&lt;/code&gt; никакого отношения к Account не имеет, но его смело можно обновлять в ламбде, привязанной к account. Есть &lt;code&gt;DslMarker&lt;/code&gt; для ограничения скоупа, но он подходит в случае, если мы контролируем классы. Это доступно не всегда. Поэтому в таких случаях я считаю лучше использовать &lt;code&gt;also&lt;/code&gt;. Чуть больше кода, но и больше понимания, что происходит.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="py"&gt;user&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;also&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="p"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Test user&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;account&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;also&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;account&lt;/span&gt; &lt;span class="p"&gt;-&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
+        &lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Test account&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;systemId&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Хочется, чтобы вложенные apply можно было запретить, но, к сожалению, не видел правила в линтере, которое это могло проверять во время сборки (например в detekt).&lt;/p&gt;
+&lt;h3&gt;Companion object&lt;/h3&gt;
+&lt;p&gt;Очень странный концепт. Существует, на мой взгляд, исключительно для того, чтобы протащить статические методы внутрь классов для полной совместимости с java. Больше похоже на подпорку и выглядит инородно. Есть вероятность, что я пока просто не полностью проникся этой идеей. Хотя есть один пример, в котором мне нравится использование компаньона:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;companion&lt;/span&gt; &lt;span class="k"&gt;object&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;KLogging&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Приоритет расширений&lt;/h3&gt;
+&lt;p&gt;Немного вводит в замешательство то, что расширения имеют приоритет меньше чем функции в классе. Например:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;fun&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;extension&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;    &lt;span class="c1"&gt;// Выведет &amp;quot;member&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Возникают вопросы, так как по определению кажется, что расширения призваны наращивать функциональность. И мое первое ощущение — они должны быть приоритетнее членов класса, так как в любом случае сначала определяется класс, а потом уже расширение к нему. В общем, тут следует помнить, что это не так. И обращайте внимание на предупреждения от IDEA.&lt;/p&gt;
+&lt;h3&gt;Kotlin MPP&lt;/h3&gt;
+&lt;p&gt;Для меня очень спорная тема. Видимо, я наелся в свое время работой с GWT и у меня автоматом есть некое недоверие к подходу: давайте на всех платформах писать на одном языке. Раньше это была Java, теперь Kotlin. Но с той разницей, что надо собрать все компоненты своими руками. Не совсем понятно как происходит дебаг в браузере — снова плагин или просто source maps? Как вводить новых разработчиков в технологию — сразу учим js и kotlin, android и kotlin и т.д.? Без знания платформы все равно не обойтись.&lt;/p&gt;
+&lt;h3&gt;Nullsafe и платформенные типы&lt;/h3&gt;
+&lt;p&gt;Стоит помнить, что при вызове Java из Kotlin и Kotlin из Java ничто не гарантирует null-safe на стыке языков. Нету никаких магических проверок и гарантий для не null типов. Что использовать определяем сами. Иногда надо просто довериться java коду и местами использовать не-nullable типы. Отсюда совет — почитываем код библиотек, которые используем.&lt;/p&gt;
+&lt;h2&gt;Материалы&lt;/h2&gt;
+&lt;p&gt;Пару слов хочется уделить материалам, которые использовал во время знакомства с Kotlin.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://kotlinlang.org"&gt;kotlinlang.org&lt;/a&gt; - вся информация по языку&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://play.kotlinlang.org/byExample"&gt;https://play.kotlinlang.org/byExample&lt;/a&gt; - неплохой tutorial для быстрого знакомства с языком&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.manning.com/books/kotlin-in-action"&gt;Kotlin in Action&lt;/a&gt; - отличная книга закрывающая все базовые концепции Kotlin. Читал английское издание, воспринимается очень легко.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;И в конце&lt;/h2&gt;
+&lt;p&gt;Есть несколько тем, которые я пока обошел стороной. Очень хочется посмотреть, как работают корутины. Также в закладках лежит книга &lt;a href="https://leanpub.com/effectivekotlin"&gt;Effective Kotlin&lt;/a&gt; — надеюсь из нее почерпнуть еще полезные концепции.&lt;/p&gt;
+&lt;p&gt;В целом интересно наблюдать, как компания, делающая IDE, наращивает мощь и влияет на мир разработки. Раньше был только софт, помогающий лучше работать с кодом. Теперь новый jvm язык, который стремительно захватывает популярность.&lt;/p&gt;
+&lt;p&gt;У меня есть предположение, что Kotlin родился на основе статистики, которая доступна JetBrains через ее IDE. Это богатейший источник для дизайна и развития языка. Нет необходимости доверять мнению людей. Как известно все люди врут, но данные же так не могут. Мысль несколько утрированная, но все же хочется, чтобы Kotlin без остановки развивался и приносил еще больше полезных практических фич.&lt;/p&gt;</content><category term="linux"></category><category term="kotlin"></category></entry><entry><title>WebDav за https proxy</title><link href="https://puzan.info/linux/2020-06-19-webdav-za-https-proxy.html" rel="alternate"></link><published>2020-06-19T22:55:22+03:00</published><updated>2020-06-19T22:55:22+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2020-06-19:/linux/2020-06-19-webdav-za-https-proxy.html</id><summary type="html">&lt;p&gt;&lt;img alt="Title" src="https://puzan.info/images/2020-06-19-webdav-proxy-title.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Регулярно читаю различную литературу. Зачастую в &lt;em&gt;pdf&lt;/em&gt; формате. &lt;em&gt;Pdf&lt;/em&gt; книги читаю через &lt;a href="TODO add link"&gt;GoodReader&lt;/a&gt; на &lt;em&gt;iPad&lt;/em&gt; (&lt;em&gt;liara&lt;/em&gt;). Постоянно отмечаю и комментирую текст через аннотации, которые сохраняются непосредственно в pdf файл. А для синхронизации книжек использую &lt;em&gt;webdav&lt;/em&gt;, настроенный на домашнем сервере с помощью &lt;em&gt;nginx&lt;/em&gt;. Ранее все крутилось почти на голом &lt;em&gt;CubieBoard&lt;/em&gt; (&lt;em&gt;edi2 …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Title" src="https://puzan.info/images/2020-06-19-webdav-proxy-title.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Регулярно читаю различную литературу. Зачастую в &lt;em&gt;pdf&lt;/em&gt; формате. &lt;em&gt;Pdf&lt;/em&gt; книги читаю через &lt;a href="TODO add link"&gt;GoodReader&lt;/a&gt; на &lt;em&gt;iPad&lt;/em&gt; (&lt;em&gt;liara&lt;/em&gt;). Постоянно отмечаю и комментирую текст через аннотации, которые сохраняются непосредственно в pdf файл. А для синхронизации книжек использую &lt;em&gt;webdav&lt;/em&gt;, настроенный на домашнем сервере с помощью &lt;em&gt;nginx&lt;/em&gt;. Ранее все крутилось почти на голом &lt;em&gt;CubieBoard&lt;/em&gt; (&lt;em&gt;edi2&lt;/em&gt;), а теперь на &lt;em&gt;HP MicroServer&lt;/em&gt; (&lt;em&gt;edi3&lt;/em&gt;) в контейнерах. В скобках указаны имена девайсов в моей локальной сети. Называю железки по именам героев из &lt;em&gt;Mass Effect&lt;/em&gt;. &lt;em&gt;edi3&lt;/em&gt; — это уже третья реинкарнация моего центрального домашнего сервера.&lt;/p&gt;
 &lt;p&gt;Как-то раз я задумал скрыть все сервисы, запущенные на сервере за proxy. Задача proxy сводится к распределению трафика на основе имени домена и поддержке &lt;em&gt;https&lt;/em&gt;. Внутренний (фактически межконтейнерный) трафик остается нешифрованным. Изначально роль proxy выполнял &lt;em&gt;nginx&lt;/em&gt;. На нем же был настроен &lt;em&gt;webdav&lt;/em&gt; для книг. Но достаточно быстро я перешел на &lt;a href="https://fabiolb.net"&gt;&lt;em&gt;Fabio&lt;/em&gt;&lt;/a&gt;. Решение судя по всему не сильно популярное, но гибкое и динамичное. Работает примерно так:&lt;/p&gt;

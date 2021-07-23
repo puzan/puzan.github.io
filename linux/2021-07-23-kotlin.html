@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Kotlin - Puzan's Pages</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="https://puzan.info/favicon.ico" rel="icon">
+
+<link rel="canonical" href="https://puzan.info/linux/2021-07-23-kotlin.html">
+
+        <meta name="author" content="Ilya Zonov" />
+        <meta name="keywords" content="kotlin" />
+        <meta name="description" content="Данный материал я написал примерно год назад. Была идея переработать его, но сейчас я решил его опубликовать в изначальном виде. Первое впечатление После перехода в новую компанию оперативно изучил Kotlin. Главная причина — 99% проектов, с которыми связан, используют этот язык. До смены работы Kotlin видел только в докладах на конференциях …" />
+
+        <meta property="og:site_name" content="Puzan's Pages" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Kotlin"/>
+        <meta property="og:url" content="https://puzan.info/linux/2021-07-23-kotlin.html"/>
+        <meta property="og:description" content="Данный материал я написал примерно год назад. Была идея переработать его, но сейчас я решил его опубликовать в изначальном виде. Первое впечатление После перехода в новую компанию оперативно изучил Kotlin. Главная причина — 99% проектов, с которыми связан, используют этот язык. До смены работы Kotlin видел только в докладах на конференциях …"/>
+        <meta property="article:published_time" content="2021-07-23" />
+            <meta property="article:section" content="linux" />
+            <meta property="article:tag" content="kotlin" />
+            <meta property="article:author" content="Ilya Zonov" />
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@puzan"/>
+    <meta name="twitter:creator" content="@puzan"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://puzan.info/theme/css/bootstrap.readable-old.min.css" type="text/css"/>
+    <link href="https://puzan.info/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://puzan.info/theme/css/pygments/zenburn.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://puzan.info/theme/css/style.css" type="text/css"/>
+        <link href="https://puzan.info/static/custom.css" rel="stylesheet">
+
+        <link href="http://feeds.feedburner.com/puzan" type="application/atom+xml" rel="alternate"
+              title="Puzan's Pages Feed"/>
+        <link href="https://puzan.info/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Puzan's Pages ATOM Feed"/>
+
+        <link href="https://puzan.info/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+              title="Puzan's Pages RSS Feed"/>
+        <link href="https://puzan.info/feeds/linux.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Puzan's Pages linux ATOM Feed"/>
+        <link href="https://puzan.info/feeds/linux.rss.xml" type="application/rss+xml" rel="alternate"
+              title="Puzan's Pages linux RSS Feed"/>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+ (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+ (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+ ym(62664328, "init", {
+     clickmap:true,
+     trackLinks:true,
+     accurateTrackBounce:true
+ });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/62664328" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://puzan.info/" class="navbar-brand">
+Puzan's Pages            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://puzan.info/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="https://puzan.info/linux/index.html">Linux</a>
+                        </li>
+                        <li >
+                            <a href="https://puzan.info/misc/index.html">Misc</a>
+                        </li>
+                        <li >
+                            <a href="https://puzan.info/read/index.html">Read</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://puzan.info/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://puzan.info/linux/2021-07-23-kotlin.html"
+                       rel="bookmark"
+                       title="Permalink to Kotlin">
+                        Kotlin
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2021-07-23T23:34:18+03:00"> Fri 23 July 2021</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://puzan.info/tag/kotlin.html">kotlin</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><img alt="Kotlin" src="https://puzan.info/images/2021-07-23-kotlin-title.png" /></p>
+<blockquote>
+<p>Данный материал я написал примерно год назад. Была идея переработать его, но сейчас я решил его опубликовать в изначальном виде.</p>
+</blockquote>
+<h2>Первое впечатление</h2>
+<p>После перехода в новую компанию оперативно изучил Kotlin. Главная причина — 99% проектов, с которыми связан, используют этот язык. До смены работы Kotlin видел только в докладах на конференциях и один раз писал мини-задачки в поезде по дороге с Jpoint 2018. Kotlin освоить легко. Java опыт и увлечение функциональными языками помогают в этом. Я почти влюбился в этот язык. Из-за "влюбился" и "почти", родилась идея записать мысли о Kotlin в этой статье.</p>
+<p>Kotlin чудовищно прагматичный язык. Похоже, каждая синтаксическая конструкция родилась из практических задач, которые приходится решать разработчикам каждый день. Оригинальный конструкций мало — даже затрудняюсь назвать хотя бы одну. У создателей не было задачи удивить мир новыми подходами. Kotlin — это компиляция практик, которые выжили и доказали успех в других языках. Напоминает подходы Apple — найти рабочие решения у конкурентов и соединить в одном идеальном продукте.</p>
+<h2>"Влюбился"</h2>
+<h3>Nullability</h3>
+<p>Когда пишут о Kotlin, в 90% случаях касаются темы Nullability и безопасных программ без NPE. Null safe подходами Kotlin пропитан насквозь. При этом больше впечатляет система типов с Nullable, чем синтаксический сахар, который вырос вокруг не. Прощайте <code>@Nullable</code>, <code>@NotNull</code> и, вероятно, <code>@NonNull</code>! А также решения, построенные на договоренностях, IDE и сторонних плагинах.</p>
+<h3>Перегрузка операторов и конвенции</h3>
+<p>Перегрузка операторов и конвенции позволяют существенно упростить код. Пример, из практики. Есть такая конструкция c <code>DateTime</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">now</span><span class="p">.</span><span class="n">isEqual</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="p">||</span> <span class="n">now</span><span class="p">.</span><span class="n">isAfter</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Ее можно, конечно, смело поменять на следующую конструкцию, в попытках что-то сэкономить:</p>
+<div class="highlight"><pre><span></span><code><span class="n">now</span><span class="p">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="p">&gt;=</span> <span class="m">0</span>
+</code></pre></div>
+
+
+<p>Но Kotlin дает простой и понятный всем (всем ведь?) вариант:</p>
+<div class="highlight"><pre><span></span><code><span class="n">now</span> <span class="p">&gt;=</span> <span class="n">date</span>
+</code></pre></div>
+
+
+<p>Посмотрите внимательнее на конвенции, связанные с операторами. Они сократят и улучшат ваш код.</p>
+<h3>DSL</h3>
+<p>Двинемся дальше и чуть-чуть поговорим про DSL. Продают эту тему очень активно. Иногда кажется, что процентов 80% в Kotlin было сделано для DSL. У меня за пару месяцев использования Kotlin появилось дикое желание написать свой DSL для описания BPMN. Язык буквально подталкивает тебя к тому, чтобы все заDSLить. Вот список крутых фич, которые делают Kotlin настолько благоприятным для написания своих DSL:</p>
+<ul>
+<li>Расширения</li>
+<li>Инфиксные функции</li>
+<li>Перегрузка операторов</li>
+<li>Конвенции — тут еще напомню про get метод</li>
+<li>Вынос lambda за скобки</li>
+<li>Lambda with a receiver</li>
+</ul>
+<h3>И еще немного</h3>
+<p>И еще чуть-чуть про любимые конструкции:</p>
+<ul>
+<li>Если все же вернутся к сахару, то <code>?.</code> и <code>?:</code> выглядят прекрасно. Отличная компактная замена <code>Optional</code>.</li>
+<li><code>as?</code> — безопасность везде, в том числе во время приведения типов.</li>
+<li>Активно продается идея immutability через пропаганду использования <code>val</code>.</li>
+<li>Почти все является выражениями: и <code>if</code>, и <code>when</code>, и <code>try</code>.</li>
+<li>Data классы. Без комментариев.</li>
+<li>А еще замечаешь, что перестал ставить <code>;</code> в java на автомате.</li>
+</ul>
+<h2>"Почти"</h2>
+<p>Перейдем к поведениям, которые вызывают вопросы.</p>
+<h3><code>also</code> vs <code>apply</code></h3>
+<p>Для начала хочется отметить <code>also</code> vs <code>apply</code>. Сама фича <em>lambda with a receiver</em> очень крутая, но иногда она позволяет изрядно запутать код. В практике столкнулся со следующим. Дано: много сгенерированных java объектов с конструктором без аргументов и толпой getter/setter'ов (в примерах указаны только поля для экономии пространства):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">systemId</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">Account</span> <span class="n">account</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Account</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p><code>apply</code> позволяет вызывать конструктор с инициализацией нужных полей в достаточно компактном стиле:</p>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">account</span> <span class="p">=</span> <span class="n">Account</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+    <span class="n">id</span> <span class="p">=</span> <span class="m">2</span>
+    <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Test account&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Выглядит красиво. Но мешанина начинается при инициализации вложенных объектов:</p>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">User</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+    <span class="n">id</span> <span class="p">=</span> <span class="m">1</span>
+    <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Test user&quot;</span>
+    <span class="n">account</span> <span class="p">=</span> <span class="n">Account</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+        <span class="n">id</span> <span class="p">=</span> <span class="m">2</span>
+        <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Test account&quot;</span>
+        <span class="n">systemId</span> <span class="p">=</span> <span class="m">3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Напутать в такой структуре очень легко. Держать в голове, где какой <code>this</code> непросто. Есть вариант использовать labels, но код становится загроможденным. Можно заметить, что <code>systemId</code> никакого отношения к Account не имеет, но его смело можно обновлять в ламбде, привязанной к account. Есть <code>DslMarker</code> для ограничения скоупа, но он подходит в случае, если мы контролируем классы. Это доступно не всегда. Поэтому в таких случаях я считаю лучше использовать <code>also</code>. Чуть больше кода, но и больше понимания, что происходит.</p>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">User</span><span class="p">().</span><span class="n">also</span> <span class="p">{</span> <span class="n">user</span> <span class="p">-&gt;</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="m">1</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Test user&quot;</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">account</span> <span class="p">=</span> <span class="n">Account</span><span class="p">().</span><span class="n">also</span> <span class="p">{</span> <span class="n">account</span> <span class="p">-&gt;</span>
+        <span class="n">account</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="m">2</span>
+        <span class="n">account</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Test account&quot;</span>
+        <span class="n">user</span><span class="p">.</span><span class="n">systemId</span> <span class="p">=</span> <span class="m">3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Хочется, чтобы вложенные apply можно было запретить, но, к сожалению, не видел правила в линтере, которое это могло проверять во время сборки (например в detekt).</p>
+<h3>Companion object</h3>
+<p>Очень странный концепт. Существует, на мой взгляд, исключительно для того, чтобы протащить статические методы внутрь классов для полной совместимости с java. Больше похоже на подпорку и выглядит инородно. Есть вероятность, что я пока просто не полностью проникся этой идеей. Хотя есть один пример, в котором мне нравится использование компаньона:</p>
+<div class="highlight"><pre><span></span><code><span class="k">companion</span> <span class="k">object</span><span class="p">:</span> <span class="n">KLogging</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h3>Приоритет расширений</h3>
+<p>Немного вводит в замешательство то, что расширения имеют приоритет меньше чем функции в классе. Например:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">=</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;member&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nc">Foo</span><span class="p">.</span><span class="nf">bar</span><span class="p">()</span> <span class="p">=</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;extension&quot;</span><span class="p">)</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Foo</span><span class="p">().</span><span class="n">bar</span><span class="p">()</span>    <span class="c1">// Выведет &quot;member&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Возникают вопросы, так как по определению кажется, что расширения призваны наращивать функциональность. И мое первое ощущение — они должны быть приоритетнее членов класса, так как в любом случае сначала определяется класс, а потом уже расширение к нему. В общем, тут следует помнить, что это не так. И обращайте внимание на предупреждения от IDEA.</p>
+<h3>Kotlin MPP</h3>
+<p>Для меня очень спорная тема. Видимо, я наелся в свое время работой с GWT и у меня автоматом есть некое недоверие к подходу: давайте на всех платформах писать на одном языке. Раньше это была Java, теперь Kotlin. Но с той разницей, что надо собрать все компоненты своими руками. Не совсем понятно как происходит дебаг в браузере — снова плагин или просто source maps? Как вводить новых разработчиков в технологию — сразу учим js и kotlin, android и kotlin и т.д.? Без знания платформы все равно не обойтись.</p>
+<h3>Nullsafe и платформенные типы</h3>
+<p>Стоит помнить, что при вызове Java из Kotlin и Kotlin из Java ничто не гарантирует null-safe на стыке языков. Нету никаких магических проверок и гарантий для не null типов. Что использовать определяем сами. Иногда надо просто довериться java коду и местами использовать не-nullable типы. Отсюда совет — почитываем код библиотек, которые используем.</p>
+<h2>Материалы</h2>
+<p>Пару слов хочется уделить материалам, которые использовал во время знакомства с Kotlin.</p>
+<ul>
+<li><a href="http://kotlinlang.org">kotlinlang.org</a> - вся информация по языку</li>
+<li><a href="https://play.kotlinlang.org/byExample">https://play.kotlinlang.org/byExample</a> - неплохой tutorial для быстрого знакомства с языком</li>
+<li><a href="https://www.manning.com/books/kotlin-in-action">Kotlin in Action</a> - отличная книга закрывающая все базовые концепции Kotlin. Читал английское издание, воспринимается очень легко.</li>
+</ul>
+<h2>И в конце</h2>
+<p>Есть несколько тем, которые я пока обошел стороной. Очень хочется посмотреть, как работают корутины. Также в закладках лежит книга <a href="https://leanpub.com/effectivekotlin">Effective Kotlin</a> — надеюсь из нее почерпнуть еще полезные концепции.</p>
+<p>В целом интересно наблюдать, как компания, делающая IDE, наращивает мощь и влияет на мир разработки. Раньше был только софт, помогающий лучше работать с кодом. Теперь новый jvm язык, который стремительно захватывает популярность.</p>
+<p>У меня есть предположение, что Kotlin родился на основе статистики, которая доступна JetBrains через ее IDE. Это богатейший источник для дизайна и развития языка. Нет необходимости доверять мнению людей. Как известно все люди врут, но данные же так не могут. Мысль несколько утрированная, но все же хочется, чтобы Kotlin без остановки развивался и приносил еще больше полезных практических фич.</p>
+            </div>
+            <!-- /.entry-content -->
+<hr />
+<!-- Yandex Share BEGIN -->
+<script type="text/javascript" src="//yandex.st/share/share.js"
+        charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareL10n="ru"
+     data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div> 
+    <!-- Yandex Share END -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'puzan'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "ru";
+
+                        this.page.identifier = '2021-07-23-kotlin';
+                        this.page.url = 'https://puzan.info/linux/2021-07-23-kotlin.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://twitter.com/puzan"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/zonov"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://github.com/puzan"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="https://zen.yandex.ru/id/5c4d6cc29c57e900ad31e8ba"><i class="fa fa-home fa-lg"></i> zen</a></li>
+    <li class="list-group-item"><a href="https://yandex.ru/collections/user/ilzon"><i class="fa fa-camera fa-lg"></i> photos</a></li>
+    <li class="list-group-item"><a href="https://feeds.feedburner.com/puzan"><i class="fa fa-rss-square fa-lg"></i> rss</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://puzan.info/linux/2021-07-23-kotlin.html">Kotlin</a></li>
+    <li class="list-group-item"><a href="https://puzan.info/linux/2020-06-19-webdav-za-https-proxy.html">WebDav за https proxy</a></li>
+    <li class="list-group-item"><a href="https://puzan.info/misc/2020-06-17-rabochee-mesto.html">Рабочее место</a></li>
+    <li class="list-group-item"><a href="https://puzan.info/misc/2020-05-24-zhizn-v-samoizoliatsii.html">Жизнь в самоизоляции</a></li>
+    <li class="list-group-item"><a href="https://puzan.info/linux/2020-05-10-parametrizovannye-roli-v-ansible.html">Параметризованные роли в Ansible</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="https://puzan.info/tag/index.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/akunin-b.html">Акунин Б.</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/anklavy.html">Анклавы</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ansible.html">ansible</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/apple.html">apple</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/backup.html">backup</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/bash.html">bash</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/blog.html">блог</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/bridge.html">bridge</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/c.html">c++</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/cedet.html">cedet</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/cifs.html">cifs</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/config.html">config</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/database.html">database</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/devops.html">devops</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/docker.html">docker</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ebuild.html">ebuild</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/eda.html">еда</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ede.html">ede</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/emacs.html">emacs</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/evernote.html">evernote</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/firefox.html">firefox</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/fonts.html">fonts</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/gem.html">gem</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/gentoo.html">gentoo</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/github.html">github</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/gitolite.html">gitolite</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/golding-u.html">Голдинг У.</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/google.html">google</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/hardware.html">hardware</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/https.html">https</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/infinality.html">infinality</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ios.html">ios</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/java.html">java</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/khudozhestvennaia-literatura.html">художественная литература</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/kotlin.html">kotlin</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://puzan.info/tag/mac.html">mac</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/merge.html">merge</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/net.html">net</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/network.html">network</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/nfs.html">nfs</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/nginx.html">nginx</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/obnam.html">obnam</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/os-x.html">os x</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/panov-v.html">Панов В.</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/pelican.html">pelican</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/pip.html">pip</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/portage.html">portage</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/postgresql.html">postgresql</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/proxy.html">proxy</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/rcs.html">rcs</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/redmine.html">redmine</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ruby.html">ruby</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="https://puzan.info/tag/samoizoliatsiia.html">самоизоляция</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/shell.html">shell</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/ssh.html">ssh</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/svn.html">svn</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/time-capsule.html">time capsule</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/virtualbox.html">virtualbox</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/web.html">web</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/webdav.html">webdav</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/windows.html">windows</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/xbox.html">xbox</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/yandex.html">yandex</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://puzan.info/tag/zamiatin-e.html">Замятин Е.</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2021 Ilya Zonov
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://puzan.info/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://puzan.info/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://puzan.info/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://puzan.info/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'puzan',
+    count: 5,
+    skip_forks: false,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://puzan.info/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'puzan'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50875216-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
