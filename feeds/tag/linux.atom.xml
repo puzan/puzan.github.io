@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - linux</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/linux.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2015-05-04T19:25:00+03:00</updated><entry><title>Операционные системы?</title><link href="https://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><published>2015-05-04T19:25:00+03:00</published><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:/linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - linux</title><link href="https://puzan.dev/" rel="alternate"></link><link href="https://puzan.dev/feeds/tag/linux.atom.xml" rel="self"></link><id>https://puzan.dev/</id><updated>2015-05-04T19:25:00+03:00</updated><entry><title>Операционные системы?</title><link href="https://puzan.dev/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><published>2015-05-04T19:25:00+03:00</published><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.dev,2015-05-04:/linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
 операционным  системам.   Этакое  лирическое   отступление.   Один  из  мотивов:
 структурировать  информацию и  самому  разобраться, что  мне  больше нравится  в
 каждой из  ОС.  Но похоже получился  некий экскурс в историю  моего знакомства с
@@ -93,7 +93,7 @@
 &lt;em&gt;Windows&lt;/em&gt; вижу достаточно редко.&lt;/p&gt;
 &lt;p&gt;В середине обучения на  физфаке на один из дней рождения  мой друг Шурик подарил
 мне                   старенький                  офисный                   комп
-(&lt;a href="https://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html"&gt;в соседнем посте  я ищу ему нового хозяина&lt;/a&gt;). Из  этого компа я сделал
+(&lt;a href="https://puzan.dev/linux/2015-02-21-kuda-otdat-kompiutery.html"&gt;в соседнем посте  я ищу ему нового хозяина&lt;/a&gt;). Из  этого компа я сделал
 нечто вроде домашнего  сервачка. На нем был развернуто куча  сервисов. С помощью
 &lt;em&gt;gitolite&lt;/em&gt;  организовано хранилище  &lt;em&gt;git&lt;/em&gt;-овых репозиториев,  а до  этого еще  и
 &lt;em&gt;svn&lt;/em&gt;.  Кроме того,  он представлял из себе и некую  файловую помойку, доступную
@@ -182,7 +182,7 @@ posix  совместимую  операционную систему,  кот�
   и яблочной инфраструктуры перекрывает  некоторые неудобства. В последнее время
   в &lt;em&gt;OS X&lt;/em&gt; не мало глюков (я тоже попал на баг с 5 Гц-вым &lt;em&gt;WiFi&lt;/em&gt;), но надежда на
   светлое будущее есть.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Linux"></category><category term="linux"></category><category term="os x"></category><category term="windows"></category></entry><entry><title>Куда отдать компьютеры?</title><link href="https://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><published>2015-02-21T00:00:00+03:00</published><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-21:/linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
+&lt;/ul&gt;</content><category term="Linux"></category><category term="linux"></category><category term="os x"></category><category term="windows"></category></entry><entry><title>Куда отдать компьютеры?</title><link href="https://puzan.dev/linux/2015-02-21-kuda-otdat-kompiutery.html" rel="alternate"></link><published>2015-02-21T00:00:00+03:00</published><updated>2015-02-21T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.dev,2015-02-21:/linux/2015-02-21-kuda-otdat-kompiutery.html</id><summary type="html">&lt;p&gt;Как уже  писал недавно в &lt;a href="https://twitter.com/puzan/status/567212984490295296"&gt;твиттере&lt;/a&gt;,  есть у меня немного  старой техники,
 которую  я уже  не использую  и хочу  найти ей  новое место.  Выкидывать немного
 жалко, но и склад дома устраивать нет желания.&lt;/p&gt;
 &lt;p&gt;Было бы здорово  узнать, куда люди уносят отработавшие  компьютеры.  Свое железо
@@ -204,7 +204,7 @@ posix  совместимую  операционную систему,  кот�
 фоточки.  Итак  смотрим, выбираем.   Может у  кого появятся  идеи, куда  это все
 пристроить. И было бы интересно узнать опыт в подобных вопросах.&lt;/p&gt;
 &lt;h2&gt;HP G62 - &lt;em&gt;Нашел нового хозяина&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="HP G62" src="https://puzan.info/images/comp-hp.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="HP G62" src="https://puzan.dev/images/comp-hp.jpg" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CPU Intel i5 2.53 GHz&lt;/li&gt;
 &lt;li&gt;ОЗУ 4 Gb&lt;/li&gt;
@@ -223,7 +223,7 @@ posix  совместимую  операционную систему,  кот�
 &lt;li&gt;Требуется докупить жесткий диск.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;DELL Inspiron 1501 - &lt;em&gt;Нашел нового хозяина&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="DELL Inspiron 1501" src="https://puzan.info/images/comp-dell.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="DELL Inspiron 1501" src="https://puzan.dev/images/comp-dell.jpg" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CPU AMD Turion 64 800 MGz&lt;/li&gt;
 &lt;li&gt;ОЗУ 2 Gb&lt;/li&gt;
@@ -239,7 +239,7 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 &lt;li&gt;Грязноватый и потертый.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;PC aka «server»&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="PC aka «server»" src="https://puzan.info/images/comp-pc.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PC aka «server»" src="https://puzan.dev/images/comp-pc.jpg" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CPU Intel Celeron 1,8 GHz&lt;/li&gt;
 &lt;li&gt;ОЗУ 2 Gb&lt;/li&gt;
@@ -260,7 +260,7 @@ XP&lt;/em&gt;. Также был  заменен на &lt;em&gt;Air&lt;/em&gt; �
 как по &lt;em&gt;Ethernet&lt;/em&gt;, так и по &lt;em&gt;Wifi&lt;/em&gt; (если необходимо приложу и &lt;em&gt;Wifi&lt;/em&gt; карту).  Из
 очевидных  недостатков,  кроме  принципиальной старости  железа,  могу  отметить
 только   шум.    Весь   его   функционал   был   успешно   заменен   с   помощью
-&lt;em&gt;CubieBoard&lt;/em&gt;. Который кстати совсем не шумит.&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="https://puzan.info/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><updated>2015-02-10T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-02-10:/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
+&lt;em&gt;CubieBoard&lt;/em&gt;. Который кстати совсем не шумит.&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category><category term="linux"></category></entry><entry><title>Linux бекапы на Apple Time Capsule (Obnam)</title><link href="https://puzan.dev/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html" rel="alternate"></link><published>2015-02-10T00:00:00+03:00</published><updated>2015-02-10T00:00:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.dev,2015-02-10:/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</id><summary type="html">&lt;p&gt;Решил наладить  бекапы с &lt;em&gt;CubieBoard&lt;/em&gt;,  на которой крутится  подточеный &lt;em&gt;Debian&lt;/em&gt;
 (&lt;a href="http://cubian.org/"&gt;&lt;em&gt;Cubian&lt;/em&gt;&lt;/a&gt;), на &lt;em&gt;Time Capsule&lt;/em&gt;.  Туда через &lt;em&gt;Time Machine&lt;/em&gt; уже делается
 резервная копия  &lt;em&gt;MacBook&lt;/em&gt;'а.  Захотел организовать  аналогичные инкрементальные
 бекапы для &lt;em&gt;Linux&lt;/em&gt; коробки. Попытаюсь далее изложить свой опыт.&lt;/p&gt;
@@ -371,7 +371,7 @@ compress-with = deflate
 файловая система  на диске с  данными слегка  поплыла.  Чиниться через  &lt;code&gt;fsck&lt;/code&gt; и
 монтироваться  отказывалась.  Данные  в принципе  можно было  бы восстановить  с
 диска,  но  быстрее и  проще  оказалось  воспользоваться бекапом.   Бекаптесь  -
-пригодится!&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry><entry><title>Как создать bridge на nfs root</title><link href="https://puzan.info/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><published>2013-09-03T00:00:00+04:00</published><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2013-09-03:/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
+пригодится!&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="apple"></category><category term="time capsule"></category><category term="cifs"></category><category term="obnam"></category><category term="backup"></category></entry><entry><title>Как создать bridge на nfs root</title><link href="https://puzan.dev/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html" rel="alternate"></link><published>2013-09-03T00:00:00+04:00</published><updated>2013-09-03T00:00:00+04:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.dev,2013-09-03:/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</id><summary type="html">&lt;p&gt;Для поднятия сети  на одной железке возникла необходимость  создать &lt;em&gt;bridge&lt;/em&gt;. Но
 загвоздка в  том, что система  должна при  загрузке монтировать &lt;em&gt;nfs&lt;/em&gt;  в корень.
 Данное условие необходимо  для возможности быстро изменить что-то  в системе без
 необходимости лезть на флешку.  Отладка идет полным ходом.  Но основная проблема

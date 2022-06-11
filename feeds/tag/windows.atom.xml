@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - windows</title><link href="https://puzan.info/" rel="alternate"></link><link href="https://puzan.info/feeds/tag/windows.atom.xml" rel="self"></link><id>https://puzan.info/</id><updated>2015-05-04T19:25:00+03:00</updated><entry><title>Операционные системы?</title><link href="https://puzan.info/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><published>2015-05-04T19:25:00+03:00</published><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.info,2015-05-04:/linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Puzan's Pages - windows</title><link href="https://puzan.dev/" rel="alternate"></link><link href="https://puzan.dev/feeds/tag/windows.atom.xml" rel="self"></link><id>https://puzan.dev/</id><updated>2015-05-04T19:25:00+03:00</updated><entry><title>Операционные системы?</title><link href="https://puzan.dev/linux/2015-05-04-operatsionnye-sistemy.html" rel="alternate"></link><published>2015-05-04T19:25:00+03:00</published><updated>2015-05-04T19:25:00+03:00</updated><author><name>Ilya Zonov</name></author><id>tag:puzan.dev,2015-05-04:/linux/2015-05-04-operatsionnye-sistemy.html</id><summary type="html">&lt;p&gt;Возникло у  меня несдержимое желание  написать про свое отношение  к современным
 операционным  системам.   Этакое  лирическое   отступление.   Один  из  мотивов:
 структурировать  информацию и  самому  разобраться, что  мне  больше нравится  в
 каждой из  ОС.  Но похоже получился  некий экскурс в историю  моего знакомства с
@@ -93,7 +93,7 @@
 &lt;em&gt;Windows&lt;/em&gt; вижу достаточно редко.&lt;/p&gt;
 &lt;p&gt;В середине обучения на  физфаке на один из дней рождения  мой друг Шурик подарил
 мне                   старенький                  офисный                   комп
-(&lt;a href="https://puzan.info/linux/2015-02-21-kuda-otdat-kompiutery.html"&gt;в соседнем посте  я ищу ему нового хозяина&lt;/a&gt;). Из  этого компа я сделал
+(&lt;a href="https://puzan.dev/linux/2015-02-21-kuda-otdat-kompiutery.html"&gt;в соседнем посте  я ищу ему нового хозяина&lt;/a&gt;). Из  этого компа я сделал
 нечто вроде домашнего  сервачка. На нем был развернуто куча  сервисов. С помощью
 &lt;em&gt;gitolite&lt;/em&gt;  организовано хранилище  &lt;em&gt;git&lt;/em&gt;-овых репозиториев,  а до  этого еще  и
 &lt;em&gt;svn&lt;/em&gt;.  Кроме того,  он представлял из себе и некую  файловую помойку, доступную
