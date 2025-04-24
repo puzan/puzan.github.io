@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Puzan's Pages - ruby</title><link>https://puzan.dev/</link><description></description><lastBuildDate>Tue, 04 Jun 2013 00:00:00 +0400</lastBuildDate><item><title>Gems и другие пакетные менеджеры</title><link>https://puzan.dev/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</link><description>&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
+<rss version="2.0"><channel><title>Puzan's Pages - ruby</title><link>https://old.puzan.dev/</link><description></description><lastBuildDate>Tue, 04 Jun 2013 00:00:00 +0400</lastBuildDate><item><title>Gems и другие пакетные менеджеры</title><link>https://old.puzan.dev/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</link><description>&lt;p&gt;Только  недавно  столкнулся и  попробовал  использовать  &lt;em&gt;rubygems&lt;/em&gt;.  Ранее  все
 устанавливал через &lt;em&gt;portage&lt;/em&gt;.   Но частенько стали попадаться  статьи, в которых
 пишут нечто вроде следующего:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gem install git-up
@@ -8,4 +8,4 @@ gem install bundle
 
 
 &lt;p&gt;Это  добро у  меня вызывало,  некоторое недоумение  (что еще  за левые  пакетные
-менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 04 Jun 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:puzan.dev,2013-06-04:/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</guid><category>linux</category><category>ruby</category><category>gem</category><category>python</category><category>pip</category><category>gentoo</category></item></channel></rss>
+менеджеры???)   и  я бежал  искать  аналоги  в  &lt;em&gt;portage&lt;/em&gt;.  Частенько …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ilya Zonov</dc:creator><pubDate>Tue, 04 Jun 2013 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:old.puzan.dev,2013-06-04:/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</guid><category>linux</category><category>ruby</category><category>gem</category><category>python</category><category>pip</category><category>gentoo</category></item></channel></rss>

@@ -4,791 +4,791 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://puzan.dev/</loc>
-<lastmod>2022-06-11T09:25:01-00:00</lastmod>
+<loc>https://old.puzan.dev/</loc>
+<lastmod>2025-04-24T20:55:14-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/index.html</loc>
-<lastmod>2022-06-11T09:25:01-00:00</lastmod>
+<loc>https://old.puzan.dev/tag/index.html</loc>
+<lastmod>2025-04-24T20:55:14-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/categories.html</loc>
-<lastmod>2022-06-11T09:25:01-00:00</lastmod>
+<loc>https://old.puzan.dev/categories.html</loc>
+<lastmod>2025-04-24T20:55:14-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/archives.html</loc>
-<lastmod>2022-06-11T09:25:01-00:00</lastmod>
+<loc>https://old.puzan.dev/archives.html</loc>
+<lastmod>2025-04-24T20:55:14-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/pages/about.html</loc>
-<lastmod>2022-06-11T09:25:01-00:00</lastmod>
+<loc>https://old.puzan.dev/pages/about.html</loc>
+<lastmod>2025-04-24T20:55:14-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2021-07-23-kotlin.html</loc>
+<loc>https://old.puzan.dev/linux/2021-07-23-kotlin.html</loc>
 <lastmod>2021-07-23T23:34:18+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2020-06-19-webdav-za-https-proxy.html</loc>
+<loc>https://old.puzan.dev/linux/2020-06-19-webdav-za-https-proxy.html</loc>
 <lastmod>2020-06-19T22:55:22+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2020-06-17-rabochee-mesto.html</loc>
+<loc>https://old.puzan.dev/misc/2020-06-17-rabochee-mesto.html</loc>
 <lastmod>2020-06-17T22:35:55+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2020-05-24-zhizn-v-samoizoliatsii.html</loc>
+<loc>https://old.puzan.dev/misc/2020-05-24-zhizn-v-samoizoliatsii.html</loc>
 <lastmod>2020-05-24T22:05:17+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2020-05-10-parametrizovannye-roli-v-ansible.html</loc>
+<loc>https://old.puzan.dev/linux/2020-05-10-parametrizovannye-roli-v-ansible.html</loc>
 <lastmod>2020-05-10T13:45:00+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2016-04-06-malenkie-tuly.html</loc>
+<loc>https://old.puzan.dev/linux/2016-04-06-malenkie-tuly.html</loc>
 <lastmod>2016-04-06T22:25:00+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2015-09-06-docker-initsializatsiia-postgres.html</loc>
+<loc>https://old.puzan.dev/linux/2015-09-06-docker-initsializatsiia-postgres.html</loc>
 <lastmod>2015-09-06T00:39:07+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2015-05-04-operatsionnye-sistemy.html</loc>
+<loc>https://old.puzan.dev/linux/2015-05-04-operatsionnye-sistemy.html</loc>
 <lastmod>2015-05-04T19:25:00+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2015-03-15-polosa-zagruzki-v-os-x.html</loc>
+<loc>https://old.puzan.dev/misc/2015-03-15-polosa-zagruzki-v-os-x.html</loc>
 <lastmod>2015-03-15T10:48:45+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</loc>
+<loc>https://old.puzan.dev/misc/2015-03-01-evernote-vidzhet-na-today-ekrane-ios.html</loc>
 <lastmod>2015-03-01T18:58:53+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2015-02-21-kuda-otdat-kompiutery.html</loc>
+<loc>https://old.puzan.dev/linux/2015-02-21-kuda-otdat-kompiutery.html</loc>
 <lastmod>2015-02-21T00:00:00+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</loc>
+<loc>https://old.puzan.dev/linux/2015-02-10-linux-bekapy-na-apple-time-capsule-obnam.html</loc>
 <lastmod>2015-02-10T00:00:00+03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2014-09-07-c-party.html</loc>
+<loc>https://old.puzan.dev/misc/2014-09-07-c-party.html</loc>
 <lastmod>2014-09-07T19:27:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/read/2014-09-07-golding-u-povelitel-mukh.html</loc>
+<loc>https://old.puzan.dev/read/2014-09-07-golding-u-povelitel-mukh.html</loc>
 <lastmod>2014-09-07T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2014-09-04-priiatnosti-ot-apple.html</loc>
+<loc>https://old.puzan.dev/misc/2014-09-04-priiatnosti-ot-apple.html</loc>
 <lastmod>2014-09-04T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2014-08-19-ede-bol.html</loc>
+<loc>https://old.puzan.dev/linux/2014-08-19-ede-bol.html</loc>
 <lastmod>2014-08-19T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2014-08-09-dlia-tekh-kto-za-proxy.html</loc>
+<loc>https://old.puzan.dev/linux/2014-08-09-dlia-tekh-kto-za-proxy.html</loc>
 <lastmod>2014-08-09T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2014-05-14-direnv.html</loc>
+<loc>https://old.puzan.dev/linux/2014-05-14-direnv.html</loc>
 <lastmod>2014-05-14T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</loc>
+<loc>https://old.puzan.dev/linux/2014-05-08-virtualbox-problemy-s-bridged-network-cherez-wifi-na-mac.html</loc>
 <lastmod>2014-05-08T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/2014-04-18-novyi-blog.html</loc>
+<loc>https://old.puzan.dev/misc/2014-04-18-novyi-blog.html</loc>
 <lastmod>2014-04-18T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</loc>
+<loc>https://old.puzan.dev/linux/2013-09-03-kak-sozdat-bridge-na-nfs-root.html</loc>
 <lastmod>2013-09-03T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-08-25-emacs-java.html</loc>
+<loc>https://old.puzan.dev/linux/2013-08-25-emacs-java.html</loc>
 <lastmod>2013-08-25T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/read/2013-08-20-panov-v-anklavy.html</loc>
+<loc>https://old.puzan.dev/read/2013-08-20-panov-v-anklavy.html</loc>
 <lastmod>2013-08-20T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</loc>
+<loc>https://old.puzan.dev/linux/2013-06-11-khranenie-konfiguratsionnykh-failov-rcs-git.html</loc>
 <lastmod>2013-06-11T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/read/2013-06-06-zamiatin-e-my.html</loc>
+<loc>https://old.puzan.dev/read/2013-06-06-zamiatin-e-my.html</loc>
 <lastmod>2013-06-06T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</loc>
+<loc>https://old.puzan.dev/linux/2013-06-04-gems-i-drugie-paketnye-menedzhery.html</loc>
 <lastmod>2013-06-04T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-06-03-lichnyi-firefox-sync.html</loc>
+<loc>https://old.puzan.dev/linux/2013-06-03-lichnyi-firefox-sync.html</loc>
 <lastmod>2013-06-03T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-06-01-git-obedinenie-merge-kommitov.html</loc>
+<loc>https://old.puzan.dev/linux/2013-06-01-git-obedinenie-merge-kommitov.html</loc>
 <lastmod>2013-06-01T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</loc>
+<loc>https://old.puzan.dev/linux/2013-05-24-git-kirillicheskie-imena-failov-na-os-x.html</loc>
 <lastmod>2013-05-24T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</loc>
+<loc>https://old.puzan.dev/linux/2013-05-23-evernote-web-clipper-opiat-zabyl-parol.html</loc>
 <lastmod>2013-05-23T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-05-22-xbox-one-vpechatleniia.html</loc>
+<loc>https://old.puzan.dev/linux/2013-05-22-xbox-one-vpechatleniia.html</loc>
 <lastmod>2013-05-22T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-05-21-macbook-air-blog-i-bash-crash.html</loc>
+<loc>https://old.puzan.dev/linux/2013-05-21-macbook-air-blog-i-bash-crash.html</loc>
 <lastmod>2013-05-21T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</loc>
+<loc>https://old.puzan.dev/linux/2013-02-12-infinality-patchi-na-stabilnoi-vetke.html</loc>
 <lastmod>2013-02-12T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</loc>
+<loc>https://old.puzan.dev/linux/2013-02-05-ispolzovanie-gitolite-vmeste-s-redmine.html</loc>
 <lastmod>2013-02-05T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-02-03-svn-to-git.html</loc>
+<loc>https://old.puzan.dev/linux/2013-02-03-svn-to-git.html</loc>
 <lastmod>2013-02-03T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</loc>
+<loc>https://old.puzan.dev/linux/2013-01-24-blogger-post-iz-emacs-markdown-googlecl-script.html</loc>
 <lastmod>2013-01-24T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/read/2013-01-14-akunin-b-leviafan.html</loc>
+<loc>https://old.puzan.dev/read/2013-01-14-akunin-b-leviafan.html</loc>
 <lastmod>2013-01-14T00:00:00+04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/linux/index.html</loc>
+<loc>https://old.puzan.dev/linux/index.html</loc>
 <lastmod>2021-07-23T23:34:18+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/misc/index.html</loc>
+<loc>https://old.puzan.dev/misc/index.html</loc>
 <lastmod>2020-06-17T22:35:55+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/read/index.html</loc>
+<loc>https://old.puzan.dev/read/index.html</loc>
 <lastmod>2014-09-07T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/kotlin.html</loc>
+<loc>https://old.puzan.dev/tag/kotlin.html</loc>
 <lastmod>2021-07-23T23:34:18+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/webdav.html</loc>
+<loc>https://old.puzan.dev/tag/webdav.html</loc>
 <lastmod>2020-06-19T22:55:22+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/nginx.html</loc>
+<loc>https://old.puzan.dev/tag/nginx.html</loc>
 <lastmod>2020-06-19T22:55:22+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/https.html</loc>
+<loc>https://old.puzan.dev/tag/https.html</loc>
 <lastmod>2020-06-19T22:55:22+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/samoizoliatsiia.html</loc>
+<loc>https://old.puzan.dev/tag/samoizoliatsiia.html</loc>
 <lastmod>2020-06-17T22:35:55+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/hardware.html</loc>
+<loc>https://old.puzan.dev/tag/hardware.html</loc>
 <lastmod>2020-06-17T22:35:55+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/mac.html</loc>
+<loc>https://old.puzan.dev/tag/mac.html</loc>
 <lastmod>2020-06-17T22:35:55+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/eda.html</loc>
+<loc>https://old.puzan.dev/tag/eda.html</loc>
 <lastmod>2020-05-24T22:05:17+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ansible.html</loc>
+<loc>https://old.puzan.dev/tag/ansible.html</loc>
 <lastmod>2020-05-10T13:45:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/devops.html</loc>
+<loc>https://old.puzan.dev/tag/devops.html</loc>
 <lastmod>2020-05-10T13:45:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/shell.html</loc>
+<loc>https://old.puzan.dev/tag/shell.html</loc>
 <lastmod>2016-04-06T22:25:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/backup.html</loc>
+<loc>https://old.puzan.dev/tag/backup.html</loc>
 <lastmod>2016-04-06T22:25:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/docker.html</loc>
+<loc>https://old.puzan.dev/tag/docker.html</loc>
 <lastmod>2015-09-06T00:39:07+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/database.html</loc>
+<loc>https://old.puzan.dev/tag/database.html</loc>
 <lastmod>2015-09-06T00:39:07+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/postgresql.html</loc>
+<loc>https://old.puzan.dev/tag/postgresql.html</loc>
 <lastmod>2015-09-06T00:39:07+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/linux.html</loc>
+<loc>https://old.puzan.dev/tag/linux.html</loc>
 <lastmod>2015-05-04T19:25:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/os-x.html</loc>
+<loc>https://old.puzan.dev/tag/os-x.html</loc>
 <lastmod>2015-05-04T19:25:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/windows.html</loc>
+<loc>https://old.puzan.dev/tag/windows.html</loc>
 <lastmod>2015-05-04T19:25:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/apple.html</loc>
+<loc>https://old.puzan.dev/tag/apple.html</loc>
 <lastmod>2015-03-15T10:48:45+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ios.html</loc>
+<loc>https://old.puzan.dev/tag/ios.html</loc>
 <lastmod>2015-03-01T18:58:53+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/evernote.html</loc>
+<loc>https://old.puzan.dev/tag/evernote.html</loc>
 <lastmod>2015-03-01T18:58:53+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/time-capsule.html</loc>
+<loc>https://old.puzan.dev/tag/time-capsule.html</loc>
 <lastmod>2015-02-10T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/cifs.html</loc>
+<loc>https://old.puzan.dev/tag/cifs.html</loc>
 <lastmod>2015-02-10T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/obnam.html</loc>
+<loc>https://old.puzan.dev/tag/obnam.html</loc>
 <lastmod>2015-02-10T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/yandex.html</loc>
+<loc>https://old.puzan.dev/tag/yandex.html</loc>
 <lastmod>2014-09-07T19:27:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/c.html</loc>
+<loc>https://old.puzan.dev/tag/c.html</loc>
 <lastmod>2014-09-07T19:27:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/khudozhestvennaia-literatura.html</loc>
+<loc>https://old.puzan.dev/tag/khudozhestvennaia-literatura.html</loc>
 <lastmod>2014-09-07T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/golding-u.html</loc>
+<loc>https://old.puzan.dev/tag/golding-u.html</loc>
 <lastmod>2014-09-07T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/emacs.html</loc>
+<loc>https://old.puzan.dev/tag/emacs.html</loc>
 <lastmod>2014-08-19T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/cedet.html</loc>
+<loc>https://old.puzan.dev/tag/cedet.html</loc>
 <lastmod>2014-08-19T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ede.html</loc>
+<loc>https://old.puzan.dev/tag/ede.html</loc>
 <lastmod>2014-08-19T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/proxy.html</loc>
+<loc>https://old.puzan.dev/tag/proxy.html</loc>
 <lastmod>2014-08-09T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/network.html</loc>
+<loc>https://old.puzan.dev/tag/network.html</loc>
 <lastmod>2014-08-09T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ssh.html</loc>
+<loc>https://old.puzan.dev/tag/ssh.html</loc>
 <lastmod>2014-08-09T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/bash.html</loc>
+<loc>https://old.puzan.dev/tag/bash.html</loc>
 <lastmod>2014-05-14T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/virtualbox.html</loc>
+<loc>https://old.puzan.dev/tag/virtualbox.html</loc>
 <lastmod>2014-05-08T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/blog.html</loc>
+<loc>https://old.puzan.dev/tag/blog.html</loc>
 <lastmod>2014-04-18T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/pelican.html</loc>
+<loc>https://old.puzan.dev/tag/pelican.html</loc>
 <lastmod>2014-04-18T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/github.html</loc>
+<loc>https://old.puzan.dev/tag/github.html</loc>
 <lastmod>2014-04-18T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/nfs.html</loc>
+<loc>https://old.puzan.dev/tag/nfs.html</loc>
 <lastmod>2013-09-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/net.html</loc>
+<loc>https://old.puzan.dev/tag/net.html</loc>
 <lastmod>2013-09-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/bridge.html</loc>
+<loc>https://old.puzan.dev/tag/bridge.html</loc>
 <lastmod>2013-09-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/java.html</loc>
+<loc>https://old.puzan.dev/tag/java.html</loc>
 <lastmod>2013-08-25T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/panov-v.html</loc>
+<loc>https://old.puzan.dev/tag/panov-v.html</loc>
 <lastmod>2013-08-20T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/anklavy.html</loc>
+<loc>https://old.puzan.dev/tag/anklavy.html</loc>
 <lastmod>2013-08-20T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/git.html</loc>
+<loc>https://old.puzan.dev/tag/git.html</loc>
 <lastmod>2013-06-11T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/rcs.html</loc>
+<loc>https://old.puzan.dev/tag/rcs.html</loc>
 <lastmod>2013-06-11T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/config.html</loc>
+<loc>https://old.puzan.dev/tag/config.html</loc>
 <lastmod>2013-06-11T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/zamiatin-e.html</loc>
+<loc>https://old.puzan.dev/tag/zamiatin-e.html</loc>
 <lastmod>2013-06-06T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ruby.html</loc>
+<loc>https://old.puzan.dev/tag/ruby.html</loc>
 <lastmod>2013-06-04T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/gem.html</loc>
+<loc>https://old.puzan.dev/tag/gem.html</loc>
 <lastmod>2013-06-04T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/python.html</loc>
+<loc>https://old.puzan.dev/tag/python.html</loc>
 <lastmod>2013-06-04T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/pip.html</loc>
+<loc>https://old.puzan.dev/tag/pip.html</loc>
 <lastmod>2013-06-04T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/gentoo.html</loc>
+<loc>https://old.puzan.dev/tag/gentoo.html</loc>
 <lastmod>2013-06-04T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/firefox.html</loc>
+<loc>https://old.puzan.dev/tag/firefox.html</loc>
 <lastmod>2013-06-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/portage.html</loc>
+<loc>https://old.puzan.dev/tag/portage.html</loc>
 <lastmod>2013-06-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/ebuild.html</loc>
+<loc>https://old.puzan.dev/tag/ebuild.html</loc>
 <lastmod>2013-06-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/merge.html</loc>
+<loc>https://old.puzan.dev/tag/merge.html</loc>
 <lastmod>2013-06-01T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/web.html</loc>
+<loc>https://old.puzan.dev/tag/web.html</loc>
 <lastmod>2013-05-23T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/xbox.html</loc>
+<loc>https://old.puzan.dev/tag/xbox.html</loc>
 <lastmod>2013-05-22T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/infinality.html</loc>
+<loc>https://old.puzan.dev/tag/infinality.html</loc>
 <lastmod>2013-02-12T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/fonts.html</loc>
+<loc>https://old.puzan.dev/tag/fonts.html</loc>
 <lastmod>2013-02-12T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/redmine.html</loc>
+<loc>https://old.puzan.dev/tag/redmine.html</loc>
 <lastmod>2013-02-05T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/gitolite.html</loc>
+<loc>https://old.puzan.dev/tag/gitolite.html</loc>
 <lastmod>2013-02-05T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/svn.html</loc>
+<loc>https://old.puzan.dev/tag/svn.html</loc>
 <lastmod>2013-02-03T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/google.html</loc>
+<loc>https://old.puzan.dev/tag/google.html</loc>
 <lastmod>2013-01-24T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/tag/akunin-b.html</loc>
+<loc>https://old.puzan.dev/tag/akunin-b.html</loc>
 <lastmod>2013-01-14T00:00:00+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://puzan.dev/author/ilya-zonov/index.html</loc>
+<loc>https://old.puzan.dev/author/ilya-zonov/index.html</loc>
 <lastmod>2021-07-23T23:34:18+02:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
