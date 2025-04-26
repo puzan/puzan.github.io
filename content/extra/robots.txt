@@ -3,4 +3,4 @@ Disallow: /CNAME
 Disallow: /keybase.txt
 Disallow: /theme/*
 
-Sitemap: https://puzan.info/sitemap.xml
+Sitemap: https://old.puzan.dev/sitemap.xml
